@@ -1,7 +1,13 @@
+import React from "react";
+import RecipePage from "./pages/RecipePage";
+import RecipeRegisterPage from "./pages/RecipeRegisterPage";
+
 function App() {
   return (
     <>
-      <p>Hello</p>
+      <div>
+        <RecipeRegisterPage />
+      </div>
     </>
   );
 }
