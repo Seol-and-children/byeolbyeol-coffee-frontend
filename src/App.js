@@ -1,12 +1,11 @@
 import React from "react";
-import RecipePage from "./pages/RecipePage";
-import RecipeRegisterPage from "./pages/RecipeRegisterPage";
+import RecipeViewPage from "./pages/RecipeViewPage";
 
 function App() {
   return (
     <>
       <div>
-        <RecipeRegisterPage />
+        <RecipeViewPage />
       </div>
     </>
   );
