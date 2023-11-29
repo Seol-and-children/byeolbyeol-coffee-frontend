@@ -14,10 +14,10 @@ function RecipeCard({ recipe }) {
         <img src={imageUrl} alt={recipe.recipeName} />
       </div>
       <div className="recipe-card-content">
+        <p className="recipe-card-franchise">{recipe.franchiseName}</p>
         <h3 className="recipe-card-title">{recipe.recipeName}</h3>
-        <p className="recipe-card-franchise">{recipe.franchiseId}</p>
         <div className="recipe-card-info">
-          <span className="recipe-card-author">{`By ${recipe.userNickname}`}</span>
+          <span className="recipe-card-author">{`| ${recipe.userNickname}`}</span>
           <span className="recipe-card-date">
             {formatDate(recipe.registerTime)}
           </span>

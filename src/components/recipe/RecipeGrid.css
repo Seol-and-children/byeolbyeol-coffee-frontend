@@ -7,16 +7,3 @@
   max-width: 1200px; /* 컨테이너의 최대 너비 */
   margin: auto; /* 중앙 정렬 */
 }
-
-/* 반응형 디자인을 위한 미디어 쿼리 */
-@media (max-width: 768px) {
-  .recipe-grid {
-    grid-template-columns: repeat(2, 1fr); /* 화면이 작을 때 2열로 변경 */
-  }
-}
-
-@media (max-width: 480px) {
-  .recipe-grid {
-    grid-template-columns: 1fr; /* 화면이 더 작을 때 1열로 변경 */
-  }
-}

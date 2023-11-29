@@ -44,6 +44,7 @@
 .recipe-card-franchise {
   color: #666;
   font-size: 1em;
+  margin-top: 5px;
   margin-bottom: 5px;
 }
 
@@ -59,7 +60,7 @@
 
 .recipe-card-date {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .recipe-card-stats {

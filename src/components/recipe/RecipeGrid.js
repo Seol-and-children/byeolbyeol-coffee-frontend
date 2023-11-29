@@ -1,6 +1,6 @@
 import React from "react";
 import RecipeCard from "./RecipeCard";
-import "./RecipeCard.css"; // CSS 파일을 import 합니다.
+import "./RecipeGrid.css"; // CSS 파일을 import 합니다.
 
 function RecipeGrid({ recipes }) {
   return (

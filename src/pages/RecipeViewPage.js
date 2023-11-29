@@ -15,7 +15,7 @@ function RecipeViewPage() {
       const response = await axios.get("http://localhost:8080/recipes");
       setRecipes(response.data);
     } catch (error) {
-      console.error("Error fetching recipes:", error);
+      console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }
   };
 
