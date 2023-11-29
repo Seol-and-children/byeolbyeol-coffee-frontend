@@ -1,5 +1,5 @@
 import React from "react";
-import "./Pagination.css"; // Pagination 컴포넌트를 위한 스타일시트
+import "./Pagination.css";
 
 const Pagination = ({ recipesPerPage, totalRecipes, paginate }) => {
   const pageNumbers = [];

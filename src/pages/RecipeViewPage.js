@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import RecipeGrid from "../components/recipe/RecipeGrid";
 import Pagination from "../components/common/Pagination";
 import "./RecipeViewPage.css";
@@ -8,6 +9,8 @@ function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]); // 레시피 데이터를 위한 상태
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
   const [recipesPerPage] = useState(12); // 페이지 당 레시피 수
+  const [sortOrder, setSortOrder] = useState("time"); // 정렬 상태
+  const navigate = useNavigate();
 
   // 레시피 데이터를 가져오는 함수
   const fetchRecipes = async () => {
@@ -17,6 +20,36 @@ function RecipeViewPage() {
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }
+  };
+
+  // 추천순으로 정렬하는 함수
+  const sortByRecommendation = () => {
+    const sortedRecipes = [...recipes].sort(
+      (a, b) => b.likesCount - a.likesCount
+    );
+    setRecipes(sortedRecipes);
+  };
+
+  // 시간순으로 정렬하는 함수 (최신순)
+  const sortByTime = () => {
+    const sortedRecipes = [...recipes].sort(
+      (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+    );
+    setRecipes(sortedRecipes);
+  };
+
+  // 정렬 상태 변경 함수
+  const handleSortChange = (order) => {
+    setSortOrder(order);
+    if (order === "recommend") {
+      sortByRecommendation();
+    } else if (order === "time") {
+      sortByTime();
+    }
+  };
+
+  const handleAddRecipe = () => {
+    navigate("/add-recipe"); // 레시피 등록 페이지로 이동
   };
 
   // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
@@ -34,7 +67,25 @@ function RecipeViewPage() {
 
   return (
     <div className="recipe-view-page">
-      <RecipeGrid recipes={currentRecipes} /> {/* 레시피 그리드 */}
+      <RecipeGrid recipes={currentRecipes} /> {}
+      <div className="buttons-container">
+        <button
+          className={`sort-button ${sortOrder === "time" ? "active" : ""}`}
+          onClick={() => handleSortChange("time")}
+        >
+          시간순
+        </button>
+        <button
+          className={`sort-button ${sortOrder === "recommend" ? "active" : ""}`}
+          onClick={() => handleSortChange("recommend")}
+        >
+          추천순
+        </button>
+        {}
+      </div>
+      <button className="add-recipe-button" onClick={handleAddRecipe}>
+        레시피 등록
+      </button>
       <Pagination
         recipesPerPage={recipesPerPage}
         totalRecipes={recipes.length}
