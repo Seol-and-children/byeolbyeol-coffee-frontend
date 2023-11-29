@@ -1,5 +1,10 @@
+// ReviewList.js
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
+import PostTitle from '../components/ReviewList/PostTitle';
+
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -13,7 +18,7 @@ const ReviewList = () => {
 
   return (
     <div>
-      <h2>Review List</h2>
+      <PostTitle />
       <ul>
         {reviews.map(review => (
           <li key={review.id}>{review.title}</li>

@@ -1,17 +1,25 @@
+// NewPostTitle.js
+
 import React, { useState } from 'react';
 
-const NewPostTitle = ({ title, onTitleChange }) => (
-  <div>
-    <label>
-      Title:
+const NewPostTitle = ({ onTitleChange }) => {
+  const [title, setTitle] = useState('');
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+    onTitleChange(event.target.value);
+  };
+
+  return (
+    <div>
       <input
         type="text"
         value={title}
-        onChange={(e) => onTitleChange(e.target.value)}
+        onChange={handleTitleChange}
         placeholder="제목을 입력하세요"
       />
-    </label>
-  </div>
-);
+    </div>
+  );
+};
 
 export default NewPostTitle;
