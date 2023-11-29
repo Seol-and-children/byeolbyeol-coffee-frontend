@@ -1,17 +1,28 @@
-// App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
+// ... (이전 코드 생략)
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* Add more routes as needed */}
-      </Routes>
-    </Router>
-  );
-};
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Home from './pages/Home';
+import ReviewList from './pages/ReviewList';
+import ReviewWrite from './pages/ReviewWrite';
+
+const App = () => (
+  <Router>
+    <div>
+      <nav>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/review-list">Review List</Link></li>
+          <li><Link to="/review-write">Write a Review</Link></li>
+        </ul>
+      </nav>
+
+      <hr />
+
+      <Route path="/" exact component={Home} />
+      <Route path="/review-list" component={ReviewList} />
+      <Route path="/review-write" component={ReviewWrite} />
+    </div>
+  </Router>
+);
 
 export default App;

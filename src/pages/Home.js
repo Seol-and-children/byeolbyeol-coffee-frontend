@@ -1,21 +1,10 @@
-// Home.js
-import React, { useState } from 'react';
-import ReviewList from '../components/ReviewList';
-import ReviewForm from '../components/ReviewForm';
+import React from 'react';
 
-const Home = () => {
-  const [reviews, setReviews] = useState([]);
-
-  const addReview = (newReview) => {
-    setReviews([...reviews, { ...newReview, id: Date.now() }]);
-  };
-
-  return (
-    <div>
-      <ReviewForm onSubmit={addReview} />
-      <ReviewList reviews={reviews} />
-    </div>
-  );
-};
+const Home = () => (
+  <div>
+    <h2>Welcome to the Coffee Review Board!</h2>
+    <p>Discover and share your favorite coffee experiences with others.</p>
+  </div>
+);
 
 export default Home;
