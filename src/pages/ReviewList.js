@@ -6,9 +6,9 @@ import axios from 'axios';
 import PostTitle from '../components/ReviewList/PostTitle';
 import ReviewListTable from '../components/ReviewList/ReviewListTable';
 import Pagination from '../components/ReviewList/Pagination';
+import ReviewWriteButton from '../components/ReviewList/ReviewWriteButton';
 
 import '../css/ReviewList.css';
-
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -26,10 +26,13 @@ const ReviewList = () => {
   }, [currentPage]);
 
   return (
-    <div>
+    <div className="review-list-container">
       <PostTitle />
       <ReviewListTable reviews={reviews} />
-      <Pagination currentPage={currentPage} totalPages={totalPages} />
+      <div className="pagination-container">
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+        <ReviewWriteButton />
+      </div>
     </div>
   );
 };

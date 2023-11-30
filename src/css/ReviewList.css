@@ -31,3 +31,35 @@ body {
     color: #fff;
     border: 1px solid #EC7357;
   }
+
+  .review-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Adjust the margin as needed */
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .write-button {
+    background-color: #EC7357;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-family: 'NanumGothic', sans-serif;
+  }
+  
