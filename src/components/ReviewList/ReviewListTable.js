@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const ReviewListTable = ({ reviews }) => {
   return (
     <div className="review-list-table">
-      <table>
+      <table className="review-table">
         <thead>
           <tr>
             <th>번호</th>
@@ -19,13 +19,15 @@ const ReviewListTable = ({ reviews }) => {
         </thead>
         <tbody>
           {reviews.map(review => (
-            <tr key={review.id}>
-              <td>{review.id}</td>
-              <td><Link to={`/review/${review.id}`}>{review.title}</Link></td>
-              <td>{review.authorId}</td>
-              <td>{review.registerTime}</td>
-              <td>{review.likesCount}</td>
-              <td>{review.viewsCount}</td>
+            <tr key={review.id} className="review-row">
+              <td className="review-id">{review.id}</td>
+              <td className="review-title">
+                <Link to={`/review/${review.id}`}>{review.title}</Link>
+              </td>
+              <td className="review-author">{review.authorId}</td>
+              <td className="review-date">{review.registerTime}</td>
+              <td className="review-likes">{review.likesCount}</td>
+              <td className="review-views">{review.viewsCount}</td>
             </tr>
           ))}
         </tbody>

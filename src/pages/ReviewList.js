@@ -8,7 +8,7 @@ import ReviewListTable from '../components/ReviewList/ReviewListTable';
 import Pagination from '../components/ReviewList/Pagination';
 import ReviewWriteButton from '../components/ReviewList/ReviewWriteButton';
 
-import '../css/ReviewList.css';
+import '../css/ReviewList.css'; // Import ReviewList.css here
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -16,7 +16,6 @@ const ReviewList = () => {
   const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
-    // 서버에서 리뷰 목록과 총 페이지 수를 가져옵니다.
     axios.get(`http://localhost:8080/api/reviews?page=${currentPage}`)
       .then(response => {
         setReviews(response.data.reviews);

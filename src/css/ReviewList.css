@@ -4,6 +4,39 @@
 body {
     font-family: 'NanumGothic', sans-serif;
   }
+
+  /* ReviewListTable 컴포넌트 전체를 감싸는 div에 스타일을 적용합니다. */
+.review-list-table-container {
+  width: 50%; /* 전체 가로너비의 50%로 설정 */
+  margin: 0 auto; /* 가운데 정렬을 위해 auto 마진 설정 */
+}
+
+/* 각 게시글 목록에 스타일을 적용합니다. */
+.review-item {
+  border-bottom: 1px solid #ccc; /* 구분선을 추가하고, 회색으로 설정 */
+  padding: 15px; /* 각 아이템의 패딩을 조절 */
+}
+
+/* 첫 번째 게시글 아이템의 위쪽 구분선을 더 굵게 설정합니다. */
+.review-item:first-child {
+  border-top: 2px solid #333; /* 두께가 두 배로 설정 */
+}
+
+/* 마지막 게시글 아이템의 아래쪽 구분선을 더 굵게 설정합니다. */
+.review-item:last-child {
+  border-bottom: 2px solid #333; /* 두께가 두 배로 설정 */
+}
+
+/* 리뷰 제목에 스타일을 적용합니다. */
+.review-title {
+  font-size: 18px; /* 제목 폰트 크기를 조절 */
+  font-weight: bold; /* 제목 글꼴을 볼드로 설정 */
+}
+
+/* 나머지 리뷰 내용에 스타일을 적용할 수 있습니다. */
+.review-content {
+  /* 원하는 스타일을 추가하세요. */
+}
   
   .pagination {
     display: flex;
