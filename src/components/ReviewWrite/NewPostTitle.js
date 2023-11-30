@@ -11,7 +11,7 @@ const NewPostTitle = ({ onTitleChange }) => {
   };
 
   return (
-    <div>
+    <div className="new-post-title">
       <input
         type="text"
         value={title}

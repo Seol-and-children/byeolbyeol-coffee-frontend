@@ -28,15 +28,18 @@ const ReviewWrite = () => {
   };
 
   return (
-    <div>
-      <PostTitle />
-      <NewPostTitle onTitleChange={handleNewTitleChange} />
-      <NewPostImage onImageChange={handleNewImageChange} />
-      <NewPostContent onContentChange={handleNewContentChange} />
-      <CancelButton />
-      <SubmitButton/> {/* 추가된 부분: 등록하기 버튼 */}
-      {/* 여기에 다른 컴포넌트들 추가 */}
+    <div class="container">
+      <div class="content">
+        <PostTitle />
+        <NewPostTitle onTitleChange={handleNewTitleChange} />
+        <NewPostImage onImageChange={handleNewImageChange} />
+        <NewPostContent onContentChange={handleNewContentChange} />
+        <CancelButton />
+        <SubmitButton/> {/* 추가된 부분: 등록하기 버튼 */}
+        {/* 여기에 다른 컴포넌트들 추가 */}
+      </div>
     </div>
+
   );
 };
 

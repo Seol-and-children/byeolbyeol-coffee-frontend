@@ -4,7 +4,6 @@
 body {
     font-family: 'NanumGothic', sans-serif;
   }
-  
 
 .material-symbols-outlined {
     font-variation-settings:
@@ -13,6 +12,27 @@ body {
       'GRAD' 0,
       'opsz' 24;
   }
+
+  .new-post-title {
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    font-family: 'NanumGothic', sans-serif;
+    width: 50%; /* 가로 크기 조절: 화면 중앙의 2분의 1 */
+    margin: 0 auto; /* 가운데 정렬 */
+    padding: 10px; /* 내부 여백 추가 */
+
+  
+  }
+  
+  .new-post-title input {
+    width: 100%;
+    padding: 12px; /* Adjust the padding as needed */
+    box-sizing: border-box;
+    border: 1px solid #A0A0A0;
+    color: #A0A0A0;
+    border-radius: 2px; /* Add border-radius for rounded corners, adjust as needed */
+  }
+
 
   input[type="file"] {
     opacity: 0;
@@ -37,13 +57,11 @@ body {
     margin-left: 10px; /* 아이콘과 글자 사이 여백 조절 (예시) */
   }    
 
-  /* ReviewWrite.css */
-
 .new-post-content {
   background-color: #F9F9F9;
   width: 50%; /* 가로 크기 조절: 화면 중앙의 2분의 1 */
   margin: 0 auto; /* 가운데 정렬 */
-  padding: 20px; /* 내부 여백 추가 */
+  padding: 10px; /* 내부 여백 추가 */
   border: 1px solid #A0A0A0;
 }
 
