@@ -1,0 +1,116 @@
+.loginButton {
+    width: 740px;
+    height: 70px;
+    color: #FFFFFF;
+    background-color: #EC7357;
+    font-size: 28px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.signupButton {
+    width: 740px;
+    height: 70px;
+    color: #FFFFFF;
+    background-color: #754F44;
+    font-size: 28px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 20px; 
+}
+
+.signupsibmitButton {
+  width: 740px;
+  height: 70px;
+  color: #FFFFFF;
+  background-color: #EC7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.inputDiv {
+    position: relative;
+    width: 740px; /* 전체 inputDiv의 너비 */
+    height: 60px; /* 전체 inputDiv의 높이 */
+    margin-bottom: 15px; /* inputDiv 간격 */
+  }
+
+.inputDiv input {
+  width: calc(100% - 75px); /* label 너비를 제외한 너비 */
+  height: 100%; /* inputDiv와 동일한 높이 */
+  margin-left: 75px; /* label의 너비만큼 input을 오른쪽으로 밀어냄 */
+  padding: 0 15px; /* 내부 여백 설정 */
+  border: 1px solid #A0A0A0;
+  font-size: 16px; /* 원하는 글꼴 크기로 조정 */
+  box-sizing: border-box; /* border와 padding을 너비와 높이에 포함 */
+}
+
+.labelWithImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 75px; /* label의 너비 */
+    height: 60px; /* label의 높이 */
+    background-size: 50px; /* 라벨 크기에 맞게 이미지 조정 */
+    background-repeat: no-repeat; /* 이미지 반복 없앰 */
+    background-position: center; /* 이미지를 중앙에 위치 */
+    border: 1px solid #A0A0A0; /* 회색 테두리 추가 */
+    box-sizing: border-box; 
+    opacity: 0.6;  
+  }
+
+.labelWithImage.account {
+    background-image: url('../../assets/Account.svg');
+  }
+  
+  .labelWithImage.password {
+    background-image: url('../../assets/Account.svg');
+  }
+
+  .labelWithImage.nickname {
+    background-image: url('../../assets/Account.svg');
+  }
+  
+  .labelWithImage.email {
+    background-image: url('../../assets/Account.svg');
+  }
+
+.inputDiv input::placeholder {
+    font-size: 20px;
+    color: #A0A0A0; 
+}
+
+.inputDiv input:focus {
+    border-color: #66afe9;
+    outline: none;
+  }
+
+.body {
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: calc(100vh - 100px); /* 상단 바의 높이만큼 빼줌 */
+width: 100vw;
+overflow: hidden; /* 스크롤 바가 생기는 것을 방지 */
+}
+
+.inlineContainer {
+    display: flex;
+    align-items: center;
+  }
+  
+.divider {
+flex-grow: 1; /* 구분선이 컨테이너의 남은 공간을 차지하도록 설정 */
+height: 1px;
+background-color: #ccc;
+margin: 0 10px; /* 양쪽 여백 */
+}
+
+.inlineContainer p {
+margin: 0; /* 단락 주변의 기본 여백 제거 */
+}
