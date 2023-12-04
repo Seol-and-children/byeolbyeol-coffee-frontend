@@ -54,7 +54,7 @@ const ReviewWrite = () => {
       <NewPostImage onImageChange={handleNewImageChange} />
       <NewPostContent onContentChange={handleNewContentChange} />
       <CancelButton />
-      <SubmitButton onClick={handleSubmit} />
+      <SubmitButton onlick={handleSubmit} />
     </div>
   );
 };

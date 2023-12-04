@@ -1,16 +1,37 @@
-// ReviewItem.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React from 'react';
 import PostTitle from '../components/ReviewItem/PostTitle';
-import EditButton from '../components/ReviewItem/EditButton'; // 수정 버튼 컴포넌트 추가
-import DeleteButton from '../components/ReviewItem/DeleteButton'; // 삭제 버튼 컴포넌트 추가
+import AuthorNickname from '../components/ReviewItem/AuthorNickname';
+import EditButton from '../components/ReviewItem/EditButton';
+import DeleteButton from '../components/ReviewItem/DeleteButton';
 
 const ReviewItem = ({ review, onDelete }) => {
+  // 리뷰 상태를 관리하기 위한 useState 훅
+  const [reviews, setReviews] = useState([]);
+
+  // 리뷰 데이터를 가져오는 함수
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/reviews");
+      setReviews(response.data);
+    } catch (error) {
+      console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
+    }
+  };
+
+  // 컴포넌트가 마운트될 때 데이터를 가져오는 useEffect 훅
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
   return (
     <div>
       <PostTitle />
+      <AuthorNickname nickname={review.authorNickname} />
       <EditButton />
       <DeleteButton onDelete={onDelete} />
+      {/* 이어서 다른 리뷰 정보를 렌더링하는 코드를 추가하세요. */}
     </div>
   );
 };
