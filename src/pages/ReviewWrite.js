@@ -31,7 +31,9 @@ const ReviewWrite = () => {
     try {
       const formData = new FormData();
       formData.append('reviewImage', newImage);
-      formData.append('reviewDTO', JSON.stringify({ title: newTitle, content: newContent }));
+      formData.append('authorId', '여기에 실제 authorId를 입력하세요'); // 실제 authorId로 교체
+      formData.append('reviewName', newTitle);
+      formData.append('content', newContent);
 
       const response = await Axios.post('http://localhost:8080/reviews', formData, {
         headers: {
