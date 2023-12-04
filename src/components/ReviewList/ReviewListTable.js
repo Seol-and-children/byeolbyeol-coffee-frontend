@@ -4,6 +4,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ReviewListTable = ({ reviews }) => {
+  // Check if reviews is defined before using map
+  if (!reviews || !Array.isArray(reviews)) {
+    return <div className="review-list-table">리뷰가 없습니다.</div>;
+  }
+
   return (
     <div className="review-list-table">
       <table className="review-table">
@@ -19,12 +24,12 @@ const ReviewListTable = ({ reviews }) => {
         </thead>
         <tbody>
           {reviews.map(review => (
-            <tr key={review.id} className="review-row">
-              <td className="review-id">{review.id}</td>
+            <tr key={review.reviewId} className="review-row">
+              <td className="review-id">{review.reviewId}</td>
               <td className="review-title">
-                <Link to={`/review/${review.id}`}>{review.title}</Link>
+                <Link to={`/review/${review.id}`}>{review.reviewName}</Link>
               </td>
-              <td className="review-author">{review.authorId}</td>
+              <td className="review-author">{review.userNickname}</td>
               <td className="review-date">{review.registerTime}</td>
               <td className="review-likes">{review.likesCount}</td>
               <td className="review-views">{review.viewsCount}</td>

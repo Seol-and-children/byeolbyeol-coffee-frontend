@@ -15,14 +15,20 @@ const ReviewList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  // 리뷰 데이터를 가져오는 함수
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/reviews");
+      setReviews(response.data);
+    } catch (error) {
+      console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
+    }
+  };
+
+  // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   useEffect(() => {
-    axios.get(`http://localhost:8080/api/reviews?page=${currentPage}`)
-      .then(response => {
-        setReviews(response.data.reviews);
-        setTotalPages(response.data.totalPages);
-      })
-      .catch(error => console.error('Error fetching reviews:', error));
-  }, [currentPage]);
+    fetchReviews();
+  }, []);
 
   return (
     <div className="review-list-container">
