@@ -9,11 +9,15 @@ import NewPostImage from '../components/ReviewWrite/NewPostImage';
 import CancelButton from '../components/ReviewWrite/CancelButton';
 import SubmitButton from '../components/ReviewWrite/SubmitButton';
 import '../css/ReviewWrite.css';
+import { useNavigate } from 'react-router-dom'; // useHistory 대신 useNavigate로 변경
 
 const ReviewWrite = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [newImage, setNewImage] = useState(null);
+
+  // useHistory 대신 useNavigate로 변경
+  const navigate = useNavigate();
 
   const handleNewTitleChange = (title) => {
     setNewTitle(title);
@@ -42,6 +46,12 @@ const ReviewWrite = () => {
       });
 
       console.log('리뷰 등록 성공:', response.data);
+
+      // Display success message (you can replace this with your own logic)
+      alert('리뷰가 성공적으로 등록되었습니다.');
+
+      // Redirect to the review list page
+      navigate('/review-list');
     } catch (error) {
       console.error('리뷰 등록 실패:', error);
     }
@@ -54,7 +64,7 @@ const ReviewWrite = () => {
       <NewPostImage onImageChange={handleNewImageChange} />
       <NewPostContent onContentChange={handleNewContentChange} />
       <CancelButton />
-      <SubmitButton onlick={handleSubmit} />
+      <SubmitButton onClick={handleSubmit} />
     </div>
   );
 };

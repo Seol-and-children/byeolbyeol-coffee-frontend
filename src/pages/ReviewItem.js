@@ -27,11 +27,10 @@ const ReviewItem = ({ review, onDelete }) => {
 
   return (
     <div>
-      <PostTitle />
-      <AuthorNickname nickname={review.authorNickname} />
+      <PostTitle title={review?.reviewName} />
+      <AuthorNickname nickname={review?.authorNickname} />
       <EditButton />
       <DeleteButton onDelete={onDelete} />
-      {/* 이어서 다른 리뷰 정보를 렌더링하는 코드를 추가하세요. */}
     </div>
   );
 };
