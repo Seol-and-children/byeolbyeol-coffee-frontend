@@ -4,8 +4,3 @@
 body {
     font-family: 'NanumGothic', sans-serif;
   }
-  
-.review-item-container {
-    display: flex;
-    align-items: center;
-  }
