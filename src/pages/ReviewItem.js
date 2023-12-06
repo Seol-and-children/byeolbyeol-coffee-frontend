@@ -7,6 +7,7 @@ import EditButton from '../components/ReviewItem/EditButton';
 import DeleteButton from '../components/ReviewItem/DeleteButton';
 import ReviewImage from '../components/ReviewItem/ReviewImage';
 import ReviewContent from '../components/ReviewItem/ReviewContent';
+import CommentWrite from '../components/Comment/CommentWrite';
 
 const ReviewItem = ({ review, onDelete }) => {
   // 리뷰 상태를 관리하기 위한 useState 훅
@@ -38,6 +39,7 @@ const ReviewItem = ({ review, onDelete }) => {
         </div>
         <ReviewImage review={review} />
         <ReviewContent review={review} />
+        <CommentWrite review={review} />
 
       </div>
     </div>

@@ -2,13 +2,16 @@
 
 import React, { useState } from 'react';
 import Axios from 'axios';
+
 import PostTitle from '../components/ReviewWrite/PostTitle';
 import NewPostTitle from '../components/ReviewWrite/NewPostTitle';
 import NewPostContent from '../components/ReviewWrite/NewPostContent';
 import NewPostImage from '../components/ReviewWrite/NewPostImage';
 import CancelButton from '../components/ReviewWrite/CancelButton';
 import SubmitButton from '../components/ReviewWrite/SubmitButton';
+
 import '../css/ReviewWrite.css';
+
 import { useNavigate } from 'react-router-dom';
 
 const ReviewWrite = () => {
@@ -68,11 +71,13 @@ const ReviewWrite = () => {
   };
 
   return (
-    <div>
-      <PostTitle />
+    <div className="all">
+      <PostTitle className="post-title"/>
       <NewPostTitle onTitleChange={handleNewTitleChange} />
-      <NewPostImage onImageChange={handleNewImageChange} />
-      <NewPostContent onContentChange={handleNewContentChange} />
+      <div className="content">
+        <NewPostImage onImageChange={handleNewImageChange} />
+        <NewPostContent onContentChange={handleNewContentChange} />
+      </div>
       <CancelButton />
       <SubmitButton onSubmit={handleSubmit} /> {/* onSubmit 함수를 전달합니다. */}
     </div>
