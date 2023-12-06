@@ -9,14 +9,12 @@ import NewPostImage from '../components/ReviewWrite/NewPostImage';
 import CancelButton from '../components/ReviewWrite/CancelButton';
 import SubmitButton from '../components/ReviewWrite/SubmitButton';
 import '../css/ReviewWrite.css';
-import { useNavigate } from 'react-router-dom'; // useHistory 대신 useNavigate로 변경
+import { useNavigate } from 'react-router-dom';
 
 const ReviewWrite = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [newImage, setNewImage] = useState(null);
-
-  // useHistory 대신 useNavigate로 변경
   const navigate = useNavigate();
 
   const handleNewTitleChange = (title) => {
@@ -34,26 +32,37 @@ const ReviewWrite = () => {
   const handleSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append('reviewImage', newImage);
-      formData.append('authorId', '여기에 실제 authorId를 입력하세요'); // 실제 authorId로 교체
-      formData.append('reviewName', newTitle);
-      formData.append('content', newContent);
+      formData.append('reviewDTO', JSON.stringify({
+                      "reviewName": newTitle,
+                      "authorId": "082a2e9c-8779-11ee-ae8d-201a06c67abc",
+                      "content": newContent,
+                      "likesCount": 0,
+                      "viewsCount": 0
+                    }));
 
+      formData.append('reviewImage', newImage);
+
+  
       const response = await Axios.post('http://localhost:8080/reviews', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-
+  
       console.log('리뷰 등록 성공:', response.data);
-
+  
       // Display success message (you can replace this with your own logic)
       alert('리뷰가 성공적으로 등록되었습니다.');
-
+  
       // Redirect to the review list page
       navigate('/review-list');
     } catch (error) {
       console.error('리뷰 등록 실패:', error);
+  
+      // 서버 응답 확인
+      if (error.response) {
+        console.error('서버 응답:', error.response.data);
+      }
     }
   };
 
@@ -64,7 +73,7 @@ const ReviewWrite = () => {
       <NewPostImage onImageChange={handleNewImageChange} />
       <NewPostContent onContentChange={handleNewContentChange} />
       <CancelButton />
-      <SubmitButton onClick={handleSubmit} />
+      <SubmitButton onSubmit={handleSubmit} /> {/* onSubmit 함수를 전달합니다. */}
     </div>
   );
 };
