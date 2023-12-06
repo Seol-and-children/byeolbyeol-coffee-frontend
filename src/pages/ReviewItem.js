@@ -5,6 +5,8 @@ import PostTitle from '../components/ReviewItem/PostTitle';
 import AuthorNickname from '../components/ReviewItem/AuthorNickname';
 import EditButton from '../components/ReviewItem/EditButton';
 import DeleteButton from '../components/ReviewItem/DeleteButton';
+import ReviewImage from '../components/ReviewItem/ReviewImage';
+import ReviewContent from '../components/ReviewItem/ReviewContent';
 
 const ReviewItem = ({ review, onDelete }) => {
   // 리뷰 상태를 관리하기 위한 useState 훅
@@ -27,10 +29,17 @@ const ReviewItem = ({ review, onDelete }) => {
 
   return (
     <div>
-      <PostTitle title={review?.reviewName} />
-      <AuthorNickname nickname={review?.authorNickname} />
-      <EditButton />
-      <DeleteButton onDelete={onDelete} />
+      <div className="review-item-container">
+        <PostTitle title={review?.reviewName} />
+        <AuthorNickname nickname={review?.authorNickname} />
+        <div className="action-buttons">
+          <EditButton />
+          <DeleteButton onDelete={onDelete} />
+        </div>
+        <ReviewImage review={review} />
+        <ReviewContent review={review} />
+
+      </div>
     </div>
   );
 };

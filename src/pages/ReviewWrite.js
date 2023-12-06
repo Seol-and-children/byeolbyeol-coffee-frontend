@@ -33,21 +33,22 @@ const ReviewWrite = () => {
     try {
       const formData = new FormData();
       formData.append('reviewDTO', JSON.stringify({
-                      "reviewName": newTitle,
-                      "authorId": "082a2e9c-8779-11ee-ae8d-201a06c67abc",
-                      "content": newContent,
-                      "likesCount": 0,
-                      "viewsCount": 0
-                    }));
-
-      formData.append('reviewImage', newImage);
-
+        "reviewName": newTitle,
+        "authorId": "082a2e9c-8779-11ee-ae8d-201a06c67abc",
+        "content": newContent,
+        "likesCount": 0,
+        "viewsCount": 0
+      }));
   
-      const response = await Axios.post('http://localhost:8080/reviews', formData, {
+      formData.append('reviewImage', newImage);
+  
+      const config = {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
-      });
+      };
+  
+      const response = await Axios.post('http://localhost:8080/reviews', formData, config);
   
       console.log('리뷰 등록 성공:', response.data);
   
