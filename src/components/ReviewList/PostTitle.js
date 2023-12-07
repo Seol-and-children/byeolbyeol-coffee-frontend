@@ -4,7 +4,7 @@ import React from 'react';
 
 const PostTitle = () => (
   <div>
-    <h3>CAFE REVIEW</h3>
+    <h2>CAFE REVIEW</h2>
   </div>
 );
 

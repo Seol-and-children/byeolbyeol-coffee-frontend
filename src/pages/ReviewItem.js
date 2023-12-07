@@ -7,26 +7,38 @@ import EditButton from '../components/ReviewItem/EditButton';
 import DeleteButton from '../components/ReviewItem/DeleteButton';
 import ReviewImage from '../components/ReviewItem/ReviewImage';
 import ReviewContent from '../components/ReviewItem/ReviewContent';
+import CommentBox from '../components/Comment/CommentBox';
 import CommentWrite from '../components/Comment/CommentWrite';
 
-const ReviewItem = ({ review, onDelete }) => {
-  // 리뷰 상태를 관리하기 위한 useState 훅
-  const [reviews, setReviews] = useState([]);
+const ReviewItem = ({ reviewId, onDelete }) => {
+  // 개별 리뷰 상태를 관리하기 위한 useState 훅
+  const [review, setReview] = useState(null);
 
-  // 리뷰 데이터를 가져오는 함수
-  const fetchReviews = async () => {
+  // 개별 리뷰 데이터를 가져오는 함수
+  const fetchReview = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/reviews");
-      setReviews(response.data);
+      if (reviewId) {
+        // reviewId가 존재할 때만 fetchReview 호출
+        const response = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
+        console.log("리뷰 정보:", response.data);
+        setReview(response.data);
+      }
     } catch (error) {
-      console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
+      console.error("개별 리뷰 정보를 가져오는데 실패했습니다 :", error);
+      console.log("에러 내용:", error.response); // 추가된 부분
     }
   };
 
   // 컴포넌트가 마운트될 때 데이터를 가져오는 useEffect 훅
   useEffect(() => {
-    fetchReviews();
-  }, []);
+    fetchReview();
+  }, [reviewId]);
+
+  if (!review) {
+    // 리뷰 데이터가 로딩 중일 때의 처리
+    return <div>Loading...</div>;
+  }
+
 
   return (
     <div>
@@ -39,8 +51,8 @@ const ReviewItem = ({ review, onDelete }) => {
         </div>
         <ReviewImage review={review} />
         <ReviewContent review={review} />
+        <CommentBox review={review} />
         <CommentWrite review={review} />
-
       </div>
     </div>
   );

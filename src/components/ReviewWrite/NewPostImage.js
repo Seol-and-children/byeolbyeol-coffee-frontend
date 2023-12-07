@@ -18,16 +18,18 @@ const NewPostImage = ({ onImageChange }) => {
       <label htmlFor="fileInput" className="icon-label">
         <span className="material-symbols-outlined">
           image
-        </span>
+        </span>   
       </label>
-      <input
-        type="file"
-        id="fileInput"
-        accept="image/*"
-        onChange={handleImageChange}
-        style={{ display: 'none' }} // 파일 선택 input 숨김
-      />
-      {selectedFileName && <p>{selectedFileName}</p>}
+      <div className="file-info">
+        <input
+          type="file"
+          id="fileInput"
+          accept="image/*"
+          onChange={handleImageChange}
+          style={{ display: 'none' }}
+        />
+        {selectedFileName && <p>{selectedFileName}</p>}
+      </div>
     </div>
   );
 };

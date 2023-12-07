@@ -3,6 +3,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" };
+  return new Date(dateString).toLocaleDateString(undefined, options);
+};
+
 const ReviewListTable = ({ reviews }) => {
   // Check if reviews is defined before using map
   if (!reviews || !Array.isArray(reviews)) {
@@ -27,21 +32,16 @@ const ReviewListTable = ({ reviews }) => {
             <tr key={review.reviewId} className="review-row">
               <td className="review-id">{review.reviewId}</td>
               <td className="review-title">
-                <Link to={`/review/${review.id}`}>{review.reviewName}</Link>
+                <Link to={`/reviews/${review.reviewId}`}>{review.reviewName}</Link>
               </td>
               <td className="review-author">{review.userNickname}</td>
-              <td className="review-date">{review.registerTime}</td>
+              <td className="review-date">{formatDate(review.registerTime)}</td>
               <td className="review-likes">{review.likesCount}</td>
               <td className="review-views">{review.viewsCount}</td>
             </tr>
           ))}
         </tbody>
       </table>
-
-      <div className="review-list-content">
-        {/* 여기에 리뷰 목록 컨텐츠를 표시하는 부분을 추가하세요. */}
-        {/* 예: 리뷰 목록의 내용을 나열하는 루프나 다른 컴포넌트 추가 */}
-      </div>
     </div>
   );
 };

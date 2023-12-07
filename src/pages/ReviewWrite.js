@@ -37,7 +37,7 @@ const ReviewWrite = () => {
       const formData = new FormData();
       formData.append('reviewDTO', JSON.stringify({
         "reviewName": newTitle,
-        "authorId": "082a2e9c-8779-11ee-ae8d-201a06c67abc",
+        "authorId": 12,
         "content": newContent,
         "likesCount": 0,
         "viewsCount": 0
@@ -78,8 +78,10 @@ const ReviewWrite = () => {
         <NewPostImage onImageChange={handleNewImageChange} />
         <NewPostContent onContentChange={handleNewContentChange} />
       </div>
+      <div className="button-container">
       <CancelButton />
       <SubmitButton onSubmit={handleSubmit} /> {/* onSubmit 함수를 전달합니다. */}
+      </div>
     </div>
   );
 };

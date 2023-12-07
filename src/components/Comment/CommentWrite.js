@@ -1,6 +1,7 @@
 // CommentWrite.js
 
 import React, { useState } from 'react';
+import '../../css/CommentWrite.css'
 
 const CommentWrite = ({ onSubmit }) => {
   const [comment, setComment] = useState('');

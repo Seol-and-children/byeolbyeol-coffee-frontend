@@ -1,97 +1,114 @@
 /* ReviewList.css */
 
 body {
-    font-family: 'NanumGothic', sans-serif;
-  }
-
-  /* ReviewListTable 컴포넌트 전체를 감싸는 div에 스타일을 적용합니다. */
-.review-list-table-container {
-  width: 50%; /* 전체 가로너비의 50%로 설정 */
-  margin: 0 auto; /* 가운데 정렬을 위해 auto 마진 설정 */
+  font-family: 'NanumGothic', sans-serif;
 }
 
-/* 각 게시글 목록에 스타일을 적용합니다. */
-.review-item {
-  border-bottom: 1px solid #ccc; /* 구분선을 추가하고, 회색으로 설정 */
-  padding: 15px; /* 각 아이템의 패딩을 조절 */
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
 }
 
-/* 첫 번째 게시글 아이템의 위쪽 구분선을 더 굵게 설정합니다. */
-.review-item:first-child {
-  border-top: 2px solid #333; /* 두께가 두 배로 설정 */
+.pagination a {
+  display: inline-block;
+  padding: 10px 15px;
+  margin-right: 5px;
+  text-decoration: none;
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  cursor: pointer;
 }
 
-/* 마지막 게시글 아이템의 아래쪽 구분선을 더 굵게 설정합니다. */
-.review-item:last-child {
-  border-bottom: 2px solid #333; /* 두께가 두 배로 설정 */
+.pagination a:hover {
+  background-color: #f5f5f5;
 }
 
-/* 리뷰 제목에 스타일을 적용합니다. */
-.review-title {
-  font-size: 18px; /* 제목 폰트 크기를 조절 */
-  font-weight: bold; /* 제목 글꼴을 볼드로 설정 */
+.pagination a.active {
+  background-color: #EC7357;
+  color: #fff;
+  border: 1px solid #EC7357;
 }
 
-/* 나머지 리뷰 내용에 스타일을 적용할 수 있습니다. */
-.review-content {
-  /* 원하는 스타일을 추가하세요. */
+.review-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-  
-  .pagination {
-    display: flex;
-    list-style: none;
-    padding: 0;
-  }
-  
-  .pagination a {
-    display: inline-block;
-    padding: 10px 15px;
-    margin-right: 5px;
-    text-decoration: none;
-    color: #000;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    cursor: pointer;
-  }
-  
-  .pagination a:hover {
-    background-color: #f5f5f5;
-  }
-  
-  .pagination a.active {
-    background-color: #EC7357;
-    color: #fff;
-    border: 1px solid #EC7357;
-  }
 
-  .review-list-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .pagination-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    margin-top: 20px; /* Adjust the margin as needed */
-  }
-  
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-  }
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+  /* Adjust the margin as needed */
+}
 
-  .write-button {
-    background-color: #EC7357;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: 'NanumGothic', sans-serif;
-  }
-  
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.write-button {
+  background-color: #EC7357;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'NanumGothic', sans-serif;
+  white-space: nowrap;
+  /* 텍스트가 줄 바꿈되지 않도록 설정 */
+}
+
+/* ReviewListTable.css */
+
+.review-table {
+  font-size: 18px;
+  width: 1000px;
+  border-collapse: collapse;
+  font-family: 'NanumGothic', sans-serif;
+  text-align: center;
+}
+
+.review-table th,
+.review-table td {
+  border: none;
+  padding: 8px;
+  color: black;
+}
+
+.review-table th.review-title,
+.review-table td.review-title {
+  text-align: left;
+  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+  overflow: hidden;
+  text-overflow: ellipsis; /* 텍스트 넘칠 경우 생략 (...) 표시 */
+  width: 50%; /* 50%로 변경 */
+}
+
+
+.review-table tr:not(:first-child) td {
+  border-bottom: 1px solid #ddd;
+}
+
+.review-table tr:first-child td {
+  border-bottom: 2px solid #000;
+}
+
+.review-table tr:last-child td {
+  border-bottom: 2px solid #000;
+}
+
+.review-title a {
+  color: black;
+  text-decoration: none;
+}
+
+.review-title a:hover {
+  text-decoration: underline;
+}
