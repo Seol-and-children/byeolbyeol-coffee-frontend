@@ -1,13 +1,12 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import RecipeViewPage from "./pages/RecipeViewPage";
-import AddRecipePage from "./pages/AddRecipePage";
+import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Baa from "./Baa";
 
 function App() {
   return (
-    <>
       <Router>
-        <Routes>
+        <div>
+          <Baa />
           <Route path="/recipe-view" element={<RecipeViewPage />} />
           <Route path="/add-recipe" element={<AddRecipePage />} />
         </Routes>
@@ -15,4 +14,5 @@ function App() {
     </>
   );
 }
+
 export default App;
