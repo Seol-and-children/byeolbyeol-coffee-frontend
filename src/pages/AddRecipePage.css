@@ -1,0 +1,57 @@
+.add-recipe-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.add-recipe-page form {
+  max-width: 600px;
+  width: 100%;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-recipe-page form input,
+.add-recipe-page form textarea,
+.add-recipe-page form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.add-recipe-page form textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.add-recipe-page form button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.add-recipe-page form .submit-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.add-recipe-page form .cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.add-recipe-page form .submit-button:hover {
+  background-color: #218838;
+}
+
+.add-recipe-page form .cancel-button:hover {
+  background-color: #c82333;
+}

@@ -7,8 +7,11 @@ function App() {
       <Router>
         <div>
           <Baa />
-        </div>
+          <Route path="/recipe-view" element={<RecipeViewPage />} />
+          <Route path="/add-recipe" element={<AddRecipePage />} />
+        </Routes>
       </Router>
+    </>
   );
 }
 
