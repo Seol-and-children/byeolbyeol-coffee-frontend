@@ -16,7 +16,10 @@ function RecipeViewPage() {
   const fetchRecipes = async () => {
     try {
       const response = await axios.get("http://localhost:8080/recipes");
-      setRecipes(response.data);
+      const sortedRecipes = response.data.sort(
+        (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+      );
+      setRecipes(sortedRecipes);
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./AddRecipePage.css";
 
 function AddRecipePage() {
@@ -12,6 +13,8 @@ function AddRecipePage() {
   const [beverageTemperature, setBeverageTemperature] = useState("");
   const [customOptions, setCustomOptions] = useState("");
   const [recipeImage, setRecipeImage] = useState(null);
+
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     setRecipeImage(e.target.files[0]);
@@ -29,7 +32,7 @@ function AddRecipePage() {
         temperature: beverageTemperature,
       },
       customOptionId: customOptions,
-      authorId: "082a2e9c-8779-11ee-ae8d-201a06c67abc", // 예시 ID, 실제 애플리케이션에서는 동적으로 설정 필요
+      authorId: 4,
     };
 
     const formData = new FormData();
@@ -50,10 +53,17 @@ function AddRecipePage() {
         }
       );
       console.log(response.data);
-      // 여기서 후속 처리 (예: 페이지 리디렉션)
+      alert("레시피가 등록되었습니다!"); // 성공 알림
+      navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
     } catch (error) {
       console.error("레시피 등록 실패", error);
+      alert("레시피 등록에 실패하였습니다."); // 실패 알림
+      navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
     }
+  };
+
+  const handleCancel = () => {
+    navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
   };
 
   return (
@@ -103,12 +113,7 @@ function AddRecipePage() {
           placeholder="커스텀 옵션"
         />
         <button type="submit">등록하기</button>
-        <button
-          type="button"
-          onClick={() => {
-            /* 여기서 취소 로직 처리 */
-          }}
-        >
+        <button type="button" onClick={handleCancel}>
           취소하기
         </button>
       </form>

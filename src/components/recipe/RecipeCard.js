@@ -1,15 +1,22 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./RecipeCard.css";
 
 function RecipeCard({ recipe }) {
+  const navigate = useNavigate();
   const imageUrl = `http://localhost:8080/recipeimgs/${recipe.photoUrl}`;
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const handleClick = () => {
+    navigate(`/recipes/${recipe.recipeId}`);
+  };
+
   return (
-    <div className="recipe-card">
+    <div className="recipe-card" onClick={handleClick}>
       <div className="recipe-card-image">
         <img src={imageUrl} alt={recipe.recipeName} />
       </div>
