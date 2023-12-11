@@ -4,6 +4,7 @@ import AdminPage from './admin/adminPage/AdminPage';
 import SearchResult from './search/component/SearchResult';
 import HomePage from './main/homePage/HomePage';
 import SearchBar from './search/component/SearchBar';
+import Navbar from './User/Pages/Navbar';
 
 function App() {
   return (
@@ -11,6 +12,9 @@ function App() {
       <div className="top-bar">
           <div className="search-box"><SearchBar/></div>
       </div>
+    <div>
+          <Navbar />
+        </div>
       
         <Routes>
           {/* 홈페이지 라우트 */}
@@ -25,4 +29,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;

@@ -1,0 +1,12 @@
+.recipe-detail-view-page {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.recipe-detail-view-page img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,54 @@
+/* RecipeViewPage.css */
+.recipe-view-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* 상단바 스타일링 */
+.navbar {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* 정렬 버튼과 레시피 등록 버튼 컨테이너 */
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+/* 정렬 버튼 스타일링 */
+.sort-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.sort-button:hover {
+  background-color: #0056b3;
+}
+
+/* 레시피 등록 버튼 스타일링 */
+.add-recipe-button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-recipe-button:hover {
+  background-color: #218838;
+}
