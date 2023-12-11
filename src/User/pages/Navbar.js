@@ -8,6 +8,7 @@ import SignupPage from './SignupPage';
 import UpdatePage from './UpdatePage';
 import UserNickName from '../Component/UserNickName';
 import logo from "../../Assets/logo.png"
+import person from "../../Assets/Person.svg"
 import '../styles/Page.css';
 
 
@@ -42,7 +43,7 @@ function Navbar() {
           <button id='randomcoffee' className='randomPageBtn'>오늘 뭐마셔?</button>
         </Link>
         <div className='container'>
-          <img className='personicon' alt="User Icon" />
+          <img className='personicon' src={person} alt="User Icon" />
             {user ? (
               <>
               <UserNickName />
