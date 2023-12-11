@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Baa from "./Baa";
+import Navbar from './User/Pages/Navbar';
 
 function App() {
   return (
       <Router>
         <div>
-          <Baa />
+          <Navbar />
         </div>
       </Router>
   );
