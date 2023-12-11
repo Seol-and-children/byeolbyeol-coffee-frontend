@@ -1,12 +1,28 @@
 import React from 'react';
-import ReportPageComponent from './admin/report/page/ReportPageComponent';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AdminPage from './admin/adminPage/AdminPage';
+import SearchResult from './search/component/SearchResult';
+import HomePage from './main/homePage/HomePage';
+import SearchBar from './search/component/SearchBar';
 
 function App() {
   return (
-    <div>
-      <h1>My Reporting App</h1>
-      <ReportPageComponent />
-    </div>
+    <BrowserRouter>
+      <div className="top-bar">
+          <div className="search-box"><SearchBar/></div>
+      </div>
+      
+        <Routes>
+          {/* 홈페이지 라우트 */}
+          <Route path="/" element={<HomePage/>} />
+
+          {/* 검색페이지 라우트 */}
+          <Route path="/search/:searchWord" element={<SearchResult/>} />
+
+          {/* 어드민페이지 라우트 */}
+          <Route path="/admin" element={<AdminPage/>} />
+        </Routes>
+    </BrowserRouter>
   );
 }
 export default App;

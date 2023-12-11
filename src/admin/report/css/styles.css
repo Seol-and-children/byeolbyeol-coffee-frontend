@@ -1,0 +1,73 @@
+#report-list {
+    display: flex;
+    justify-content: space-between;
+    width: 1178px;
+    height: 60px;
+    margin-bottom: 10px; /* 필요에 따라 간격을 조절하세요 */
+  }
+
+  #report-header {
+    height: 54px;
+    font-size: 28px;
+    padding-top: 25px;
+    padding-left: 10px;
+    background-color: #EC7357;
+    color: #ffffff;
+  }
+
+  #main-report-bar{
+    width: 1179px;
+    height: 58px;
+    display: flex;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+  }
+  
+  #report-bar {
+    width: 1179px;
+    height: 58px;
+    display: flex;
+    border-bottom: 1px solid #D9D9D9;
+  }
+  
+  /* exam 내부 div들 */
+  .exam-item {
+    justify-content: center;
+    font-weight: bold;
+    
+  }
+  
+  .report-check {
+    width: 91px;
+    height: 58px;
+  }
+  
+  .category {
+    width: 192px;
+    height: 58px;
+  }
+  
+  .title {
+    width: 240px;
+    height: 58px;
+  }
+  
+  .author {
+    width: 150px;
+    height: 58px;
+  }
+  
+  .reported {
+    width: 150px;
+    height: 58px;
+  }
+  
+  .report-content {
+    width: 295px;
+    height: 58px;
+  }
+  
+  .status {
+    width: 58px;
+    height: 58px;
+  }

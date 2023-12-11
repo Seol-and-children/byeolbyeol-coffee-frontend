@@ -40,49 +40,43 @@ const ModalComponent = ({ isOpen, onClose, onSubmit }) => {
     };
 
     return (
-      <Modal isOpen={isOpen} onRequestClose={onClose}>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Reported Name:
-          <input type="text" value={reportedName} onChange={(e) => setReportedName(e.target.value)} />
-        </label>
-        <br/>
+      <Modal isOpen={isOpen} onRequestClose={onClose}
+        className='custom-modal'>
+      <form className='modal-form' onSubmit={handleSubmit}>
+        <div className='modal-top'>신고하기</div>
+        <div className='wrap-modal'>
 
-        <label>
-          Author Name:
-          <input type="text" value={authorName} onChange={(e) => setAuthorName(e.target.value)} />
-        </label>
-        <br/>
-
-        <label>
-          Report Reason:
-          <input type="text" value={reportReason} onChange={(e) => setReportReason(e.target.value)} />
-        </label>
-        <br/>
-
-        <label>
-          Reported Content:
-          <textarea value={reportedContent} onChange={(e) => setReportedContent(e.target.value)} />
-        </label>
-        <br/>
-
-        <label>
-          Report Time:
-          <input type="text" value={reportTime} onChange={(e) => setReportTime(e.target.value)} />
-        </label>
-        <br/>
-
-        <label>
-          Content Title:
+      <label>
+          제목 <br></br>
           <input type="text" value={contentTitle} onChange={(e) => setContentTitle(e.target.value)} />
         </label>
         <br/>
 
         <label>
-          Processing:
-          <input type="checkbox" checked={processing} onChange={(e) => setProcessing(e.target.checked)} />
+          작성자 <br></br>
+          <input type="text" value={reportedName} onChange={(e) => setReportedName(e.target.value)} />
         </label>
         <br/>
+
+        <label>
+          신고자 <br></br>
+          <input type="text" value={authorName} onChange={(e) => setAuthorName(e.target.value)} />
+        </label>
+        <br/>
+
+        <label>
+          신고내용 <br></br>
+          <input type="text" value={reportReason} onChange={(e) => setReportReason(e.target.value)} />
+        </label>
+        <br/>
+
+        <label>
+          신고당한 내용 <br></br>
+          <textarea value={reportedContent} onChange={(e) => setReportedContent(e.target.value)} />
+        </label>
+        <br/>
+
+        </div>
 
         <button type="submit">신고하기</button>
         {/* 닫기 버튼 추가 */}
