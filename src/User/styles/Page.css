@@ -1,28 +1,80 @@
-.loginButton {
-    width: 740px;
-    height: 70px;
-    color: #FFFFFF;
-    background-color: #EC7357;
-    font-size: 28px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    margin-bottom: 20px;
+.navbar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding-bottom: 2px; 
+  background-color: #fff;
+  border-bottom: 4px solid #ccc; 
 }
 
-.signupButton {
-    width: 740px;
-    height: 70px;
-    color: #FFFFFF;
-    background-color: #754F44;
-    font-size: 28px;
-    border: none;
-    outline: none;
-    border-radius: 5px;
-    margin-bottom: 20px; 
+.navbarLogo {
+  max-height: 100%;
+  margin: 0 30px 0 100px;
 }
 
-.signupsibmitButton {
+.navbarBlank {
+ margin: 0 400px;
+}
+
+.recipePageBtn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.rankinPagegBtn {
+  width: 100px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.cafereviewPagewBtn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.randomPageBtn {
+  width: 170px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+}
+
+.LoginPageBtn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  margin-right: 100px;
+}
+
+
+.loginBtn {
   width: 740px;
   height: 70px;
   color: #FFFFFF;
@@ -33,52 +85,89 @@
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.signupBtn {
+  width: 740px;
+  height: 70px;
+  color: #FFFFFF;
+  background-color: #754F44;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px; 
+}
+
+.signupsibmitBtn {
+  width: 740px;
+  height: 70px;
+  color: #FFFFFF;
+  background-color: #EC7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.updateSubmitBtn {
+  width: 740px;
+  height: 70px;
+  color: #FFFFFF;
+  background-color: #EC7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .inputDiv {
-    position: relative;
-    width: 740px; /* 전체 inputDiv의 너비 */
-    height: 60px; /* 전체 inputDiv의 높이 */
-    margin-bottom: 15px; /* inputDiv 간격 */
-  }
+  position: relative;
+  width: 740px;
+  height: 60px; 
+  margin-bottom: 15px; 
+}
 
 .inputDiv input {
-  width: calc(100% - 75px); /* label 너비를 제외한 너비 */
-  height: 100%; /* inputDiv와 동일한 높이 */
-  margin-left: 75px; /* label의 너비만큼 input을 오른쪽으로 밀어냄 */
-  padding: 0 15px; /* 내부 여백 설정 */
+  width: calc(100% - 75px); 
+  height: 100%; 
+  margin-left: 75px; 
+  padding: 0 15px; 
   border: 1px solid #A0A0A0;
-  font-size: 16px; /* 원하는 글꼴 크기로 조정 */
-  box-sizing: border-box; /* border와 padding을 너비와 높이에 포함 */
+  font-size: 16px; 
+  box-sizing: border-box; 
 }
 
 .labelWithImage {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 75px; /* label의 너비 */
-    height: 60px; /* label의 높이 */
-    background-size: 50px; /* 라벨 크기에 맞게 이미지 조정 */
-    background-repeat: no-repeat; /* 이미지 반복 없앰 */
-    background-position: center; /* 이미지를 중앙에 위치 */
-    border: 1px solid #A0A0A0; /* 회색 테두리 추가 */
-    box-sizing: border-box; 
-    opacity: 0.6;  
-  }
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75px;
+  height: 60px; 
+  background-size: 50px; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  border: 1px solid #A0A0A0; 
+  box-sizing: border-box; 
+  opacity: 0.6;  
+}
 
 .labelWithImage.account {
-    background-image: url('../../assets/Account.svg');
-  }
-  
-  .labelWithImage.password {
-    background-image: url('../../assets/Account.svg');
-  }
+  background-image: url('../../Assets/Account.svg');
+}
 
-  .labelWithImage.nickname {
-    background-image: url('../../assets/Account.svg');
-  }
-  
-  .labelWithImage.email {
-    background-image: url('../../assets/Account.svg');
-  }
+.labelWithImage.password {
+  background-image: url('../../Assets/Lock.svg');
+}
+
+.labelWithImage.nickname {
+  background-image: url('../../Assets/Nametag.svg');
+}
+
+.labelWithImage.email {
+  background-image: url('../../Assets/Mail.svg');
+}
 
 .inputDiv input::placeholder {
     font-size: 20px;
@@ -91,26 +180,46 @@
   }
 
 .body {
-display: flex;
-justify-content: center;
-align-items: center;
-min-height: calc(100vh - 100px); /* 상단 바의 높이만큼 빼줌 */
-width: 100vw;
-overflow: hidden; /* 스크롤 바가 생기는 것을 방지 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 120px);
+  overflow: hidden; 
+  box-sizing: border-box;
 }
 
 .inlineContainer {
-    display: flex;
-    align-items: center;
-  }
+  display: flex;
+  align-items: center; 
+}
   
 .divider {
-flex-grow: 1; /* 구분선이 컨테이너의 남은 공간을 차지하도록 설정 */
-height: 1px;
-background-color: #ccc;
-margin: 0 10px; /* 양쪽 여백 */
+  flex-grow: 1; 
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px; 
 }
 
-.inlineContainer p {
-margin: 0; /* 단락 주변의 기본 여백 제거 */
+.kakao-login-button img {
+  width: 400px;
+  height: 60px;
+  object-fit: contain;
 }
+
+.blank {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 210px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+
