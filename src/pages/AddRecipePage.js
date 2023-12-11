@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 import "./AddRecipePage.css";
 
 function AddRecipePage() {
   // 상태 관리
   const [recipeName, setRecipeName] = useState("");
-  const [franchiseCafe, setFranchiseCafe] = useState("");
   const [description, setDescription] = useState("");
   const [baseBeverage, setBaseBeverage] = useState("");
   const [beverageSize, setBeverageSize] = useState("");
   const [beverageTemperature, setBeverageTemperature] = useState("");
-  const [customOptions, setCustomOptions] = useState("");
   const [recipeImage, setRecipeImage] = useState(null);
+  const [franchiseCafeList, setfranchiseCafeList] = useState([]);
+  const [selectedFranchise, setSelectedFranchise] = useState(null);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // 프랜차이즈 정보를 가져오는 함수
+    const fetchfranchiseCafeList = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/option/franchises"
+        );
+        const activeFranchises = response.data.filter(
+          (franchise) => franchise.processing // 활성화 되어있는 프랜차이즈만 가져오기
+        );
+        setfranchiseCafeList(activeFranchises);
+      } catch (error) {
+        console.error("프랜차이즈 정보를 가져오는데 실패했습니다:", error);
+      }
+    };
+
+    fetchfranchiseCafeList();
+  }, []);
+
+  const handleFranchiseChange = (selectedOption) => {
+    setSelectedFranchise(selectedOption);
+  };
 
   const handleImageChange = (e) => {
     setRecipeImage(e.target.files[0]);
@@ -22,17 +46,17 @@ function AddRecipePage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const recipeDto = {
       recipeName,
       description,
-      franchiseId: franchiseCafe,
+      franchiseId: selectedFranchise ? selectedFranchise.value : null,
       baseBeverageVO: {
         name: baseBeverage,
         size: beverageSize,
         temperature: beverageTemperature,
       },
-      customOptionId: customOptions,
-      authorId: 4,
+      authorId: 4, // 이 부분은 사용자 인증에 따라 변경 필요
     };
 
     const formData = new FormData();
@@ -76,11 +100,18 @@ function AddRecipePage() {
           onChange={(e) => setRecipeName(e.target.value)}
           placeholder="레시피 이름"
         />
-        <input
-          type="text"
-          value={franchiseCafe}
-          onChange={(e) => setFranchiseCafe(e.target.value)}
-          placeholder="프랜차이즈 카페"
+        <Select
+          value={selectedFranchise}
+          onChange={handleFranchiseChange}
+          options={franchiseCafeList.map((franchise) => ({
+            value: franchise.franchiseId,
+            label: franchise.franchiseName,
+          }))}
+          className="react-select-container"
+          classNamePrefix="react-select"
+          placeholder="프랜차이즈 선택..."
+          isClearable
+          isSearchable
         />
         <textarea
           value={description}
@@ -106,12 +137,7 @@ function AddRecipePage() {
           <option value="HOT">HOT</option>
           <option value="ICE">ICE</option>
         </select>
-        <input
-          type="text"
-          value={customOptions}
-          onChange={(e) => setCustomOptions(e.target.value)}
-          placeholder="커스텀 옵션"
-        />
+
         <button type="submit">등록하기</button>
         <button type="button" onClick={handleCancel}>
           취소하기

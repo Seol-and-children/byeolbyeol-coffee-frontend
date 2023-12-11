@@ -55,3 +55,56 @@
 .add-recipe-page form .cancel-button:hover {
   background-color: #c82333;
 }
+
+/* react-select 컨테이너 */
+.react-select-container {
+  width: 100%;
+}
+
+/* react-select의 컨트롤 부분 (선택 박스) */
+.react-select__control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+/* react-select의 값이 입력되었을 때의 컨트롤 */
+.react-select__control--is-focused {
+  border-color: #80bdff;
+  box-shadow: 0 0 0 1px #80bdff;
+}
+
+/* react-select의 드롭다운 메뉴 */
+.react-select__menu {
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* react-select의 드롭다운 옵션 */
+.react-select__option {
+  padding: 10px;
+}
+
+/* react-select의 드롭다운 옵션이 호버링 됐을 때 */
+.react-select__option--is-focused {
+  background-color: #f0f0f0;
+}
+
+/* react-select의 드롭다운 옵션이 선택되었을 때 */
+.react-select__option--is-selected {
+  background-color: #dee2e6;
+}
+
+/* react-select의 드롭다운 옵션들이 포함된 리스트 */
+.react-select__menu-list {
+  padding: 0;
+}
+
+/* react-select의 플레이스홀더/입력된 값의 색상 */
+.react-select__placeholder,
+.react-select__single-value {
+  color: #495057;
+}
