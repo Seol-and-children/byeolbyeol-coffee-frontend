@@ -61,18 +61,53 @@
   cursor: pointer;
 }
 
+.container {
+  border: 2px solid #000; /* 테두리 */
+  margin-right: 100px;
+  display: flex;
+  align-items: center;  
+}
+
+.personicon {
+  background-image: url('../../Assets/Person.svg');
+  width: 25px; /* 적절한 크기 설정 */
+  height: 25px; /* 적절한 크기 설정 */
+  border:none;
+}
+
 .LoginPageBtn {
-  width: 120px;
-  height: 60px;
-  font-size: 20px;
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
   font-weight: bold;
   color: #57371B;
   background-color: #FFFFFF;
-  border: none;
-  cursor: pointer;
-  margin-right: 100px;
+  padding: 3px; 
+  margin: 5px;
+  cursor: pointer; /* 마우스 오버시 커서 변경 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  border-radius: 20px; /* 둥근 버튼 */
+  border: 2px solid #000;
 }
 
+.LoginPageBtn:hover {
+  background-color: #c2bebe; /* 마우스 오버시 배경색 변경 */
+}
+
+.LogoutPageBtn {
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #57371B;
+  background-color: #FFFFFF;
+  padding: 3px; 
+  margin: 5px;
+  cursor: pointer; /* 마우스 오버시 커서 변경 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  border-radius: 20px; /* 둥근 버튼 */
+  border: 2px solid #000;
+}
 
 .loginBtn {
   width: 740px;
@@ -221,5 +256,3 @@
   align-items: center;
   margin-bottom: 30px;
 }
-
-

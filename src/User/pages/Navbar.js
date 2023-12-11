@@ -41,16 +41,19 @@ function Navbar() {
         <Link to="/">
           <button id='randomcoffee' className='randomPageBtn'>오늘 뭐마셔?</button>
         </Link>
-        {user ? (
-          <>
-          <UserNickName />
-          <button id='logout' className='LogoutPageBtn' onClick={handleLogout}>로그아웃</button>
-          </>
-        ) : (
-          <Link to="/users/login">
-            <button id='login' className='LoginPageBtn'>로그인</button>
-          </Link>
-        )}
+        <div className='container'>
+          <img className='personicon' alt="User Icon" />
+            {user ? (
+              <>
+              <UserNickName />
+              <button id='logout' className='LogoutPageBtn' onClick={handleLogout}>로그아웃</button>
+              </>
+            ) : (
+              <Link to="/users/login">
+                <button id='login' className='LoginPageBtn'>로그인</button>
+              </Link>
+            )}
+        </div>
       </div>
       <Routes>
         <Route path="/users/login" element={<LoginPage />} />
