@@ -5,7 +5,7 @@ import {
   LOGOUT_USER,
   SET_USER,
   SET_USER_DATA,
-} from "../Component/types";
+} from "../component/Types";
 
 export default function UserReducer(state = {}, action) {
   switch (action.type) {

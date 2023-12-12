@@ -5,7 +5,7 @@ import {
   UPDATE_USER,
   LOGOUT_USER,
   SET_USER_DATA,
-} from "./types";
+} from "./Types";
 
 // 로그인 액션
 export function loginUser(dataToSubmit) {
