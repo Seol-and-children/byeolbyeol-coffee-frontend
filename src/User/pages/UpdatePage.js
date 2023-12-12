@@ -77,47 +77,38 @@ function UpdatePage(props) {
     
 
   return (
-    <div className='body'>
-      <form style={{ display: 'flex', flexDirection: 'column'}}
-          onSubmit={onSubmitHandler}>  
-        <div className="header">
-            <h1>회원 정보 수정</h1>
-        </div> 
-        <div className="inputDiv">
-            <label className="labelWithImage nickname"></label>
-            <input type='text' 
-            value={userNickName} 
-            onChange={onUserNickNameHandler}
-            placeholder="새로운 닉네임을 입력하세요" />
-        </div>
-        <div className="inputDiv">
-            <label className="labelWithImage password"></label>
-            <input type='password' 
-            value={currentPassword} 
-            onChange={onCurrentPasswordHandler} 
-            placeholder="현재 비밀번호를 입력하세요" />
-        </div>
-        <div className="inputDiv">                
-        <label className="labelWithImage new password"></label>
-            <input type='password' 
-            value={newPassword} 
-            onChange={onNewPasswordHandler} 
-            placeholder="새 비밀번호를 입력하세요" />
-        </div>
-        <div className="inputDiv">                
-            <label className="labelWithImage confirm new password"></label>
-            <input type='password' 
-            value={confirmNewPassword} 
-            onChange={onConfirmNewPasswordHandler} 
-            placeholder="새 비밀번호를 다시 입력하세요" />
-        </div>
-        <br />
-        <button className="updateSubmitBtn" formAction=''>
-            수정하기
-        </button>
-        </form>
-        </div>
-    );
-} 
+    <form onSubmit={handleSubmit}>
+      <InputField 
+        type="text" 
+        name="nickname" 
+        value={formData.nickname} 
+        onChange={handleChange} 
+        placeholder="닉네임"
+      />
+      <InputField 
+        type="password" 
+        name="currentPassword" 
+        value={formData.currentPassword} 
+        onChange={handleChange} 
+        placeholder="현재 비밀번호"
+      />
+      <InputField 
+        type="password" 
+        name="newPassword" 
+        value={formData.newPassword} 
+        onChange={handleChange} 
+        placeholder="새 비밀번호"
+      />
+      <InputField 
+        type="password" 
+        name="confirmNewPassword" 
+        value={formData.confirmNewPassword} 
+        onChange={handleChange} 
+        placeholder="새 비밀번호 확인"
+      />
+      <UpdateButton />
+    </form>
+  );
+}
 
 export default UpdatePage;

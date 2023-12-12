@@ -11,36 +11,60 @@ import logo from "../../Assets/logo.png"
 import person from "../../Assets/Person.svg"
 import '../styles/Page.css';
 
+import LoginPage from "./LoginPage";
+import SignupPage from "./SignupPage";
+import UpdatePage from "./UpdatePage";
+import UserNickName from "../Component/UserNickName";
+import logo from "../../assets/logo.png";
+import "../styles/Page.css";
+import RecipeViewPage from "../../pages/RecipeViewPage";
+import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
+import AddRecipePage from "../../pages/AddRecipePage";
 
 function Navbar() {
-  const user = useSelector(state => state.user?.userData);
+  const user = useSelector((state) => state.user?.userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const goToHome = () => {
-    navigate('/'); 
+    navigate("/");
   };
 
+  
   const handleLogout = () => {
     dispatch(logoutUser());
-    navigate('/users/login'); 
-};
-  
+    navigate("/users/login");
+  };
+
+
   return (
     <div>
       <div className="navbar-section">
-        <img className='navbarLogo' src={logo} alt="별별커피 로고" onClick={goToHome}/>
-        <Link to="/">
-          <button id="recipe" className='recipePageBtn'>레시피</button>
+        <img
+          className="navbarLogo"
+          src={logo}
+          alt="별별커피 로고"
+          onClick={goToHome}
+        />
+        <Link to="/recipes">
+          <button id="recipe" className="recipePageBtn">
+            레시피
+          </button>
         </Link>
         <Link to="/">
-          <button id='ranking' className='rankinPagegBtn'>랭킹</button>
+          <button id="ranking" className="rankinPagegBtn">
+            랭킹
+          </button>
         </Link>
         <Link to="/">
-          <button id='cafereview' className='cafereviewPagewBtn'>카페리뷰</button>
+          <button id="cafereview" className="cafereviewPagewBtn">
+            카페리뷰
+          </button>
         </Link>
         <Link to="/">
-          <button id='randomcoffee' className='randomPageBtn'>오늘 뭐마셔?</button>
+          <button id="randomcoffee" className="randomPageBtn">
+            오늘 뭐마셔?
+          </button>
         </Link>
         <div className='container'>
           <img className='personicon' src={person} alt="User Icon" />
@@ -57,10 +81,15 @@ function Navbar() {
         </div>
       </div>
       <Routes>
+        <Route path="/add-recipe" element={<AddRecipePage />} />
+        <Route path="/recipes/:recipeId" element={<RecipeDetailViewPage />} />
+        <Route path="/recipes" element={<RecipeViewPage />} />
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/users/signup" element={<SignupPage />} />
         <Route path='/users/update' element={<UpdatePage/>} />
         <Route path='/login/oauth/kakao/callback' element={<Kakao />} />
+
+      
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
