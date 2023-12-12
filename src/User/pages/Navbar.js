@@ -1,7 +1,15 @@
-import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-// import { logoutUser } from "../Component/UserAction"; // logoutUser 액션 크리에이터 임포트
+import React from 'react';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux'; 
+import { logoutUser } from '../Component/UserAction'; // logoutUser 액션 크리에이터 임포트
+
+import LoginPage from './LoginPage';
+import SignupPage from './SignupPage';
+import UpdatePage from './UpdatePage';
+import UserNickName from '../Component/UserNickName';
+import logo from "../../Assets/logo.png"
+import person from "../../Assets/Person.svg"
+import '../styles/Page.css';
 
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
@@ -58,26 +66,18 @@ function Navbar() {
             오늘 뭐마셔?
           </button>
         </Link>
-        <div className="container">
-          <img className="personicon" alt="User Icon" />
-          {user ? (
-            <>
-              {/* <UserNickName /> */}
-              <button
-                id="logout"
-                className="LogoutPageBtn"
-                // onClick={handleLogout}
-              >
-                로그아웃
-              </button>
-            </>
-          ) : (
-            <Link to="/users/login">
-              <button id="login" className="LoginPageBtn">
-                로그인
-              </button>
-            </Link>
-          )}
+        <div className='container'>
+          <img className='personicon' src={person} alt="User Icon" />
+            {user ? (
+              <>
+              <UserNickName />
+              <button id='logout' className='LogoutPageBtn' onClick={handleLogout}>로그아웃</button>
+              </>
+            ) : (
+              <Link to="/users/login">
+                <button id='login' className='LoginPageBtn'>로그인</button>
+              </Link>
+            )}
         </div>
       </div>
       <Routes>
