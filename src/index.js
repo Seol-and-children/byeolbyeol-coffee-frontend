@@ -5,14 +5,13 @@ import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import promiseMiddleware from "redux-promise";
 import ReduxThunk from "redux-thunk";
-import Reducer from "./User/reducers/rootReducer";
+import Reducer from "./User/reducers/RootReducer";
 
 const createStoreWithMiddleware = applyMiddleware(
   promiseMiddleware,
   ReduxThunk
 )(createStore);
 
-// 'root' DOM 요소를 찾아서 createRoot로 새로운 루트 생성
 const root = createRoot(document.getElementById("root"));
 
 root.render(

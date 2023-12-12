@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SignuprUser } from '../Component/UserAction';
+import { SignuprUser } from '../component/UserAction';
 import '../styles/Page.css';
 import { useNavigate } from 'react-router-dom';
 
