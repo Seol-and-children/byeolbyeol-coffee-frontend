@@ -16,6 +16,7 @@ const CheckRecipe = ({ data }) => {
                 console.error('Error fetching data:', error);
             });
     }, [data]);
+    
 
   return (
     <div>                    
@@ -27,10 +28,7 @@ const CheckRecipe = ({ data }) => {
         <div className='sample-image'>{recipe.photoUrl}</div>
         <div className='sample-box'>
           <div className='sample-title'>{recipe.recipeName}&nbsp;&nbsp;
-            <FranchiseLogo
-              backColor="#ffffff"
-              fontColor="#000000"
-              name="tjfrhkdwls"/>
+          <FranchiseLogo franchiseInfo={recipe.franchiseId} />
           </div>
           <div className='sample-content-box'>
             <div className='sample-content'>

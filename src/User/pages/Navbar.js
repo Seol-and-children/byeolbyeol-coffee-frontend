@@ -1,13 +1,15 @@
 import React from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
-import { logoutUser } from '../Component/UserAction'; // logoutUser 액션 크리에이터 임포트
+//import { logoutUser } from '../Component/UserAction'; // logoutUser 액션 크리에이터 임포트
+import SearchBar from '../../search/component/SearchBar';
 
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import UpdatePage from './UpdatePage';
-import UserNickName from '../Component/UserNickName';
-import logo from "../../Assets/logo.png"
+// import UserNickName from '../Component/UserNickName';
+import logo from "../../assets/logo.png"
+import person from "../../assets/Person.svg"
 import '../styles/Page.css';
 
 
@@ -21,7 +23,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-    dispatch(logoutUser());
+    //dispatch(logoutUser());
     navigate('/users/login'); 
 };
   
@@ -39,13 +41,17 @@ function Navbar() {
           <button id='cafereview' className='cafereviewPagewBtn'>카페리뷰</button>
         </Link>
         <Link to="/">
-          <button id='randomcoffee' className='randomPageBtn'>오늘 뭐마셔?</button>
+        <button id='randomcoffee' className='randomPageBtn'>오늘 뭐마셔?</button>
         </Link>
+
+        {/* 검색 창 */}
+        <div className="search-box"><SearchBar/></div>
+
         <div className='container'>
-          <img className='personicon' alt="User Icon" />
+          <img className='personicon' src={person} alt="User Icon" />
             {user ? (
               <>
-              <UserNickName />
+              {/* <UserNickName /> */}
               <button id='logout' className='LogoutPageBtn' onClick={handleLogout}>로그아웃</button>
               </>
             ) : (

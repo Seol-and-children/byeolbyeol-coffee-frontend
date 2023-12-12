@@ -28,6 +28,10 @@
   cursor: pointer;
 }
 
+.recipePageBtn:hover {
+  background-color: #c2bebe; 
+}
+
 .rankinPagegBtn {
   width: 100px;
   height: 60px;
@@ -37,6 +41,10 @@
   background-color: #FFFFFF;
   border: none;
   cursor: pointer;
+}
+
+.rankinPagegBtn:hover {
+  background-color: #c2bebe;
 }
 
 .cafereviewPagewBtn {
@@ -50,6 +58,10 @@
   cursor: pointer;
 }
 
+.cafereviewPagewBtn:hover {
+  background-color: #c2bebe;
+}
+
 .randomPageBtn {
   width: 170px;
   height: 60px;
@@ -61,6 +73,10 @@
   cursor: pointer;
 }
 
+.randomPageBtn:hover {
+  background-color: #c2bebe;
+}
+
 .container {
   border: 2px solid #000; /* 테두리 */
   margin-right: 100px;
@@ -69,7 +85,6 @@
 }
 
 .personicon {
-  background-image: url('../../Assets/Person.svg');
   width: 25px; /* 적절한 크기 설정 */
   height: 25px; /* 적절한 크기 설정 */
   border:none;
@@ -189,19 +204,19 @@
 }
 
 .labelWithImage.account {
-  background-image: url('../../Assets/Account.svg');
+  background-image: url('../../assets/Account.svg');
 }
 
 .labelWithImage.password {
-  background-image: url('../../Assets/Lock.svg');
+  background-image: url('../../assets/Lock.svg');
 }
 
 .labelWithImage.nickname {
-  background-image: url('../../Assets/Nametag.svg');
+  background-image: url('../../assets/Nametag.svg');
 }
 
 .labelWithImage.email {
-  background-image: url('../../Assets/Mail.svg');
+  background-image: url('../../assets/Mail.svg');
 }
 
 .inputDiv input::placeholder {

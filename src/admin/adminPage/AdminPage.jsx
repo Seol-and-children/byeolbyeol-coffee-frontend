@@ -9,11 +9,11 @@ const AdminPage = () => {
       <div className="main">
         <div className='inner-main'>
           <div className="username">관리자</div><hr/><br/>
-          <div className="body">
+          <div className="admin-body">
             <div className="report-history">
             < ReportPageComponent />
             </div>
-            <div className="body-1">
+            <div className="admin-body-1">
               <div className="franchise-management">
                 <FranchisePage/>
                 </div>
