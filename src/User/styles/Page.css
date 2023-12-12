@@ -29,10 +29,10 @@
 }
 
 .recipePageBtn:hover {
-  background-color: #c2bebe; 
+  background-color: #c2bebe;
 }
 
-.rankinPagegBtn {
+.rankingPageBtn {
   width: 100px;
   height: 60px;
   font-size: 20px;
@@ -43,7 +43,7 @@
   cursor: pointer;
 }
 
-.rankinPagegBtn:hover {
+.rankingPageBtn:hover {
   background-color: #c2bebe;
 }
 
@@ -85,9 +85,9 @@
 }
 
 .personicon {
-  width: 25px; 
-  height: 25px; 
-  border:none;
+  width: 25px;
+  height: 25px;
+  border: none;
 }
 
 .LoginPageBtn {
@@ -99,14 +99,14 @@
   background-color: #ffffff;
   padding: 3px;
   margin: 5px;
-  cursor: pointer; 
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
-  border-radius: 20px;  
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
   border: 2px solid #000;
 }
 
 .LoginPageBtn:hover {
-  background-color: #c2bebe; 
+  background-color: #c2bebe;
 }
 
 .LogoutPageBtn {
