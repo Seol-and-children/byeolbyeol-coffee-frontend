@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { SignuprUser } from '../Component/UserAction';
+import { SignuprUser } from '../component/UserAction';
 import '../styles/Page.css';
+import { useNavigate } from 'react-router-dom';
 
 function SignupPage(props) {
  
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [userAccount, setuserAccount] = useState("");
   const [userNickName, setuserNickName] = useState("");
@@ -36,27 +38,36 @@ const onSubmitHandler = (event) => {
     }
 
     let body = {
-        userAccount: userAccount, // 백엔드와 일치하는 필드명
-        userPassword: userPassword, // 백엔드와 일치하는 필드명
-        userNickName: userNickName, // 백엔드와 일치하는 필드명
-        userEmail: userEmail, // 백엔드와 일치하는 필드명
+        userAccount: userAccount, 
+        userPassword: userPassword, 
+        userNickName: userNickName, 
+        userEmail: userEmail, 
 
     }
 
     dispatch(SignuprUser(body))
     .then(response => {
-        if(response.payload.success){
-            props.history.push('/loginPage')
+        if (response && response.success) {
+            alert('회원가입에 성공했습니다.');
+            navigate('/users/login');
         } else {
-            alert('Error')
+            alert('회원가입에 실패했습니다.');
         }
     })
+    .catch(error => {
+        console.error("Signup error", error);
+        alert('회원가입 중 오류가 발생했습니다');
+    });
+
 }
 
   return (
     <div className='body'>
         <form style={{ display: 'flex', flexDirection: 'column'}}
             onSubmit={onSubmitHandler}>
+        <div className="header">
+            <h1>회원가입</h1>
+        </div> 
         <div className="inputDiv">
             <label className="labelWithImage account"></label>
             <input type='text' 
@@ -93,7 +104,7 @@ const onSubmitHandler = (event) => {
             placeholder="닉네임를 입력하세요" />
         </div>
         <br />
-        <button className="signupsibmitButton" formAction=''>
+        <button className="signupsibmitBtn" formAction=''>
             가입하기
         </button>
         </form>

@@ -15,12 +15,12 @@ function App() {
           {/* 홈페이지 라우트 */}
           <Route path="/" element={<HomePage/>} />
 
-          {/* 검색페이지 라우트 */}
-          <Route path="/search/:searchWord" element={<SearchResult/>} />
+        {/* 검색페이지 라우트 */}
+        <Route path="/search/:searchWord" element={<SearchResult />} />
 
-          {/* 어드민페이지 라우트 */}
-          <Route path="/admin" element={<AdminPage/>} />
-        </Routes>
+        {/* 어드민페이지 라우트 */}
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
     </BrowserRouter>
   );
 }

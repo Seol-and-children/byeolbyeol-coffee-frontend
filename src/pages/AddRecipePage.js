@@ -15,6 +15,15 @@ function AddRecipePage() {
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
 
+  const [customOptions, setCustomOptions] = useState([
+    {
+      ingredientName: "",
+      quantity: "",
+      ingredientUnit: "",
+    },
+  ]);
+  const [ingredientsList, setIngredientsList] = useState([]);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -33,8 +42,42 @@ function AddRecipePage() {
       }
     };
 
+    // 기본 재료 정보를 불러오는 함수
+    const fetchIngredientsList = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/option/ingredients"
+        );
+        setIngredientsList(response.data);
+      } catch (error) {
+        console.error("기본 재료 정보를 가져오는데 실패했습니다:", error);
+      }
+    };
+
     fetchfranchiseCafeList();
+    fetchIngredientsList();
   }, []);
+
+  const handleCustomOptionChange = (index, selectedOption) => {
+    const newCustomOptions = [...customOptions];
+    newCustomOptions[index].ingredientName = selectedOption
+      ? selectedOption.value
+      : "";
+    setCustomOptions(newCustomOptions);
+  };
+
+  const handleAddCustomOption = () => {
+    setCustomOptions([
+      ...customOptions,
+      { ingredientName: "", quantity: "", ingredientUnit: "" },
+    ]);
+  };
+
+  const handleRemoveCustomOption = (index) => {
+    const newCustomOptions = [...customOptions];
+    newCustomOptions.splice(index, 1);
+    setCustomOptions(newCustomOptions);
+  };
 
   const handleFranchiseChange = (selectedOption) => {
     setSelectedFranchise(selectedOption);
@@ -57,6 +100,12 @@ function AddRecipePage() {
         temperature: beverageTemperature,
       },
       authorId: 4, // 이 부분은 사용자 인증에 따라 변경 필요
+      customOptions: customOptions.map((option) => ({
+        customOptionId: ingredientsList.find(
+          (ingredient) => ingredient.ingredientName === option.ingredientName
+        )?.customOptionId,
+        quantity: option.quantity,
+      })),
     };
 
     const formData = new FormData();
@@ -93,7 +142,7 @@ function AddRecipePage() {
   return (
     <div className="add-recipe-page">
       <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleImageChange} />
+        <input type="file" onChange={handleImageChange} accept="image/*" />
         <input
           type="text"
           value={recipeName}
@@ -137,6 +186,44 @@ function AddRecipePage() {
           <option value="HOT">HOT</option>
           <option value="ICE">ICE</option>
         </select>
+
+        {/* 커스텀 옵션 추가하는 부분 */}
+        {customOptions.map((option, index) => (
+          <div key={index} className="custom-option">
+            <Select
+              name="ingredientName"
+              value={ingredientsList.find(
+                (ingredient) =>
+                  ingredient.ingredientName === option.ingredientName
+              )}
+              onChange={(selectedOption) =>
+                handleCustomOptionChange(index, selectedOption)
+              }
+              options={ingredientsList.map((ingredient) => ({
+                value: ingredient.ingredientName,
+                label: ingredient.ingredientName,
+              }))}
+              placeholder="재료 선택..."
+              isSearchable
+            />
+            <input
+              name="quantity"
+              type="text"
+              value={option.quantity}
+              onChange={(e) => handleCustomOptionChange(index, e)}
+              placeholder="수량"
+            />
+            <button
+              type="button"
+              onClick={() => handleRemoveCustomOption(index)}
+            >
+              삭제
+            </button>
+          </div>
+        ))}
+        <button type="button" onClick={handleAddCustomOption}>
+          옵션 추가하기
+        </button>
 
         <button type="submit">등록하기</button>
         <button type="button" onClick={handleCancel}>
