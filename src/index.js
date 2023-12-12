@@ -15,7 +15,6 @@ const createStoreWithMiddleware = applyMiddleware(
 // 'root' DOM 요소를 찾아서 createRoot로 새로운 루트 생성
 const root = createRoot(document.getElementById("root"));
 
-// createRoot를 사용하여 App 컴포넌트 렌더링
 root.render(
   <Provider
     store={createStoreWithMiddleware(

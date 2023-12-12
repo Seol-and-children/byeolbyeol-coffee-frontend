@@ -2,10 +2,10 @@ import React from 'react';
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux'; 
 import { logoutUser } from '../Component/UserAction'; // logoutUser 액션 크리에이터 임포트
-
 import LoginPage from './LoginPage';
 import SignupPage from './SignupPage';
 import UpdatePage from './UpdatePage';
+import Kakao from '../Component/OAuth2RedirectHandeler'
 import UserNickName from '../Component/UserNickName';
 import logo from "../../Assets/logo.png"
 import person from "../../Assets/Person.svg"
@@ -14,7 +14,7 @@ import '../styles/Page.css';
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 import UpdatePage from "./UpdatePage";
-// import UserNickName from "../Component/UserNickName";
+import UserNickName from "../Component/UserNickName";
 import logo from "../../assets/logo.png";
 import "../styles/Page.css";
 import RecipeViewPage from "../../pages/RecipeViewPage";
@@ -30,12 +30,12 @@ function Navbar() {
     navigate("/");
   };
 
-  /*
+  
   const handleLogout = () => {
     dispatch(logoutUser());
     navigate("/users/login");
   };
-*/
+
 
   return (
     <div>
@@ -86,7 +86,10 @@ function Navbar() {
         <Route path="/recipes" element={<RecipeViewPage />} />
         <Route path="/users/login" element={<LoginPage />} />
         <Route path="/users/signup" element={<SignupPage />} />
-        <Route path="/users/update" element={<UpdatePage />} />
+        <Route path='/users/update' element={<UpdatePage/>} />
+        <Route path='/login/oauth/kakao/callback' element={<Kakao />} />
+
+      
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
