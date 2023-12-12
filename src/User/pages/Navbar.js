@@ -1,12 +1,12 @@
 import React from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logoutUser } from "../Component/UserAction"; // logoutUser 액션 크리에이터 임포트
+import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 import UpdatePage from "./UpdatePage";
-import Kakao from "../Component/OAuth2RedirectHandeler";
-import UserNickName from "../Component/UserNickName";
+import Kakao from "../component/OAuth2RedirectHandeler";
+import UserNickName from "../component/UserNickName";
 import logo from "../../assets/logo.png";
 import person from "../../assets/Person.svg";
 import "../styles/Page.css";
@@ -58,7 +58,7 @@ function Navbar() {
             오늘 뭐마셔?
           </button>
         </Link>
-        <SearchBar/>
+        <SearchBar />
         <div className="container">
           <img className="personicon" src={person} alt="User Icon" />
           {user ? (
