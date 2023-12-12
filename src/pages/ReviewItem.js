@@ -16,18 +16,15 @@ const ReviewItem = ({ reviewId, onDelete }) => {
 
   // 개별 리뷰 데이터를 가져오는 함수
   const fetchReview = async () => {
-    try {
-      if (reviewId) {
-        // reviewId가 존재할 때만 fetchReview 호출
-        const response = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
-        console.log("리뷰 정보:", response.data);
-        setReview(response.data);
-      }
-    } catch (error) {
-      console.error("개별 리뷰 정보를 가져오는데 실패했습니다 :", error);
-      console.log("에러 내용:", error.response); // 추가된 부분
-    }
-  };
+  try {
+    const response = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
+    console.log("리뷰 정보:", response.data);
+    setReview(response.data);
+  } catch (error) {
+    console.error("개별 리뷰 정보를 가져오는데 실패했습니다 :", error);
+    console.log("에러 내용:", error.response); // 추가된 부분
+  }
+};
 
   // 컴포넌트가 마운트될 때 데이터를 가져오는 useEffect 훅
   useEffect(() => {
@@ -38,7 +35,6 @@ const ReviewItem = ({ reviewId, onDelete }) => {
     // 리뷰 데이터가 로딩 중일 때의 처리
     return <div>Loading...</div>;
   }
-
 
   return (
     <div>
