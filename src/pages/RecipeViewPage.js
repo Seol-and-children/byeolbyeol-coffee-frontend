@@ -4,24 +4,46 @@ import { useNavigate } from "react-router-dom";
 import RecipeGrid from "../components/recipe/RecipeGrid";
 import Pagination from "../components/common/Pagination";
 import "./RecipeViewPage.css";
+import FranchiseFilter from "../components/recipe/FranchiseFilter";
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]); // 레시피 데이터를 위한 상태
   const [currentPage, setCurrentPage] = useState(1); // 현재 페이지 상태
   const [recipesPerPage] = useState(12); // 페이지 당 레시피 수
   const [sortOrder, setSortOrder] = useState("time"); // 정렬 상태
+  const [franchises, setFranchises] = useState([]);
+  const [selectedFranchise, setSelectedFranchise] = useState(null);
   const navigate = useNavigate();
 
   // 레시피 데이터를 가져오는 함수
   const fetchRecipes = async () => {
     try {
       const response = await axios.get("http://localhost:8080/recipes");
-      const sortedRecipes = response.data.sort(
+      let sortedRecipes = response.data.sort(
         (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
       );
+
+      // 프랜차이즈 필터링
+      if (selectedFranchise) {
+        sortedRecipes = sortedRecipes.filter(
+          (recipe) => recipe.franchiseName === selectedFranchise
+        );
+      }
+
       setRecipes(sortedRecipes);
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
+    }
+  };
+
+  const fetchFranchises = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8080/option/franchises"
+      );
+      setFranchises(response.data);
+    } catch (error) {
+      console.error("프렌차이즈 정보를 가져오는데 실패했습니다:", error);
     }
   };
 
@@ -51,6 +73,15 @@ function RecipeViewPage() {
     }
   };
 
+  const handleSelectFranchise = (franchise) => {
+    if (selectedFranchise === franchise) {
+      setSelectedFranchise(null); // Deselect if the same franchise is clicked again
+    } else {
+      setSelectedFranchise(franchise);
+    }
+    fetchRecipes();
+  };
+
   const handleAddRecipe = () => {
     navigate("/add-recipe"); // 레시피 등록 페이지로 이동
   };
@@ -58,7 +89,8 @@ function RecipeViewPage() {
   // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   useEffect(() => {
     fetchRecipes();
-  }, []);
+    fetchFranchises();
+  }, [selectedFranchise]);
 
   // 현재 페이지에 맞는 레시피를 계산합니다.
   const indexOfLastRecipe = currentPage * recipesPerPage;
@@ -70,6 +102,11 @@ function RecipeViewPage() {
 
   return (
     <div className="recipe-view-page">
+      <FranchiseFilter
+        franchises={franchises}
+        onSelectFranchise={handleSelectFranchise}
+        selectedFranchise={selectedFranchise}
+      />
       <RecipeGrid recipes={currentRecipes} /> {}
       <div className="buttons-container">
         <button
