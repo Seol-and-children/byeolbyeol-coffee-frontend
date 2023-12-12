@@ -15,6 +15,7 @@ import RecipeViewPage from "../../pages/RecipeViewPage";
 import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
 import AddRecipePage from "../../pages/AddRecipePage";
 import SearchBar from "../../search/component/SearchBar";
+import RankingPage from "../../pages/RankingPage";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -58,8 +59,8 @@ function Navbar() {
             레시피
           </button>
         </Link>
-        <Link to="/">
-          <button id="ranking" className="rankinPagegBtn">
+        <Link to="/ranking">
+          <button id="ranking" className="rankingPageBtn">
             랭킹
           </button>
         </Link>
@@ -106,6 +107,7 @@ function Navbar() {
         <Route path="/users/signup" element={<SignupPage />} />
         <Route path="/users/update" element={<UpdatePage />} />
         <Route path="/login/oauth/kakao/callback" element={<Kakao />} />
+        <Route path="/ranking" element={<RankingPage />} />
       </Routes>
     </div>
   );
