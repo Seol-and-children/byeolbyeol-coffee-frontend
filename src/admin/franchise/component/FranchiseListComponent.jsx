@@ -17,9 +17,7 @@ const Franchise = ({ franchise, onClick }) => (
     <div class="exam-item text-color">{franchise.franchiseFontColor}</div>
     <div class="exam-item tag-image">
       <FranchiseLogo
-      backColor={franchise.franchiseBackColor}
-      fontColor={franchise.franchiseFontColor}
-      name={franchise.franchiseName}
+      franchiseInfo={franchise.franchiseId}
       />
     </div>
   </div>
