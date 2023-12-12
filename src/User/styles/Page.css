@@ -1,0 +1,258 @@
+.navbar-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding-bottom: 2px;
+  background-color: #fff;
+  border-bottom: 4px solid #ccc;
+}
+
+.navbarLogo {
+  max-height: 100%;
+  margin: 0 30px 0 100px;
+}
+
+.navbarBlank {
+  margin: 0 400px;
+}
+
+.recipePageBtn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.rankinPagegBtn {
+  width: 100px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.cafereviewPagewBtn {
+  width: 120px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.randomPageBtn {
+  width: 170px;
+  height: 60px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.container {
+  border: 2px solid #000; /* 테두리 */
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.personicon {
+  background-image: url("../../assets/Person.svg");
+  width: 25px; /* 적절한 크기 설정 */
+  height: 25px; /* 적절한 크기 설정 */
+  border: none;
+}
+
+.LoginPageBtn {
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer; /* 마우스 오버시 커서 변경 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  border-radius: 20px; /* 둥근 버튼 */
+  border: 2px solid #000;
+}
+
+.LoginPageBtn:hover {
+  background-color: #c2bebe; /* 마우스 오버시 배경색 변경 */
+}
+
+.LogoutPageBtn {
+  width: 80px;
+  height: 30px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  padding: 3px;
+  margin: 5px;
+  cursor: pointer; /* 마우스 오버시 커서 변경 */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+  border-radius: 20px; /* 둥근 버튼 */
+  border: 2px solid #000;
+}
+
+.loginBtn {
+  width: 740px;
+  height: 70px;
+  color: #ffffff;
+  background-color: #ec7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.signupBtn {
+  width: 740px;
+  height: 70px;
+  color: #ffffff;
+  background-color: #754f44;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.signupsibmitBtn {
+  width: 740px;
+  height: 70px;
+  color: #ffffff;
+  background-color: #ec7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.updateSubmitBtn {
+  width: 740px;
+  height: 70px;
+  color: #ffffff;
+  background-color: #ec7357;
+  font-size: 28px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.inputDiv {
+  position: relative;
+  width: 740px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.inputDiv input {
+  width: calc(100% - 75px);
+  height: 100%;
+  margin-left: 75px;
+  padding: 0 15px;
+  border: 1px solid #a0a0a0;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.labelWithImage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 75px;
+  height: 60px;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #a0a0a0;
+  box-sizing: border-box;
+  opacity: 0.6;
+}
+
+.labelWithImage.account {
+  background-image: url("../../assets/Account.svg");
+}
+
+.labelWithImage.password {
+  background-image: url("../../assets/Lock.svg");
+}
+
+.labelWithImage.nickname {
+  background-image: url("../../assets/Nametag.svg");
+}
+
+.labelWithImage.email {
+  background-image: url("../../assets/Mail.svg");
+}
+
+.inputDiv input::placeholder {
+  font-size: 20px;
+  color: #a0a0a0;
+}
+
+.inputDiv input:focus {
+  border-color: #66afe9;
+  outline: none;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 120px);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.inlineContainer {
+  display: flex;
+  align-items: center;
+}
+
+.divider {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #ccc;
+  margin: 20px;
+}
+
+.kakao-login-button img {
+  width: 400px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.blank {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 210px;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}

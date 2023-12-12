@@ -1,29 +1,29 @@
-// index.js
+import React from "react";
+import { createRoot } from "react-dom/client"; // createRoot를 임포트
+import App from "./App";
+import { Provider } from "react-redux";
+import { applyMiddleware, createStore } from "redux";
+import promiseMiddleware from "redux-promise";
+import ReduxThunk from "redux-thunk";
+import Reducer from "./User/reducers/reducer";
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import ReviewList from './pages/ReviewList';
-import ReviewWrite from './pages/ReviewWrite';
-import ReviewItem from './pages/ReviewItem';
+const createStoreWithMiddleware = applyMiddleware(
+  promiseMiddleware,
+  ReduxThunk
+)(createStore);
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Navigate to="/reviews" />} />
-        <Route path="/reviews" element={<ReviewList />} />
-        <Route path="/review-write" element={<ReviewWrite />} />
-        <Route path="/reviews/:reviewId" element={<ReviewItem />} />
+// 'root' DOM 요소를 찾아서 createRoot로 새로운 루트 생성
+const root = createRoot(document.getElementById("root"));
 
-      </Routes>
-    </Router>
-  );
-};
-
-ReactDOM.render(
-  <React.StrictMode>
+// createRoot를 사용하여 App 컴포넌트 렌더링
+root.render(
+  <Provider
+    store={createStoreWithMiddleware(
+      Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    )}
+  >
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  </Provider>
 );
