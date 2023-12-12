@@ -124,7 +124,15 @@ function RecipeViewPage() {
         onSelectFranchise={handleSelectFranchise}
         selectedFranchise={selectedFranchise}
       />
-      <RecipeGrid recipes={currentRecipes} /> {}
+      {currentRecipes.length > 0 ? (
+        <RecipeGrid recipes={currentRecipes} />
+      ) : (
+        <p>
+          {selectedFranchise
+            ? `${selectedFranchise} 레시피가 없습니다.`
+            : "레시피가 없습니다."}
+        </p>
+      )}
       <div className="sort-container">
         <button className="sort-button" onClick={toggleSortMenu}>
           정렬

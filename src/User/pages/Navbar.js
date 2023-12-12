@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
+import axios from "axios";
 import LoginPage from "./LoginPage";
 import SignupPage from "./SignupPage";
 import UpdatePage from "./UpdatePage";
@@ -29,6 +30,20 @@ function Navbar() {
     navigate("/users/login");
   };
 
+  const handleRandomRecipe = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/recipes");
+      const recipes = response.data;
+
+      const randomIndex = Math.floor(Math.random() * recipes.length);
+      const randomRecipe = recipes[randomIndex];
+
+      navigate(`/recipes/${randomRecipe.recipeId}`);
+    } catch (error) {
+      console.error("레시피 목록을 가져오는데 실패했습니다:", error);
+    }
+  };
+
   return (
     <div>
       <div className="navbar-section">
@@ -53,11 +68,13 @@ function Navbar() {
             카페리뷰
           </button>
         </Link>
-        <Link to="/">
-          <button id="randomcoffee" className="randomPageBtn">
-            오늘 뭐마셔?
-          </button>
-        </Link>
+        <button
+          id="randomcoffee"
+          className="randomPageBtn"
+          onClick={handleRandomRecipe}
+        >
+          오늘 뭐마셔?
+        </button>
         <SearchBar />
         <div className="container">
           <img className="personicon" src={person} alt="User Icon" />
@@ -89,8 +106,6 @@ function Navbar() {
         <Route path="/users/signup" element={<SignupPage />} />
         <Route path="/users/update" element={<UpdatePage />} />
         <Route path="/login/oauth/kakao/callback" element={<Kakao />} />
-
-        {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
   );
