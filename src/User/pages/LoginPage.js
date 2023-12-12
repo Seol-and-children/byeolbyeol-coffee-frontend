@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginUser } from "../component/UserAction";
+import { loginUser } from "../Component/UserAction";
 import "../styles/Page.css";
-import KakaoLoginButton from "../component/KakaoLoginButton";
-import { KAKAO_AUTH_URL } from "../component/KakaoLoginButton";
+import KakaoLoginButton from "../Component/KakaoLoginButton";
+import { KAKAO_AUTH_URL } from "../Component/KakaoLoginButton";
 import logo from "../../assets/logo.png";
 
 function LoginPage() {

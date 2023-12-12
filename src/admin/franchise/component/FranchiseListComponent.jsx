@@ -71,7 +71,6 @@ const FranchiseList = () => {
         <div class="exam-item name">Name</div>
         <div class="exam-item background-color">배경색상</div>
         <div class="exam-item text-color">글자색상</div>
-        <div class="exam-item tag-image">태그이미지</div>
         <div class="exam-item remove">제거</div>
       </div>
       <div>

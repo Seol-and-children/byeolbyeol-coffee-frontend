@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateUser } from '../component/UserAction';
+import { UpdateUser } from '../Component/UserAction';
 import '../styles/Page.css';
 
 

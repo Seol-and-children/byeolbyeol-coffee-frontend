@@ -4,6 +4,7 @@ import AdminPage from './admin/adminPage/AdminPage';
 import SearchResult from './search/component/SearchResult';
 import HomePage from './main/homePage/HomePage';
 import Navbar from './User/pages/Navbar';
+import SearchBar from './search/component/SearchBar';
 
 function App() {
   return (
