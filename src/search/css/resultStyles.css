@@ -1,0 +1,134 @@
+.main{
+    width: auto;
+    height: auto;
+    display: grid;
+    place-items: center;
+}
+.inner-main {
+    width: 1440px;
+    height: auto;
+}
+.main-text{
+    font-size: 34px;
+    width: 400.55px;
+    height: 39px;
+    top: 144px;
+    margin-left: 150px;
+    margin-top: 45px;
+    margin-bottom: 45px;
+    text-align: center;
+}
+.search{
+    width: 1023px;
+    height: 146px;
+    background-color:#F1F1F1;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.inner-search{
+    width: 558px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.result-input{
+    width: 472px;
+    height: 48px;
+    border: none;
+}
+.search-image{
+    width: 86px;
+    height: 50px;
+    background-color: #EC7357;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.middle-text{
+    width: 1023px;
+    height: 30px;
+    margin-left: 223px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+    font-size: 24px;
+}
+.check-result{
+    width: 1024px;
+    height: 50px;
+    background-color: #FFFFFF;
+    display: flex;
+    margin: 0 auto;
+}
+.check{
+    width: 255px;
+    height: 48px;
+    text-align: center;
+    line-height : 50px;
+    border: solid 1px #717171;
+}
+.wrap-checkbox{
+    width: 1440px;
+    height: auto;
+    display : flex;
+    justify-content : center;
+}
+.check-box{
+    width: 1024px;
+    height: auto;
+    margin-top: 30px;
+}
+.clicked {
+    background-color: #EC7357;
+    color: white;
+    border: solid 1px #EC7357;
+  }
+
+
+
+.sample-wrap{
+    width: 960px;
+    height: 261px;
+    display: flex;
+}
+.sample-image{
+    width: 290px;
+    height: 260px;
+    background-color: #717171;
+    border-radius: 21px;
+    margin-right: 15px;
+}
+.sample-box{
+    width: 643px;
+    height: 253px;
+    background-color: #ff7a7a;
+}
+.sample-title{
+    width: 643px;
+    height: 55px;
+    font-size: 33px;
+    font-weight: bold;
+    background-color: green;
+    display: flex;
+}
+.sample-content-box{
+    width: 643px;
+    height: 185px;
+    background-color: antiquewhite;
+}
+.sample-content{
+    width: 633px;
+    height: 155px;
+    padding: 5px;
+    background-color: bisque;
+}
+.sample-info{
+    width: 643px;
+    height: 37px;
+    background-color: red;
+    border-top: solid 1px grey;
+    display: flex;
+}
