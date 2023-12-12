@@ -11,44 +11,36 @@ import CommentBox from '../components/Comment/CommentBox';
 import CommentWrite from '../components/Comment/CommentWrite';
 
 const ReviewItem = ({ reviewId, onDelete }) => {
-  // 개별 리뷰 상태를 관리하기 위한 useState 훅
-  const [review, setReview] = useState(null);
+  const [reviews, setReviews] = useState(null);
 
-  // 개별 리뷰 데이터를 가져오는 함수
-  const fetchReview = async () => {
-  try {
-    const response = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
-    console.log("리뷰 정보:", response.data);
-    setReview(response.data);
-  } catch (error) {
-    console.error("개별 리뷰 정보를 가져오는데 실패했습니다 :", error);
-    console.log("에러 내용:", error.response); // 추가된 부분
-  }
-};
+  // 리뷰 데이터를 가져오는 함수
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/reviews/${reviewId}");
+      setReviews(response.data);
+    } catch (error) {
+      console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
+    }
+  };
 
-  // 컴포넌트가 마운트될 때 데이터를 가져오는 useEffect 훅
+  // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   useEffect(() => {
-    fetchReview();
-  }, [reviewId]);
-
-  if (!review) {
-    // 리뷰 데이터가 로딩 중일 때의 처리
-    return <div>Loading...</div>;
-  }
+    fetchReviews();
+  }, []);
 
   return (
     <div>
       <div className="review-item-container">
-        <PostTitle title={review?.reviewName} />
-        <AuthorNickname nickname={review?.authorNickname} />
+        <PostTitle />
+        <AuthorNickname reviews={reviews} />
         <div className="action-buttons">
           <EditButton />
           <DeleteButton onDelete={onDelete} />
         </div>
-        <ReviewImage review={review} />
-        <ReviewContent review={review} />
-        <CommentBox review={review} />
-        <CommentWrite review={review} />
+        <ReviewImage reviews={reviews} />
+        <ReviewContent reviews={reviews} />
+        <CommentBox reviews={reviews} />
+        <CommentWrite reviews={reviews} />
       </div>
     </div>
   );

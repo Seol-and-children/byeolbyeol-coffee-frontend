@@ -2,10 +2,12 @@
 
 import React from 'react';
 
-const AuthorNickname = ({ nickname }) => {
+const AuthorNickname = ({ reviews }) => {
+  const userNickname = reviews ? reviews.userNickname : '';
+
   return (
     <span className="author-nickname">
-      작성자: {nickname}
+      작성자: {userNickname}
     </span>
   );
 };
