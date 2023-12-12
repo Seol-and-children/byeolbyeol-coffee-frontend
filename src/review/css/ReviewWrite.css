@@ -1,0 +1,96 @@
+/* ReviewWrite.css */
+
+body {
+  font-family: 'NanumGothic', sans-serif;
+}
+
+.post-title {
+  float: right;
+}
+
+.all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: 20px;
+}
+
+.content {
+  background-color: #F9F9F9;
+  width: 1000px;
+  border: 1px solid #A0A0A0;
+  padding: 10px;
+
+}
+
+.new-post-title {
+  width: 1022px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.new-post-title input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #A0A0A0;
+  color: #000000;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.new-post-content textarea {
+  width: 100%; /* 수정: 부모 너비 100%를 차지하도록 설정 */
+  height: 500px;
+  resize: none;
+  border: none;
+  outline: none;
+  background-color: #F9F9F9;
+  color: #000;
+  font-size: 16px;
+  font-family: 'NanumGothic', sans-serif;
+}
+
+.cancel-button {
+  margin-right: 10px;
+  background-color: white;
+  color: #A0A0A0;
+  padding: 10px 20px;
+  border: 1px solid #A0A0A0;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'NanumGothic', sans-serif;
+}
+
+.submit-button {
+  background-color: #EC7357;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: 'NanumGothic', sans-serif;
+}
+
+.button-container {
+  display: flex;
+  margin: 20px;
+}
+
+.new-post-image-container {
+  display: flex;
+  align-items: center;
+}
+
+.icon-label {
+  cursor: pointer;
+}
+
+.file-info {
+  margin-left: 10px;
+}
+
+.file-info p {
+  margin: -3px 0 0 0;
+}
