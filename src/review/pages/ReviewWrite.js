@@ -86,7 +86,7 @@ function ReviewWrite () {
       <div className="content">
         <NewPostImage onImageChange={handleNewImageChange} />
         <NewPostContent onContentChange={handleNewContentChange} />
-      </div>ㅞ,
+      </div>,
       <div className="button-container">
         <CancelButton />
         <SubmitButton onSubmit={handleSubmit} />
