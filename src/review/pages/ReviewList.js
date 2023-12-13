@@ -8,7 +8,7 @@ import ReviewListTable from '../components/ReviewList/ReviewListTable';
 import Pagination from '../components/ReviewList/Pagination';
 import ReviewWriteButton from '../components/ReviewList/ReviewWriteButton';
 
-import '../css/ReviewList.css'; // Import ReviewList.css here
+import '../css/ReviewList.css';
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);

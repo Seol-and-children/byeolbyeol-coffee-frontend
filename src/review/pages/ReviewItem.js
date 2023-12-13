@@ -1,3 +1,5 @@
+// ReviewItem.js
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -11,12 +13,12 @@ import CommentBox from '../components/Comment/CommentBox';
 import CommentWrite from '../components/Comment/CommentWrite';
 
 const ReviewItem = ({ reviewId, onDelete }) => {
-  const [reviews, setReviews] = useState(null);
+  const [reviews, setReviews] = useState();
 
   // 리뷰 데이터를 가져오는 함수
   const fetchReviews = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/reviews/${reviewId}");
+      const response = await axios.get(`http://localhost:8080/reviews/${reviewId}`);
       setReviews(response.data);
     } catch (error) {
       console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
