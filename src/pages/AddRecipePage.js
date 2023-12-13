@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Select from "react-select";
 import "./AddRecipePage.css";
+import { useSelector } from "react-redux";
 
 function AddRecipePage() {
   // 상태 관리
@@ -14,6 +15,7 @@ function AddRecipePage() {
   const [recipeImage, setRecipeImage] = useState(null);
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
+  const user = useSelector((state) => state.user.userData);
 
   const [customOptions, setCustomOptions] = useState([
     {
@@ -90,6 +92,8 @@ function AddRecipePage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const userId = user ? user.userId : null;
+
     const recipeDto = {
       recipeName,
       description,
@@ -99,7 +103,7 @@ function AddRecipePage() {
         size: beverageSize,
         temperature: beverageTemperature,
       },
-      authorId: 4, // 이 부분은 사용자 인증에 따라 변경 필요
+      authorId: userId,
       customOptions: customOptions.map((option) => ({
         customOptionId: ingredientsList.find(
           (ingredient) => ingredient.ingredientName === option.ingredientName

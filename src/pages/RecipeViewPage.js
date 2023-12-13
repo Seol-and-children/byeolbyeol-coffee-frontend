@@ -3,8 +3,9 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import RecipeGrid from "../components/recipe/RecipeGrid";
 import Pagination from "../components/common/Pagination";
-import "./RecipeViewPage.css";
 import FranchiseFilter from "../components/recipe/FranchiseFilter";
+import "./RecipeViewPage.css";
+import { useSelector } from "react-redux";
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]);
@@ -14,6 +15,7 @@ function RecipeViewPage() {
   const [franchises, setFranchises] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [showSortMenu, setShowSortMenu] = useState(false);
+  const user = useSelector((state) => state.user.userData);
   const navigate = useNavigate();
 
   // 레시피 데이터를 가져오는 함수
@@ -100,6 +102,12 @@ function RecipeViewPage() {
   };
 
   const handleAddRecipe = () => {
+    // 사용자가 로그인하지 않았을 경우
+    if (!user) {
+      alert("레시피 등록을 위해서는 로그인이 필요합니다.");
+      navigate("/users/login");
+      return;
+    }
     navigate("/add-recipe"); // 레시피 등록 페이지로 이동
   };
 
