@@ -9,16 +9,15 @@ function filterRecipesByDate(recipes, timeRange) {
     const recipeDate = new Date(recipe.registerTime);
     switch (timeRange) {
       case "weekly":
-        // 현재 날짜에서 7일을 빼서 주간 랭킹을 계산합니다.
+        // 주간
         return (now - recipeDate) / (1000 * 60 * 60 * 24) <= 7;
       case "monthly":
-        // 현재 날짜에서 한 달을 빼서 월간 랭킹을 계산합니다.
+        // 월간
         return (now - recipeDate) / (1000 * 60 * 60 * 24) <= 30;
       case "yearly":
-        // 현재 날짜에서 일 년을 빼서 연간 랭킹을 계산합니다.
+        // 연간
         return (now - recipeDate) / (1000 * 60 * 60 * 24) <= 365;
       default:
-        // 시간 범위가 지정되지 않았다면 모든 레시피를 반환하여 역대 랭킹을 계산합니다.
         return true;
     }
   });
