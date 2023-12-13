@@ -5,6 +5,7 @@ import SearchResult from "./search/component/SearchResult";
 import HomePage from "./main/homePage/HomePage";
 import SearchBar from "./search/component/SearchBar";
 import Navbar from "./user/pages/Navbar";
+import Main from "./main/Main";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
 
       <Routes>
         {/* 홈페이지 라우트 */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Main />} />
 
         {/* 검색페이지 라우트 */}
         <Route path="/search/:searchWord" element={<SearchResult />} />

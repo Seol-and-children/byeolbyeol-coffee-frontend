@@ -93,7 +93,7 @@ function Navbar() {
         <Route path="/users/update" element={<UpdatePage />} />
         <Route path="/login/oauth/kakao/callback" element={<Kakao />} />
         <Route path="/reviews" element={<ReviewList />} />
-        <Route path="/reviews/:recipeId" element={<ReviewItem />} />
+        <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
 
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}

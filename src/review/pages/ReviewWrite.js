@@ -1,5 +1,3 @@
-// ReviewWrite.js
-
 import React, { useState } from 'react';
 import Axios from 'axios';
 
@@ -14,11 +12,14 @@ import '../css/ReviewWrite.css';
 
 import { useNavigate } from 'react-router-dom';
 
-const ReviewWrite = () => {
+function ReviewWrite () {
   const [newTitle, setNewTitle] = useState('');
   const [newContent, setNewContent] = useState('');
   const [newImage, setNewImage] = useState(null);
   const navigate = useNavigate();
+
+  // 가상으로 설정하는 사용자 ID
+  const authorId = 5;
 
   const handleNewTitleChange = (title) => {
     setNewTitle(title);
@@ -28,48 +29,56 @@ const ReviewWrite = () => {
     setNewContent(content);
   };
 
-  const handleNewImageChange = (image) => {
-    setNewImage(image);
+  const handleNewImageChange = (e) => {
+    setReviewImage(e.target.files[0]);
   };
 
-  const handleSubmit = async () => {
-    try {
-      const formData = new FormData();
-      formData.append('reviewDTO', JSON.stringify({
-        "reviewName": newTitle,
-        "authorId": 12,
-        "content": newContent,
-        "likesCount": 0,
-        "viewsCount": 0
-      }));
-  
-      formData.append('reviewImage', newImage);
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const reviewDTO = {
+      reviewName,
+      content,
+      authorId: 5 // 수정 필요
+    }
+
+    const formData = new FormData();
+      formData.append('reviewName', newTitle);
+      formData.append('authorId', authorId);
+      formData.append('content', newContent);
+    formData.append("reviewImage", reviewImage);
+    formData.append(
+      "reviewDTO",
+      new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })
+    );
+
       const config = {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       };
   
-      const response = await Axios.post('http://localhost:8080/reviews', formData, config);
-  
-      console.log('리뷰 등록 성공:', response.data);
-  
-      // Display success message (you can replace this with your own logic)
-      alert('리뷰가 성공적으로 등록되었습니다.');
-  
-      // Redirect to the review list page
-      navigate('/review-list');
-    } catch (error) {
-      console.error('리뷰 등록 실패:', error);
-  
-      // 서버 응답 확인
-      if (error.response) {
-        console.error('서버 응답:', error.response.data);
+      try {
+        const response = await axios.post(
+          "http://localhost:8080/reviews",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response.data);
+        alert("리뷰가 등록되었습니다!"); // 성공 알림
+        navigate("/reviews"); // 리뷰 전체 보기 페이지로 리디렉션
+      } catch (error) {
+        console.error("리뷰 등록 실패", error);
+        alert("리뷰 등록에 실패하였습니다."); // 실패 알림
+        navigate("/reviews"); // 리뷰 전체 보기 페이지로 리디렉션
       }
-    }
-  };
-
+    };
+  
   return (
     <div className="all">
       <PostTitle className="post-title"/>
@@ -77,10 +86,10 @@ const ReviewWrite = () => {
       <div className="content">
         <NewPostImage onImageChange={handleNewImageChange} />
         <NewPostContent onContentChange={handleNewContentChange} />
-      </div>
+      </div>ㅞ,
       <div className="button-container">
-      <CancelButton />
-      <SubmitButton onSubmit={handleSubmit} /> {/* onSubmit 함수를 전달합니다. */}
+        <CancelButton />
+        <SubmitButton onSubmit={handleSubmit} />
       </div>
     </div>
   );
