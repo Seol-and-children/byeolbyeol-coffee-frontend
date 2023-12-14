@@ -17,36 +17,35 @@ function UpdatePage(props) {
     const [confirmNewPassword, setConfirmNewPassword] = useState('');
 
 
-    useEffect(() => {
-        console.log('세션 스토리지에서 가져온 토큰:', token);
-        
-        if (currentUser) {
-            setUserNickName(currentUser.userNickName);
-        }
-    }, [currentUser, token]);
+  useEffect(() => {
+    console.log("세션 스토리지에서 가져온 토큰:", token);
 
-    const onUserNickNameHandler = (event) => {
-        setUserNickName(event.currentTarget.value);
+    if (currentUser) {
+      setUserNickName(currentUser.userNickName);
     }
-    const onCurrentPasswordHandler = (event) => {
-        setCurrentPassword(event.currentTarget.value);
-    }
-    const onNewPasswordHandler = (event) => {
-        setNewPassword(event.currentTarget.value);
-    }
-    const onConfirmNewPasswordHandler = (event) => {
-        setConfirmNewPassword(event.currentTarget.value);
-    }
+  }, [currentUser, token]);
 
-    const onSubmitHandler = (event) => {
-        event.preventDefault();
-        console.log('업데이트 요청 시 사용되는 토큰:', token);
+  const onUserNickNameHandler = (event) => {
+    setUserNickName(event.currentTarget.value);
+  };
+  const onCurrentPasswordHandler = (event) => {
+    setCurrentPassword(event.currentTarget.value);
+  };
+  const onNewPasswordHandler = (event) => {
+    setNewPassword(event.currentTarget.value);
+  };
+  const onConfirmNewPasswordHandler = (event) => {
+    setConfirmNewPassword(event.currentTarget.value);
+  };
 
+  const onSubmitHandler = (event) => {
+    event.preventDefault();
+    console.log("업데이트 요청 시 사용되는 토큰:", token);
 
-        if (!currentUser) {
-            alert('사용자 정보가 존재하지 않습니다.');
-            return;
-        }
+    if (!currentUser) {
+      alert("사용자 정보가 존재하지 않습니다.");
+      return;
+    }
 
         if (newPassword !== confirmNewPassword) {
             return alert('새 비밀번호와 비밀번호 확인이 같지 않습니다.');
@@ -91,7 +90,8 @@ function UpdatePage(props) {
             <input type='text' 
             value={userNickName} 
             onChange={onUserNickNameHandler}
-            placeholder="새로운 닉네임을 입력하세요" />
+            placeholder="새로운 닉네임을 입력하세요"
+          />
         </div>
         <div className={styles.inputDiv}>
             <label className={`${styles.labelWithImage} ${styles.password}`}></label>
@@ -118,9 +118,9 @@ function UpdatePage(props) {
         <button className={styles.updateSubmitBtn} formAction=''>
             수정하기
         </button>
-        </form>
-        </div>
-    );
-} 
+      </form>
+    </div>
+  );
+}
 
 export default UpdatePage;

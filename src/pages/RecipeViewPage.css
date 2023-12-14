@@ -1,4 +1,3 @@
-/* RecipeViewPage.css */
 .recipe-view-page {
   display: flex;
   flex-direction: column;
@@ -6,25 +5,13 @@
   padding: 20px;
 }
 
-/* 상단바 스타일링 */
-.navbar {
-  width: 100%;
-  padding: 10px 20px;
-  background-color: #333;
-  color: white;
+/* Sort container and menu styles */
+.sort-container {
+  position: relative;
+  align-self: flex-end; /* Align the sort button to the right */
   margin-bottom: 20px;
 }
 
-/* 정렬 버튼과 레시피 등록 버튼 컨테이너 */
-.buttons-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 1200px;
-  margin-bottom: 20px;
-}
-
-/* 정렬 버튼 스타일링 */
 .sort-button {
   padding: 10px 20px;
   border: none;
@@ -32,23 +19,42 @@
   color: white;
   border-radius: 5px;
   cursor: pointer;
-  margin-right: 10px;
 }
 
 .sort-button:hover {
   background-color: #0056b3;
 }
 
-/* 레시피 등록 버튼 스타일링 */
-.add-recipe-button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #28a745;
-  color: white;
+.sort-menu {
+  position: absolute;
+  top: -100%; /* Adjust this value to position the menu above the button */
+  right: 0;
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
   border-radius: 5px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sort-option {
+  padding: 5px 10px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  text-align: left;
   cursor: pointer;
 }
 
-.add-recipe-button:hover {
-  background-color: #218838;
+.sort-option:hover,
+.sort-option.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Pagination styles */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }

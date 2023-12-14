@@ -5,7 +5,6 @@ import styles from './SignupPage.module.css';
 import { useNavigate } from 'react-router-dom';
 
 function SignupPage(props) {
- 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -16,50 +15,48 @@ function SignupPage(props) {
   const [userEmail, setuserEmail] = useState("");
 
   const onuserAccountHandler = (event) => {
-      setuserAccount(event.currentTarget.value);
-  }
+    setuserAccount(event.currentTarget.value);
+  };
   const onuserNickNameHandler = (event) => {
-      setuserNickName(event.currentTarget.value);
-  }
+    setuserNickName(event.currentTarget.value);
+  };
   const onuserPasswordHandler = (event) => {
-      setuserPassword(event.currentTarget.value);
-  }
+    setuserPassword(event.currentTarget.value);
+  };
   const onConfirmPasswordHandler = (event) => {
-      setConfirmPassword(event.currentTarget.value);
-  }
+    setConfirmPassword(event.currentTarget.value);
+  };
   const onuserEmailHandler = (event) => {
     setuserEmail(event.currentTarget.value);
-}
-const onSubmitHandler = (event) => {
+  };
+  const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    if(userPassword !== ConfirmPassword){
-        return alert('비밀번호와 비밀번호 확인이 같지 않습니다.');
+    if (userPassword !== ConfirmPassword) {
+      return alert("비밀번호와 비밀번호 확인이 같지 않습니다.");
     }
 
     let body = {
-        userAccount: userAccount, 
-        userPassword: userPassword, 
-        userNickName: userNickName, 
-        userEmail: userEmail, 
-
-    }
+      userAccount: userAccount,
+      userPassword: userPassword,
+      userNickName: userNickName,
+      userEmail: userEmail,
+    };
 
     dispatch(SignuprUser(body))
-    .then(response => {
+      .then((response) => {
         if (response && response.success) {
-            alert('회원가입에 성공했습니다.');
-            navigate('/users/login');
+          alert("회원가입에 성공했습니다.");
+          navigate("/users/login");
         } else {
-            alert('회원가입에 실패했습니다.');
+          alert("회원가입에 실패했습니다.");
         }
-    })
-    .catch(error => {
+      })
+      .catch((error) => {
         console.error("Signup error", error);
-        alert('회원가입 중 오류가 발생했습니다');
-    });
-
-}
+        alert("회원가입 중 오류가 발생했습니다");
+      });
+  };
 
   return (
     <div className={styles.body}>
@@ -101,15 +98,16 @@ const onSubmitHandler = (event) => {
             <input type='text' 
             value={userNickName} 
             onChange={onuserNickNameHandler}
-            placeholder="닉네임를 입력하세요" />
+            placeholder="닉네임를 입력하세요"
+          />
         </div>
         <br />
         <button className={styles.signupsibmitBtn} formAction=''>
             가입하기
         </button>
-        </form>
+      </form>
     </div>
-  )
+  );
 }
 
 export default SignupPage;
