@@ -13,7 +13,7 @@ import styles from './Navbar.module.css';
 import RecipeViewPage from "../../pages/RecipeViewPage";
 import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
 import AddRecipePage from "../../pages/AddRecipePage";
-import MyPage from "./MyPage"
+import MyPage from "./MyPage";
 import SearchBar from "../../search/component/SearchBar";
 import RankingPage from "../../pages/RankingPage";
 
@@ -62,9 +62,8 @@ function Navbar() {
           </button>
         </Link>
 
-       <Link to="/ranking">
+        <Link to="/ranking">
           <button id="ranking" className={styles.rankinPagegBtn}>
-
             랭킹
           </button>
         </Link>
@@ -73,7 +72,6 @@ function Navbar() {
             카페리뷰
           </button>
         </Link>
-
         <button
           id="randomcoffee"
           className={styles.randomPageBtn}
@@ -115,9 +113,6 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />    
         <Route path="/users/mypage" element={<MyPage />} />
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
-
-        
-
       </Routes>
     </div>
   );

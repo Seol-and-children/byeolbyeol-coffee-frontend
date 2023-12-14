@@ -4,6 +4,7 @@ import AdminPage from "./admin/adminPage/AdminPage";
 import SearchResult from "./search/component/SearchResult";
 import HomePage from "./main/homePage/HomePage";
 import Navbar from "./user/pages/Navbar";
+import Navbar from "./user/pages/Navbar";
 import SearchBar from "./search/component/SearchBar";
 import { useDispatch } from 'react-redux';
 import { SET_USER_DATA } from './User/component/Types';
