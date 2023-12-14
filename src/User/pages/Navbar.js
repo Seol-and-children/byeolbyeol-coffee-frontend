@@ -9,7 +9,7 @@ import UpdatePage from "./UpdatePage";
 import Kakao from "../component/OAuth2RedirectHandeler";
 import UserNickName from "../component/UserNickName";
 import logo from "../../assets/logo.png";
-import styles from './Navbar.module.css';
+import styles from "./Navbar.module.css";
 import RecipeViewPage from "../../pages/RecipeViewPage";
 import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
 import AddRecipePage from "../../pages/AddRecipePage";
@@ -17,6 +17,8 @@ import MyPage from "./MyPage";
 import SearchBar from "../../search/component/SearchBar";
 import RankingPage from "../../pages/RankingPage";
 import EditRecipePage from "../../pages/EditRecipePage";
+import SearchResult from "../../search/component/SearchResult";
+import AdminPage from "../../admin/adminPage/AdminPage";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -82,7 +84,6 @@ function Navbar() {
         </button>
         <SearchBar />
         <div className="container">
-          <img className="personicon" src={person} alt="User Icon" />
           {user ? (
             <>
               <UserNickName />
@@ -112,8 +113,10 @@ function Navbar() {
         <Route path="/users/signup" element={<SignupPage />} />
         <Route path="/users/update" element={<UpdatePage />} />
         <Route path="/login/oauth/kakao/callback" element={<Kakao />} />
-        <Route path="/ranking" element={<RankingPage />} />    
+        <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/search/:searchWord" element={<SearchResult />} />\
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
