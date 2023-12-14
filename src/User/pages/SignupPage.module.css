@@ -1,0 +1,87 @@
+.body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .inputDiv {
+    position: relative;
+    width: 740px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .inputDiv input {
+    width: calc(100% - 75px);
+    height: 100%;
+    margin-left: 75px;
+    padding: 0 15px;
+    border: 1px solid #a0a0a0;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  
+  .labelWithImage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 75px;
+    height: 60px;
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid #a0a0a0;
+    box-sizing: border-box;
+    opacity: 0.6;
+  }
+  
+  .account {
+    background-image: url("../../assets/Account.svg");
+  }
+  
+  .password {
+    background-image: url("../../assets/Lock.svg");
+  }
+
+  .ConfirmPassword {
+    background-image: url("../../assets/Lock.svg");
+  }
+  
+  .email {
+    background-image: url("../../assets/Mail.svg");
+  }
+  
+  .nickname {
+    background-image: url("../../assets/Nametag.svg");
+  }
+  
+  .inputDiv input::placeholder {
+    font-size: 20px;
+    color: #a0a0a0;
+  }
+  
+  .inputDiv input:focus {
+    border-color: #66afe9;
+    outline: none;
+  }
+  
+  .signupsibmitBtn {
+    width: 740px;
+    height: 70px;
+    color: #ffffff;
+    background-color: #ec7357;
+    font-size: 28px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }

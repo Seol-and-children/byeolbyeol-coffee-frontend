@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { kakaoLogin } from "./KakaoLogin"; // kakaoLogin 직접 임포트
+import { kakaoLogin } from "./KakaoLogin"; 
 
 const OAuth2RedirectHandler = () => {
   const dispatch = useDispatch();

@@ -9,11 +9,11 @@ import UpdatePage from "./UpdatePage";
 import Kakao from "../component/OAuth2RedirectHandeler";
 import UserNickName from "../component/UserNickName";
 import logo from "../../assets/logo.png";
-import person from "../../assets/Person.svg";
-import "../styles/Page.css";
+import styles from './Navbar.module.css';
 import RecipeViewPage from "../../pages/RecipeViewPage";
 import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
 import AddRecipePage from "../../pages/AddRecipePage";
+import MyPage from "./MyPage";
 import SearchBar from "../../search/component/SearchBar";
 import RankingPage from "../../pages/RankingPage";
 
@@ -21,6 +21,8 @@ function Navbar() {
   const user = useSelector((state) => state.user?.userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  console.log("userNickName 컴포넌트에서 로드한 사용자 데이터:", user);
 
   const goToHome = () => {
     navigate("/");
@@ -47,31 +49,32 @@ function Navbar() {
 
   return (
     <div>
-      <div className="navbar-section">
+      <div className={styles.navbarsection}>
         <img
-          className="navbarLogo"
+          className={styles.navbarLogo}
           src={logo}
           alt="별별커피 로고"
           onClick={goToHome}
         />
         <Link to="/recipes">
-          <button id="recipe" className="recipePageBtn">
+          <button id="recipe" className={styles.recipePageBtn}>
             레시피
           </button>
         </Link>
+
         <Link to="/ranking">
-          <button id="ranking" className="rankingPageBtn">
+          <button id="ranking" className={styles.rankinPagegBtn}>
             랭킹
           </button>
         </Link>
         <Link to="/">
-          <button id="cafereview" className="cafereviewPagewBtn">
+          <button id="cafereview" className={styles.cafereviewPagewBtn}>
             카페리뷰
           </button>
         </Link>
         <button
           id="randomcoffee"
-          className="randomPageBtn"
+          className={styles.randomPageBtn}
           onClick={handleRandomRecipe}
         >
           오늘 뭐마셔?
@@ -84,7 +87,7 @@ function Navbar() {
               <UserNickName />
               <button
                 id="logout"
-                className="LogoutPageBtn"
+                className={styles.LogoutPageBtn}
                 onClick={handleLogout}
               >
                 로그아웃
@@ -92,7 +95,7 @@ function Navbar() {
             </>
           ) : (
             <Link to="/users/login">
-              <button id="login" className="LoginPageBtn">
+              <button id="login" className={styles.LoginPageBtn}>
                 로그인
               </button>
             </Link>
@@ -107,7 +110,9 @@ function Navbar() {
         <Route path="/users/signup" element={<SignupPage />} />
         <Route path="/users/update" element={<UpdatePage />} />
         <Route path="/login/oauth/kakao/callback" element={<Kakao />} />
-        <Route path="/ranking" element={<RankingPage />} />
+        <Route path="/ranking" element={<RankingPage />} />    
+        <Route path="/users/mypage" element={<MyPage />} />
+        {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
   );
