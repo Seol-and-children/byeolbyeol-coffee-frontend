@@ -15,16 +15,8 @@ function AddRecipePage() {
   const [recipeImage, setRecipeImage] = useState(null);
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
+  const [customOptions, setCustomOptions] = useState([]);
   const user = useSelector((state) => state.user.userData);
-
-  const [customOptions, setCustomOptions] = useState([
-    {
-      ingredientName: "",
-      quantity: "",
-      ingredientUnit: "",
-    },
-  ]);
-  const [ingredientsList, setIngredientsList] = useState([]);
 
   const navigate = useNavigate();
 
@@ -43,41 +35,31 @@ function AddRecipePage() {
         console.error("프랜차이즈 정보를 가져오는데 실패했습니다:", error);
       }
     };
-
-    // 기본 재료 정보를 불러오는 함수
-    const fetchIngredientsList = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:8080/option/ingredients"
-        );
-        setIngredientsList(response.data);
-      } catch (error) {
-        console.error("기본 재료 정보를 가져오는데 실패했습니다:", error);
-      }
-    };
-
     fetchfranchiseCafeList();
-    fetchIngredientsList();
   }, []);
 
-  const handleCustomOptionChange = (index, selectedOption) => {
-    const newCustomOptions = [...customOptions];
-    newCustomOptions[index].ingredientName = selectedOption
-      ? selectedOption.value
-      : "";
-    setCustomOptions(newCustomOptions);
-  };
-
-  const handleAddCustomOption = () => {
+  // 커스텀 옵션 추가 처리 함수
+  const addCustomOption = () => {
     setCustomOptions([
       ...customOptions,
-      { ingredientName: "", quantity: "", ingredientUnit: "" },
+      { customOptionName: "", quantity: "" },
     ]);
   };
 
-  const handleRemoveCustomOption = (index) => {
-    const newCustomOptions = [...customOptions];
-    newCustomOptions.splice(index, 1);
+  // 커스텀 옵션 제거 처리 함수
+  const removeCustomOption = (index) => {
+    const newCustomOptions = customOptions.filter((_, i) => i !== index);
+    setCustomOptions(newCustomOptions);
+  };
+
+  // 커스텀 옵션 변경 처리 함수
+  const handleCustomOptionChange = (index, field, value) => {
+    const newCustomOptions = customOptions.map((option, i) => {
+      if (i === index) {
+        return { ...option, [field]: value };
+      }
+      return option;
+    });
     setCustomOptions(newCustomOptions);
   };
 
@@ -93,7 +75,6 @@ function AddRecipePage() {
     e.preventDefault();
 
     const userId = user ? user.userId : null;
-
     const recipeDto = {
       recipeName,
       description,
@@ -104,12 +85,7 @@ function AddRecipePage() {
         temperature: beverageTemperature,
       },
       authorId: userId,
-      customOptions: customOptions.map((option) => ({
-        customOptionId: ingredientsList.find(
-          (ingredient) => ingredient.ingredientName === option.ingredientName
-        )?.customOptionId,
-        quantity: option.quantity,
-      })),
+      customOptions: customOptions,
     };
 
     const formData = new FormData();
@@ -142,6 +118,31 @@ function AddRecipePage() {
   const handleCancel = () => {
     navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
   };
+
+  // 커스텀 옵션 입력 필드 렌더링
+  const customOptionInputs = customOptions.map((option, index) => (
+    <div key={index}>
+      <input
+        type="text"
+        value={option.customOptionName}
+        onChange={(e) =>
+          handleCustomOptionChange(index, "customOptionName", e.target.value)
+        }
+        placeholder="옵션 이름"
+      />
+      <input
+        type="text"
+        value={option.quantity}
+        onChange={(e) =>
+          handleCustomOptionChange(index, "quantity", e.target.value)
+        }
+        placeholder="수량"
+      />
+      <button type="button" onClick={() => removeCustomOption(index)}>
+        삭제
+      </button>
+    </div>
+  ));
 
   return (
     <div className="add-recipe-page">
@@ -190,45 +191,10 @@ function AddRecipePage() {
           <option value="HOT">HOT</option>
           <option value="ICE">ICE</option>
         </select>
-
-        {/* 커스텀 옵션 추가하는 부분 */}
-        {customOptions.map((option, index) => (
-          <div key={index} className="custom-option">
-            <Select
-              name="ingredientName"
-              value={ingredientsList.find(
-                (ingredient) =>
-                  ingredient.ingredientName === option.ingredientName
-              )}
-              onChange={(selectedOption) =>
-                handleCustomOptionChange(index, selectedOption)
-              }
-              options={ingredientsList.map((ingredient) => ({
-                value: ingredient.ingredientName,
-                label: ingredient.ingredientName,
-              }))}
-              placeholder="재료 선택..."
-              isSearchable
-            />
-            <input
-              name="quantity"
-              type="text"
-              value={option.quantity}
-              onChange={(e) => handleCustomOptionChange(index, e)}
-              placeholder="수량"
-            />
-            <button
-              type="button"
-              onClick={() => handleRemoveCustomOption(index)}
-            >
-              삭제
-            </button>
-          </div>
-        ))}
-        <button type="button" onClick={handleAddCustomOption}>
+        {customOptionInputs}
+        <button type="button" onClick={addCustomOption}>
           옵션 추가하기
         </button>
-
         <button type="submit">등록하기</button>
         <button type="button" onClick={handleCancel}>
           취소하기

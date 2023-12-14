@@ -3,12 +3,15 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./RecipeDetailViewPage.css";
 import LikeButton from "../components/recipe/LikeButton";
+import { useSelector } from "react-redux";
 
 function RecipeDetailViewPage() {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState(null);
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
+  const user = useSelector((state) => state.user.userData);
+  const userId = user ? user.userId : null;
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -27,7 +30,7 @@ function RecipeDetailViewPage() {
         const likeStatusResponse = await axios.get(
           `http://localhost:8080/recipes/${recipeId}/likes/status`,
           {
-            params: { userId: 4 }, // 현재 로그인한 사용자 ID
+            params: userId, // 현재 로그인한 사용자 ID
           }
         );
         setIsLiked(likeStatusResponse.data);
@@ -49,9 +52,15 @@ function RecipeDetailViewPage() {
   };
 
   const toggleLike = async () => {
+    // 로그인 상태 확인
+    if (!userId) {
+      alert("좋아요를 누르기 위해서는 먼저 로그인해야 합니다.");
+      return;
+    }
+
     try {
       await axios.post(`http://localhost:8080/recipes/${recipeId}/likes`, {
-        userId: 4,
+        userId: userId,
       });
       setIsLiked(!isLiked);
       setRecipe((prevRecipe) => ({
@@ -86,20 +95,17 @@ function RecipeDetailViewPage() {
       </p>
       <div>
         <p>커스텀 옵션</p>
-        <ul>
-          {recipe.customOptions.map((option, index) => (
-            <li key={index}>
-              {option.customOptionId ? (
-                <span>
-                  {option.ingredientName} --- {option.quantity}
-                  {option.ingredientUnit}
-                </span>
-              ) : (
-                <span>옵션 정보를 찾을 수 없음</span>
-              )}
-            </li>
-          ))}
-        </ul>
+        {recipe.customOptions && recipe.customOptions.length > 0 ? (
+          <ul>
+            {recipe.customOptions.map((option, index) => (
+              <li key={index}>
+                {option.customOptionName}: {option.quantity}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>커스텀 옵션이 없습니다.</p>
+        )}
       </div>
       <p>설명: {recipe.description}</p>
       <button onClick={() => navigate("/recipes")}>목록</button>
