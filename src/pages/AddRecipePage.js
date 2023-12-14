@@ -15,8 +15,8 @@ function AddRecipePage() {
   const [recipeImage, setRecipeImage] = useState(null);
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
-  const user = useSelector((state) => state.user.userData);
   const [customOptions, setCustomOptions] = useState([]);
+  const user = useSelector((state) => state.user.userData);
 
   const navigate = useNavigate();
 
