@@ -4,7 +4,7 @@ import AdminPage from "./admin/adminPage/AdminPage";
 import SearchResult from "./search/component/SearchResult";
 import HomePage from "./main/homePage/HomePage";
 import SearchBar from "./search/component/SearchBar";
-import Navbar from "./user/pages/Navbar";
+import Navbar from "./User/pages/Navbar";
 import Main from "./main/Main";
 
 function App() {

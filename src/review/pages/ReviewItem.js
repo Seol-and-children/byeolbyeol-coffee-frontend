@@ -89,7 +89,7 @@ function ReviewItem () {
       <h2>{review.reviewName}</h2>
       <div className="review-info">
         <p className="date">{formatDate(review.registerTime)}</p>
-        <p className="author">{review.userNickname || '익명'}</p>
+        <p className="author">{review.userNickname || 'user02'}</p>
       </div>
       <div className="divider"></div>
       <div className="image-container">
