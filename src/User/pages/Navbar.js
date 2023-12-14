@@ -16,6 +16,7 @@ import RecipeDetailViewPage from "../../pages/RecipeDetailViewPage";
 import AddRecipePage from "../../pages/AddRecipePage";
 import SearchBar from "../../search/component/SearchBar";
 import RankingPage from "../../pages/RankingPage";
+import EditRecipePage from "../../pages/EditRecipePage";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -101,6 +102,7 @@ function Navbar() {
       </div>
       <Routes>
         <Route path="/add-recipe" element={<AddRecipePage />} />
+        <Route path="/edit-recipe/:recipeId" element={<EditRecipePage />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetailViewPage />} />
         <Route path="/recipes" element={<RecipeViewPage />} />
         <Route path="/users/login" element={<LoginPage />} />
