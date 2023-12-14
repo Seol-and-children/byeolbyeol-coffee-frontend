@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUser } from "../component/UserAction";
-import "../styles/Page.css";
+import styles from './LoginPage.module.css';
 import KakaoLoginButton from "../component/KakaoLoginButton";
 import { KAKAO_AUTH_URL } from "../component/KakaoLoginButton";
 import logo from "../../assets/logo.png";
@@ -13,6 +13,8 @@ function LoginPage() {
 
   const [userAccount, setAccount] = useState("");
   const [userPassword, setPassword] = useState("");
+
+  let sessionStorage = window.sessionStorage;
 
   const onAccountHandler = (event) => {
     setAccount(event.currentTarget.value);
@@ -33,20 +35,23 @@ function LoginPage() {
 
     dispatch(loginUser(body))
       .then((response) => {
-        console.log(response); // 서버 응답 로깅
+        console.log(response); 
         if (response.success) {
-          // response.payload.success 대신 response.success 사용
-          const { accessToken } = response.data;
-          const loggedInUserNickName = response.data.userNickName;
-          if (loggedInUserNickName) {
-            alert(`${loggedInUserNickName}님 로그인 되었습니다`);
-            sessionStorage.setItem("token", accessToken);
-            console.log("저장된 토큰:", response.data.accessToken);
-          } else {
-            alert("로그인 정보를 불러오는 데 실패했습니다");
-          }
-          navigate("/users/update");
-        } else {
+          const userNickName = response.data.userNickName;
+           const userData = {
+            accessToken: response.data.accessToken,
+            userId: response.data.userId,
+            userNickName: userNickName,
+            userAccount: response.data.userAccount,
+            userRole: response.data.userRole,
+            userBio: response.data.userBio,
+          };
+
+          sessionStorage.setItem("userData", JSON.stringify(userData));
+          alert(`${userData.userNickName}님 로그인 되었습니다`);
+          navigate("/main");
+  
+      } else {
           alert("아이디 또는 비밀번호가 틀렸습니다");
         }
       })
@@ -57,16 +62,16 @@ function LoginPage() {
   };
 
   return (
-    <div className="body">
+    <div className={styles.body}>
       <form
         style={{ display: "flex", flexDirection: "column" }}
         onSubmit={onSubmitHandler}
       >
-        <div className="blank">
-          <img className="logo" src={logo} alt="별별커피 로고" />
+        <div className={styles.blank}>
+          <img className={styles.logo} src={logo} alt="별별커피 로고" />
         </div>
-        <div className="inputDiv">
-          <label className="labelWithImage account"></label>
+        <div className={styles.inputDiv}>
+        <label className={`${styles.labelWithImage} ${styles.account}`}></label>
           <input
             type="text"
             value={userAccount}
@@ -74,8 +79,8 @@ function LoginPage() {
             placeholder="아이디를 입력하세요"
           />
         </div>
-        <div className="inputDiv">
-          <label className="labelWithImage password"></label>
+        <div className={styles.inputDiv}>
+        <label className={`${styles.labelWithImage} ${styles.password}`}></label>
           <input
             type="password"
             value={userPassword}
@@ -84,18 +89,18 @@ function LoginPage() {
           />
         </div>
         <br />
-        <button className="loginBtn">로그인</button>
+        <button className={styles.loginBtn}>로그인</button>
         <Link to="/users/signup">
-          <button className="signupBtn" type="button">
+          <button className={styles.signupBtn} type="button">
             회원가입
           </button>
         </Link>
-        <div className="inlineContainer">
-          <div className="divider"></div>
+        <div className={styles.inlineContainer}>
+          <div className={styles.divider}></div>
           <p>또는</p>
-          <div className="divider"></div>
+          <div className={styles.divider}></div>
         </div>
-        <div className="blank">
+        <div className={styles.blank}>
           <KakaoLoginButton href={KAKAO_AUTH_URL}>
             <span>카카오 로그인</span>
           </KakaoLoginButton>

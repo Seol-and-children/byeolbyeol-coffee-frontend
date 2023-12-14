@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateUser } from '../component/UserAction';
-import '../styles/Page.css';
+import { useNavigate } from "react-router-dom";
+import { UpdateUser, logoutUser } from '../component/UserAction';
+import styles from './UpdatePage.module.css';
 
 
 function UpdatePage(props) {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.user.userData);
     const token = sessionStorage.getItem('token');
+    const navigate = useNavigate();
     
     const [userNickName, setUserNickName] = useState(currentUser ? currentUser.userNickName : '');
     const [currentPassword, setCurrentPassword] = useState('');
@@ -62,7 +64,9 @@ function UpdatePage(props) {
                 console.log("Update Response:", response);
                 if (response.success) {
                     alert('정보가 업데이트되었습니다.');
-                    props.history.push('/userProfile');
+                    dispatch(logoutUser());
+                    navigate('/'); 
+                    alert("변경된 비밀번호로 다시 로그인해주세요")
                 } else {
                     alert('정보 업데이트에 실패했습니다.');
                 }
@@ -76,42 +80,42 @@ function UpdatePage(props) {
     
 
   return (
-    <div className='body'>
+    <div className={styles.body}>
       <form style={{ display: 'flex', flexDirection: 'column'}}
           onSubmit={onSubmitHandler}>  
-        <div className="header">
+        <div className={styles.header}>
             <h1>회원 정보 수정</h1>
         </div> 
-        <div className="inputDiv">
-            <label className="labelWithImage nickname"></label>
+        <div className={styles.inputDiv}>
+            <label className={`${styles.labelWithImage} ${styles.nickname}`}></label>
             <input type='text' 
             value={userNickName} 
             onChange={onUserNickNameHandler}
             placeholder="새로운 닉네임을 입력하세요" />
         </div>
-        <div className="inputDiv">
-            <label className="labelWithImage password"></label>
+        <div className={styles.inputDiv}>
+            <label className={`${styles.labelWithImage} ${styles.password}`}></label>
             <input type='password' 
             value={currentPassword} 
             onChange={onCurrentPasswordHandler} 
             placeholder="현재 비밀번호를 입력하세요" />
         </div>
-        <div className="inputDiv">                
-        <label className="labelWithImage new password"></label>
+        <div className={styles.inputDiv}>                
+        <label className={`${styles.labelWithImage} ${styles.newPassword}`}></label>
             <input type='password' 
             value={newPassword} 
             onChange={onNewPasswordHandler} 
             placeholder="새 비밀번호를 입력하세요" />
         </div>
-        <div className="inputDiv">                
-            <label className="labelWithImage confirm new password"></label>
+        <div className={styles.inputDiv}>                
+            <label className={`${styles.labelWithImage} ${styles.confirmNewPassword}`}></label>
             <input type='password' 
             value={confirmNewPassword} 
             onChange={onConfirmNewPasswordHandler} 
             placeholder="새 비밀번호를 다시 입력하세요" />
         </div>
         <br />
-        <button className="updateSubmitBtn" formAction=''>
+        <button className={styles.updateSubmitBtn} formAction=''>
             수정하기
         </button>
         </form>
