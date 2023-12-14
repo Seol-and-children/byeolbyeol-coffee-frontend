@@ -10,6 +10,7 @@ const SearchResult = () => {
     // searchWord가 변경될 때마다 inputValue 상태 업데이트
     useEffect(() => {
         setInputValue(searchWord);
+        handleDivClick('All')
     }, [searchWord]);
 
     const handleChange = (e) => {
@@ -19,6 +20,11 @@ const SearchResult = () => {
     const handleDivClick = (content) => {
         setActiveContent(content);
       };
+
+      const handleSearch = () => {
+    // 페이지 이동과 함께 새로고침
+        window.location.href = `/search/${inputValue}`;
+  };
 
       const getActiveComponent = () => {
         switch (activeContent) {
@@ -31,7 +37,7 @@ const SearchResult = () => {
             case 'CheckName':
                 return React.lazy(() => import('./check_search_result/CheckName'));       
             default:
-                return null;
+                return React.lazy(() => import('./check_search_result/All'));
         }
     };
 
@@ -49,14 +55,10 @@ const SearchResult = () => {
                                 className="result-input"
                                 value={inputValue}
                                 onChange={handleChange}
-                            />
-                        
-                        <Link to={`/search/${inputValue}`}>
+                            />           
                             <div className='search-image'>
-                                <img src="/images/search.png" alt="search icon" className="search-icon"/>
-                            </div>
-                        </Link>
-                        
+                                <img src="/images/search.png" alt="search icon" className="search-icon" onClick={handleSearch}/>
+                            </div>                       
                     </div>
                 </div>
                 <div className='middle-text'><strong>{searchWord}</strong>에 대한 검색결과는 총 **건 입니다</div>

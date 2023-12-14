@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CheckReview = ({ data }) => {
+  
   return (
     <div>
       <div>{data}리뷰 **건
