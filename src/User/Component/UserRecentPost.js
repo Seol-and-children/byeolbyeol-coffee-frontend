@@ -10,15 +10,18 @@ function UserRecentRecipes({ userId }) {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
+        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        const userId = userData.userId;
+
         const response = await axios.get('/recipes');
         const userRecipes = response.data
-          .filter(recipe => recipe.authorId === userId) // 사용자 ID로 필터링
-          .sort((a, b) => b.recipeId - a.recipeId) // 레시피 ID가 높은 순으로 정렬
-          .slice(0, 3); // 상위 3개만 선택
+          .filter(recipe => recipe.authorId === userId) 
+          .sort((a, b) => b.recipeId - a.recipeId) 
+          .slice(0, 3);
 
           console.log("Sorted and Filtered Recipes:", userRecipes);
 
-        setRecipes(userRecipes); // 상위 3개의 레시피를 상태에 설정
+        setRecipes(userRecipes);
       } catch (error) {
         console.error('Error fetching recipes', error);
       }
