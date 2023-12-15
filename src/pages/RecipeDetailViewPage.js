@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import "./RecipeDetailViewPage.css";
 import LikeButton from "../components/recipe/LikeButton";
 import { useSelector } from "react-redux";
+import FranchiseLogo from "../admin/franchise/component/FranchiseLogo";
 
 function RecipeDetailViewPage() {
   const { recipeId } = useParams();
@@ -93,42 +94,85 @@ function RecipeDetailViewPage() {
 
   return (
     <div className="recipe-detail-view-page">
-      <p>{recipe.userNickname}</p>
-      <p>{formatDate(recipe.registerTime)}</p>
-      <h2>{recipe.recipeName}</h2>
-      {userId && recipe.authorId === userId && (
-        <>
-          <button onClick={handleDelete}>삭제</button>
-          <button onClick={navigateToEdit}>수정</button>
-        </>
-      )}
-      <img
-        src={`http://localhost:8080/recipeimgs/${recipe.photoUrl}`}
-        alt={recipe.recipeName}
-      />
-      <p>프랜차이즈: {recipe.franchiseName}</p>
-      <p>
-        베이스 음료: {recipe.baseBeverageVO.name} {recipe.baseBeverageVO.size}{" "}
-        {recipe.baseBeverageVO.temperature}
-      </p>
-      <div>
-        <p>커스텀 옵션</p>
-        {recipe.customOptions && recipe.customOptions.length > 0 ? (
-          <ul>
-            {recipe.customOptions.map((option, index) => (
-              <li key={index}>
-                {option.customOptionName}: {option.quantity}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>커스텀 옵션이 없습니다.</p>
+      <div className="header">
+        <h1>RECIPE</h1>
+        {userId && recipe.authorId === userId && (
+          <div className="buttons">
+            <button className="edit-button" onClick={navigateToEdit}>
+              수정
+            </button>
+            <button className="delete-button" onClick={handleDelete}>
+              삭제
+            </button>
+          </div>
         )}
       </div>
-      <p>설명: {recipe.description}</p>
-      <button onClick={() => navigate("/recipes")}>목록</button>
-      <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
-      <p>추천수: {recipe.likesCount}</p>
+
+      <div className="author-info">
+        <p>{recipe.userNickname}</p>
+        <p>{formatDate(recipe.registerTime)}</p>
+      </div>
+
+      <div className="center-class">
+        <div className="recipe-info">
+          <div className="image-container">
+            <img
+              src={`http://localhost:8080/recipeimgs/${recipe.photoUrl}`}
+              alt={recipe.recipeName}
+            />
+          </div>
+          <div className="details">
+            <div className="recipe-title">{recipe.recipeName}</div>
+            <div className="franchise">
+              <FranchiseLogo franchiseInfo={recipe.franchiseId}></FranchiseLogo>
+            </div>
+            <div className="options">
+              <div className="base-beverage">
+                <div className="base-beverage-name">
+                  베이스 음료: {recipe.baseBeverageVO.name}
+                </div>
+                <div className="base-bevarage-size">
+                  {recipe.baseBeverageVO.size} 사이즈
+                </div>
+                <div className="base-bevarage-temperature">
+                  {recipe.baseBeverageVO.temperature}
+                </div>
+              </div>
+              <div className="custom-option">
+                <ul>
+                  {recipe.customOptions.map((option, index) => (
+                    <li className="option-row" key={index}>
+                      <div className="option-name">
+                        {option.customOptionName}
+                      </div>
+                      <div className="quantity">{option.quantity}</div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className="description">{recipe.description}</div>
+        </div>
+        <div className="report-button">
+          <button>신고하기</button>
+        </div>
+        <div className="like-button">
+          <div className="like-icon">
+            <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
+          </div>
+          <div className="like-count">{recipe.likesCount}</div>
+        </div>
+
+        <div className="comment">
+          <div className="comment-info"></div>
+          <div className="add-comment"></div>
+        </div>
+
+        <div className="list-button">
+          <button onClick={() => navigate("/recipes")}>목록</button>
+        </div>
+      </div>
     </div>
   );
 }
