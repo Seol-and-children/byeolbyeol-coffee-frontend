@@ -36,6 +36,12 @@
     font-weight: bold;
     
   }
+  .more-box {
+    width: 1179px;
+    height: 90px;
+    padding: 5px;
+    background-color: #cacaca;
+  }
   
   .report-check {
     width: 91px;
@@ -50,6 +56,7 @@
   .title {
     width: 240px;
     height: 58px;
+    cursor: pointer;
   }
   
   .author {

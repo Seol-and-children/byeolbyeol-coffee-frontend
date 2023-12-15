@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams} from 'react-router-dom';
 import '../css/resultStyles.css';
 
 const SearchResult = () => {
@@ -41,6 +41,13 @@ const SearchResult = () => {
         }
     };
 
+    const handleKeyDown = (e) => {
+        // Enter 키를 누를 때 검색 이벤트를 발생
+        if (e.key === 'Enter') {
+          handleSearch();
+        }
+      };
+
     const ActiveComponent = getActiveComponent();
 
     return (
@@ -55,6 +62,7 @@ const SearchResult = () => {
                                 className="result-input"
                                 value={inputValue}
                                 onChange={handleChange}
+                                onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
                             />           
                             <div className='search-image'>
                                 <img src="/images/search.png" alt="search icon" className="search-icon" onClick={handleSearch}/>
