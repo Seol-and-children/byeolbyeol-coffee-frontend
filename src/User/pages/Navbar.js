@@ -19,6 +19,7 @@ import RankingPage from "../../pages/RankingPage";
 import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
+import UserPage from "./UserPage";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -52,64 +53,65 @@ function Navbar() {
 
   return (
     <div>
-    <div className={styles.navbarsection}>
-      <div className={styles.innernavbar}>
-        <div className={styles.navbarbutton}>
-        <img
-          className={styles.navbarLogo}
-          src={logo}
-          alt="별별커피 로고"
-          onClick={goToHome}
-        />
-        
-        <Link to="/recipes">
-          <button id="recipe" className={styles.recipePageBtn}>
-            레시피
-          </button>
-        </Link>
+      <div className={styles.navbarsection}>
+        <div className={styles.innernavbar}>
+          <div className={styles.navbarbutton}>
+            <img
+              className={styles.navbarLogo}
+              src={logo}
+              alt="별별커피 로고"
+              onClick={goToHome}
+            />
 
-        <Link to="/ranking">
-          <button id="ranking" className={styles.rankinPagegBtn}>
-            랭킹
-          </button>
-        </Link>
-        <Link to="/">
-          <button id="cafereview" className={styles.cafereviewPagewBtn}>
-            카페리뷰
-          </button>
-        </Link>
-        <button
-          id="randomcoffee"
-          className={styles.randomPageBtn}
-          onClick={handleRandomRecipe}
-        >
-          오늘 뭐마셔?
-        </button>
-        </div>
-
-        <SearchBar />&nbsp;&nbsp;
-        <div className="container">
-          {user ? (
-            <><div className={styles.logoutBox}>
-              <UserNickName />
-              <button
-                id="logout"
-                className={styles.LogoutPageBtn}
-                onClick={handleLogout}
-              >
-                로그아웃
-              </button>
-              </div>
-            </>
-          ) : (
-            <Link to="/users/login">
-              <button id="login" className={styles.LoginPageBtn}>
-                로그인
+            <Link to="/recipes">
+              <button id="recipe" className={styles.recipePageBtn}>
+                레시피
               </button>
             </Link>
-          )}
+
+            <Link to="/ranking">
+              <button id="ranking" className={styles.rankinPagegBtn}>
+                랭킹
+              </button>
+            </Link>
+            <Link to="/">
+              <button id="cafereview" className={styles.cafereviewPagewBtn}>
+                카페리뷰
+              </button>
+            </Link>
+            <button
+              id="randomcoffee"
+              className={styles.randomPageBtn}
+              onClick={handleRandomRecipe}
+            >
+              오늘 뭐마셔?
+            </button>
+          </div>
+          <SearchBar />
+          &nbsp;&nbsp;
+          <div className="container">
+            {user ? (
+              <>
+                <div className={styles.logoutBox}>
+                  <UserNickName />
+                  <button
+                    id="logout"
+                    className={styles.LogoutPageBtn}
+                    onClick={handleLogout}
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Link to="/users/login">
+                <button id="login" className={styles.LoginPageBtn}>
+                  로그인
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
-      </div>
       </div>
       <Routes>
         <Route path="/add-recipe" element={<AddRecipePage />} />
@@ -124,6 +126,7 @@ function Navbar() {
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/search/:searchWord" element={<SearchResult />} />\
+        <Route path="/users/:userId" element={<UserPage />} />
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>

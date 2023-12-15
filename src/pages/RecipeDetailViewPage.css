@@ -60,6 +60,10 @@
   margin-bottom: 50px;
 }
 
+.user-button {
+  cursor: pointer;
+}
+
 .recipe-info {
   width: 100%;
   height: auto;
