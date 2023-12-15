@@ -13,6 +13,12 @@ const SearchBar = () => {
     }
   };
 
+  const handleKeyDown = (e) => {
+    // Enter 키를 누를 때 검색 이벤트를 발생
+    if (e.key === 'Enter') {
+      handleSearch();
+    }
+  };
 
   return (
     <div className="search-bar">
@@ -22,6 +28,7 @@ const SearchBar = () => {
         placeholder="  검색"
         value={null}
         onChange={(e) => setSearchQuery(e.target.value)}
+        onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
       />
       {/* onClick 이벤트 핸들러를 통해 페이지 이동과 함께 새로고침 */}
       <div >

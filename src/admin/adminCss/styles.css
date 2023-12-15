@@ -1,9 +1,10 @@
-.main{
+.main {
   width: auto;
   height: auto;
   display: grid;
   place-items: center;
 }
+
 .inner-main {
   width: 1440px;
   height: 1615px;
@@ -14,43 +15,68 @@
   height: 1360px;
   align-items: center;
   margin: 0 auto;
-  }
+}
 
-.admin-body-1{
+.admin-body-1 {
   display: flex;
 }
-  
-  .username {
-    font-size: 32px;
-    margin-top: 23px;
-    margin-bottom: 18px;
-    margin-left: 130px;
-  }
-  
-  
+
+.username {
+  font-size: 32px;
+  margin-top: 23px;
+  margin-bottom: 18px;
+  margin-left: 130px;
+}
+
+.check-admin{
+  width: 1199px;
+  height: 50px;
+  background-color: #FFFFFF;
+  display: flex;
+  margin: 0 auto;
+}
+
+.admin-check{
+    width: 255px;
+    height: 48px;
+    text-align: center;
+    line-height : 50px;
+    border: solid 2px #717171;
+}
+
+.admin-clicked {
+  background-color: #EC7357;
+  color: white;
+  border: solid 2px #EC7357;
+}
+
+
 .report-history {
   width: 1180px;
-  height: 680px;
+  height: 1280px;
   background-color: white;
-  border: 1px solid #D9D9D9;
+  border-left: 1px solid #D9D9D9;
+  border-right: 1px solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
 }
-  
+
 .franchise-management {
-  width: 732px;
-  height: 680px;
-  background-color: white; 
+  width: 1180px;
+  height: 1280px;
+  background-color: white;
   margin-top: 20px;
   border: 1px solid #D9D9D9;
 }
 
 .recipe-management {
-  width: 422px;
-  height: 680px;
-  background-color: white; 
+  width: 1180px;
+  height: 1280px;
+  background-color: white;
   margin-top: 20px;
   margin-left: 20px;
   border: 1px solid #D9D9D9;
 }
+
 .sub {
   display: flex;
   float: left;
