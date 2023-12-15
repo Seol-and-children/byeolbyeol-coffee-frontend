@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./FranchiseFilter.css";
+import DoubleArrowDown from "../../assets/DoubleArrowDown.svg";
+import DoubleArrowUp from "../../assets/DoubleArrowUp.svg";
 
 function FranchiseFilter({ franchises, onSelectFranchise, selectedFranchise }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,6 +35,10 @@ function FranchiseFilter({ franchises, onSelectFranchise, selectedFranchise }) {
       </div>
       <button className="franchise-toggle" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? "접기" : "카페 별 모아보기"}
+        <img
+          src={isOpen ? DoubleArrowUp : DoubleArrowDown}
+          alt={isOpen ? "접기" : "카페 별 모아보기"}
+        />
       </button>
     </div>
   );
