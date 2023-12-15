@@ -48,6 +48,8 @@ function LoginPage() {
           };
 
           sessionStorage.setItem("userData", JSON.stringify(userData));
+          sessionStorage.setItem("token", response.data.accessToken);
+          sessionStorage.setItem('userId', response.data.userId)
           alert(`${userData.userNickName}님 로그인 되었습니다`);
           navigate("/main");
   
