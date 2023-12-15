@@ -1,12 +1,187 @@
 .recipe-detail-view-page {
-  padding: 20px;
-  max-width: 600px;
-  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 80%; /* 콘텐츠 폭 제한 */
+  margin: auto; /* 페이지 중앙 정렬 */
+  padding: 50px; /* 패딩 */
+  font-family: "NanumGothic"; /* 기본 폰트 설정 */
 }
 
-.recipe-detail-view-page img {
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #000000;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-button,
+.delete-button,
+.report-button button,
+.list-button button {
+  padding: 5px 10px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+}
+
+.delete-button {
+  border-color: #ef4343;
+  color: #ef4343;
+}
+
+.author-info {
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-bottom: 1px solid #000000;
+  margin-bottom: 50px;
+}
+
+.recipe-info {
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 1px solid #a0a0a0;
+}
+
+.recipe-info .image-container {
+  flex: 1 1 40%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipe-info .image-container img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.recipe-info .details {
+  flex: 1 1 40%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.recipe-info .recipe-title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.recipe-info .franchise {
+  margin-bottom: 10px;
+}
+
+.recipe-info .options {
+  width: 100%;
+}
+
+.base-beverage {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.option-row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #a0a0a0;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+.description {
+  width: calc(100% - 30px); /* 전체 너비에서 40px을 뺀 값으로 설정 */
+  margin: 20px; /* 상하좌우에 20px의 마진 추가 */
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+  padding: 30px;
+}
+
+.report-button {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.like-button {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.like-icon {
+  width: 90px;
+  height: 90px;
+}
+
+.like-count {
+  margin-top: 5px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.comment {
   margin-bottom: 20px;
+}
+
+.list-button {
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+.center-class {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.like-button button {
+  background: none; /* 버튼 배경색 제거 */
+  border: none; /* 버튼 테두리 제거 */
+  padding: 0; /* 버튼 패딩 제거 */
+  margin: 0; /* 버튼 마진 제거 */
+  cursor: pointer; /* 마우스 오버 시 포인터 변경 */
 }
