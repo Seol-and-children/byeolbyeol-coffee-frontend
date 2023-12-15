@@ -20,7 +20,7 @@ const FranchiseAdd = ({ onDataUpdate }) => {
 
       return (
         <div>
-          <button onClick={openModal}>추가</button>
+          <button className='franchise-add-btn' onClick={openModal}>추가</button>
           {isModalOpen && <AddModal isOpen={isModalOpen} onClose={closeModal} onSubmit={handleSubmit}/>}
         </div>
     );
