@@ -52,13 +52,16 @@ function Navbar() {
 
   return (
     <div>
-      <div className={styles.navbarsection}>
+    <div className={styles.navbarsection}>
+      <div className={styles.innernavbar}>
+        <div className={styles.navbarbutton}>
         <img
           className={styles.navbarLogo}
           src={logo}
           alt="별별커피 로고"
           onClick={goToHome}
         />
+        
         <Link to="/recipes">
           <button id="recipe" className={styles.recipePageBtn}>
             레시피
@@ -82,10 +85,12 @@ function Navbar() {
         >
           오늘 뭐마셔?
         </button>
-        <SearchBar />
+        </div>
+
+        <SearchBar />&nbsp;&nbsp;
         <div className="container">
           {user ? (
-            <>
+            <><div className={styles.logoutBox}>
               <UserNickName />
               <button
                 id="logout"
@@ -94,6 +99,7 @@ function Navbar() {
               >
                 로그아웃
               </button>
+              </div>
             </>
           ) : (
             <Link to="/users/login">
@@ -103,6 +109,7 @@ function Navbar() {
             </Link>
           )}
         </div>
+      </div>
       </div>
       <Routes>
         <Route path="/add-recipe" element={<AddRecipePage />} />

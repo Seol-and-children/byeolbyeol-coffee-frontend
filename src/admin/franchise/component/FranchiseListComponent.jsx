@@ -65,7 +65,7 @@ const FranchiseList = () => {
   };
 
   return (
-    <div>
+    <div className="franchise-management">
       <div id="franchise-header">프렌차이즈 관리</div>
       <div id="main-franchise-bar">
         <div class="exam-item name">Name</div>
@@ -90,6 +90,7 @@ const FranchiseList = () => {
         ))}
       </div>
        {/* 모달 */}
+       
        {selectedFranchises && 
        (<FranchiseModal
             isOpen={selectedFranchises !== null} 

@@ -57,7 +57,7 @@ const IngredientListComponent = () => {
   };
 
   return (
-    <div>
+    <div className="recipe-management">
       <div id="ingredient-header">레시피 재료 관리</div>
       <div id="main-ingredient-bar">
         <div class="exam-item ingredient-name">재료이름</div>

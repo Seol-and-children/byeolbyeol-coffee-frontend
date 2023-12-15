@@ -29,7 +29,7 @@ const ReportList = () => {
 
   const handleSearch = (Id) => {
     // 페이지 이동과 함께 새로고침
-        window.location.href = `/recipes/${Id}`;
+    window.location.href = `/recipes/${Id}`;
   };
 
   return (
@@ -47,23 +47,24 @@ const ReportList = () => {
         <div key={report.reportId}>
           <div id="report-bar">
             <div class="exam-item category">{report.reportCategory}</div>
-            <div class="exam-item title"  onClick={() => handleSearch(report.recipeId)}>{report.contentTitle}</div>
+            <div
+              class="exam-item title"
+              onClick={() => handleSearch(report.recipeId)}
+            >
+              {report.contentTitle}
+            </div>
             <div class="exam-item author">{report.authorName}</div>
             <div class="exam-item reported">{report.reportedName}</div>
             <div class="exam-item report-content">{report.reportReason}</div>
             {/* <div class="exam-item status">{report.processing ? 'Yes' : 'No'}</div> */}
-            <div>
-            <button onClick={() => toggleMore(index)}>더보기</button>
+            <div className="exam-item status">
+              <img src="/images/moreSee.png" alt="moreSee icon" className="moreSee-icon" onClick={() => toggleMore(index)}/>
             </div>
-
-            
           </div>
           {/* 더보기 창 */}
           {showMore[index] && (
-              <div className="more-box">
-                {report.reportReason}
-              </div>
-            )}
+            <div className="more-box">{report.reportReason}</div>
+          )}
         </div>
       ))}
     </div>

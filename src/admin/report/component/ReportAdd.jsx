@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ModalComponent from './ReportAddModal';
 
 {/*신고 버튼(모달 오픈)컴포넌트*/}
-const ReportAdd = () => {
+const ReportAdd = ({addRecipeId}) => {
     const [isModalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
@@ -16,7 +16,7 @@ const ReportAdd = () => {
       return (
         <div>
           <button onClick={openModal}>신고 하기</button>
-          {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={closeModal} />}
+          {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={closeModal} getRecipeId={addRecipeId}/>}
         </div>
     );
 };

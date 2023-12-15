@@ -50,22 +50,11 @@ const ActiveComponent = getActiveComponent();
                 </div>
 
           <div className="admin-body">
-          <div className="report-history">
                         <Suspense fallback={<div>Loading...</div>}>
                             {ActiveComponent && <ActiveComponent/>}
                         </Suspense>
                         </div>
-                        </div>
 
-
-            {/* <div className="admin-body-1">
-              <div className="franchise-management">
-                <FranchisePage/>
-                </div>
-              <div className="recipe-management">
-                <IngredientsPageComponent/>
-                </div>
-            </div> */}
           </div>
         </div>
     );

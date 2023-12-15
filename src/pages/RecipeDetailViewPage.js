@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "./RecipeDetailViewPage.css";
 import LikeButton from "../components/recipe/LikeButton";
+import ReportAdd from "../admin/report/component/ReportAdd";
 import { useSelector } from "react-redux";
 import FranchiseLogo from "../admin/franchise/component/FranchiseLogo";
 
@@ -165,11 +166,13 @@ function RecipeDetailViewPage() {
           </div>
           <div className="description">{recipe.description}</div>
         </div>
+
         {userRole === 2 && !isAuthor && (
           <div className="report-button">
-            <button>신고하기</button>
-          </div>
+          <ReportAdd addRecipeId={recipe.recipeId}/>
+        </div>
         )}
+
         <div className="like-button">
           <div className="like-icon">
             <LikeButton isLiked={isLiked} toggleLike={toggleLike} />

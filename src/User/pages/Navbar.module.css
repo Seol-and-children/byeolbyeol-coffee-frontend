@@ -1,11 +1,26 @@
 .navbarsection {
+    height: 82px;
+    border-bottom: 4px solid #ccc;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+  }
+
+  .innernavbar{
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+    width: 1440px;
     height: 80px;
     padding-bottom: 2px;
     background-color: #fff;
-    border-bottom: 4px solid #ccc;
+  }
+
+  .navbarbutton{
+    width: 65%;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
   }
   
   .navbarLogo {
@@ -22,6 +37,7 @@
     background-color: #ffffff;
     border: none;
     cursor: pointer;
+    /* 오른쪽 여백 설정 */
   }
   
   .recipePageBtn:hover {
@@ -79,9 +95,16 @@
     display: flex;
     align-items: center;
   }
+
+  .logoutBox{
+    width: 180px;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+  }
   
   .LogoutPageBtn {
-    width: 80px;
+    width: 100px;
     height: 30px;
     font-size: 15px;
     font-weight: bold;

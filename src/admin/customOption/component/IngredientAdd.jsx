@@ -20,7 +20,7 @@ const IngredientAdd = ({ onDataUpdate }) => {
 
       return (
         <div>
-          <button onClick={openModal}>추가</button>
+          <button className='ingredient-add-btn' onClick={openModal}>추가</button>
           {isModalOpen && <AddModal isOpen={isModalOpen} onClose={closeModal} onSubmit={handleSubmit}/>}
         </div>
     );
