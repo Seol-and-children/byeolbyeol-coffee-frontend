@@ -3,116 +3,115 @@
   font-size: 28px;
   padding-top: 25px;
   padding-left: 10px;
-  background-color: #EC7357;
+  background-color: #ec7357;
   color: #ffffff;
-  }
-  
-  #main-franchise-bar {
-    width: 732px;
-    height: 58px;
-    display: flex;
-    border-top: 1px solid #D9D9D9;
-    border-bottom: 1px solid #D9D9D9;
-  }
-  #franchise-bar{
-    width: 732px;
-    height: 58px;
-    display: flex;
-    border-bottom: 1px solid #D9D9D9;
-  }
-  
-  /* exam 내부 div들 */
-  .exam-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-  }
-  
-  .name {
-    width: 220px;
-    height: 58px;
-  }
-  
-  .background-color {
-    width: 130px;
-    height: 58px;
-  }
-  
-  .text-color {
-    width: 130px;
-    height: 58px;
-  }
-  
-  .tag-image {
-    width: 130px;
-    height: 58px;
-    
-  }
+}
 
-  .main-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-  }
-  
-  .remove {
-    width: 122px;
-    height: 58px;
-  }
-  .wrap-modal{
-    width: 100%;
-    height: 100%;
-    color: rgb(1, 1, 1);
-  }
+#main-franchise-bar {
+  width: 732px;
+  height: 58px;
+  display: flex;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+}
+#franchise-bar {
+  width: 732px;
+  height: 58px;
+  display: flex;
+  border-bottom: 1px solid #d9d9d9;
+}
 
-  .custom-modal {
-    width: 500px;
-    height: 500px;
-    transform: translate(50%, 50%);
-    overflow: auto;
-    padding: 40px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    border: 1px solid #949494;
-  }
+/* exam 내부 div들 */
+.exam-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
 
-  .modal-top{
-    width: 100%;
-    height: 60px;
-    justify-content: center;
-    display: flex;
-    font-size: 25px;
-  }
+.name {
+  width: 220px;
+  height: 58px;
+}
 
-  .wrap-modal{
-    height: 355px
-  }
+.background-color {
+  width: 130px;
+  height: 58px;
+}
 
-  .modal-form {
-    display: flex;
-    flex-direction: column;
-    font-size: 20px;
-  }
+.text-color {
+  width: 130px;
+  height: 58px;
+}
 
-  .modal-form label {
-    margin-bottom: 10px;
-  }
-  
-  .modal-form input {
-    padding: 8px;
-    width: 200px;
-    margin-bottom: 15px;
-  }
-  
-  .modal-form button {
-    padding: 10px;
-    background-color: #737373;
-    width: 100px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
-  }
+.tag-image {
+  width: 130px;
+  height: 58px;
+}
+
+.main-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.remove {
+  width: 122px;
+  height: 58px;
+}
+.wrap-modal {
+  width: 100%;
+  height: 100%;
+  color: rgb(1, 1, 1);
+}
+
+.custom-modal {
+  width: 500px;
+  height: 500px;
+  transform: translate(50%, 50%);
+  overflow: auto;
+  padding: 40px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  border: 1px solid #949494;
+}
+
+.modal-top {
+  width: 100%;
+  height: 60px;
+  justify-content: center;
+  display: flex;
+  font-size: 25px;
+}
+
+.wrap-modal {
+  height: 355px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.modal-form label {
+  margin-bottom: 10px;
+}
+
+.modal-form input {
+  padding: 8px;
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.modal-form button {
+  padding: 10px;
+  background-color: #737373;
+  width: 100px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+}
