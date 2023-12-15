@@ -1,15 +1,23 @@
+html {
+  overflow-y: scroll;
+}
+
 .recipe-view-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 
-/* Sort container and menu styles */
-.sort-container {
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+.sort-button-container {
   position: relative;
-  align-self: flex-end; /* Align the sort button to the right */
-  margin-bottom: 20px;
 }
 
 .sort-button {
@@ -27,7 +35,7 @@
 
 .sort-menu {
   position: absolute;
-  top: -100%; /* Adjust this value to position the menu above the button */
+  top: -100%;
   right: 0;
   background-color: #f8f9fa;
   border: 1px solid #ccc;
@@ -52,7 +60,6 @@
   color: white;
 }
 
-/* Pagination styles */
 .pagination-container {
   display: flex;
   justify-content: center;

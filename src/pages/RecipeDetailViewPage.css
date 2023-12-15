@@ -25,7 +25,6 @@
 
 .buttons {
   display: flex;
-  gap: 10px;
 }
 
 .edit-button,
@@ -40,6 +39,7 @@
   background-color: #ffffff;
   text-align: center;
   cursor: pointer;
+  margin-left: 6px;
 }
 
 .delete-button {
