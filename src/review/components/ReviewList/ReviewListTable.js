@@ -9,7 +9,6 @@ const formatDate = (dateString) => {
 };
 
 const ReviewListTable = ({ reviews }) => {
-  // Check if reviews is defined before using map
   if (!reviews || !Array.isArray(reviews)) {
     return <div className="review-list-table">리뷰가 없습니다.</div>;
   }
