@@ -1,12 +1,10 @@
 import React, { useRef, useEffect, useState } from "react";
 import RecipeCard from "../../components/recipe/RecipeCard";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./RecipeFlex.css";
 
 function TodayCoffee() {
   const containerRef = useRef(null);
-  const navigate = useNavigate();
   const [randomRecipes, setRandomRecipes] = useState([]);
 
   const fetchRandomRecipes = async () => {
@@ -18,8 +16,11 @@ function TodayCoffee() {
       const shuffledRecipes = recipes.sort(() => Math.random() - 0.5);
 
       // 원하는 개수만큼 선택
-      const numberOfRandomRecipes = 10; // 변경 가능
-      const selectedRandomRecipes = shuffledRecipes.slice(0, numberOfRandomRecipes);
+      const numberOfRandomRecipes = 5; // 변경 가능
+      const selectedRandomRecipes = shuffledRecipes.slice(
+        0,
+        numberOfRandomRecipes
+      );
 
       setRandomRecipes(selectedRandomRecipes);
     } catch (error) {
@@ -53,10 +54,16 @@ function TodayCoffee() {
         ))}
       </div>
       <div className="scroll-buttons">
-        <button className="scroll-button scroll-button-left" onClick={handleScrollLeft}>
+        <button
+          className="scroll-button scroll-button-left"
+          onClick={handleScrollLeft}
+        >
           <span className="material-symbols-outlined">chevron_left</span>
         </button>
-        <button className="scroll-button scroll-button-right" onClick={handleScrollRight}>
+        <button
+          className="scroll-button scroll-button-right"
+          onClick={handleScrollRight}
+        >
           <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>

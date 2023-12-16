@@ -26,11 +26,17 @@ function TodayCoffee({ recipes }) {
         ))}
       </div>
       <div className="scroll-buttons">
-        <button className="scroll-button scroll-button-left" onClick={handleScrollLeft}>
-        <span className="material-symbols-outlined">chevron_left</span>
+        <button
+          className="scroll-button scroll-button-left"
+          onClick={handleScrollLeft}
+        >
+          <span className="material-symbols-outlined">chevron_left</span>
         </button>
-        <button className="scroll-button scroll-button-right" onClick={handleScrollRight}>
-        <span className="material-symbols-outlined">chevron_right</span>
+        <button
+          className="scroll-button scroll-button-right"
+          onClick={handleScrollRight}
+        >
+          <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
     </div>

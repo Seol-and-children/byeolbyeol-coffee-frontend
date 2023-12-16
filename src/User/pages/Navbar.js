@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
 import axios from "axios";
@@ -24,7 +24,6 @@ import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
 import ReviewWrite from "../../review/pages/ReviewWrite";
 import Main from "../../main/Main";
-
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -119,6 +118,7 @@ function Navbar() {
         </div>
       </div>
       <Routes>
+        <Route path="/" element={<Navigate to="/main" replace />} />
         <Route path="/main" element={<Main />} />
         <Route path="/add-recipe" element={<AddRecipePage />} />
         <Route path="/edit-recipe/:recipeId" element={<EditRecipePage />} />
@@ -136,7 +136,6 @@ function Navbar() {
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
-        
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>

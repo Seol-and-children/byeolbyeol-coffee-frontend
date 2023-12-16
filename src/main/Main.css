@@ -1,32 +1,11 @@
 /* Main.css */
-.main {
-    width: 100%;
-    margin: auto;
-  }
-  
-  .section {
-    margin-bottom: 2rem;
-  }
-  
-  .section h2 {
-    font-size: 1.5em;
-    margin-bottom: 1rem;
-  }
-  
-  .cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  /* RecipeCard.css에서 정의된 스타일을 재정의하거나 추가할 수 있습니다 */
-  .recipe-card {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-  }
-  
-  .recipe-card:hover {
-    transform: translateY(-5px);
-  }
-  
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-container {
+  max-width: 1200px;
+}

@@ -64,7 +64,7 @@ function RecipeDetailViewPage() {
   };
 
   const navigateToUserPage = () => {
-    navigate(`/users/${recipe.authorId}`); // 아이디가 아니라 Account였네 이런!!!
+    navigate(`/users/${recipe.authorId}`);
   };
 
   const navigateToEdit = () => {

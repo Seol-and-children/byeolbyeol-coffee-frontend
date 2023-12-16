@@ -17,7 +17,7 @@
 }
 
 .navbarbutton {
-  width: 65%;
+  width: 60%;
   display: flex;
   padding: 0 10px;
   align-items: center;
@@ -26,6 +26,7 @@
 .navbarLogo {
   max-height: 100%;
   margin: 0 30px 0 100px;
+  cursor: pointer;
 }
 
 .recipePageBtn {
@@ -37,11 +38,6 @@
   background-color: #ffffff;
   border: none;
   cursor: pointer;
-  /* 오른쪽 여백 설정 */
-}
-
-.recipePageBtn:hover {
-  background-color: #c2bebe;
 }
 
 .rankinPagegBtn {
@@ -55,10 +51,6 @@
   cursor: pointer;
 }
 
-.rankinPagegBtn:hover {
-  background-color: #c2bebe;
-}
-
 .cafereviewPagewBtn {
   width: 120px;
   height: 60px;
@@ -70,10 +62,6 @@
   cursor: pointer;
 }
 
-.cafereviewPagewBtn:hover {
-  background-color: #c2bebe;
-}
-
 .randomPageBtn {
   width: 170px;
   height: 60px;
@@ -83,10 +71,9 @@
   background-color: #ffffff;
   border: none;
   cursor: pointer;
-}
-
-.randomPageBtn:hover {
-  background-color: #c2bebe;
+  white-space: nowrap;
+  overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+  text-overflow: ellipsis;
 }
 
 .container {
@@ -97,24 +84,24 @@
 }
 
 .logoutBox {
-  width: 180px;
   display: flex;
   align-items: center;
-  margin-left: 10%;
+  justify-items: center;
+  margin-left: 15px;
+  border: 1px solid #000;
 }
 
 .LogoutPageBtn {
   width: 100px;
   height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: #57371b;
+  color: #000000;
   background-color: #ffffff;
-  padding: 3px;
   margin: 5px;
   cursor: pointer;
   border-radius: 20px;
-  border: 2px solid #000;
+  border: 1px solid #000;
+  font-family: "NanumGothic";
 }
 
 .LogoutPageBtn:hover {
@@ -122,18 +109,16 @@
 }
 
 .LoginPageBtn {
-  width: 80px;
+  width: 100px;
   height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: #57371b;
+  color: #000000;
   background-color: #ffffff;
-  padding: 3px;
   margin: 5px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  border: 2px solid #000;
+  border: 1px solid #000;
+  font-family: "NanumGothic";
 }
 
 .LoginPageBtn:hover {
