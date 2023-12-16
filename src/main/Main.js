@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import RecipeGrid from "./components/RecipeFlex";
+import TodayCoffee from "./components/TodayCoffee";
+import NewRecipe from "./components/NewRecipe";
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]);
@@ -51,9 +52,15 @@ function RecipeViewPage() {
 
   
   return (
-    <div className="recipe-view-page">
-      <RecipeGrid recipes={recipes} />
+    <div>
+      <div className="today-coffee">
+        <TodayCoffee recipes={recipes} />
+      </div>
+      <div className="new-recipe">
+        <NewRecipe recipes={recipes} />
+      </div>
     </div>
+    
   );
 }
 

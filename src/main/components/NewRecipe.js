@@ -2,24 +2,24 @@ import React, { useRef } from "react";
 import RecipeCard from "./RecipeCard";
 import "./RecipeFlex.css";
 
-function RecipeFlex({ recipes }) {
+function TodayCoffee({ recipes }) {
   const containerRef = useRef(null);
 
   const handleScrollLeft = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft -= 300;
+      containerRef.current.scrollLeft -= 322;
     }
   };
 
   const handleScrollRight = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += 300;
+      containerRef.current.scrollLeft += 324;
     }
   };
 
   return (
     <div className="recipe-flex-container">
-      <h2>오늘의 커피</h2>
+      <h2 className="title">새로운 레시피</h2>
       <div className="recipe-flex" ref={containerRef}>
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
@@ -27,14 +27,14 @@ function RecipeFlex({ recipes }) {
       </div>
       <div className="scroll-buttons">
         <button className="scroll-button scroll-button-left" onClick={handleScrollLeft}>
-          {"<"}
+        <span className="material-symbols-outlined">chevron_left</span>
         </button>
         <button className="scroll-button scroll-button-right" onClick={handleScrollRight}>
-          {">"}
+        <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
     </div>
   );
 }
 
-export default RecipeFlex;
+export default TodayCoffee;
