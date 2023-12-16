@@ -1,15 +1,41 @@
+.ranking {
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* 중앙 정렬 */
+}
+
+.ranking-buttons {
+  max-width: 1200px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-bottom: 1px solid #a0a0a0;
+}
+
 .ranking-buttons button {
-  /* 기본 버튼 스타일 */
+  min-width: 120px;
+  height: 60px;
   padding: 10px;
-  margin-right: 5px;
-  background-color: #f0f0f0;
-  border: 1px solid #dcdcdc;
+  background-color: #ffffff;
   cursor: pointer;
+  font-family: "NanumGothic";
+  font-size: 16px;
+  font-weight: bold;
+  border-style: none;
+  position: relative;
 }
 
 .ranking-buttons button.active {
-  /* 활성화된 버튼 스타일 */
-  background-color: #007bff;
-  color: white;
-  border-color: #0056b3;
+  border: 1px solid #a0a0a0;
+  border-bottom: none;
+  bottom: -1px;
+}
+
+.ranking-buttons button.active .ranking-text {
+  transform: translateY(-1px);
 }

@@ -25,7 +25,7 @@ function filterRecipesByDate(recipes, timeRange) {
 
 function RankingPage() {
   const [rankedRecipes, setRankedRecipes] = useState([]);
-  const [timeRange, setTimeRange] = useState("weekly"); // 현재 선택된 랭킹 카테고리 상태
+  const [timeRange, setTimeRange] = useState("weekly");
 
   useEffect(() => {
     const fetchRankedRecipes = async () => {
@@ -33,6 +33,7 @@ function RankingPage() {
         const response = await axios.get("http://localhost:8080/recipes");
         let filteredRecipes = filterRecipesByDate(response.data, timeRange);
         filteredRecipes.sort((a, b) => b.likesCount - a.likesCount);
+        filteredRecipes = filteredRecipes.slice(0, 9);
         setRankedRecipes(filteredRecipes);
       } catch (error) {
         console.error("랭킹 정보를 가져오는데 실패했습니다:", error);
@@ -40,38 +41,38 @@ function RankingPage() {
     };
 
     fetchRankedRecipes();
-  }, [timeRange]); // timeRange가 변경될 때마다 랭킹 데이터를 새로 가져옵니다.
+  }, [timeRange]);
 
   return (
-    <div>
+    <div className="ranking">
       <div className="ranking-buttons">
         <button
           onClick={() => setTimeRange("weekly")}
           className={timeRange === "weekly" ? "active" : ""}
         >
-          주간 랭킹
+          <div className="ranking-text">주간 랭킹</div>
         </button>
         <button
           onClick={() => setTimeRange("monthly")}
           className={timeRange === "monthly" ? "active" : ""}
         >
-          월간 랭킹
+          <div className="ranking-text">월간 랭킹</div>
         </button>
         <button
           onClick={() => setTimeRange("yearly")}
           className={timeRange === "yearly" ? "active" : ""}
         >
-          연간 랭킹
+          <div className="ranking-text">연간 랭킹</div>
         </button>
         <button
           onClick={() => setTimeRange("allTime")}
           className={timeRange === "allTime" ? "active" : ""}
         >
-          역대 랭킹
+          <div className="ranking-text">역대 랭킹</div>
         </button>
       </div>
       {rankedRecipes.length > 0 ? (
-        <RecipeGrid recipes={rankedRecipes} />
+        <RecipeGrid recipes={rankedRecipes} showRanks={true} />
       ) : (
         <p>랭킹에 등록된 레시피가 없습니다.</p>
       )}
