@@ -6,6 +6,7 @@ import Pagination from "../components/common/Pagination";
 import FranchiseFilter from "../components/recipe/FranchiseFilter";
 import "./RecipeViewPage.css";
 import { useSelector } from "react-redux";
+import SortIcon from "../assets/Sort.svg";
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]);
@@ -115,6 +116,7 @@ function RecipeViewPage() {
     } else {
       setSelectedFranchise(franchise);
     }
+    setCurrentPage(1);
     fetchRecipes();
   };
 
@@ -125,19 +127,6 @@ function RecipeViewPage() {
       return;
     }
     navigate("/add-recipe");
-  };
-
-  const getSortButtonText = () => {
-    switch (sortOrder) {
-      case "time":
-        return "최신순";
-      case "old":
-        return "오래된순";
-      case "recommend":
-        return "추천순";
-      default:
-        return "정렬";
-    }
   };
 
   useEffect(() => {
@@ -178,7 +167,8 @@ function RecipeViewPage() {
         <div className="buttons">
           <div className="sort-button-container">
             <button className="sort-button" onClick={toggleSortMenu}>
-              {getSortButtonText()}
+              <img src={SortIcon} alt="정렬"></img>
+              정렬
             </button>
             {showSortMenu && (
               <div className="sort-menu">
@@ -210,7 +200,7 @@ function RecipeViewPage() {
             )}
           </div>
           <button className="add-recipe-button" onClick={handleAddRecipe}>
-            레시피 등록
+            레시피 올리기
           </button>
         </div>
       </div>
@@ -219,6 +209,7 @@ function RecipeViewPage() {
         recipesPerPage={recipesPerPage}
         totalRecipes={recipes.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </div>
   );

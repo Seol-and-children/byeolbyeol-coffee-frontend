@@ -63,6 +63,10 @@ function RecipeDetailViewPage() {
     }
   };
 
+  const navigateToUserPage = () => {
+    navigate(`/users/${recipe.authorId}`); // 아이디가 아니라 Account였네 이런!!!
+  };
+
   const navigateToEdit = () => {
     navigate(`/edit-recipe/${recipeId}`);
   };
@@ -121,7 +125,9 @@ function RecipeDetailViewPage() {
       </div>
 
       <div className="author-info">
-        <p>{recipe.userNickname}</p>
+        <p className="user-button" onClick={navigateToUserPage}>
+          {recipe.userNickname}
+        </p>
         <p>{formatDate(recipe.registerTime)}</p>
       </div>
 
@@ -169,8 +175,8 @@ function RecipeDetailViewPage() {
 
         {userRole === 2 && !isAuthor && (
           <div className="report-button">
-          <ReportAdd addRecipeId={recipe.recipeId}/>
-        </div>
+            <ReportAdd addRecipeId={recipe.recipeId} />
+          </div>
         )}
 
         <div className="like-button">

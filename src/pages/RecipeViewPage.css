@@ -21,47 +21,79 @@ html {
 }
 
 .sort-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
   border: none;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
+  background-color: #ec7357;
+  color: #ffffff;
+  border-radius: 3px;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.sort-button img {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
 }
 
 .sort-button:hover {
-  background-color: #0056b3;
+  background-color: #e75625;
 }
 
 .sort-menu {
   position: absolute;
-  top: -100%;
+  top: 100%;
   right: 0;
-  background-color: #f8f9fa;
+  background-color: #f8f8f8;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 5px;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .sort-option {
   padding: 5px 10px;
   border: none;
   background-color: transparent;
-  color: black;
+  color: #333;
   text-align: left;
   cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .sort-option:hover,
 .sort-option.active {
-  background-color: #007bff;
-  color: white;
+  background-color: #ddd;
+  color: #333;
 }
 
 .pagination-container {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+.add-recipe-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  background-color: #ec7357;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.add-recipe-button:hover {
+  background-color: #e75625;
 }
