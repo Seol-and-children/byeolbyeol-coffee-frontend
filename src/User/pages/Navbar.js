@@ -20,6 +20,9 @@ import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
 import UserPage from "./UserPage";
+import ReviewItem from "../../review/pages/ReviewItem";
+import ReviewList from "../../review/pages/ReviewList";
+import ReviewWrite from "../../review/pages/ReviewWrite";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -74,7 +77,7 @@ function Navbar() {
                 랭킹
               </button>
             </Link>
-            <Link to="/">
+            <Link to="/reviews">
               <button id="cafereview" className={styles.cafereviewPagewBtn}>
                 카페리뷰
               </button>
@@ -127,6 +130,9 @@ function Navbar() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/search/:searchWord" element={<SearchResult />} />\
         <Route path="/users/:userId" element={<UserPage />} />
+        <Route path="/reviews" element={<ReviewList />} />
+        <Route path="/reviews/:reviewId" element={<ReviewItem />} />
+        <Route path="/review-write" element={<ReviewWrite />} />
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
