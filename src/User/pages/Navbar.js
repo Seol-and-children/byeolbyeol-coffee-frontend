@@ -23,6 +23,8 @@ import UserPage from "./UserPage";
 import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
 import ReviewWrite from "../../review/pages/ReviewWrite";
+import Main from "../../main/Main";
+
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -32,7 +34,7 @@ function Navbar() {
   console.log("userNickName 컴포넌트에서 로드한 사용자 데이터:", user);
 
   const goToHome = () => {
-    navigate("/");
+    navigate("/main");
   };
 
   const handleLogout = () => {
@@ -117,6 +119,7 @@ function Navbar() {
         </div>
       </div>
       <Routes>
+        <Route path="/main" element={<Main />} />
         <Route path="/add-recipe" element={<AddRecipePage />} />
         <Route path="/edit-recipe/:recipeId" element={<EditRecipePage />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetailViewPage />} />
@@ -133,6 +136,7 @@ function Navbar() {
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
+        
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
