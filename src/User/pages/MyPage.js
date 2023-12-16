@@ -119,14 +119,16 @@ function MyPage() {
                     <div className={styles.divider}></div>
                     <h3>{user.userBio}</h3>
                 </div>
+
                 <div className={styles.block}>
                     <h2>최근 작성한 레시피 </h2>
                     <div className={styles.divider}></div>
-                    <UserRecentRecipes userId={user.id} />
+                    <UserRecentRecipes userId={user.userid} />
                 </div>
                 
                 <div className={styles.block}>
                     <h2>최근 작성한 게시글</h2>
+                    <div className={styles.divider}></div>
                 </div>
                 <div className={styles.rightAlign}>
                     <button className={styles.deleteBtn} onClick={handleDeleteAccount}>
