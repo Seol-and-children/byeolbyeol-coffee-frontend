@@ -3,29 +3,28 @@ body {
 }
 
 .title {
-  margin-bottom: -10px;
-  margin-top: 10px;
-  margin-left: 40px;
+  font-weight: 450;
 }
 
 .recipe-flex-container {
-  border: 1px solid #000; /* 테두리 스타일 및 색상 설정 */
-  padding: 5px; /* 내부 여백 설정 */
-  position: relative; /* 상대적인 위치 설정 */
-  max-width: 60%; /* 화면 가운데 부분에 50%만 차지하도록 변경 */
+  border: 1px solid #000;
+  padding: 5px; /* 내부 여백을 5px로 조절 */
+  margin: 10px;
+  position: relative;
+  max-width: 60%;
   align-items: center;
   margin: auto; /* 가운데 정렬을 추가 */
-  margin-top: 20px; /* 위쪽 여백 설정 */
-  margin-bottom: 20px; /* 아래쪽 여백 설정 */
+
 }
 
 .recipe-flex {
   display: flex;
-  overflow-x: hidden; /* 가로 스크롤바 감추기 */
+  overflow-x: hidden;
   gap: 20px;
+  padding: 15px; /* 내부 여백을 15px로 조절 */
   margin: auto;
-  max-width: 85%;
-  scroll-behavior: smooth; /* 스크롤 행동을 부드럽게 설정 */
+  max-width: 82%;
+  scroll-behavior: smooth;
 }
 
 /* WebKit 브라우저에서 스크롤바 감추기 */
@@ -43,19 +42,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center; /* 버튼을 수직으로 중앙에 배치 */
-  margin-top: -30px; /* 버튼을 위로 이동하여 recipe-flex와 동일한 높이에 위치 */
+  margin-top: -20px; /* 버튼을 위로 이동하여 recipe-flex와 동일한 높이에 위치 */
 }
 
 .scroll-button {
   /* 버튼 스타일 설정 */
   background-color: #ffffff;
   border: none; /* 테두리 없애기 */
-  padding: 0px 15px;
+  padding: 5px 10px;
   cursor: pointer;
   color: #A0A0A0;
-  transform: translateY(-450%); /* 버튼을 수직 중앙에 위치 */
-}
-
-.material-symbols-outlined {
-  font-size: 50px;
+  transform: translateY(-50%); /* 버튼을 수직 중앙에 위치 */
 }
