@@ -58,7 +58,12 @@ const ReportList = () => {
             <div class="exam-item report-content">{report.reportReason}</div>
             {/* <div class="exam-item status">{report.processing ? 'Yes' : 'No'}</div> */}
             <div className="exam-item status">
-              <img src="/images/moreSee.png" alt="moreSee icon" className="moreSee-icon" onClick={() => toggleMore(index)}/>
+              <img
+                src="/images/moreSee.png"
+                alt="moreSee icon"
+                className="moreSee-icon"
+                onClick={() => toggleMore(index)}
+              />
             </div>
           </div>
           {/* 더보기 창 */}
