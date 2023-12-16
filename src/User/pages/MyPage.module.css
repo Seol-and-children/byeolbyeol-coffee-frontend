@@ -1,176 +1,174 @@
 .myPageContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh; 
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
 }
 
 .userinfo {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 
 .mySelfBlock {
-    width: 1000px;
-    height: 200px;
-    padding: auto;
-    margin-bottom: 20px;
-    border: 1px solid #414141;
-    border-radius: 20px;  
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    padding: 0 20px 0 20px;
+  width: 1000px;
+  height: 200px;
+  padding: auto;
+  margin-bottom: 20px;
+  border: 1px solid #414141;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 0 20px 0 20px;
 }
 
 .block {
-    width: 1000px;
-    height: 280px;
-    padding: 0 20px 0 20px;
-    margin-bottom: 20px;
-    border: 1px solid #414141;
-    border-radius: 20px;  
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
+  width: 1000px;
+  height: 280px;
+  padding: 0 20px 0 20px;
+  margin-bottom: 20px;
+  border: 1px solid #414141;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .modal {
-    display: block;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgb(0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.4);
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
-
 .modalcontainer {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .modalcontent {
-    background-color: #ffffff;
-    width: 700px;
-    height: 400px;
-    padding: 30px;
-    border-radius: 10px;
+  background-color: #ffffff;
+  width: 700px;
+  height: 400px;
+  padding: 30px;
+  border-radius: 10px;
 }
 
 .modalcontent p {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px;
 }
 
 .h1 {
-    font-size: large;
-    text-align: left; 
-
+  font-size: large;
+  text-align: left;
 }
 
 .myPageContainer p {
-    text-align: left;
+  text-align: left;
 }
 
 .divider {
-    flex-grow: 2;
-    height: 1px;
-    background-color: #464646;
+  flex-grow: 2;
+  height: 1px;
+  background-color: #464646;
 }
 
 .myPageContainer h1,
 .myPageContainer h3 {
-    text-align: left;
+  text-align: left;
 }
 
 .myPageContainer h2 {
-    text-align: left;
-    margin: 20px 10px 20px 10px;
+  text-align: left;
+  margin: 20px 10px 20px 10px;
 }
 
 .rowContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;    
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .buttonContainer {
-    display: flex;
-    justify-content: right;
+  display: flex;
+  justify-content: right;
 }
 
-.Btn{
-    font-size: 17px;
-    font-weight: bold;
-    border: #414141;
-    background-color: #ffffff;
-    border: 2px solid #000;
-    border-radius: 5px;
-    padding: 5px 10px 5px 10px; 
-    margin: 5px;
+.Btn {
+  font-size: 17px;
+  font-weight: bold;
+  border: #414141;
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 5px;
+  padding: 5px 10px 5px 10px;
+  margin: 5px;
 }
 
-.deleteBtn{
-    text-decoration-line:underline;
-    color: red;
-    font-size: 15px;
-    border: none;
-    background-color: #ffffff;
-    padding: 5px 10px 5px 10px; 
+.deleteBtn {
+  text-decoration-line: underline;
+  color: red;
+  font-size: 15px;
+  border: none;
+  background-color: #ffffff;
+  padding: 5px 10px 5px 10px;
 }
 
 .Btn img {
-    height: 20px;
-    width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .BtnCenter {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;    
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .rightAlign {
-    text-align: right;
+  text-align: right;
 }
 
 .textArea {
-    margin: 30px;
-    width: 500px;
-    height: 200px;
+  margin: 30px;
+  width: 500px;
+  height: 200px;
 }
 
 textarea {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }

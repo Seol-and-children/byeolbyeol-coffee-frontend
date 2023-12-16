@@ -1,11 +1,11 @@
 .myPageBtn {
-    font-size: 15px;
-    font-weight: bold;
-    color: #57371b;
-    background-color: #ffffff;  
-    border: none;
-  }
-  
-  .myPageBtn:hover {
-    background-color: #e9e9e9; 
-  }
+  font-size: 15px;
+  font-weight: bold;
+  color: #57371b;
+  background-color: #ffffff;
+  border: none;
+}
+
+.myPageBtn:hover {
+  background-color: #e9e9e9;
+}

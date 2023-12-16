@@ -18,7 +18,7 @@ const Pagination = ({
 
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="recipe-pagination">
         {currentPage > 1 && (
           <li className="page-item">
             <a onClick={() => paginate(1)} className="page-link">
