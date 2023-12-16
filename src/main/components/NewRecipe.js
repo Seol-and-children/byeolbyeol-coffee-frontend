@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "../../components/recipe/RecipeCard";
 import "./RecipeFlex.css";
 
 function TodayCoffee({ recipes }) {
@@ -13,7 +13,7 @@ function TodayCoffee({ recipes }) {
 
   const handleScrollRight = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += 324;
+      containerRef.current.scrollLeft += 322;
     }
   };
 

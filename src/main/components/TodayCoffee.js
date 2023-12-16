@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "../../components/recipe/RecipeCard";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./RecipeFlex.css";
