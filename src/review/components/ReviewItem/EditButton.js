@@ -5,7 +5,7 @@ const EditButton = () => {
 
   const handleClick = () => {
     // 원하는 경로로 이동하는 로직을 작성
-    navigate('/review-write/');
+    navigate('/review/write');
   };
 
   return (
