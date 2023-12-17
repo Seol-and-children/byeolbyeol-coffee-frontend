@@ -32,11 +32,10 @@ function RecipeDetailViewPage() {
         );
         setRecipe(response.data);
 
-        // 좋아요 상태 확인 요청 추가
         const likeStatusResponse = await axios.get(
           `http://localhost:8080/recipes/${recipeId}/likes/status`,
           {
-            params: { userId }, // 현재 로그인한 사용자 ID
+            params: { userId },
           }
         );
         setIsLiked(likeStatusResponse.data);
@@ -49,11 +48,9 @@ function RecipeDetailViewPage() {
   }, [recipeId, userId]);
 
   const handleDelete = async () => {
-    // 로그인된 사용자의 ID와 레시피 작성자의 ID가 일치하는지 확인
-    if (userId && recipe.authorId === userId) {
+    if (userRole === 3 || (userId && recipe.authorId === userId)) {
       const confirmDelete = window.confirm("정말로 레시피를 삭제하시겠습니까?");
       if (confirmDelete) {
-        // 사용자가 '확인'을 클릭한 경우 삭제 로직 실행
         try {
           await axios.delete(`http://localhost:8080/recipes/${recipeId}`);
           navigate("/recipes");
@@ -75,9 +72,13 @@ function RecipeDetailViewPage() {
   };
 
   const toggleLike = async () => {
-    // 로그인 상태 확인
+    if (userRole === 3) {
+      alert("관리자는 좋아요를 누를 수 없습니다.");
+      return;
+    }
+
     if (!userId) {
-      alert("좋아요를 누르기 위해서는 먼저 로그인해야 합니다.");
+      alert("먼저 로그인해야 합니다.");
       return;
     }
 

@@ -38,4 +38,5 @@
 
 .ranking-buttons button.active .ranking-text {
   transform: translateY(-1px);
+  color: #ec7357;
 }

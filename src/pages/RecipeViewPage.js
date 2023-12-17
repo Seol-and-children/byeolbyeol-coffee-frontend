@@ -17,6 +17,7 @@ function RecipeViewPage() {
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [showSortMenu, setShowSortMenu] = useState(false);
   const user = useSelector((state) => state.user.userData);
+  const userRole = user ? user.userRole : null;
   const navigate = useNavigate();
 
   const fetchRecipes = useCallback(async () => {
@@ -121,6 +122,10 @@ function RecipeViewPage() {
   };
 
   const handleAddRecipe = () => {
+    if (userRole === 3) {
+      alert("관리자는 레시피를 등록할 수 없습니다.");
+      return;
+    }
     if (!user) {
       alert("레시피 등록을 위해서는 로그인이 필요합니다.");
       navigate("/users/login");
