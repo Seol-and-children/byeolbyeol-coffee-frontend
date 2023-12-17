@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { loginUser } from "../component/UserAction";
 import styles from './LoginPage.module.css';
 import KakaoLoginButton from "../component/KakaoLoginButton";
-import { KAKAO_AUTH_URL } from "../component/KakaoLoginButton";
+import { KAKAO_AUTH_URL } from "../../config/config";
 import logo from "../../assets/logo.png";
 
 function LoginPage() {
@@ -103,9 +103,7 @@ function LoginPage() {
           <div className={styles.divider}></div>
         </div>
         <div className={styles.blank}>
-          <KakaoLoginButton href={KAKAO_AUTH_URL}>
-            <span>카카오 로그인</span>
-          </KakaoLoginButton>
+          <KakaoLoginButton href={KAKAO_AUTH_URL} />
         </div>
       </form>
     </div>

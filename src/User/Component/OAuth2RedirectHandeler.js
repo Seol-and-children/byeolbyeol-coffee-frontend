@@ -1,20 +1,30 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { kakaoLogin } from "./KakaoLogin"; 
+import axios from "axios";
 
 const OAuth2RedirectHandler = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const code = new URL(window.location.href).searchParams.get("code");
+  const navigate = useNavigate(); 
+  const code = new URL(window.location.href).searchParams.get('code'); 
 
   useEffect(() => {
     if (code) {
-      dispatch(kakaoLogin(code, navigate));
+      axios.get(`http://localhost:8080/login/oauth/kakao/callback?code=${code}`)
+        .then(res => {
+          console.log("받아오는겨? :", res);
+          const ACCESS_TOKEN = res.data.accessToken;
+          //const KakaoNickName = res.data.KakaoNickName;
+          localStorage.setItem("token", ACCESS_TOKEN);
+          navigate("/main");
+        })
+        .catch(err => {
+          console.log("로그인 에러", err);
+          window.alert("로그인에 실패하였습니다.");
+          navigate("/users/login"); 
+        });
     }
-  }, [code, dispatch, navigate]);
+  }, [code, navigate]);
 
-  return <div>카카오 로그인 처리 중...</div>;
+  return <div>로그인 처리 중...</div>;
 };
 
 export default OAuth2RedirectHandler;
