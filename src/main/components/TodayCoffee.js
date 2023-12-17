@@ -47,7 +47,7 @@ function TodayCoffee() {
 
   return (
     <div className="recipe-flex-container">
-      <h2 className="title">오늘의 커피</h2>
+      <div className="main-title">오늘의 커피</div>
       <div className="recipe-flex" ref={containerRef}>
         {randomRecipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />

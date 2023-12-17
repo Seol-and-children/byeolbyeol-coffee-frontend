@@ -19,7 +19,7 @@ function TodayCoffee({ recipes }) {
 
   return (
     <div className="recipe-flex-container">
-      <h2 className="title">새로운 레시피</h2>
+      <div className="main-title">새로운 레시피</div>
       <div className="recipe-flex" ref={containerRef}>
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />

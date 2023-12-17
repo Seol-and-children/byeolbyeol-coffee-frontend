@@ -1,9 +1,4 @@
 /* ReviewList.css */
-
-body {
-  font-family: 'NanumGothic', sans-serif;
-}
-
 .pagination {
   display: flex;
   list-style: none;
@@ -26,9 +21,9 @@ body {
 }
 
 .pagination a.active {
-  background-color: #EC7357;
+  background-color: #ec7357;
   color: #fff;
-  border: 1px solid #EC7357;
+  border: 1px solid #ec7357;
 }
 
 .review-list-container {
@@ -54,13 +49,13 @@ body {
 }
 
 .write-button {
-  background-color: #EC7357;
+  background-color: #ec7357;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 3px;
   cursor: pointer;
-  font-family: 'NanumGothic', sans-serif;
+  font-family: "NanumGothic", sans-serif;
   white-space: nowrap;
   /* 텍스트가 줄 바꿈되지 않도록 설정 */
 }
@@ -71,7 +66,7 @@ body {
   font-size: 18px;
   width: 1000px;
   border-collapse: collapse;
-  font-family: 'NanumGothic', sans-serif;
+  font-family: "NanumGothic", sans-serif;
   text-align: center;
 }
 
@@ -90,7 +85,6 @@ body {
   text-overflow: ellipsis; /* 텍스트 넘칠 경우 생략 (...) 표시 */
   width: 50%; /* 50%로 변경 */
 }
-
 
 .review-table tr:not(:first-child) td {
   border-bottom: 1px solid #ddd;

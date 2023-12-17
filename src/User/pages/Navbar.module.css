@@ -1,6 +1,6 @@
 .navbarsection {
   height: 82px;
-  border-bottom: 4px solid #ccc;
+  border-bottom: 1px solid #a0a0a0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,7 @@
   display: flex;
   padding: 0 10px;
   align-items: center;
+  justify-content: center;
   width: 1440px;
   height: 80px;
   padding-bottom: 2px;
@@ -25,54 +26,19 @@
 
 .navbarLogo {
   max-height: 100%;
-  margin: 0 30px 0 100px;
-  cursor: pointer;
-}
-
-.recipePageBtn {
-  width: 120px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-}
-
-.rankinPagegBtn {
-  width: 100px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-}
-
-.cafereviewPagewBtn {
-  width: 120px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
+  margin-right: 50px;
   cursor: pointer;
 }
 
 .randomPageBtn {
   width: 170px;
-  height: 60px;
   font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
+  font-weight: 500;
   background-color: #ffffff;
   border: none;
   cursor: pointer;
   white-space: nowrap;
-  overflow: hidden; /* 내용이 넘칠 경우 숨김 */
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
@@ -88,20 +54,16 @@
   align-items: center;
   justify-items: center;
   margin-left: 15px;
-  border: 1px solid #000;
 }
 
 .LogoutPageBtn {
-  width: 100px;
+  width: 80px;
   height: 30px;
-  font-size: 15px;
-  color: #000000;
+  font-size: 1rem;
   background-color: #ffffff;
   margin: 5px;
   cursor: pointer;
-  border-radius: 20px;
   border: 1px solid #000;
-  font-family: "NanumGothic";
 }
 
 .LogoutPageBtn:hover {
@@ -109,18 +71,31 @@
 }
 
 .LoginPageBtn {
-  width: 100px;
+  width: 80px;
   height: 30px;
-  font-size: 15px;
-  color: #000000;
+  font-size: 1rem;
   background-color: #ffffff;
   margin: 5px;
   cursor: pointer;
-  border-radius: 20px;
   border: 1px solid #000;
-  font-family: "NanumGothic";
 }
 
 .LoginPageBtn:hover {
   background-color: #c2bebe;
+}
+
+.navbarbutton a {
+  width: 120px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  color: #000000;
+}
+
+.navbarbutton .activeNavLink {
+  color: #e75625;
 }
