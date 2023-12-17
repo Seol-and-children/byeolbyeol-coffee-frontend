@@ -60,18 +60,18 @@
     height: 58px;
   }
   
-  .category {
+  .report-category {
     width: 190px;
     height: 58px;
   }
   
-  .title {
+  .report-title {
     width: 261px;
     height: 58px;
     cursor: pointer;
   }
   
-  .author {
+  .report-author {
     width: 180px;
     height: 58px;
   }

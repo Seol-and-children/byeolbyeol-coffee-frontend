@@ -87,7 +87,7 @@ const CheckRecipe = ({ data }) => {
               </div>
             </div>
           </div>
-          <br />
+          <br/>
         </div>
       ))}
     </div>

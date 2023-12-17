@@ -45,9 +45,9 @@ const ReportList = () => {
     <div className="report-history">
       <div id="report-header">신고접수내역</div>
       <div id="main-report-bar">
-        <div class="exam-item category">구분</div>
-        <div class="exam-item title">제목</div>
-        <div class="exam-item author">작성자</div>
+        <div class="exam-item report-category">구분</div>
+        <div class="exam-item report-title">제목</div>
+        <div class="exam-item report-author">작성자</div>
         <div class="exam-item reported">신고자</div>
         <div class="exam-item report-content">신고내용</div>
         <div class="exam-item status"></div>
@@ -56,14 +56,14 @@ const ReportList = () => {
       {currentRecipes.map((report, index) => (
         <div key={report.reportId}>
           <div id="report-bar">
-            <div class="exam-item category">{report.reportCategory}</div>
+            <div class="exam-item report-category">{report.reportCategory}</div>
             <div
-              class="exam-item title"
+              class="exam-item report-title"
               onClick={() => handleSearch(report.recipeId)}
             >
               {report.contentTitle}
             </div>
-            <div class="exam-item author">{report.authorName}</div>
+            <div class="exam-item report-author">{report.authorName}</div>
             <div class="exam-item reported">{report.reportedName}</div>
             <div class="exam-item report-content">{report.reportReason}</div>
             {/* <div class="exam-item status">{report.processing ? 'Yes' : 'No'}</div> */}

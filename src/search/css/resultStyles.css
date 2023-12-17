@@ -86,8 +86,7 @@
   width: 1024px;
   height: auto;
   margin-top: 30px;
-  display: flex;
-  justify-content: center;
+  
 }
 .clicked {
   background-color: #ec7357;

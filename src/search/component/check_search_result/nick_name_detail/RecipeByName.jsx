@@ -3,6 +3,7 @@ import axios from "axios";
 import { useLocation } from "react-router-dom";
 import FranchiseLogo from "../../../../admin/franchise/component/FranchiseLogo";
 import TimeLoad from "../TimeLoad";
+import "../../../css/resultStyles.css";
 
 const RecipeByName = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const RecipeByName = () => {
     fetchRecipes();
   }, [data, params]);
 
-  const handleFranchiseClick = (recipeId) => {
+  const handleRecipeNameClick = (recipeId) => {
     window.location.href = `/recipes/${recipeId}`;
   };
 
@@ -39,66 +40,70 @@ const RecipeByName = () => {
     <div className="main">
       <div className="inner-main">
         <div className="RecipeByTitle">
-          '<strong>{data}</strong>'를 가진 닉네임의 개수:{" "}
+          '<strong>{data}</strong>'을(를) 가진 닉네임의 레시피 개수:{" "}
           <strong>{recipes.length}</strong>개
         </div>
         <hr></hr>
-        {recipes.map((recipe) => (
-          <div className="sample-wrap">
-            <div className="sample-image">
-              <img
-                className="sample-image-2"
-                src={`/recipeimgs/${recipe.photoUrl}`}
-                alt={recipe.recipeName}
-              />
-            </div>
-            <div className="sample-box">
-              <div
-                className="sample-title"
-                onClick={() => handleFranchiseClick(recipe.recipeId)}
-              >
-                {recipe.recipeName}&nbsp;&nbsp;
-                <div className="search-logo">
-                  <FranchiseLogo
-                    franchiseInfo={recipe.franchiseCafeVO.franchiseId}
+        <div className="wrap-checkbox">
+          <div className="check-box">
+            {recipes.map((recipe) => (
+              <div className="sample-wrap">
+                <div className="sample-image">
+                  <img
+                    className="sample-image-2"
+                    src={`/recipeimgs/${recipe.photoUrl}`}
+                    alt={recipe.recipeName}
                   />
                 </div>
-              </div>
-              <div className="sample-content-box">
-                <div className="sample-content">{recipe.description}</div>
-                <div className="sample-info">
-                  <div className="search-left">
-                    <div className="search-time">
-                      <TimeLoad date={recipe.registerTime} />
-                      &nbsp;&nbsp;&nbsp;|&nbsp;
-                    </div>
-                    <div className="search-name">
-                      {recipe.author.userNickname}
+                <div className="sample-box">
+                  <div
+                    className="sample-title"
+                    onClick={() => handleRecipeNameClick(recipe.recipeId)}
+                  >
+                    {recipe.recipeName}&nbsp;&nbsp;
+                    <div className="search-logo">
+                      <FranchiseLogo
+                        franchiseInfo={recipe.franchiseCafeVO.franchiseId}
+                      />
                     </div>
                   </div>
-                  <div className="search-right">
-                    <div className="search-like-count">
-                      <img
-                        className="small-image"
-                        src={"/images/good.png"}
-                        alt="좋아요"
-                      />
-                      {recipe.likesCount}&nbsp;&nbsp;
-                    </div>
-                    <div className="search-view-count">
-                      <img
-                        className="small-image"
-                        src={"/images/see.png"}
-                        alt="조회수"
-                      />
-                      {recipe.viewsCount}
+                  <div className="sample-content-box">
+                    <div className="sample-content">{recipe.description}</div>
+                    <div className="sample-info">
+                      <div className="search-left">
+                        <div className="search-time">
+                          <TimeLoad date={recipe.registerTime} />
+                          &nbsp;&nbsp;&nbsp;|&nbsp;
+                        </div>
+                        <div className="search-name">
+                          {recipe.author.userNickname}
+                        </div>
+                      </div>
+                      <div className="search-right">
+                        <div className="search-like-count">
+                          <img
+                            className="small-image"
+                            src={"/images/good.png"}
+                            alt="좋아요"
+                          />
+                          {recipe.likesCount}&nbsp;&nbsp;
+                        </div>
+                        <div className="search-view-count">
+                          <img
+                            className="small-image"
+                            src={"/images/see.png"}
+                            alt="조회수"
+                          />
+                          {recipe.viewsCount}
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );

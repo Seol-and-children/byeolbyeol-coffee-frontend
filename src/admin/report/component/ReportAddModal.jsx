@@ -59,10 +59,6 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
 
         <div>
           신고자: {authorName} <br></br>
-          {reportCategory},
-          {reportReason},
-          {authorName},
-          {recipeId}
           </div>
         <br/>
 

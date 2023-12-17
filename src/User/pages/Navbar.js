@@ -27,6 +27,7 @@ import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
 import RecipeByName from "../../search/component/check_search_result/nick_name_detail/RecipeByName";
+import ReviewByName from "../../search/component/check_search_result/nick_name_detail/ReviewByName";
 import UserPage from "./UserPage";
 import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
@@ -155,7 +156,8 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/moreSee/recipeByName" element={<RecipeByName />} />\
+        <Route path="/moreSee/recipeByName" element={<RecipeByName />} />
+        <Route path="/moreSee/reviewByName" element={<ReviewByName />} />
         <Route path="/search/:searchWord" element={<SearchResult />} />\
         <Route path="/users/:userId" element={<UserPage />} />
         <Route path="/reviews" element={<ReviewList />} />
