@@ -7,7 +7,7 @@ import {
   SET_USER_DATA,
   DELETE_USER,
   UPDATE_USER_BIO,
-} from "./Types";
+} from "./types";
 
 export function loginUser(dataToSubmit) {
   return (dispatch) => {

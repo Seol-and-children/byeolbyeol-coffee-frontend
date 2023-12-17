@@ -5,7 +5,6 @@ import FranchiseLogo from "../../../../admin/franchise/component/FranchiseLogo";
 import TimeLoad from "../TimeLoad";
 
 const RecipeByName = () => {
-    const [time, setTime] = useState([]);
     const location = useLocation();
 const params = new URLSearchParams(location.search);
 const data = params.get("data");
@@ -63,7 +62,7 @@ const data = params.get("data");
               <div className="sample-content">{recipe.description}</div>
               <div className="sample-info">
                   <div className="search-left">
-                    <div className="search-time"><TimeLoad date={recipe.registerTime}/>{time}&nbsp;&nbsp;&nbsp;|&nbsp;</div>
+                    <div className="search-time"><TimeLoad date={recipe.registerTime}/>&nbsp;&nbsp;&nbsp;|&nbsp;</div>
                     <div className="search-name">
                       {recipe.author.userNickname}
                     </div>
@@ -76,7 +75,7 @@ const data = params.get("data");
                     <img className="small-image" src={'/images/see.png'}/>{recipe.viewsCount}</div>
                   </div>
                 </div>
-            </div>
+            </div>y
           </div>
         </div>
       ))}
