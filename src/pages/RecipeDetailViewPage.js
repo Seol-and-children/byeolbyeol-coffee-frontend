@@ -9,6 +9,8 @@ import FranchiseLogo from "../admin/franchise/component/FranchiseLogo";
 import DeleteIcon from "../assets/DeleteIcon.svg";
 import EditIcon from "../assets/Edit.svg";
 import ListIcon from "../assets/ListIcon.svg";
+import CommentForm from "../components/recipe/CommentForm";
+import CommentsDisplay from "../components/recipe/CommentsDisplay";
 
 function RecipeDetailViewPage() {
   const { recipeId } = useParams();
@@ -18,10 +20,15 @@ function RecipeDetailViewPage() {
   const user = useSelector((state) => state.user.userData);
   const userId = user ? user.userId : null;
   const userRole = user ? user.userRole : null;
+  const [reloadComments, setReloadComments] = useState(false);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const handleCommentChange = () => {
+    setReloadComments(!reloadComments);
   };
 
   useEffect(() => {
@@ -193,9 +200,12 @@ function RecipeDetailViewPage() {
           <div className="like-count">{recipe.likesCount}</div>
         </div>
 
-        <div className="comment">
-          <div className="comment-info"></div>
-          <div className="add-comment"></div>
+        <div className="comment-section">
+          <CommentForm
+            recipeId={recipeId}
+            onCommentAdded={handleCommentChange}
+          />
+          <CommentsDisplay recipeId={recipeId} key={reloadComments} />
         </div>
 
         <div className="list-button">
