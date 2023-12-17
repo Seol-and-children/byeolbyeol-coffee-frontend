@@ -35,11 +35,15 @@ const ReviewList = () => {
 
   return (
     <div className="review-list-container">
-      <PostTitle />
+      <div className="post-title">
+        <PostTitle />
+      </div>
       <ReviewListTable reviews={reviews} />
       <div className="pagination-container">
         <Pagination currentPage={currentPage} totalPages={totalPages} />
-        <ReviewWriteButton />
+        <div className='button'>
+          <ReviewWriteButton />
+        </div>
       </div>
     </div>
   );
