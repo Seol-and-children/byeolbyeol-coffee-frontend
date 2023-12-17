@@ -15,11 +15,14 @@ const ReviewList = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
-  // 리뷰 데이터를 가져오는 함수
   const fetchReviews = async () => {
     try {
       const response = await axios.get("http://localhost:8080/reviews");
-      setReviews(response.data);
+      // 받은 데이터를 최신 글이 위로 오도록 정렬
+      const sortedReviews = response.data.sort(
+        (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+      );
+      setReviews(sortedReviews);
     } catch (error) {
       console.error("리뷰 정보를 가져오는데 실패했습니다 :", error);
     }

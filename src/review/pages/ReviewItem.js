@@ -12,8 +12,7 @@ import CommentWrite from '../components/Comment/CommentWrite';
 
 import '../css/ReviewItem.css';
 
-
-function ReviewItem () {
+function ReviewItem() {
   const { reviewId } = useParams();
   const [review, setReview] = useState(null);
   const navigate = useNavigate();
@@ -30,21 +29,24 @@ function ReviewItem () {
         const response = await axios.get(
           `http://localhost:8080/reviews/${reviewId}`
         );
-        setReview(response.data);
-
+  
+        // userNickname을 함께 가져오도록 수정
+        const { userNickname, ...reviewDetails } = response.data;
+        setReview({
+          ...reviewDetails,
+          userNickname: userNickname, // 유저 닉네임이 없을 경우 '익명'으로 설정
+        });
+  
         // 좋아요 상태 확인 요청 추가
         const likeStatusResponse = await axios.get(
           `http://localhost:8080/reviews/${reviewId}/likes/status`,
-          {
-            params: { userId: 4 }, // 현재 로그인한 사용자 ID
-          }
         );
         setIsLiked(likeStatusResponse.data);
       } catch (error) {
         console.error("데이터 로딩 중 오류 발생:", error);
       }
     };
-
+  
     fetchReviewDetails();
   }, [reviewId]);
 
@@ -89,7 +91,7 @@ function ReviewItem () {
       <h2>{review.reviewName}</h2>
       <div className="review-info">
         <p className="date">{formatDate(review.registerTime)}</p>
-        <p className="author">{review.userNickname || '익명'}</p>
+        <p className="author">{review.userNickname}</p>
       </div>
       <div className="divider"></div>
       <div className="image-container">

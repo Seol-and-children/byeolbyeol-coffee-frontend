@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TodayCoffee from "./components/TodayCoffee";
 import NewRecipe from "./components/NewRecipe";
+import TodayReview from "./components/TodayReview";
+
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]);
@@ -58,6 +60,9 @@ function RecipeViewPage() {
       </div>
       <div className="new-recipe">
         <NewRecipe recipes={recipes} />
+      </div>
+      <div className="today-review">
+        <TodayReview />
       </div>
     </div>
     
