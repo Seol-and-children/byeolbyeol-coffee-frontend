@@ -21,6 +21,7 @@
     display: flex;
     border-top: 1px solid #D9D9D9;
     border-bottom: 1px solid #D9D9D9;
+    margin-bottom: 10px;
   }
   
   #report-bar {
@@ -35,6 +36,11 @@
     height: 40%;
     margin-top: 2%;
   }
+
+  #inner-report-bar{
+    height: 1040px;
+    width: 1179px;
+  }
   
   /* exam 내부 div들 */
   .exam-item {
@@ -43,7 +49,7 @@
     
   }
   .more-box {
-    width: 1179px;
+    width: 1170px;
     height: 90px;
     padding: 5px;
     background-color: #cacaca;

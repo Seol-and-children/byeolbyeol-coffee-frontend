@@ -47,45 +47,33 @@ const SearchResult = () => {
       handleSearch();
     }
   };
-
+  
   const ActiveComponent = getActiveComponent();
 
-  return (
-    // <div>너가 찾은것은 {searchWord} 야 맞지?</div>
-    <div className="main">
-      <div className="inner-main">
-        <div className="main-text">
-          <strong>검색결과</strong>
-        </div>
-        <div className="search">
-          <div className="inner-search">
-            <input
-              type="text"
-              className="result-input"
-              value={inputValue}
-              onChange={handleChange}
-              onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
-            />
-            <div className="search-image">
-              <img
-                src="/images/search.png"
-                alt="search icon"
-                className="search-icon"
-                onClick={handleSearch}
-              />
-            </div>
-          </div>
-        </div>
-        <div className="middle-text">
-          <strong>{searchWord}</strong>에 대한 검색결과는 총 **건 입니다
-        </div>
-        <div className="check-result">
-          <div
-            className={`check ${activeContent === "All" ? "clicked" : ""}`}
-            onClick={() => handleDivClick("All")}
-          >
-            전체
-          </div>
+    return (
+        // <div>너가 찾은것은 {searchWord} 야 맞지?</div>
+        <div className='main'>
+            <div className='inner-main'>
+                <div className='main-text'><strong>검색결과</strong></div>
+                <div className='search'>
+                    <div className='inner-search'>
+                            <input
+                                type="text"
+                                className="result-input"
+                                value={inputValue}
+                                onChange={handleChange}
+                                onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
+                            />           
+                            <div className='search-image'>
+                                <img src="/images/search.png" alt="search icon" className="search-icon" onClick={handleSearch}/>
+                            </div>                       
+                    </div>
+                </div>
+                <div className='middle-text'>'<strong>{searchWord}</strong>'에 대한 검색결과</div>
+                <div className='check-result'>
+                    <div 
+                    className={`check ${activeContent === 'All' ? 'clicked' : ''}`} 
+                    onClick={() => handleDivClick('All')}>전체</div>
 
           <div
             className={`check ${

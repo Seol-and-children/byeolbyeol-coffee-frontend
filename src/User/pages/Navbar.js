@@ -19,6 +19,7 @@ import RankingPage from "../../pages/RankingPage";
 import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
+import RecipeByName from "../../search/component/check_search_result/nick_name_detail/RecipeByName";
 import UserPage from "./UserPage";
 import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
@@ -131,11 +132,13 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/moreSee/recipeByName" element={<RecipeByName />} />\
         <Route path="/search/:searchWord" element={<SearchResult />} />\
         <Route path="/users/:userId" element={<UserPage />} />
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
+
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
