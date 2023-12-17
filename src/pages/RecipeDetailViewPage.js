@@ -6,6 +6,9 @@ import LikeButton from "../components/recipe/LikeButton";
 import ReportAdd from "../admin/report/component/ReportAdd";
 import { useSelector } from "react-redux";
 import FranchiseLogo from "../admin/franchise/component/FranchiseLogo";
+import DeleteIcon from "../assets/DeleteIcon.svg";
+import EditIcon from "../assets/Edit.svg";
+import ListIcon from "../assets/ListIcon.svg";
 
 function RecipeDetailViewPage() {
   const { recipeId } = useParams();
@@ -108,6 +111,7 @@ function RecipeDetailViewPage() {
           {userRole === 3 && (
             <button className="delete-button" onClick={handleDelete}>
               삭제
+              <img src={DeleteIcon} alt="삭제"></img>
             </button>
           )}
 
@@ -115,9 +119,11 @@ function RecipeDetailViewPage() {
             <div>
               <button className="edit-button" onClick={navigateToEdit}>
                 수정
+                <img src={EditIcon} alt="수정"></img>
               </button>
               <button className="delete-button" onClick={handleDelete}>
                 삭제
+                <img src={DeleteIcon} alt="삭제"></img>
               </button>
             </div>
           )}
@@ -192,7 +198,10 @@ function RecipeDetailViewPage() {
         </div>
 
         <div className="list-button">
-          <button onClick={() => navigate("/recipes")}>목록</button>
+          <button onClick={() => navigate("/recipes")}>
+            <img src={ListIcon} alt="목록"></img>
+            목록
+          </button>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import RecipeGrid from "../components/recipe/RecipeGrid";
@@ -19,7 +19,7 @@ function RecipeViewPage() {
   const user = useSelector((state) => state.user.userData);
   const navigate = useNavigate();
 
-  const fetchRecipes = async () => {
+  const fetchRecipes = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:8080/recipes");
       let fetchedRecipes = response.data;
@@ -54,7 +54,7 @@ function RecipeViewPage() {
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }
-  };
+  }, [sortOrder, selectedFranchise]);
 
   const fetchFranchises = async () => {
     try {
@@ -141,7 +141,7 @@ function RecipeViewPage() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [selectedFranchise, showSortMenu]);
+  }, [fetchRecipes, selectedFranchise, showSortMenu]);
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;

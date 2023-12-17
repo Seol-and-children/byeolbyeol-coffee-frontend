@@ -74,11 +74,19 @@ const CheckName = ({ data }) => {
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                      <img className="small-image" src={"/images/good.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
                       {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                      <img className="small-image" src={"/images/see.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
                       {recipe.viewsCount}
                     </div>
                   </div>
@@ -135,11 +143,19 @@ const CheckName = ({ data }) => {
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                      <img className="small-image" src={"/images/good.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
                       {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                      <img className="small-image" src={"/images/see.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
                       {recipe.viewsCount}
                     </div>
                   </div>

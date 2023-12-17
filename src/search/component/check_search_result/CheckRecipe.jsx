@@ -5,7 +5,6 @@ import TimeLoad from "./TimeLoad";
 
 const CheckRecipe = ({ data }) => {
   const [recipes, setRecipes] = useState([]);
-  const [time, setTime] = useState([]);
 
   useEffect(() => {
     // Axios를 사용하여 데이터를 가져오는 부분(Get)
@@ -68,11 +67,19 @@ const CheckRecipe = ({ data }) => {
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                      <img className="small-image" src={"/images/good.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
                       {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                      <img className="small-image" src={"/images/see.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
                       {recipe.viewsCount}
                     </div>
                   </div>
