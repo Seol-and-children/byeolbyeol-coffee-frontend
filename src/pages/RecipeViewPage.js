@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import RecipeGrid from "../components/recipe/RecipeGrid";
@@ -17,9 +17,10 @@ function RecipeViewPage() {
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [showSortMenu, setShowSortMenu] = useState(false);
   const user = useSelector((state) => state.user.userData);
+  const userRole = user ? user.userRole : null;
   const navigate = useNavigate();
 
-  const fetchRecipes = async () => {
+  const fetchRecipes = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:8080/recipes");
       let fetchedRecipes = response.data;
@@ -54,7 +55,7 @@ function RecipeViewPage() {
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }
-  };
+  }, [sortOrder, selectedFranchise]);
 
   const fetchFranchises = async () => {
     try {
@@ -121,6 +122,10 @@ function RecipeViewPage() {
   };
 
   const handleAddRecipe = () => {
+    if (userRole === 3) {
+      alert("관리자는 레시피를 등록할 수 없습니다.");
+      return;
+    }
     if (!user) {
       alert("레시피 등록을 위해서는 로그인이 필요합니다.");
       navigate("/users/login");
@@ -141,7 +146,7 @@ function RecipeViewPage() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [selectedFranchise, showSortMenu]);
+  }, [fetchRecipes, selectedFranchise, showSortMenu]);
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;

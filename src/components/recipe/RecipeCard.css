@@ -58,7 +58,8 @@
 .recipe-card-franchise {
   margin-top: 0px;
   margin-bottom: 5px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .recipe-card-info {

@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styles from "./UserPage.module.css";
 import OtherUserRecentRecipes from "../component/OtherUserRecentPost";
 
 function UserPage() {
   const { userId } = useParams();
   const [userInfo, setUserInfo] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
         const response = await axios.get(`/users/other/${userId}`);
         console.log("받은 응답:", response.data);
+
+        if (response.data.data.userRole === 3) {
+          alert("사용자 정보 로딩 중 오류가 발생했습니다");
+          navigate("/");
+          return;
+        }
+
         setUserInfo(response.data);
       } catch (error) {
         console.error("사용자 정보 로딩 중 오류 발생", error);
@@ -20,7 +28,7 @@ function UserPage() {
     };
 
     fetchUserInfo();
-  }, [userId]);
+  }, [userId, navigate]);
 
   useEffect(() => {
     console.log("userInfo 상태가 업데이트됨:", userInfo);

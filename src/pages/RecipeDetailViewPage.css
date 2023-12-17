@@ -17,7 +17,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #000000;
 }
 
@@ -27,15 +27,20 @@ html {
   margin: 0;
 }
 
-.buttons {
+.buttons div {
   display: flex;
+  margin-top: 10px;
 }
 
 .edit-button,
 .delete-button,
 .report-button button,
 .list-button button {
-  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 36px;
   border: 1px solid #000000;
   border-radius: 5px;
   font-weight: bold;
@@ -44,6 +49,26 @@ html {
   text-align: center;
   cursor: pointer;
   margin-left: 6px;
+}
+
+.report-button button {
+  width: 92px;
+}
+
+.edit-button img,
+.delete-button img {
+  height: 22px;
+  width: 22px;
+  margin-right: -5px;
+  margin-left: 5px;
+}
+
+.report-button img,
+.list-button img {
+  height: 22px;
+  width: 22px;
+  margin-left: -5px;
+  margin-right: 5px;
 }
 
 .delete-button {
@@ -116,6 +141,7 @@ html {
 
 .recipe-info .franchise {
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .recipe-info .options {
@@ -160,6 +186,7 @@ html {
 }
 
 .like-button {
+  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;

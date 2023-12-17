@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import FranchiseLogo from "../../../../admin/franchise/component/FranchiseLogo";
@@ -6,7 +6,10 @@ import TimeLoad from "../TimeLoad";
 
 const RecipeByName = () => {
   const location = useLocation();
-  const params = new URLSearchParams(location.search);
+  const params = useMemo(
+    () => new URLSearchParams(location.search),
+    [location.search]
+  );
   const data = params.get("data");
   const [recipes, setRecipes] = useState([]);
 
@@ -26,10 +29,9 @@ const RecipeByName = () => {
     };
 
     fetchRecipes();
-  }, [data]);
+  }, [data, params]);
 
   const handleFranchiseClick = (recipeId) => {
-    // 페이지 이동과 함께 새로고침
     window.location.href = `/recipes/${recipeId}`;
   };
 

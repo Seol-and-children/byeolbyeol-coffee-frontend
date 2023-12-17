@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import ModalComponent from './ReportAddModal';
+import React, { useState } from "react";
+import ModalComponent from "./ReportAddModal";
+import ReportIcon from "../../../assets/ReportIcon.svg";
 
-{/*신고 버튼(모달 오픈)컴포넌트*/}
-const ReportAdd = ({addRecipeId}) => {
-    const [isModalOpen, setModalOpen] = useState(false);
+const ReportAdd = ({ addRecipeId }) => {
+  const [isModalOpen, setModalOpen] = useState(false);
 
-    const openModal = () => {
-        setModalOpen(true);
-      };
+  const openModal = () => {
+    setModalOpen(true);
+  };
 
-      const closeModal = () => {
-        setModalOpen(false);
-      };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
-      return (
-        <div>
-          <button onClick={openModal}>신고 하기</button>
-          {isModalOpen && <ModalComponent isOpen={isModalOpen} onClose={closeModal} getRecipeId={addRecipeId}/>}
-        </div>
-    );
+  return (
+    <div>
+      <button onClick={openModal}>
+        <img src={ReportIcon} alt="신고하기" />
+        신고하기
+      </button>
+      {isModalOpen && (
+        <ModalComponent
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          getRecipeId={addRecipeId}
+        />
+      )}
+    </div>
+  );
 };
 
 export default ReportAdd;
