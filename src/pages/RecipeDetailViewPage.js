@@ -128,7 +128,7 @@ function RecipeDetailViewPage() {
         <p className="user-button" onClick={navigateToUserPage}>
           {recipe.userNickname}
         </p>
-        <p>{formatDate(recipe.registerTime)}</p>
+        <p className="register-time">{formatDate(recipe.registerTime)}</p>
       </div>
 
       <div className="center-class">

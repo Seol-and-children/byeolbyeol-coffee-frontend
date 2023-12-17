@@ -6,6 +6,7 @@
   border: none;
   cursor: pointer;
   font-family: "NanumGothic";
+  font-weight: 500;
 }
 
 .myPageBtn:hover {
