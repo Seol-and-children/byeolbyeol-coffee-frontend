@@ -7,7 +7,7 @@ import {
   SET_USER_DATA,
   DELETE_USER,
   UPDATE_USER_BIO,
-} from "../component/types";
+} from "../component/Types";
 
 const initialState = {
   userData: null,

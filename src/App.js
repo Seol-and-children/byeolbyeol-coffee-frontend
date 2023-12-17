@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Navbar from "./User/pages/Navbar";
+import Navbar from "./user/pages/Navbar";
 import { useDispatch } from "react-redux";
-import { SET_USER_DATA } from "./User/component/types";
+import { SET_USER_DATA } from "./user/component/Types";
 
 function App() {
   const dispatch = useDispatch();

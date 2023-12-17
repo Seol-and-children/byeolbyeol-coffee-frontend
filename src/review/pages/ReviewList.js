@@ -41,7 +41,7 @@ const ReviewList = () => {
       <ReviewListTable reviews={reviews} />
       <div className="pagination-container">
         <Pagination currentPage={currentPage} totalPages={totalPages} />
-        <div className='button'>
+        <div className='review-write-button'>
           <ReviewWriteButton />
         </div>
       </div>
