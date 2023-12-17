@@ -1,5 +1,12 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Navigate,
+  NavLink,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
 import axios from "axios";
@@ -68,22 +75,39 @@ function Navbar() {
               onClick={goToHome}
             />
 
-            <Link to="/recipes">
-              <button id="recipe" className={styles.recipePageBtn}>
-                레시피
-              </button>
-            </Link>
+            <NavLink
+              to="/recipes"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.recipePageBtn} ${styles.activeNavLink}`
+                  : styles.recipePageBtn
+              }
+            >
+              레시피
+            </NavLink>
 
-            <Link to="/ranking">
-              <button id="ranking" className={styles.rankinPagegBtn}>
-                랭킹
-              </button>
-            </Link>
-            <Link to="/reviews">
-              <button id="cafereview" className={styles.cafereviewPagewBtn}>
-                카페리뷰
-              </button>
-            </Link>
+            <NavLink
+              to="/ranking"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.rankinPageBtn} ${styles.activeNavLink}`
+                  : styles.rankinPageBtn
+              }
+            >
+              랭킹
+            </NavLink>
+
+            <NavLink
+              to="/reviews"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.cafereviewPageBtn} ${styles.activeNavLink}`
+                  : styles.cafereviewPageBtn
+              }
+            >
+              카페리뷰
+            </NavLink>
+
             <button
               id="randomcoffee"
               className={styles.randomPageBtn}
@@ -93,7 +117,6 @@ function Navbar() {
             </button>
           </div>
           <SearchBar />
-          &nbsp;&nbsp;
           <div className="container">
             {user ? (
               <>

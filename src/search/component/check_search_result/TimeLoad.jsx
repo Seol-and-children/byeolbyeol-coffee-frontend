@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const TimeLoad = ({ date }) => {
   const registerTime = new Date(date);

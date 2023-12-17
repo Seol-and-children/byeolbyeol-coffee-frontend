@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import RecipeCard from "../../components/recipe/RecipeCard";
 import "./RecipeFlex.css";
 
-function TodayCoffee({ recipes }) {
+function NewRecipe({ recipes }) {
   const containerRef = useRef(null);
 
   const handleScrollLeft = () => {
@@ -19,7 +19,7 @@ function TodayCoffee({ recipes }) {
 
   return (
     <div className="recipe-flex-container">
-      <h2 className="title">새로운 레시피</h2>
+      <div className="main-title">새로운 레시피</div>
       <div className="recipe-flex" ref={containerRef}>
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
@@ -43,4 +43,4 @@ function TodayCoffee({ recipes }) {
   );
 }
 
-export default TodayCoffee;
+export default NewRecipe;

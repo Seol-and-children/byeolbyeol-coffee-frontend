@@ -64,17 +64,31 @@ const CheckName = ({ data }) => {
                 <div className="sample-content">{recipe.description}</div>
                 <div className="sample-info">
                   <div className="search-left">
-                    <div className="search-time"><TimeLoad date={recipe.registerTime}/>&nbsp;&nbsp;&nbsp;|&nbsp;</div>
+                    <div className="search-time">
+                      <TimeLoad date={recipe.registerTime} />
+                      &nbsp;&nbsp;&nbsp;|&nbsp;
+                    </div>
                     <div className="search-name">
                       {recipe.author.userNickname}
                     </div>
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                    <img className="small-image" src={'/images/good.png'}/>{recipe.likesCount}&nbsp;&nbsp;
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
+                      {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                    <img className="small-image" src={'/images/see.png'}/>{recipe.viewsCount}</div>
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
+                      {recipe.viewsCount}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -119,17 +133,31 @@ const CheckName = ({ data }) => {
                 <div className="sample-content">{recipe.description}</div>
                 <div className="sample-info">
                   <div className="search-left">
-                    <div className="search-time"><TimeLoad date={recipe.registerTime}/>&nbsp;&nbsp;&nbsp;|&nbsp;</div>
+                    <div className="search-time">
+                      <TimeLoad date={recipe.registerTime} />
+                      &nbsp;&nbsp;&nbsp;|&nbsp;
+                    </div>
                     <div className="search-name">
                       {recipe.author.userNickname}
                     </div>
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                    <img className="small-image" src={'/images/good.png'}/>{recipe.likesCount}&nbsp;&nbsp;
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
+                      {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                    <img className="small-image" src={'/images/see.png'}/>{recipe.viewsCount}</div>
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
+                      {recipe.viewsCount}
+                    </div>
                   </div>
                 </div>
               </div>

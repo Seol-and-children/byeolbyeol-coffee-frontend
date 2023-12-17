@@ -1,8 +1,12 @@
+html {
+  font-size: 16px;
+}
+
 .recipe-detail-view-page {
   display: flex;
   align-items: center;
   flex-direction: column;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   padding: 20px;
   font-family: "NanumGothic";
@@ -13,33 +17,58 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #000000;
 }
 
 .header h1 {
-  font-size: 36px;
+  font-size: 2rem;
   font-weight: 700;
   margin: 0;
 }
 
-.buttons {
+.buttons div {
   display: flex;
+  margin-top: 10px;
 }
 
 .edit-button,
 .delete-button,
 .report-button button,
 .list-button button {
-  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 36px;
   border: 1px solid #000000;
   border-radius: 5px;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 0.8rem;
   background-color: #ffffff;
   text-align: center;
   cursor: pointer;
   margin-left: 6px;
+}
+
+.report-button button {
+  width: 92px;
+}
+
+.edit-button img,
+.delete-button img {
+  height: 22px;
+  width: 22px;
+  margin-right: -5px;
+  margin-left: 5px;
+}
+
+.report-button img,
+.list-button img {
+  height: 22px;
+  width: 22px;
+  margin-left: -5px;
+  margin-right: 5px;
 }
 
 .delete-button {
@@ -49,7 +78,9 @@
 
 .author-info {
   width: 100%;
-  font-size: 20px;
+  height: 2.5rem;
+  font-size: 1rem;
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +88,12 @@
   padding-left: 10px;
   padding-right: 10px;
   border-bottom: 1px solid #000000;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+}
+
+.author-info .register-time {
+  font-size: 0.8rem;
+  font-weight: normal;
 }
 
 .user-button {
@@ -94,17 +130,18 @@
   justify-content: flex-start;
   flex-direction: column;
   padding: 20px;
-  font-size: 14px;
+  font-size: 0.9rem;
 }
 
 .recipe-info .recipe-title {
-  font-size: 48px;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .recipe-info .franchise {
   margin-bottom: 10px;
+  font-weight: 500;
 }
 
 .recipe-info .options {
@@ -149,20 +186,25 @@
 }
 
 .like-button {
-  padding: 20px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .like-icon {
-  width: 90px;
-  height: 90px;
+  width: 72px;
+  height: 72px;
+}
+
+.like-icon img {
+  width: 72px;
+  height: 72px;
 }
 
 .like-count {
-  margin-top: 5px;
-  font-size: 30px;
+  margin-top: 10px;
+  font-size: 1.4rem;
   font-weight: bold;
 }
 
