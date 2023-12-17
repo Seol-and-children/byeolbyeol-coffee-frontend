@@ -1,24 +1,22 @@
-Modal.css
-.modal  overlay {
+Modal.css .modal overlay {
   width: 500px;
   height: 400px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000; /* 다른 요소들 위에 표시 */
-  }
-  
-  .modalcontent {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    z-index: 1001; /* modal-overlay 위에 표시 */
-    /* 여기에 추가적인 스타일을 적용할 수 있습니다 */
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* 다른 요소들 위에 표시 */
+}
+
+.modalcontent {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 1001; /* modal-overlay 위에 표시 */
+  /* 여기에 추가적인 스타일을 적용할 수 있습니다 */
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, Navigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
 import axios from "axios";
@@ -20,6 +20,11 @@ import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
 import RecipeByName from "../../search/component/check_search_result/nick_name_detail/RecipeByName";
+import UserPage from "./UserPage";
+import ReviewItem from "../../review/pages/ReviewItem";
+import ReviewList from "../../review/pages/ReviewList";
+import ReviewWrite from "../../review/pages/ReviewWrite";
+import Main from "../../main/Main";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -29,7 +34,7 @@ function Navbar() {
   console.log("userNickName 컴포넌트에서 로드한 사용자 데이터:", user);
 
   const goToHome = () => {
-    navigate("/");
+    navigate("/main");
   };
 
   const handleLogout = () => {
@@ -53,66 +58,69 @@ function Navbar() {
 
   return (
     <div>
-    <div className={styles.navbarsection}>
-      <div className={styles.innernavbar}>
-        <div className={styles.navbarbutton}>
-        <img
-          className={styles.navbarLogo}
-          src={logo}
-          alt="별별커피 로고"
-          onClick={goToHome}
-        />
-        
-        <Link to="/recipes">
-          <button id="recipe" className={styles.recipePageBtn}>
-            레시피
-          </button>
-        </Link>
+      <div className={styles.navbarsection}>
+        <div className={styles.innernavbar}>
+          <div className={styles.navbarbutton}>
+            <img
+              className={styles.navbarLogo}
+              src={logo}
+              alt="별별커피 로고"
+              onClick={goToHome}
+            />
 
-        <Link to="/ranking">
-          <button id="ranking" className={styles.rankinPagegBtn}>
-            랭킹
-          </button>
-        </Link>
-        <Link to="/">
-          <button id="cafereview" className={styles.cafereviewPagewBtn}>
-            카페리뷰
-          </button>
-        </Link>
-        <button
-          id="randomcoffee"
-          className={styles.randomPageBtn}
-          onClick={handleRandomRecipe}
-        >
-          오늘 뭐마셔?
-        </button>
-        </div>
-
-        <SearchBar />&nbsp;&nbsp;
-        <div className="container">
-          {user ? (
-            <><div className={styles.logoutBox}>
-              <UserNickName />
-              <button
-                id="logout"
-                className={styles.LogoutPageBtn}
-                onClick={handleLogout}
-              >
-                로그아웃
-              </button>
-              </div>
-            </>
-          ) : (
-            <Link to="/users/login">
-              <button id="login" className={styles.LoginPageBtn}>
-                로그인
+            <Link to="/recipes">
+              <button id="recipe" className={styles.recipePageBtn}>
+                레시피
               </button>
             </Link>
-          )}
+
+            <Link to="/ranking">
+              <button id="ranking" className={styles.rankinPagegBtn}>
+                랭킹
+              </button>
+            </Link>
+            <Link to="/reviews">
+              <button id="cafereview" className={styles.cafereviewPagewBtn}>
+                카페리뷰
+              </button>
+            </Link>
+            <button
+              id="randomcoffee"
+              className={styles.randomPageBtn}
+              onClick={handleRandomRecipe}
+            >
+              오늘 뭐마셔?
+            </button>
+          </div>
+          <SearchBar />
+          &nbsp;&nbsp;
+          <div className="container">
+            {user ? (
+              <>
+                <div className={styles.logoutBox}>
+                  <UserNickName />
+                  <button
+                    id="logout"
+                    className={styles.LogoutPageBtn}
+                    onClick={handleLogout}
+                  >
+                    로그아웃
+                  </button>
+                </div>
+              </>
+            ) : (
+              <Link to="/users/login">
+                <button id="login" className={styles.LoginPageBtn}>
+                  로그인
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
       </div>
-      </div>
       <Routes>
+        <Route path="/" element={<Navigate to="/main" replace />} />
+        <Route path="/main" element={<Main />} />
         <Route path="/add-recipe" element={<AddRecipePage />} />
         <Route path="/edit-recipe/:recipeId" element={<EditRecipePage />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetailViewPage />} />
@@ -124,8 +132,13 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/search/:searchWord" element={<SearchResult />} />
         <Route path="/moreSee/recipeByName" element={<RecipeByName />} />\
+        <Route path="/search/:searchWord" element={<SearchResult />} />\
+        <Route path="/users/:userId" element={<UserPage />} />
+        <Route path="/reviews" element={<ReviewList />} />
+        <Route path="/reviews/:reviewId" element={<ReviewItem />} />
+        <Route path="/review-write" element={<ReviewWrite />} />
+
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>

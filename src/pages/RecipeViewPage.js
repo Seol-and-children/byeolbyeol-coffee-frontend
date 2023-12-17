@@ -6,6 +6,7 @@ import Pagination from "../components/common/Pagination";
 import FranchiseFilter from "../components/recipe/FranchiseFilter";
 import "./RecipeViewPage.css";
 import { useSelector } from "react-redux";
+import SortIcon from "../assets/Sort.svg";
 
 function RecipeViewPage() {
   const [recipes, setRecipes] = useState([]);
@@ -18,15 +19,31 @@ function RecipeViewPage() {
   const user = useSelector((state) => state.user.userData);
   const navigate = useNavigate();
 
-  // 레시피 데이터를 가져오는 함수
   const fetchRecipes = async () => {
     try {
       const response = await axios.get("http://localhost:8080/recipes");
-      let sortedRecipes = response.data.sort(
-        (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
-      );
+      let fetchedRecipes = response.data;
 
-      // 프랜차이즈 필터링
+      let sortedRecipes;
+      switch (sortOrder) {
+        case "recommend":
+          sortedRecipes = [...fetchedRecipes].sort(
+            (a, b) => b.likesCount - a.likesCount
+          );
+          break;
+        case "old":
+          sortedRecipes = [...fetchedRecipes].sort(
+            (a, b) => new Date(a.registerTime) - new Date(b.registerTime)
+          );
+          break;
+        case "time":
+        default:
+          sortedRecipes = [...fetchedRecipes].sort(
+            (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+          );
+          break;
+      }
+
       if (selectedFranchise) {
         sortedRecipes = sortedRecipes.filter(
           (recipe) => recipe.franchiseName === selectedFranchise
@@ -80,103 +97,119 @@ function RecipeViewPage() {
 
   // 정렬 상태 변경 함수
   const handleSortChange = (order) => {
-    setShowSortMenu(false); // 정렬 메뉴를 닫습니다.
-    setSortOrder(order); // 정렬 순서 상태를 변경합니다.
+    setShowSortMenu(false);
+    setSortOrder(order);
+    setCurrentPage(1);
 
     if (order === "recommend") {
-      sortByRecommendation(); // 추천순으로 정렬합니다.
+      sortByRecommendation();
     } else if (order === "time") {
-      sortByTime(); // 최신순으로 정렬합니다.
+      sortByTime();
     } else if (order === "old") {
-      sortByOld(); // 오래된순으로 정렬하는 함수를 호출합니다.
+      sortByOld();
     }
   };
 
   const handleSelectFranchise = (franchise) => {
     if (selectedFranchise === franchise) {
-      setSelectedFranchise(null); // Deselect if the same franchise is clicked again
+      setSelectedFranchise(null);
     } else {
       setSelectedFranchise(franchise);
     }
+    setCurrentPage(1);
     fetchRecipes();
   };
 
   const handleAddRecipe = () => {
-    // 사용자가 로그인하지 않았을 경우
     if (!user) {
       alert("레시피 등록을 위해서는 로그인이 필요합니다.");
       navigate("/users/login");
       return;
     }
-    navigate("/add-recipe"); // 레시피 등록 페이지로 이동
+    navigate("/add-recipe");
   };
 
-  // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   useEffect(() => {
     fetchRecipes();
     fetchFranchises();
-  }, [selectedFranchise]);
+    const handleClickOutside = (event) => {
+      if (showSortMenu && !event.target.closest(".sort-button-container")) {
+        setShowSortMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedFranchise, showSortMenu]);
 
-  // 현재 페이지에 맞는 레시피를 계산합니다.
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = recipes.slice(indexOfFirstRecipe, indexOfLastRecipe);
-
-  // 페이지 변경 핸들러
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="recipe-view-page">
-      <FranchiseFilter
-        franchises={franchises}
-        onSelectFranchise={handleSelectFranchise}
-        selectedFranchise={selectedFranchise}
-      />
-      {currentRecipes.length > 0 ? (
+      <div className="grid-with-buttons">
+        <FranchiseFilter
+          franchises={franchises}
+          onSelectFranchise={handleSelectFranchise}
+          selectedFranchise={selectedFranchise}
+        />
         <RecipeGrid recipes={currentRecipes} />
-      ) : (
-        <p>
-          {selectedFranchise
-            ? `${selectedFranchise} 레시피가 없습니다.`
-            : "레시피가 없습니다."}
-        </p>
-      )}
-      <div className="sort-container">
-        <button className="sort-button" onClick={toggleSortMenu}>
-          정렬
-        </button>
-        {showSortMenu && (
-          <div className="sort-menu">
-            <button
-              className={`sort-option ${sortOrder === "time" ? "active" : ""}`}
-              onClick={() => handleSortChange("time")}
-            >
-              최신순
-            </button>
-            <button
-              className={`sort-option ${sortOrder === "old" ? "active" : ""}`}
-              onClick={() => handleSortChange("old")}
-            >
-              오래된순
-            </button>
-            <button
-              className={`sort-option ${
-                sortOrder === "recommend" ? "active" : ""
-              }`}
-              onClick={() => handleSortChange("recommend")}
-            >
-              추천순
-            </button>
-          </div>
+        {currentRecipes.length === 0 && (
+          <p className="no-recipes-message">
+            {selectedFranchise
+              ? `${selectedFranchise} 레시피가 없습니다.`
+              : "레시피가 없습니다."}
+          </p>
         )}
+        <div className="buttons">
+          <div className="sort-button-container">
+            <button className="sort-button" onClick={toggleSortMenu}>
+              <img src={SortIcon} alt="정렬"></img>
+              정렬
+            </button>
+            {showSortMenu && (
+              <div className="sort-menu">
+                <button
+                  className={`sort-option ${
+                    sortOrder === "time" ? "active" : ""
+                  }`}
+                  onClick={() => handleSortChange("time")}
+                >
+                  최신순
+                </button>
+                <button
+                  className={`sort-option ${
+                    sortOrder === "old" ? "active" : ""
+                  }`}
+                  onClick={() => handleSortChange("old")}
+                >
+                  오래된순
+                </button>
+                <button
+                  className={`sort-option ${
+                    sortOrder === "recommend" ? "active" : ""
+                  }`}
+                  onClick={() => handleSortChange("recommend")}
+                >
+                  추천순
+                </button>
+              </div>
+            )}
+          </div>
+          <button className="add-recipe-button" onClick={handleAddRecipe}>
+            레시피 올리기
+          </button>
+        </div>
       </div>
-      <button className="add-recipe-button" onClick={handleAddRecipe}>
-        레시피 등록
-      </button>
+
       <Pagination
         recipesPerPage={recipesPerPage}
         totalRecipes={recipes.length}
         paginate={paginate}
+        currentPage={currentPage}
       />
     </div>
   );

@@ -1,0 +1,11 @@
+/* Main.css */
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-container {
+  max-width: 1200px;
+}

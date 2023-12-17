@@ -1,7 +1,6 @@
-import React from 'react';
+import React from "react";
 
 const CheckReview = ({ data }) => {
-  
   return (
     <div>
       <div>리뷰 **건

@@ -1,9 +1,10 @@
-import React from 'react';
-import CheckName from './CheckName';
-import CheckRecipe from './CheckRecipe';
-import CheckReview from './CheckReview';
+import React from "react";
+import CheckName from "./CheckName";
+import CheckRecipe from "./CheckRecipe";
+import CheckReview from "./CheckReview";
 
 const All = ({ data }) => {
+
     return (
         <div>
             <div>

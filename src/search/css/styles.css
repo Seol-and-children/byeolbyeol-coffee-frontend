@@ -3,14 +3,13 @@
   align-items: center;
   width: 198px;
   height: 42px;
-  background-color: #E8E8E8;
-
+  background-color: #e8e8e8;
 }
 
 .search-input {
   width: 150px;
   height: 40px;
-  background-color: #E8E8E8;
+  background-color: #e8e8e8;
   border: none;
 }
 

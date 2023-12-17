@@ -1,29 +1,45 @@
 import React, { useState } from "react";
 import "./FranchiseFilter.css";
+import DoubleArrowDown from "../../assets/DoubleArrowDown.svg";
+import DoubleArrowUp from "../../assets/DoubleArrowUp.svg";
 
 function FranchiseFilter({ franchises, onSelectFranchise, selectedFranchise }) {
   const [isOpen, setIsOpen] = useState(false);
+  const filteredFranchises = franchises.filter(
+    (franchise) => franchise.processing
+  );
 
   return (
-    <div>
-      <button onClick={() => setIsOpen(!isOpen)}>
-        {isOpen ? "접기" : "카페 별 모아보기"}
-      </button>
-      {isOpen && (
-        <div>
-          {franchises.map((franchise) => (
+    <div className={`franchise-filter ${isOpen ? "open" : ""}`}>
+      <div className="franchise-container">
+        {filteredFranchises.map((franchise) => {
+          const isSelected = selectedFranchise === franchise.franchiseName;
+          const buttonStyle = isSelected
+            ? {
+                backgroundColor: franchise.franchiseBackColor,
+                color: franchise.franchiseFontColor,
+              }
+            : {};
+
+          return (
             <button
               key={franchise.franchiseId}
               onClick={() => onSelectFranchise(franchise.franchiseName)}
-              className={`franchise-button ${
-                selectedFranchise === franchise.franchiseName ? "selected" : ""
-              }`}
+              className={`franchise-button ${isSelected ? "selected" : ""}`}
+              style={buttonStyle}
             >
               {franchise.franchiseName}
             </button>
-          ))}
-        </div>
-      )}
+          );
+        })}
+      </div>
+      <button className="franchise-toggle" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? "접기" : "카페 별 모아보기"}
+        <img
+          src={isOpen ? DoubleArrowUp : DoubleArrowDown}
+          alt={isOpen ? "접기" : "카페 별 모아보기"}
+        />
+      </button>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import FranchiseLogo from "../../../admin/franchise/component/FranchiseLogo";
 import axios from "axios";
 import TimeLoad from "./TimeLoad";
 
+
 const CheckRecipe = ({ data }) => {
   const [recipes, setRecipes] = useState([]);
   const [time, setTime] = useState([]);
@@ -29,6 +30,7 @@ const CheckRecipe = ({ data }) => {
   return (
     <div>
       <div className="bar-title">레시피 {recipes.length}건</div>
+
       <hr></hr>
       {recipes.map((recipe) => (
         <div key={recipe.recipeId}>
@@ -40,6 +42,7 @@ const CheckRecipe = ({ data }) => {
                 alt={recipe.recipeName}
               />
             </div>
+
             <div className="sample-box">
               <div
                 className="sample-title"
@@ -68,10 +71,12 @@ const CheckRecipe = ({ data }) => {
                     <div className="search-view-count">
                     <img className="small-image" src={'/images/see.png'}/>{recipe.viewsCount}</div>
                   </div>
+
                 </div>
               </div>
             </div>
           </div>
+          <br />
         </div>
       ))}
     </div>

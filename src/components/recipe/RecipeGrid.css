@@ -1,9 +1,10 @@
 .recipe-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개의 동일한 너비 컬럼 */
-  grid-template-rows: repeat(4, 1fr); /* 4개의 동일한 높이 로우 */
-  gap: 20px; /* 카드 사이의 간격 */
-  padding: 20px; /* 그리드 주변의 여백 */
-  max-width: 1200px; /* 컨테이너의 최대 너비 */
-  margin: auto; /* 중앙 정렬 */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  min-width: 1200px;
+  min-height: 500px;
+  margin: auto;
 }

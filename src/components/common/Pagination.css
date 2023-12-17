@@ -1,4 +1,4 @@
-.pagination {
+.recipe-pagination {
   display: flex;
   justify-content: center;
   padding: 20px;
@@ -9,25 +9,33 @@
 }
 
 .page-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  color: #007bff;
-  padding: 8px 16px;
-  background-color: transparent;
-  border: 1px solid #007bff;
-  border-radius: 5px;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #a0a0a0;
+  cursor: pointer;
+}
+
+.page-link img {
+  width: 20px;
+  height: auto;
 }
 
 .page-link:hover {
-  color: #0056b3;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
 
 .page-item.active .page-link {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  color: #ffffff;
+  background-color: #ec7357;
+  border-color: #ec7357;
 }
 
 ul {

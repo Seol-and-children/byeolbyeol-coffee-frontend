@@ -14,6 +14,7 @@ function RecipeDetailViewPage() {
   const [isLiked, setIsLiked] = useState(false);
   const user = useSelector((state) => state.user.userData);
   const userId = user ? user.userId : null;
+  const userRole = user ? user.userRole : null;
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -62,6 +63,10 @@ function RecipeDetailViewPage() {
     }
   };
 
+  const navigateToUserPage = () => {
+    navigate(`/users/${recipe.authorId}`);
+  };
+
   const navigateToEdit = () => {
     navigate(`/edit-recipe/${recipeId}`);
   };
@@ -89,28 +94,40 @@ function RecipeDetailViewPage() {
     }
   };
 
+  const isAuthor = recipe && userId && recipe.authorId === userId;
+
   if (!recipe) {
-    return <div>로딩 중...</div>;
+    return <div>레시피 불러오는중...</div>;
   }
 
   return (
     <div className="recipe-detail-view-page">
       <div className="header">
         <h1>RECIPE</h1>
-        {userId && recipe.authorId === userId && (
-          <div className="buttons">
-            <button className="edit-button" onClick={navigateToEdit}>
-              수정
-            </button>
+        <div className="buttons">
+          {userRole === 3 && (
             <button className="delete-button" onClick={handleDelete}>
               삭제
             </button>
-          </div>
-        )}
+          )}
+
+          {userRole === 2 && isAuthor && (
+            <div>
+              <button className="edit-button" onClick={navigateToEdit}>
+                수정
+              </button>
+              <button className="delete-button" onClick={handleDelete}>
+                삭제
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       <div className="author-info">
-        <p>{recipe.userNickname}</p>
+        <p className="user-button" onClick={navigateToUserPage}>
+          {recipe.userNickname}
+        </p>
         <p>{formatDate(recipe.registerTime)}</p>
       </div>
 
@@ -155,9 +172,13 @@ function RecipeDetailViewPage() {
           </div>
           <div className="description">{recipe.description}</div>
         </div>
-        <div className="report-button">
-          <ReportAdd addRecipeId={recipe.recipeId}/>
-        </div>
+
+        {userRole === 2 && !isAuthor && (
+          <div className="report-button">
+            <ReportAdd addRecipeId={recipe.recipeId} />
+          </div>
+        )}
+
         <div className="like-button">
           <div className="like-icon">
             <LikeButton isLiked={isLiked} toggleLike={toggleLike} />

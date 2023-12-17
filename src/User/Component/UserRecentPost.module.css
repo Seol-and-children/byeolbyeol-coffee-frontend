@@ -1,13 +1,13 @@
 .recipeName {
-    font-size: 25px;
-    margin: 5px
+  font-size: 25px;
+  margin: 5px;
 }
 
 .recipeItem {
-    padding: 5px;
-    margin: 5px;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 100%;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  width: 980px;
+  height: 100%;
 }
