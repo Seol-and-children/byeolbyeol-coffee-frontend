@@ -2,20 +2,20 @@
   display: flex;
   align-items: center;
   width: 198px;
-  height: 42px;
+  height: 30px;
   background-color: #e8e8e8;
 }
 
 .search-input {
   width: 150px;
-  height: 40px;
+  height: 30px;
   background-color: #e8e8e8;
   border: none;
 }
 
 .search-icon {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   margin-top: 5px;
   margin-left: 5px;
 }
