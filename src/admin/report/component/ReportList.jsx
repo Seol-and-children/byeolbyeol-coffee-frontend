@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
+import Pagination from "../../../components/common/Pagination";
 import axios from "axios";
 import "../css/styles.css";
 
 const ReportList = () => {
   const [reports, setReports] = useState([]);
   const [showMore, setShowMore] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(15);
 
   useEffect(() => {
     // Axios를 사용하여 데이터를 가져오는 부분(Get)
-    axios
+     axios
       .get("/reports") // 엔드포인트 수정
       .then((response) => {
-        setReports(response.data);
+        setReports(response.data.sort((a, b) => b.reportId - a.reportId));
         // 초기에는 모두 더보기 상태를 false로 초기화
         setShowMore(new Array(response.data.length).fill(false));
       })
@@ -32,6 +35,12 @@ const ReportList = () => {
     window.location.href = `/recipes/${Id}`;
   };
 
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = reports.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const paginaten = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="report-history">
       <div id="report-header">신고접수내역</div>
@@ -43,7 +52,8 @@ const ReportList = () => {
         <div class="exam-item report-content">신고내용</div>
         <div class="exam-item status"></div>
       </div>
-      {reports.map((report, index) => (
+      <div id="inner-report-bar">
+      {currentRecipes.map((report, index) => (
         <div key={report.reportId}>
           <div id="report-bar">
             <div class="exam-item category">{report.reportCategory}</div>
@@ -58,7 +68,12 @@ const ReportList = () => {
             <div class="exam-item report-content">{report.reportReason}</div>
             {/* <div class="exam-item status">{report.processing ? 'Yes' : 'No'}</div> */}
             <div className="exam-item status">
-              <img src="/images/moreSee.png" alt="moreSee icon" className="moreSee-icon" onClick={() => toggleMore(index)}/>
+              <img
+                src="/images/moreSee.png"
+                alt="moreSee icon"
+                className="moreSee-icon"
+                onClick={() => toggleMore(index)}
+              />
             </div>
           </div>
           {/* 더보기 창 */}
@@ -67,6 +82,12 @@ const ReportList = () => {
           )}
         </div>
       ))}
+      </div>
+      <Pagination
+        recipesPerPage={recipesPerPage}
+        totalRecipes={reports.length}
+        paginate={paginaten}
+      />
     </div>
   );
 };

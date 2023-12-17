@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
 .main{
     width: auto;
     height: auto;
     display: grid;
     place-items: center;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 .inner-main {
     width: 1440px;
@@ -68,7 +71,11 @@
     height: 48px;
     text-align: center;
     line-height : 50px;
+    color: black;
+    font-size: 24px;
     border: solid 1px #717171;
+    cursor: pointer;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 .wrap-checkbox{
     width: 1440px;
@@ -80,26 +87,36 @@
     width: 1024px;
     height: auto;
     margin-top: 30px;
+    display: flex;
+  justify-content: center;
 }
 .clicked {
     background-color: #EC7357;
     color: white;
     border: solid 1px #EC7357;
+    font-family: 'Nanum Gothic', sans-serif;
   }
-
-
 
 .sample-wrap{
     width: 960px;
     height: 261px;
     display: flex;
+    margin-bottom: 15px;
 }
 .sample-image{
     width: 290px;
     height: 260px;
-    background-color: #717171;
     border-radius: 21px;
     margin-right: 15px;
+    background-color: #717171;
+    
+}
+.sample-image-2{
+    width: 289px;
+    height: 260px;
+    border-radius: 21px;
+    object-fit: cover;
+    border: solid 1px #717171;
 }
 .sample-box{
     width: 643px;
@@ -113,6 +130,7 @@
     padding-left: 5px;
     display: flex;
     cursor: pointer;
+    font-family: 'Nanum Gothic', sans-serif;
 }
 .search-logo{
     width: 74px;
@@ -128,11 +146,48 @@
 .sample-content{
     width: 633px;
     height: 155px;
-    padding: 6px;
+    padding-left: 15px;
+    padding-top: 10px;
+    
 }
 .sample-info{
-    width: 643px;
+    width: 630px;
     height: 37px;
-    border-top: solid 1px grey;
+    border-top: solid 1px rgb(208, 208, 208);
+    position: relative;
+    padding: 6px;
     display: flex;
+}
+.bar-title{
+    width: 940px;
+}
+.moresee-Btn{
+    width: 938px;
+    height: 40px;
+    color: #F1F1F1;
+    background-color: #EC7357;
+    border: solid 1px #EC7357;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.RecipeByTitle{
+    margin-left: 12px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 33px;
+}
+.search-left{
+    display: flex;
+}
+.search-right{
+position: absolute;
+  top: 6px; /* 조절이 필요한 경우 조절하세요. */
+  right: 6px;
+  display: flex;
+}
+.small-image{
+    width: 13px;
+    height: 13px;
+    margin-right: 2px;
 }

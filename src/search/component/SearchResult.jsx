@@ -69,7 +69,7 @@ const SearchResult = () => {
                             </div>                       
                     </div>
                 </div>
-                <div className='middle-text'><strong>{searchWord}</strong>에 대한 검색결과는 총 **건 입니다</div>
+                <div className='middle-text'>'<strong>{searchWord}</strong>'에 대한 검색결과</div>
                 <div className='check-result'>
                     <div 
                     className={`check ${activeContent === 'All' ? 'clicked' : ''}`} 

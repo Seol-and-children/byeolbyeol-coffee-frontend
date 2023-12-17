@@ -19,6 +19,7 @@ import RankingPage from "../../pages/RankingPage";
 import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
+import RecipeByName from "../../search/component/check_search_result/nick_name_detail/RecipeByName";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -123,7 +124,8 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
-        <Route path="/search/:searchWord" element={<SearchResult />} />\
+        <Route path="/search/:searchWord" element={<SearchResult />} />
+        <Route path="/moreSee/recipeByName" element={<RecipeByName />} />\
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
