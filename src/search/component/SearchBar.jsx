@@ -31,12 +31,11 @@ const SearchBar = () => {
         onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
       />
       {/* onClick 이벤트 핸들러를 통해 페이지 이동과 함께 새로고침 */}
-      <div>
+      <div className="search-icon-container" onClick={handleSearch}>
         <img
           src="/images/search.png"
           alt="search icon"
           className="search-icon"
-          onClick={handleSearch}
         />
       </div>
     </div>

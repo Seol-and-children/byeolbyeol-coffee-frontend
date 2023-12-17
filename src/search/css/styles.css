@@ -1,14 +1,24 @@
 .search-bar {
   display: flex;
   align-items: center;
-  width: 198px;
   height: 30px;
   background-color: #e8e8e8;
+  margin-right: 10px;
+}
+
+.search-icon-container {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 .search-input {
-  width: 150px;
+  width: 130px;
   height: 30px;
+  padding: 0;
   background-color: #e8e8e8;
   border: none;
 }
@@ -16,6 +26,4 @@
 .search-icon {
   width: 20px;
   height: 20px;
-  margin-top: 5px;
-  margin-left: 5px;
 }
