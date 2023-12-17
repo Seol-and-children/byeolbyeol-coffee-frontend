@@ -1,9 +1,12 @@
 .myPageBtn {
+  height: 30px;
   font-size: 15px;
-  font-weight: bold;
-  color: #57371b;
+  color: #000000;
   background-color: #ffffff;
   border: none;
+  cursor: pointer;
+  font-family: "NanumGothic";
+  font-weight: 500;
 }
 
 .myPageBtn:hover {

@@ -12,8 +12,6 @@ html {
 .buttons {
   display: flex;
   justify-content: space-between;
-  padding-right: 20px;
-  padding-left: 20px;
 }
 
 .sort-button-container {
@@ -24,7 +22,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   background-color: #ec7357;
   color: #ffffff;
@@ -84,7 +82,7 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border: none;
   background-color: #ec7357;
   color: #ffffff;

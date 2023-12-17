@@ -33,7 +33,7 @@ const FranchiseLogo = ({ franchiseInfo }) => {
           color: franchise.franchiseFontColor,
         }}
       >
-        {franchise.franchiseName}
+        <div className="logo-name">{franchise.franchiseName}</div>
       </div>
     </div>
   );

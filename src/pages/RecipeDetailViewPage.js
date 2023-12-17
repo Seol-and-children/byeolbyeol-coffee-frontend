@@ -64,7 +64,7 @@ function RecipeDetailViewPage() {
   };
 
   const navigateToUserPage = () => {
-    navigate(`/users/${recipe.authorId}`); // 아이디가 아니라 Account였네 이런!!!
+    navigate(`/users/${recipe.authorId}`);
   };
 
   const navigateToEdit = () => {
@@ -128,7 +128,7 @@ function RecipeDetailViewPage() {
         <p className="user-button" onClick={navigateToUserPage}>
           {recipe.userNickname}
         </p>
-        <p>{formatDate(recipe.registerTime)}</p>
+        <p className="register-time">{formatDate(recipe.registerTime)}</p>
       </div>
 
       <div className="center-class">

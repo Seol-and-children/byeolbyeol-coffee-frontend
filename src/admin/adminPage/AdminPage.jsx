@@ -32,7 +32,7 @@ const ActiveComponent = getActiveComponent();
     return (
       <div className="main">
         <div className='inner-main'>
-          <div className="username">관리자</div><hr/><br/>
+          <div className="username">관리자 페이지</div><hr/><br/>
 
             <div className='check-admin'>
                     <div 

@@ -1,24 +1,31 @@
-import React, { useEffect, useState } from "react";
-import FranchiseLogo from "../../../admin/franchise/component/FranchiseLogo";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TimeLoad from "./TimeLoad";
+import { useLocation } from "react-router-dom";
+import FranchiseLogo from "../../../../admin/franchise/component/FranchiseLogo";
+import TimeLoad from "../TimeLoad";
 
-const CheckRecipe = ({ data }) => {
+const RecipeByName = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const data = params.get("data");
   const [recipes, setRecipes] = useState([]);
-  const [time, setTime] = useState([]);
 
   useEffect(() => {
+    console.log("Received Data:", params);
     // Axios를 사용하여 데이터를 가져오는 부분(Get)
-    axios
-      .get(`/search/recipe/recipename/${data}`) // 엔드포인트 수정
-      .then((response) => {
-        setRecipes(
-          response.data.sort((a, b) => b.recipeId - a.recipeId).slice(0, 10)
+    const fetchRecipes = async () => {
+      try {
+        const response = await axios.get(`/search/recipe/nickname/${data}`); // 엔드포인트 수정
+        const userRecipes = response.data.sort(
+          (a, b) => b.recipeId - a.recipeId
         );
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+        setRecipes(userRecipes);
+      } catch (error) {
+        console.error("Error fetching recipes", error);
+      }
+    };
+
+    fetchRecipes();
   }, [data]);
 
   const handleFranchiseClick = (recipeId) => {
@@ -27,12 +34,14 @@ const CheckRecipe = ({ data }) => {
   };
 
   return (
-    <div>
-      <div className="bar-title">레시피 {recipes.length}건</div>
-
-      <hr></hr>
-      {recipes.map((recipe) => (
-        <div key={recipe.recipeId}>
+    <div className="main">
+      <div className="inner-main">
+        <div className="RecipeByTitle">
+          '<strong>{data}</strong>'를 가진 닉네임의 개수:{" "}
+          <strong>{recipes.length}</strong>개
+        </div>
+        <hr></hr>
+        {recipes.map((recipe) => (
           <div className="sample-wrap">
             <div className="sample-image">
               <img
@@ -41,7 +50,6 @@ const CheckRecipe = ({ data }) => {
                 alt={recipe.recipeName}
               />
             </div>
-
             <div className="sample-box">
               <div
                 className="sample-title"
@@ -68,11 +76,19 @@ const CheckRecipe = ({ data }) => {
                   </div>
                   <div className="search-right">
                     <div className="search-like-count">
-                      <img className="small-image" src={"/images/good.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/good.png"}
+                        alt="좋아요"
+                      />
                       {recipe.likesCount}&nbsp;&nbsp;
                     </div>
                     <div className="search-view-count">
-                      <img className="small-image" src={"/images/see.png"} />
+                      <img
+                        className="small-image"
+                        src={"/images/see.png"}
+                        alt="조회수"
+                      />
                       {recipe.viewsCount}
                     </div>
                   </div>
@@ -80,11 +96,10 @@ const CheckRecipe = ({ data }) => {
               </div>
             </div>
           </div>
-          <br />
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
 
-export default CheckRecipe;
+export default RecipeByName;

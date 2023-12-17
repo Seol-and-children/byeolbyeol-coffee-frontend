@@ -1,6 +1,6 @@
 .navbarsection {
   height: 82px;
-  border-bottom: 4px solid #ccc;
+  border-bottom: 1px solid #a0a0a0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,7 @@
   display: flex;
   padding: 0 10px;
   align-items: center;
+  justify-content: center;
   width: 1440px;
   height: 80px;
   padding-bottom: 2px;
@@ -17,7 +18,7 @@
 }
 
 .navbarbutton {
-  width: 65%;
+  width: 60%;
   display: flex;
   padding: 0 10px;
   align-items: center;
@@ -25,68 +26,20 @@
 
 .navbarLogo {
   max-height: 100%;
-  margin: 0 30px 0 100px;
-}
-
-.recipePageBtn {
-  width: 120px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
+  margin-right: 50px;
   cursor: pointer;
-  /* 오른쪽 여백 설정 */
-}
-
-.recipePageBtn:hover {
-  background-color: #c2bebe;
-}
-
-.rankinPagegBtn {
-  width: 100px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-}
-
-.rankinPagegBtn:hover {
-  background-color: #c2bebe;
-}
-
-.cafereviewPagewBtn {
-  width: 120px;
-  height: 60px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
-  background-color: #ffffff;
-  border: none;
-  cursor: pointer;
-}
-
-.cafereviewPagewBtn:hover {
-  background-color: #c2bebe;
 }
 
 .randomPageBtn {
   width: 170px;
-  height: 60px;
   font-size: 20px;
-  font-weight: bold;
-  color: #57371b;
+  font-weight: 500;
   background-color: #ffffff;
   border: none;
   cursor: pointer;
-}
-
-.randomPageBtn:hover {
-  background-color: #c2bebe;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .container {
@@ -97,24 +50,20 @@
 }
 
 .logoutBox {
-  width: 180px;
   display: flex;
   align-items: center;
-  margin-left: 10%;
+  justify-items: center;
+  margin-left: 15px;
 }
 
 .LogoutPageBtn {
-  width: 100px;
+  width: 80px;
   height: 30px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #57371b;
+  font-size: 0.8rem;
   background-color: #ffffff;
-  padding: 3px;
   margin: 5px;
   cursor: pointer;
-  border-radius: 20px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 }
 
 .LogoutPageBtn:hover {
@@ -124,18 +73,29 @@
 .LoginPageBtn {
   width: 80px;
   height: 30px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #57371b;
+  font-size: 0.8rem;
   background-color: #ffffff;
-  padding: 3px;
   margin: 5px;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
-  border: 2px solid #000;
+  border: 1px solid #000;
 }
 
 .LoginPageBtn:hover {
   background-color: #c2bebe;
+}
+
+.navbarbutton a {
+  width: 120px;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  color: #000000;
+}
+
+.navbarbutton .activeNavLink {
+  color: #e75625;
 }

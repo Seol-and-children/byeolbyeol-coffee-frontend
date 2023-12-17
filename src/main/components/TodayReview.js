@@ -9,6 +9,8 @@ return (
       <h2 className="title">오늘의 리뷰</h2>
     </div>
   );
+ 
 }
 
 export default TodayReview;
+ 
