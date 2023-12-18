@@ -203,9 +203,14 @@ function RecipeDetailViewPage() {
         <div className="comment-section">
           <CommentForm
             recipeId={recipeId}
+            userId={userId}
             onCommentAdded={handleCommentChange}
           />
-          <CommentsDisplay recipeId={recipeId} key={reloadComments} />
+          <CommentsDisplay
+            recipeId={recipeId}
+            userId={userId}
+            key={reloadComments}
+          />
         </div>
 
         <div className="list-button">
