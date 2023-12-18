@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { useSelector } from "react-redux";
+import  styles from "../../../User/component/modal.module.css";
 
 // 모달 상세 내역
 const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
@@ -11,7 +12,7 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
     const [reportReason, setReportReason] = useState('');
     const [reportCategory, setReportCategory] = useState("레시피 게시판");
     const [processing, setProcessing] = useState(false);
-    const [foreignId, setForeignId] = useState('');
+    const [recipeId, setRecipeId] = useState('');
     const user = useSelector((state) => state.user.userData);
     const [authorName, setAuthorName] = useState('');
   
@@ -29,11 +30,12 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
           reportCategory,
           reportReason,
           authorName,
-          foreignId
+          recipeId
         });
   
         if (response.status === 200) {
           console.log('Report data sent successfully.');
+          alert('신고가 성공적으로 완료되었습니다.');
         }
         onClose();
       } catch (error) {
@@ -43,12 +45,12 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
 
     const userSet = () => {
       setAuthorName(user.userNickName);
-      setForeignId(getRecipeId);
+      setRecipeId(getRecipeId);
     };
 
     return (
       <Modal isOpen={isOpen} onRequestClose={onClose}
-        className='custom-modal'>
+        className={styles.modal}>
       <form className='modal-form' onSubmit={handleSubmit}>
         <div className='modal-top'>신고하기</div>
         <div className='wrap-modal'>

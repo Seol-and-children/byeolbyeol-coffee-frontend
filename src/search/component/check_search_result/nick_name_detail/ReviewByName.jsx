@@ -37,7 +37,7 @@ const ReviewByName = () => {
   };
 
   return (
-    <div className="main">
+    <div className="main">sdadasdsd
       <div className="inner-main">
       <div className="RecipeByTitle">
           '<strong>{data}</strong>'을(를) 가진 닉네임의 리뷰 개수:{" "}

@@ -11,7 +11,6 @@ import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
 import CommentForm from "../../components/recipe/CommentForm";
 import CommentsDisplay from "../../components/recipe/CommentsDisplay";
-import ReportAdd from "../../admin/report/component/ReportAdd";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 
@@ -132,7 +131,7 @@ function ReviewItem() {
             </div>
           ) : (
             <div className="report-button">
-              <ReportAdd addReviewId={review.reviewId} />
+              <ReportReviewAdd addReviewId={review.reviewId} />
             </div>
           )}
         </div>
