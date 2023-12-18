@@ -3,13 +3,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-import PostTitle from '../components/ReviewItem/PostTitle';
-import EditButton from '../components/ReviewItem/EditButton';
 import LikeButton from "../components/ReviewItem/LikeButton";
-import CommentBox from '../components/Comment/CommentBox';
-import CommentWrite from '../components/Comment/CommentWrite';
+import DeleteIcon from "../../assets/DeleteIcon.svg";
+import EditIcon from "../../assets/Edit.svg";
+import ListIcon from "../../assets/ListIcon.svg";
+import CommentForm from "../../components/recipe/CommentForm";
+import CommentsDisplay from "../../components/recipe/CommentsDisplay";
+import ReportAdd from "../../admin/report/component/ReportAdd";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
+
 
 import '../css/ReviewItem.css';
 
@@ -18,10 +22,18 @@ function ReviewItem() {
   const [review, setReview] = useState(null);
   const navigate = useNavigate();
   const [isLiked, setIsLiked] = useState(false);
+  const user = useSelector((state) => state.user.userData);
+  const userId = user ? user.userId : null;
+  const userRole = user ? user.userRole : null;
+  const [reloadComments, setReloadComments] = useState(false);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
+  const handleCommentChange = () => {
+    setReloadComments(!reloadComments);
   };
 
   useEffect(() => {
@@ -30,40 +42,59 @@ function ReviewItem() {
         const response = await axios.get(
           `http://localhost:8080/reviews/${reviewId}`
         );
-  
-        // userNickname을 함께 가져오도록 수정
-        const { userNickname, ...reviewDetails } = response.data;
-        setReview({
-          ...reviewDetails,
-          userNickname: userNickname, // 유저 닉네임이 없을 경우 '익명'으로 설정
-        });
-  
-        // 좋아요 상태 확인 요청 추가
+        setReview(response.data);
+
         const likeStatusResponse = await axios.get(
           `http://localhost:8080/reviews/${reviewId}/likes/status`,
+          { params: { userId } }
         );
         setIsLiked(likeStatusResponse.data);
       } catch (error) {
         console.error("데이터 로딩 중 오류 발생:", error);
       }
     };
-  
+
     fetchReviewDetails();
-  }, [reviewId]);
+  }, [reviewId, userId]);
 
   const handleDelete = async () => {
-    try {
-      await axios.delete(`http://localhost:8080/reviews/${reviewId}`);
-      navigate("/reviews");
-    } catch (error) {
-      console.error("리뷰 삭제 실패:", error);
+    if (userRole === 3 || (userId && review?.authorId === userId)) {
+      const confirmDelete = window.confirm("정말로 게시글을 삭제하시겠습니까?");
+      if (confirmDelete) {
+        try {
+          await axios.delete(`http://localhost:8080/reviews/${reviewId}`);
+          navigate("/reviews");
+        } catch (error) {
+          console.error("게시글 삭제 실패:", error);
+        }
+      }
+    } else {
+      alert("본인의 게시글만 삭제할 수 있습니다.");
     }
   };
 
+  const navigateToUserPage = () => {
+    navigate(`/users/${review?.authorId}`);
+  };
+
+  const navigateToEdit = () => {
+    navigate(`/edit-review/${reviewId}`);
+  };
+
   const toggleLike = async () => {
+    if (userRole === 3) {
+      alert("관리자는 좋아요를 누를 수 없습니다.");
+      return;
+    }
+
+    if (!userId) {
+      alert("먼저 로그인해야 합니다.");
+      return;
+    }
+
     try {
       await axios.post(`http://localhost:8080/reviews/${reviewId}/likes`, {
-        userId: 4,
+        userId: userId,
       });
       setIsLiked(!isLiked);
       setReview((prevReview) => ({
@@ -73,28 +104,51 @@ function ReviewItem() {
           : prevReview.likesCount + 1,
       }));
     } catch (error) {
-      console.error("리뷰 좋아요 실패:", error);
+      console.error("게시글 좋아요 실패:", error);
     }
   };
 
+  const isAuthor = review && userId && review?.authorId === userId;
+
   if (!review) {
-    return <div>로딩 중...</div>;
+    return <div>게시글 불러오는 중...</div>;
   }
 
   return (
     <div className="review-container">
-      <h1>CAFE REVIEW</h1>
-      <div className="button-group edit-buttons">
-        <EditButton />
-        <button onClick={handleDelete}>삭제</button>
+      <div className="review-header">
+        <h1>CAFE REVIEW</h1>
+        <div className="buttons">
+          {userRole === 2 && isAuthor ? (
+            <div>
+              <button className="edit-button" onClick={navigateToEdit}>
+                수정
+                <img src={EditIcon} alt="수정"></img>
+              </button>
+              <button className="delete-button" onClick={handleDelete}>
+                삭제
+                <img src={DeleteIcon} alt="삭제"></img>
+              </button>
+            </div>
+          ) : (
+            <div className="report-button">
+              <ReportAdd addReviewId={review.reviewId} />
+            </div>
+          )}
+        </div>
       </div>
-      <div className="divider"></div>
-      <h2>{review.reviewName}</h2>
-      <div className="review-info">
-        <p className="date">{formatDate(review.registerTime)}</p>
-        <p className="author">{review.userNickname}</p>
+  
+      <div className="review-title-date">
+        <h2>{review.reviewName}</h2>
+        <p className="register-time">{formatDate(review.registerTime)}</p>
       </div>
-      <div className="divider"></div>
+
+      <div className="author-info">
+        <p className="user-button" onClick={navigateToUserPage}>
+          {review.userNickname}
+        </p>
+      </div>
+  
       <div className="image-container">
         <img
           className="review-image"
@@ -102,24 +156,31 @@ function ReviewItem() {
           alt={review.reviewName}
         />
       </div>
-      <p className="review-content description">{review.content}</p>
-      <div className="like-container">
-        <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
-        <p className="like-count">추천수: {review.likesCount}</p>
+  
+      <div className="review-content">
+        <p>{review.content}</p>
       </div>
-
-      <CommentBox review={review} />
-      <CommentWrite review={review} />
-      <div className="button-group">
-        <button onClick={() => navigate('/reviews')}>목록</button>
+  
+      <div className="like-button">
+        <div className="like-icon">
+          <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
+        </div>
+        <div className="like-count">{review.likesCount}</div>
       </div>
-      
-          <div className="report-button">
-            <ReportReviewAdd addReviewId={reviewId} />
-          </div>
-
+  
+      <div className="comment-section">
+        <CommentForm reviewId={reviewId} onCommentAdded={handleCommentChange} />
+        <CommentsDisplay reviewId={reviewId} key={reloadComments} />
+      </div>
+  
+      <div className="list-button">
+        <button onClick={() => navigate("/reviews")}>
+          <img src={ListIcon} alt="목록"></img>
+          목록
+        </button>
+      </div>
     </div>
   );
-};
+}
 
 export default ReviewItem;

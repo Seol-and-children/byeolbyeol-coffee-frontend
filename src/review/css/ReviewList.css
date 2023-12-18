@@ -35,6 +35,8 @@
 .pagination-container {
   width: 100%;
   margin-top: 20px;
+  width: 1000px;
+
 }
 
 .pagination {
@@ -106,6 +108,7 @@
 }
 
 .review-write-button {
-  position: relative;
-  left: -210px;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
 }
