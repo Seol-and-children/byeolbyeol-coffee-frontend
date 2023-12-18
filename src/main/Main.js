@@ -7,6 +7,8 @@ import "./Main.css";
 
 function Main() {
   const [recipes, setRecipes] = useState([]);
+  const [reviews, setReviews] = useState([]);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchRecipes = async () => {
@@ -20,8 +22,20 @@ function Main() {
     }
   };
 
+  const fetchReviews = async () => {
+    try {
+      const response = await axios.get("http://localhost:8080/reviews");
+      setReviews(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("게시글 정보를 가져오는데 실패했습니다 :", error);
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchRecipes();
+    fetchReviews();
   }, []);
 
   if (isLoading) {
@@ -36,14 +50,24 @@ function Main() {
     .sort((a, b) => new Date(b.registerTime) - new Date(a.registerTime))
     .slice(0, 5);
 
+  const now = new Date();
+  const twentyFourHoursAgo = new Date(now - 1 * 60 * 60 * 1000); // 24시간 전
+
+  // 오늘의 레시피
+  const bestReview = [...reviews]
+    .filter(review => new Date(review.registerTime) >= twentyFourHoursAgo)
+    .sort((a, b) => b.likesCount - a.likesCount)
+    .slice(0, 1);
+    
   return (
     <div className="main-page">
       <div className="main-container">
         <TodayCoffee recipes={randomRecipes} />
         <NewRecipe recipes={newRecipes} />
+        <TodayReview reviews={bestReview}/>
       </div>
       <div className="today-review">
-        <TodayReview />
+        
       </div>
     </div>
   );
