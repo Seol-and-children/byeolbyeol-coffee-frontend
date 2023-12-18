@@ -1,97 +1,109 @@
 #report-list {
-    display: flex;
-    justify-content: space-between;
-    width: 1178px;
-    height: 60px;
-    margin-bottom: 10px; /* 필요에 따라 간격을 조절하세요 */
-  }
+  display: flex;
+  justify-content: space-between;
+  width: 1178px;
+  height: 60px;
+  margin-bottom: 10px;
+  /* 필요에 따라 간격을 조절하세요 */
+}
 
-  #report-header {
-    height: 54px;
-    font-size: 28px;
-    padding-top: 25px;
-    padding-left: 10px;
-    background-color: #EC7357;
-    color: #ffffff;
-  }
+#report-header {
+  height: 54px;
+  font-size: 28px;
+  padding-top: 25px;
+  padding-left: 10px;
+  background-color: #EC7357;
+  color: #ffffff;
+}
 
-  #main-report-bar{
-    width: 1179px;
-    height: 58px;
-    display: flex;
-    border-top: 1px solid #D9D9D9;
-    border-bottom: 1px solid #D9D9D9;
-    margin-bottom: 10px;
-  }
-  
-  #report-bar {
-    width: 1179px;
-    height: 58px;
-    display: flex;
-    border-bottom: 1px solid #D9D9D9;
-  }
+#main-report-bar {
+  width: 1179px;
+  height: 58px;
+  display: flex;
+  border-top: 1px solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+  margin-bottom: 10px;
+}
 
-  #reportContent{
-    width: 80%;
-    height: 40%;
-    margin-top: 2%;
-  }
+#report-bar {
+  width: 1179px;
+  height: 58px;
+  display: flex;
+  border-bottom: 1px solid #D9D9D9;
+}
 
-  #inner-report-bar{
-    height: 1040px;
-    width: 1179px;
-  }
-  
-  /* exam 내부 div들 */
-  .exam-item {
-    justify-content: center;
-    font-weight: bold;
-    
-  }
-  .more-box {
-    width: 1170px;
-    height: 90px;
-    padding: 5px;
-    background-color: #cacaca;
-  }
-  
-  .report-check {
-    width: 91px;
-    height: 58px;
-  }
-  
-  .report-category {
-    width: 190px;
-    height: 58px;
-  }
-  
-  .report-title {
-    width: 261px;
-    height: 58px;
-    cursor: pointer;
-  }
-  
-  .report-author {
-    width: 180px;
-    height: 58px;
-  }
-  
-  .reported {
-    width: 180px;
-    height: 58px;
-  }
-  
-  .report-content {
-    width: 307px;
-    height: 58px;
-  }
-  
-  .status {
-    width: 58px;
-    height: 58px;
-  }
+#reportContent {
+  width: 80%;
+  height: 40%;
+  margin-top: 2%;
+}
 
-  .moreSee-icon{
-    width: 30px;
-    height: 30px;
-  }
+#inner-report-bar {
+  height: 1040px;
+  width: 1179px;
+}
+
+
+
+.more-box {
+  width: 1170px;
+  height: 90px;
+  padding: 5px;
+  background-color: #cacaca;
+}
+
+.report-check {
+  width: 91px;
+  height: 58px;
+}
+
+.report-category {
+  width: 190px;
+  height: 58px;
+}
+
+.report-title {
+  width: 261px;
+  height: 58px;
+  cursor: pointer;
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-author {
+  width: 180px;
+  height: 58px;
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reported {
+  width: 180px;
+  height: 58px;
+  white-space: nowrap;
+  /* 줄 바꿈 금지 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.report-content {
+  width: 307px;
+  height: 58px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status {
+  width: 58px;
+  height: 58px;
+}
+
+.moreSee-icon {
+  width: 30px;
+  height: 30px;
+}

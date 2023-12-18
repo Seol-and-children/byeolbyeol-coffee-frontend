@@ -9,6 +9,7 @@ import EditButton from '../components/ReviewItem/EditButton';
 import LikeButton from "../components/ReviewItem/LikeButton";
 import CommentBox from '../components/Comment/CommentBox';
 import CommentWrite from '../components/Comment/CommentWrite';
+import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import '../css/ReviewItem.css';
 
@@ -112,6 +113,11 @@ function ReviewItem() {
       <div className="button-group">
         <button onClick={() => navigate('/reviews')}>목록</button>
       </div>
+      
+          <div className="report-button">
+            <ReportReviewAdd addReviewId={reviewId} />
+          </div>
+
     </div>
   );
 };
