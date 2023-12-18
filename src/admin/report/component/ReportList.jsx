@@ -7,27 +7,30 @@ const ReportList = () => {
   const [reports, setReports] = useState([]);
   const [showMore, setShowMore] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
+  const [name, setName] = useState("report");
   const [recipesPerPage] = useState(15);
 
   useEffect(() => {
     // Axios를 사용하여 데이터를 가져오는 부분(Get)
-    axios.all([
-      axios.get("/reports/recipes"),
-      axios.get("/reports/reviews")
-    ])
-      .then(axios.spread((recipesResponse, reviewsResponse) => {
-        // recipes 데이터와 reviews 데이터를 합치기
-        const allReports = [...recipesResponse.data, ...reviewsResponse.data];
-        
-        // 모든 데이터를 reportTime을 기준으로 내림차순으로 정렬
-        const sortedReports = allReports.sort((a, b) => new Date(b.reportTime) - new Date(a.reportTime));
+    axios
+      .all([axios.get("/reports/recipes"), axios.get("/reports/reviews")])
+      .then(
+        axios.spread((recipesResponse, reviewsResponse) => {
+          // recipes 데이터와 reviews 데이터를 합치기
+          const allReports = [...recipesResponse.data, ...reviewsResponse.data];
 
-        // 결과를 상태에 설정
-        setReports(sortedReports);
+          // 모든 데이터를 reportTime을 기준으로 내림차순으로 정렬
+          const sortedReports = allReports.sort(
+            (a, b) => new Date(b.reportTime) - new Date(a.reportTime)
+          );
 
-        // 초기에는 모두 더보기 상태를 false로 초기화
-        setShowMore(new Array(sortedReports.length).fill(false));
-      }))
+          // 결과를 상태에 설정
+          setReports(sortedReports);
+
+          // 초기에는 모두 더보기 상태를 false로 초기화
+          setShowMore(new Array(sortedReports.length).fill(false));
+        })
+      )
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
@@ -41,10 +44,10 @@ const ReportList = () => {
   };
 
   const handleSearch = (Id, category) => {
-    if (category == "레시피게시판") {
+    if (category == "레시피 게시판") {
       // 페이지 이동과 함께 새로고침
       window.location.href = `/recipes/${Id}`;
-    }else if(category == "리뷰게시판"){
+    } else if (category == "리뷰 게시판") {
       window.location.href = `/reviews/${Id}`;
     }
   };
@@ -73,14 +76,30 @@ const ReportList = () => {
               <div className="exam-item report-category">
                 {report.reportCategory}
               </div>
-              <div
-                className="exam-item report-title"
-                onClick={() =>
-                  handleSearch(report.recipeId, report.reportCategory)
-                }
-              >
-                {report.contentTitle}
-              </div>
+              {report.reportCategory === "레시피 게시판" && (
+                <div>
+                  <div
+                    className="exam-item report-title"
+                    onClick={() =>
+                      handleSearch(report.recipeId, report.reportCategory)
+                    }
+                  >
+                    {report.contentTitle}
+                  </div>
+                </div>
+              )}
+              {report.reportCategory === "리뷰 게시판" && (
+                <div>
+                  <div
+                    className="exam-item report-title"
+                    onClick={() =>
+                      handleSearch(report.reviewId, report.reportCategory)
+                    }
+                  >
+                    {report.contentTitle}
+                  </div>
+                </div>
+              )}
               <div className="exam-item report-author">{report.authorName}</div>
               <div className="exam-item reported">{report.reportedName}</div>
               <div className="exam-item report-content">

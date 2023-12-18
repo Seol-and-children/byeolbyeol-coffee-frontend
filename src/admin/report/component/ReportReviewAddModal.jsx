@@ -9,9 +9,9 @@ const ReviewModalComponent = ({ isOpen, onClose, getReviewId }) => {
     // 아직 외부값은 받아오지 않고 Report내에서만 값을 받아옴
     
     const [reportReason, setReportReason] = useState('');
-    const [reportCategory, setReportCategory] = useState("리뷰게시판");
+    const [reportCategory, setReportCategory] = useState("리뷰 게시판");
     const [processing, setProcessing] = useState(false);
-    const [reviewId, setReviewId] = useState('');
+    const [foreignId, setForeignId] = useState('');
     const user = useSelector((state) => state.user.userData);
     const [authorName, setAuthorName] = useState('');
   
@@ -29,7 +29,7 @@ const ReviewModalComponent = ({ isOpen, onClose, getReviewId }) => {
           reportCategory,
           reportReason,
           authorName,
-          reviewId
+          foreignId
         });
   
         if (response.status === 200) {
@@ -43,7 +43,7 @@ const ReviewModalComponent = ({ isOpen, onClose, getReviewId }) => {
 
     const userSet = () => {
       setAuthorName(user.userNickName);
-      setReviewId(getReviewId);
+      setForeignId(getReviewId);
     };
 
     return (
