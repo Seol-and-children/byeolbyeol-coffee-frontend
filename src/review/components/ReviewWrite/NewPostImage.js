@@ -7,10 +7,10 @@ const NewPostImage = ({ onImageChange }) => {
 
   const handleImageChange = (event) => {
     const selectedImage = event.target.files[0];
+    const fileName = selectedImage ? selectedImage.name : null;
+  
     onImageChange(selectedImage);
-
-    // 선택된 파일명을 상태에 저장
-    setSelectedFileName(selectedImage ? selectedImage.name : null);
+    setSelectedFileName(fileName);
   };
 
   return (
