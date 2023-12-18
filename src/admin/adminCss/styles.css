@@ -8,7 +8,7 @@
 .inner-main {
   width: 1440px;
   height: 1615px;
-  
+
 }
 
 .admin-body {
@@ -25,7 +25,7 @@
   margin-left: 130px;
 }
 
-.check-admin{
+.check-admin {
   width: 1199px;
   height: 50px;
   background-color: #FFFFFF;
@@ -33,13 +33,13 @@
   margin: 0 auto;
 }
 
-.admin-check{
-    width: 255px;
-    height: 48px;
-    text-align: center;
-    line-height : 50px;
-    border: solid 2px #717171;
-    cursor: pointer;
+.admin-check {
+  width: 255px;
+  height: 48px;
+  text-align: center;
+  line-height: 50px;
+  border: solid 2px #717171;
+  cursor: pointer;
 }
 
 .admin-clicked {

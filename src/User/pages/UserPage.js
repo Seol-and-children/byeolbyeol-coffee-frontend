@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./UserPage.module.css";
 import OtherUserRecentRecipes from "../component/OtherUserRecentPost";
+import OtherUserRecnetReview from "../component/OtherUserRecnetReview"
 
 function UserPage() {
   const { userId } = useParams();
@@ -62,6 +63,7 @@ function UserPage() {
       <div className={styles.block}>
         <h2>최근 작성한 게시글</h2>
         <div className={styles.divider}></div>
+        <OtherUserRecnetReview userId={userInfo.data.userId} />
       </div>
     </div>
   );

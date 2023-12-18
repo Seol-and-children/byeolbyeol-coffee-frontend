@@ -1,0 +1,40 @@
+.review-sample-wrap {
+    width: 960px;
+    height: 261px;
+    display: flex;
+    margin-bottom: 15px;
+  }
+  .review-sample-box {
+    width: 960px;
+    height: 253px;
+  }
+  .review-sample-title {
+    width: 958px;
+    height: 55px;
+    font-size: 33px;
+    font-weight: bold;
+    padding-left: 5px;
+    display: flex;
+    cursor: pointer;
+    font-family: "Nanum Gothic", sans-serif;
+  }
+  .review-sample-content-box {
+    width: 958px;
+    height: 200px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+  }
+  .review-sample-content {
+    width: 958px;
+    height: 155px;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+  .review-sample-info {
+    width: 946px;
+    height: 37px;
+    border-top: solid 1px rgb(208, 208, 208);
+    position: relative;
+    padding: 6px;
+    display: flex;
+  }

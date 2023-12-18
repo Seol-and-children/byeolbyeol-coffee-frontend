@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./MyPage.module.css"; // 스타일 모듈 불러오기
 import UserRecentRecipes from "../component/UserRecentPost";
+import UserRecentReview from "../component/UserRecentReview";
 import { logoutUser, updateUserBio } from "../component/UserAction";
 import Edit from "../../assets/Edit.svg";
 
@@ -140,7 +141,9 @@ function MyPage() {
         <div className={styles.block}>
           <h2>최근 작성한 게시글</h2>
           <div className={styles.divider}></div>
+          <UserRecentReview userId={user.userid} />
         </div>
+
         <div className={styles.rightAlign}>
           <button className={styles.deleteBtn} onClick={handleDeleteAccount}>
             회원 탈퇴

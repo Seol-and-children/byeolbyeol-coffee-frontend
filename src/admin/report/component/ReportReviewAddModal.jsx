@@ -4,14 +4,14 @@ import axios from 'axios';
 import { useSelector } from "react-redux";
 
 // 모달 상세 내역
-const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
+const ReviewModalComponent = ({ isOpen, onClose, getReviewId }) => {
     // 모달 창 내에서의 상태 관리
     // 아직 외부값은 받아오지 않고 Report내에서만 값을 받아옴
     
     const [reportReason, setReportReason] = useState('');
-    const [reportCategory, setReportCategory] = useState("레시피 게시판");
+    const [reportCategory, setReportCategory] = useState("리뷰게시판");
     const [processing, setProcessing] = useState(false);
-    const [recipeId, setRecipeId] = useState('');
+    const [reviewId, setReviewId] = useState('');
     const user = useSelector((state) => state.user.userData);
     const [authorName, setAuthorName] = useState('');
   
@@ -25,11 +25,11 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
       
       // Axios를 사용하여 데이터를 삽입하는 부분(Post)
       try {
-        const response = await axios.post('/reports/recipe', {
+        const response = await axios.post('/reports/review', {
           reportCategory,
           reportReason,
           authorName,
-          recipeId
+          reviewId
         });
   
         if (response.status === 200) {
@@ -43,7 +43,7 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
 
     const userSet = () => {
       setAuthorName(user.userNickName);
-      setRecipeId(getRecipeId);
+      setReviewId(getReviewId);
     };
 
     return (
@@ -53,10 +53,10 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
         <div className='modal-top'>신고하기</div>
         <div className='wrap-modal'>
 
-        신고 카테고리 : 레시피 게시판<br></br>
+        신고 카테고리 : 리뷰 게시판<br></br>
 
         <br/>
-
+        {console.log(getReviewId)}
         <div>
           신고자: {authorName} <br></br>
           </div>
@@ -78,4 +78,4 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
     );
   };
   
-  export default ModalComponent;
+  export default ReviewModalComponent;
