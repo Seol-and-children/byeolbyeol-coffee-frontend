@@ -114,7 +114,7 @@ function Navbar() {
               className={styles.randomPageBtn}
               onClick={handleRandomRecipe}
             >
-              오늘 뭐마셔?
+              지금 뭐마셔?
             </button>
           </div>
           <SearchBar />
