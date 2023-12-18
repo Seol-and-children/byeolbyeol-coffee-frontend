@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import styles from "./UserPage.module.css";
+import writeRecipe from "../../assets/RecipeIcon.svg";
+import writeReview from "../../assets/ReviewIcon.svg";
 import OtherUserRecentRecipes from "../component/OtherUserRecentPost";
-import OtherUserRecnetReview from "../component/OtherUserRecnetReview"
+import OtherUserRecnetReview from "../component/OtherUserRecentReview";
+import OtherUserRecentPostCount from "../component/OtherUserRecentPostCount";
+
+import OtherUserRecentReviewCount from "../component/OtherUserRecentReviewCount";
+
 
 function UserPage() {
   const { userId } = useParams();
@@ -43,22 +49,34 @@ function UserPage() {
     <div className={styles.userPageContainer}>
       <div className={styles.userInfo}>
         <div className={styles.rowContainer}>
-          <h2>{userInfo.data.userNickName}님의 페이지</h2>
+          <h1>{userInfo.data.userNickName}님의 페이지</h1>
         </div>
+
         <div className={styles.mySelfBlock}>
-          <h2>자기소개</h2>
+        <div className={styles.rowContainer}>
+          <h2>{userInfo.data.userNickName}</h2>
+          <div className={styles.rowContainer}>
+          <div  className={`${styles.rowContainer} ${styles.count}`}>
+          <img src={writeRecipe} alt="작성한 레시피" />
+          <OtherUserRecentPostCount userId={userInfo.data.userId} />
+          </div>
+          <div  className={`${styles.rowContainer} ${styles.count}`}> 
+          <img src={writeReview} alt="작성한 리뷰" />
+          <OtherUserRecentReviewCount userId={userInfo.data.userId} />
+          </div>
+          </div>
+          </div>
           <div className={styles.divider}></div>
           <h3>{userInfo.data.userBio}</h3>
         </div>
       </div>
 
-      {userInfo && (
-        <div className={styles.block}>
-          <h2>최근 작성한 레시피</h2>
-          <div className={styles.divider}></div>
-          <OtherUserRecentRecipes userId={userInfo.data.userId} />
-        </div>
-      )}
+
+      <div className={styles.block}>
+        <h2>최근 작성한 레시피</h2>
+        <div className={styles.divider}></div>
+        <OtherUserRecentRecipes userId={userInfo.data.userId} />
+      </div>
 
       <div className={styles.block}>
         <h2>최근 작성한 게시글</h2>

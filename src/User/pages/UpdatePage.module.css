@@ -44,6 +44,10 @@
   opacity: 0.6;
 }
 
+.account {
+  background-image: url("../../assets/Account.svg");
+}
+
 .nickname {
   background-image: url("../../assets/Nametag.svg");
 }
@@ -80,4 +84,42 @@
   outline: none;
   border-radius: 5px;
   margin-bottom: 20px;
+}
+
+.AccountImg {
+  left: 0;
+  top: 0;
+  width: 80px;
+  height: 100%;
+  background-size: 50px;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #a0a0a0;
+  box-sizing: border-box;
+  opacity: 0.6;
+}
+
+.rowContainer {
+  display: flex;
+  align-items: center;
+  width: 740px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.inputDiv .displayAccount {
+  width: calc(100% - 75px);
+  height: 100%;
+  margin-left: 75px;
+  padding: 0 15px;
+  border: 1px solid #a0a0a0;
+  font-size: 16px;
+  box-sizing: border-box;
+  display: flex; 
+  align-items: center; 
+  font-style: italic;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
