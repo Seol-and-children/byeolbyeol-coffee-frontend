@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./CommentForm.css";
 
 const CommentForm = ({
   recipeId,
@@ -9,6 +10,12 @@ const CommentForm = ({
   onCommentAdded,
 }) => {
   const [content, setContent] = useState(existingComment);
+  const isLoggedIn = userId != null;
+  const isReply = parentId != null;
+  const placeholderText = isReply
+    ? "답글을 입력해주세요"
+    : "댓글을 작성해 주세요";
+  const formClass = `comment-form ${parentId ? "comment-form-reply" : ""}`;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,14 +33,19 @@ const CommentForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={formClass}>
       <textarea
+        className="comment-textarea"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         required
-        placeholder="댓글을 작성하세요"
+        placeholder={placeholderText}
       />
-      <button type="submit">댓글 작성</button>
+      <div className="comment-submit-area">
+        <button type="submit" className="comment-submit-button">
+          등록
+        </button>
+      </div>
     </form>
   );
 };

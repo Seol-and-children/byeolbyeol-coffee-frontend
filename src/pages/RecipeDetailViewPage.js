@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-import "./RecipeDetailViewPage.css";
 import LikeButton from "../components/recipe/LikeButton";
 import ReportAdd from "../admin/report/component/ReportAdd";
 import { useSelector } from "react-redux";
@@ -11,6 +10,7 @@ import EditIcon from "../assets/Edit.svg";
 import ListIcon from "../assets/ListIcon.svg";
 import CommentForm from "../components/recipe/CommentForm";
 import CommentsDisplay from "../components/recipe/CommentsDisplay";
+import "./RecipeDetailViewPage.css";
 
 function RecipeDetailViewPage() {
   const { recipeId } = useParams();
@@ -111,40 +111,10 @@ function RecipeDetailViewPage() {
     return <div>레시피 불러오는중...</div>;
   }
 
+  const isLoggedIn = userId != null;
+
   return (
     <div className="recipe-detail-view-page">
-      <div className="header">
-        <h1>RECIPE</h1>
-        <div className="buttons">
-          {userRole === 3 && (
-            <button className="delete-button" onClick={handleDelete}>
-              삭제
-              <img src={DeleteIcon} alt="삭제"></img>
-            </button>
-          )}
-
-          {userRole === 2 && isAuthor && (
-            <div>
-              <button className="edit-button" onClick={navigateToEdit}>
-                수정
-                <img src={EditIcon} alt="수정"></img>
-              </button>
-              <button className="delete-button" onClick={handleDelete}>
-                삭제
-                <img src={DeleteIcon} alt="삭제"></img>
-              </button>
-            </div>
-          )}
-        </div>
-      </div>
-
-      <div className="author-info">
-        <p className="user-button" onClick={navigateToUserPage}>
-          {recipe.userNickname}
-        </p>
-        <p className="register-time">{formatDate(recipe.registerTime)}</p>
-      </div>
-
       <div className="center-class">
         <div className="recipe-info">
           <div className="image-container">
@@ -183,15 +153,43 @@ function RecipeDetailViewPage() {
                 </ul>
               </div>
             </div>
+            <div className="recipe-author-info">
+              <p className="user-button" onClick={navigateToUserPage}>
+                {recipe.userNickname}
+              </p>
+              <p className="register-time">{formatDate(recipe.registerTime)}</p>
+            </div>
           </div>
           <div className="description">{recipe.description}</div>
         </div>
 
-        {userRole === 2 && !isAuthor && (
-          <div className="report-button">
-            <ReportAdd addRecipeId={recipe.recipeId} />
-          </div>
-        )}
+        <div className="action-buttons">
+          {userRole === 3 && (
+            <button className="delete-button" onClick={handleDelete}>
+              삭제
+              <img src={DeleteIcon} alt="삭제"></img>
+            </button>
+          )}
+
+          {userRole === 2 && isAuthor && (
+            <div className="action-buttons">
+              <button className="edit-button" onClick={navigateToEdit}>
+                수정
+                <img src={EditIcon} alt="수정"></img>
+              </button>
+              <button className="delete-button" onClick={handleDelete}>
+                삭제
+                <img src={DeleteIcon} alt="삭제"></img>
+              </button>
+            </div>
+          )}
+
+          {userRole === 2 && !isAuthor && (
+            <div className="report-button">
+              <ReportAdd addRecipeId={recipe.recipeId} />
+            </div>
+          )}
+        </div>
 
         <div className="like-button">
           <div className="like-icon">
@@ -201,16 +199,29 @@ function RecipeDetailViewPage() {
         </div>
 
         <div className="comment-section">
-          <CommentForm
-            recipeId={recipeId}
-            userId={userId}
-            onCommentAdded={handleCommentChange}
-          />
-          <CommentsDisplay
-            recipeId={recipeId}
-            userId={userId}
-            key={reloadComments}
-          />
+          <div className="comment-view-section">
+            <div className="comment-title">댓글</div>
+            <div className="comment-display">
+              <CommentsDisplay
+                recipeId={recipeId}
+                userId={userId}
+                userRole={userRole}
+                key={reloadComments}
+              />
+            </div>
+          </div>
+          {isLoggedIn && (
+            <div className="comment-input-section">
+              <div className="comment-title">댓글 작성</div>
+              <div className="comment-form">
+                <CommentForm
+                  recipeId={recipeId}
+                  userId={userId}
+                  onCommentAdded={handleCommentChange}
+                />
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="list-button">
