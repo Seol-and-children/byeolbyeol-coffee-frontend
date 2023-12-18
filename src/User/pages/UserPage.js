@@ -16,6 +16,17 @@ function UserPage() {
   const [userInfo, setUserInfo] = useState(null);
   const navigate = useNavigate();
 
+  const handleRecipeMoreSeeClick = (data) => {
+    const queryString = new URLSearchParams({data}).toString();
+    window.location.href = `/moreSee/recipeByName?${queryString}`;
+  };
+
+  const handleReviewMoreSeeClick = (data) => {
+    const queryString = new URLSearchParams({data}).toString();
+    window.location.href = `/moreSee/reviewByName?${queryString}`;
+  };
+
+
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
@@ -73,13 +84,23 @@ function UserPage() {
 
 
       <div className={styles.block}>
+      < div className={styles.rowContainer}>
         <h2>최근 작성한 레시피</h2>
+        <button className={styles.moreSerach} type="button" onClick={() => handleRecipeMoreSeeClick(userInfo.data.userNickName)}>
+              전체보기
+        </button>
+        </div>
         <div className={styles.divider}></div>
         <OtherUserRecentRecipes userId={userInfo.data.userId} />
       </div>
 
       <div className={styles.block}>
+      < div className={styles.rowContainer}>
         <h2>최근 작성한 게시글</h2>
+        <button className={styles.moreSerach} type="button" onClick={() => handleReviewMoreSeeClick(userInfo.data.userNickName)}>
+            전체보기
+          </button>
+        </div>
         <div className={styles.divider}></div>
         <OtherUserRecnetReview userId={userInfo.data.userId} />
       </div>
