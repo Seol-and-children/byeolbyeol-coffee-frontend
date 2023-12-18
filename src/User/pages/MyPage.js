@@ -7,6 +7,10 @@ import UserRecentRecipes from "../component/UserRecentPost";
 import UserRecentReview from "../component/UserRecentReview";
 import { logoutUser, updateUserBio } from "../component/UserAction";
 import Edit from "../../assets/Edit.svg";
+import writeRecipe from "../../assets/RecipeIcon.svg";
+import writeReview from "../../assets/ReviewIcon.svg";
+import UserRecentPostCount from "../component/UserRecentPostCount";
+import UserRecentReviewCount from "../component/UserRecentReviewCount";
 
 function MyPage() {
   const user = useSelector((state) => state.user.userData);
@@ -14,7 +18,7 @@ function MyPage() {
   const dispatch = useDispatch();
   const [modalOpen, setModalOpen] = useState(false);
   const modalBackground = useRef();
-  const [userBio, setBio] = useState(""); // 초기 상태를 빈 문자열로 설정
+  const [userBio, setBio] = useState("");
 
   const handleModalOpen = () => {
     setModalOpen(true);
@@ -57,6 +61,16 @@ function MyPage() {
     }
   };
 
+  const handleRecipeMoreSeeClick = (data) => {
+    const queryString = new URLSearchParams({data}).toString();
+    window.location.href = `/moreSee/recipeByName?${queryString}`;
+  };
+
+  const handleReviewMoreSeeClick = (data) => {
+    const queryString = new URLSearchParams({data}).toString();
+    window.location.href = `/moreSee/reivewByName?${queryString}`;
+  };
+
   const handleDeleteAccount = async () => {
     if (window.confirm("정말로 회원 탈퇴를 하시겠습니까?")) {
       try {
@@ -78,9 +92,8 @@ function MyPage() {
   return (
     <div className={styles.myPageContainer}>
       <div className={styles.userinfo}>
-        <h1>마이페이지</h1>
         <div className={styles.rowContainer}>
-          <h2>{user.userNickName}</h2>
+        <h1>마이페이지</h1>
           <div>
             <button className={styles.Btn} onClick={handleModalOpen}>
               <div className={styles.BtnCenter}>
@@ -96,8 +109,7 @@ function MyPage() {
                   if (e.target === modalBackground.current) {
                     handleModalClose();
                   }
-                }}
-              >
+                }}>
                 <div className={styles.modalcontent}>
                   <p>자기소개 수정</p>
                   <div className={styles.divider}></div>
@@ -127,19 +139,41 @@ function MyPage() {
           </div>
         </div>
         <div className={styles.mySelfBlock}>
-          <h2>자기소개</h2>
+        <div className={styles.rowContainer}>
+          <h2>{user.userNickName}</h2>
+          < div className={styles.rowContainer}>
+              <div  className={`${styles.rowContainer} ${styles.count}`}>
+              <img src={writeRecipe} alt="작성한 레시피" />
+              <UserRecentPostCount userId={user.userId} />
+              </div>
+              <div  className={`${styles.rowContainer} ${styles.count}`}> 
+              <img src={writeReview} alt="작성한 리뷰" />
+              <UserRecentReviewCount userId={user.userId} />
+              </div>
+            </div>
+          </div>
           <div className={styles.divider}></div>
           <h3>{user.userBio}</h3>
         </div>
 
         <div className={styles.block}>
+          < div className={styles.rowContainer}>
           <h2>최근 작성한 레시피 </h2>
+            <button className={styles.moreSerach} type="button" onClick={() => handleRecipeMoreSeeClick(user.userNickName)}>
+              전체보기
+            </button>
+          </div>
           <div className={styles.divider}></div>
           <UserRecentRecipes userId={user.userid} />
         </div>
 
         <div className={styles.block}>
+          < div className={styles.rowContainer}>
           <h2>최근 작성한 게시글</h2>
+            <button className={styles.moreSerach} type="button" onClick={() => handleReviewMoreSeeClick(user.userNickName)}>
+              전체보기
+            </button>
+          </div>
           <div className={styles.divider}></div>
           <UserRecentReview userId={user.userid} />
         </div>

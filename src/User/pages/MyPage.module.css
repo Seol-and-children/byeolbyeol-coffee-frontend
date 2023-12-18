@@ -171,3 +171,16 @@ textarea {
   font-size: 20px;
   font-weight: bold;
 }
+
+.count {
+  margin-right: 10px;
+}
+
+.moreSerach {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #ec7357;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
