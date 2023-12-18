@@ -114,7 +114,7 @@ function Navbar() {
               className={styles.randomPageBtn}
               onClick={handleRandomRecipe}
             >
-              오늘 뭐마셔?
+              지금 뭐마셔?
             </button>
           </div>
           <SearchBar />
@@ -163,7 +163,6 @@ function Navbar() {
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
-
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
