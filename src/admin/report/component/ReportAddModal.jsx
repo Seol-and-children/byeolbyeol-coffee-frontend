@@ -11,7 +11,7 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
     const [reportReason, setReportReason] = useState('');
     const [reportCategory, setReportCategory] = useState("레시피 게시판");
     const [processing, setProcessing] = useState(false);
-    const [recipeId, setRecipeId] = useState('');
+    const [foreignId, setForeignId] = useState('');
     const user = useSelector((state) => state.user.userData);
     const [authorName, setAuthorName] = useState('');
   
@@ -29,7 +29,7 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
           reportCategory,
           reportReason,
           authorName,
-          recipeId
+          foreignId
         });
   
         if (response.status === 200) {
@@ -43,7 +43,7 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
 
     const userSet = () => {
       setAuthorName(user.userNickName);
-      setRecipeId(getRecipeId);
+      setForeignId(getRecipeId);
     };
 
     return (
