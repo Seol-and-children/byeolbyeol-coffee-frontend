@@ -1,44 +1,103 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import CommentForm from "./CommentForm";
+import "./CommentsDisplay.css";
+import ReportAdd from "../../admin/report/component/ReportAdd";
+import DeleteIcon from "../../assets/DeleteIcon.svg";
+import CommentIcon from "../../assets/CommentIcon.svg";
 
-const CommentsDisplay = ({ recipeId, userId }) => {
+const CommentsDisplay = ({ recipeId, userId, userRole }) => {
   const [comments, setComments] = useState([]);
   const [showReplyForms, setShowReplyForms] = useState({});
-  const [reloadComments, setReloadComments] = useState(false);
+  const navigate = useNavigate();
+  const isLoggedIn = userId != null;
+
+  const fetchComments = async () => {
+    try {
+      const response = await axios.get(`/recipes/${recipeId}/comments`);
+      setComments(response.data);
+    } catch (error) {
+      console.error("댓글 로딩 중 오류 발생:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, [recipeId, fetchComments]);
+
+  const navigateToUserPage = (authorId) => {
+    navigate(`/users/${authorId}`);
+  };
 
   const toggleReplyForm = (commentId) => {
     setShowReplyForms((prev) => ({ ...prev, [commentId]: !prev[commentId] }));
   };
 
   const handleCommentAdded = () => {
-    setReloadComments((prev) => !prev);
+    fetchComments();
   };
 
-  useEffect(() => {
-    axios
-      .get(`/recipes/${recipeId}/comments`)
-      .then((response) => {
-        setComments(response.data);
-      })
-      .catch((error) => {
-        console.error("댓글 로딩 중 오류 발생:", error);
-      });
-  }, [recipeId, reloadComments]);
+  const handleDeleteComment = async (commentId) => {
+    if (window.confirm("댓글을 삭제하시겠습니까?")) {
+      try {
+        await axios.delete(`/recipes/${recipeId}/comments/${commentId}`);
+        fetchComments();
+      } catch (error) {
+        console.error("댓글 삭제 실패:", error);
+        alert("댓글 삭제에 실패했습니다.");
+      }
+    }
+  };
 
-  return (
-    <div>
-      {comments.map((comment) => (
+  const renderComments = (parentId = null) => {
+    return comments
+      .filter((comment) => comment.parentId === parentId)
+      .map((comment) => (
         <div
           key={comment.commentId}
-          style={{ marginLeft: `${comment.depth * 20}px` }}
+          className={`comment ${comment.depth > 0 ? "indent" : ""}`}
         >
-          <p>{comment.content}</p>
-          {comment.depth === 0 && (
-            <button onClick={() => toggleReplyForm(comment.commentId)}>
-              답변하기
-            </button>
-          )}
+          <div className="parent-comment">
+            <div className="comment-align-container">
+              <p className="comment-author">
+                <span onClick={() => navigateToUserPage(comment.userId)}>
+                  {comment.userNickname}
+                </span>
+              </p>
+              <div className="comment-button-area">
+                {(userRole === 3 || userId === comment.userId) && (
+                  <button
+                    className="comment-delete"
+                    onClick={() => handleDeleteComment(comment.commentId)}
+                  >
+                    <img src={DeleteIcon} alt="삭제" />
+                  </button>
+                )}
+
+                {isLoggedIn && comment.depth === 0 && (
+                  <button
+                    className="reply-button"
+                    onClick={() => toggleReplyForm(comment.commentId)}
+                  >
+                    <img src={CommentIcon} alt="답글" />
+                    답글하기
+                  </button>
+                )}
+
+                {isLoggedIn && userRole !== 3 && comment.userId !== userId && (
+                  <div className="action-buttons">
+                    <div className="report-button">
+                      <ReportAdd addRecipeId={comment.recipeId} />
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <p className="comment-content">{comment.content}</p>
+          </div>
+
           {showReplyForms[comment.commentId] && (
             <CommentForm
               recipeId={recipeId}
@@ -47,10 +106,12 @@ const CommentsDisplay = ({ recipeId, userId }) => {
               onCommentAdded={handleCommentAdded}
             />
           )}
+          {renderComments(comment.commentId)}
         </div>
-      ))}
-    </div>
-  );
+      ));
+  };
+
+  return <div className="comments-container">{renderComments()}</div>;
 };
 
 export default CommentsDisplay;

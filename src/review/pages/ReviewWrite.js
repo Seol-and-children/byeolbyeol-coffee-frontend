@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 import { useSelector } from "react-redux";
 
-import PostTitle from '../components/ReviewWrite/PostTitle';
-import CancelButton from '../components/ReviewWrite/CancelButton';
-import SubmitButton from '../components/ReviewWrite/SubmitButton';
+import PostTitle from "../components/ReviewWrite/PostTitle";
+import CancelButton from "../components/ReviewWrite/CancelButton";
+import SubmitButton from "../components/ReviewWrite/SubmitButton";
 
-import '../css/ReviewWrite.css';
-import { useNavigate } from 'react-router-dom';
+import "../css/ReviewWrite.css";
+import { useNavigate } from "react-router-dom";
 
 function ReviewWrite() {
   const [reviews, setReviews] = useState([]);
-  const [reviewName, setReviewName] = useState('');
-  const [content, setContent] = useState('');
+  const [reviewName, setReviewName] = useState("");
+  const [content, setContent] = useState("");
   const [reviewImage, setReviewImage] = useState(null);
   const user = useSelector((state) => state.user.userData);
 
@@ -31,49 +31,55 @@ function ReviewWrite() {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  const userId = user ? user.userId : null;
-  const reviewDTO = {
-    reviewName,
-    content,
-    authorId: userId,
-  };
+    const userId = user ? user.userId : null;
+    const reviewDTO = {
+      reviewName,
+      content,
+      authorId: userId,
+    };
 
-  const formData = new FormData();
-  formData.append('reviewImage', reviewImage);
-  formData.append(
-    'reviewDTO',
-    new Blob([JSON.stringify(reviewDTO)], { type: 'application/json' })
-  );
-
-  try {
-    const response = await axios.post('http://localhost:8080/reviews', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    
-    console.log(response.data);
-    alert('리뷰가 등록되었습니다!');
-
-    // Fetch the updated list of reviews and sort them by time
-    const updatedReviewsResponse = await axios.get('http://localhost:8080/reviews');
-    const updatedReviews = updatedReviewsResponse.data;
-
-    const sortedReviews = [...updatedReviews].sort(
-      (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+    const formData = new FormData();
+    formData.append("reviewImage", reviewImage);
+    formData.append(
+      "reviewDTO",
+      new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })
     );
-    
-    setReviews(sortedReviews);
 
-    navigate('/reviews');
-  } catch (error) {
-    console.error('리뷰 등록 실패', error);
-    alert('리뷰 등록에 실패하였습니다.');
-    navigate('/reviews');
-  }
-};
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/reviews",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response.data);
+      alert("리뷰가 등록되었습니다!");
+
+      // Fetch the updated list of reviews and sort them by time
+      const updatedReviewsResponse = await axios.get(
+        "http://localhost:8080/reviews"
+      );
+      const updatedReviews = updatedReviewsResponse.data;
+
+      const sortedReviews = [...updatedReviews].sort(
+        (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
+      );
+
+      setReviews(sortedReviews);
+
+      navigate("/reviews");
+    } catch (error) {
+      console.error("리뷰 등록 실패", error);
+      alert("리뷰 등록에 실패하였습니다.");
+      navigate("/reviews");
+    }
+  };
 
   return (
     <div className="all">
@@ -98,7 +104,7 @@ function ReviewWrite() {
                 onChange={handleNewImageChange}
                 id="fileInput"
                 accept="image/*"
-                style={{ display: 'none' }}
+                style={{ display: "none" }}
               />
             </div>
           </div>

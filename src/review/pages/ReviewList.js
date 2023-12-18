@@ -1,14 +1,14 @@
 // ReviewList.js
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-import PostTitle from '../components/ReviewList/PostTitle';
-import ReviewListTable from '../components/ReviewList/ReviewListTable';
-import Pagination from '../components/ReviewList/Pagination';
-import ReviewWriteButton from '../components/ReviewList/ReviewWriteButton';
+import PostTitle from "../components/ReviewList/PostTitle";
+import ReviewListTable from "../components/ReviewList/ReviewListTable";
+import Pagination from "../components/ReviewList/Pagination";
+import ReviewWriteButton from "../components/ReviewList/ReviewWriteButton";
 
-import '../css/ReviewList.css';
+import "../css/ReviewList.css";
 
 const ReviewList = () => {
   const [reviews, setReviews] = useState([]);
@@ -41,7 +41,7 @@ const ReviewList = () => {
       <ReviewListTable reviews={reviews} />
       <div className="pagination-container">
         <Pagination currentPage={currentPage} totalPages={totalPages} />
-        <div className='review-write-button'>
+        <div className="review-write-button">
           <ReviewWriteButton />
         </div>
       </div>

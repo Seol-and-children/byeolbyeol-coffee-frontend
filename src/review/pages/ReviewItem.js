@@ -12,10 +12,8 @@ import ListIcon from "../../assets/ListIcon.svg";
 import CommentForm from "../../components/recipe/CommentForm";
 import CommentsDisplay from "../../components/recipe/CommentsDisplay";
 import ReportAdd from "../../admin/report/component/ReportAdd";
-import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
-
-import '../css/ReviewItem.css';
+import "../css/ReviewItem.css";
 
 function ReviewItem() {
   const { reviewId } = useParams();
@@ -137,7 +135,7 @@ function ReviewItem() {
           )}
         </div>
       </div>
-  
+
       <div className="review-title-date">
         <h2>{review.reviewName}</h2>
         <p className="register-time">{formatDate(review.registerTime)}</p>
@@ -148,7 +146,7 @@ function ReviewItem() {
           {review.userNickname}
         </p>
       </div>
-  
+
       <div className="image-container">
         <img
           className="review-image"
@@ -156,23 +154,23 @@ function ReviewItem() {
           alt={review.reviewName}
         />
       </div>
-  
+
       <div className="review-content">
         <p>{review.content}</p>
       </div>
-  
+
       <div className="like-button">
         <div className="like-icon">
           <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
         </div>
         <div className="like-count">{review.likesCount}</div>
       </div>
-  
+
       <div className="comment-section">
         <CommentForm reviewId={reviewId} onCommentAdded={handleCommentChange} />
         <CommentsDisplay reviewId={reviewId} key={reloadComments} />
       </div>
-  
+
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
           <img src={ListIcon} alt="목록"></img>
