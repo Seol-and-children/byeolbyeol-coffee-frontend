@@ -68,7 +68,7 @@ function MyPage() {
 
   const handleReviewMoreSeeClick = (data) => {
     const queryString = new URLSearchParams({data}).toString();
-    window.location.href = `/moreSee/reivewByName?${queryString}`;
+    window.location.href = `/moreSee/reviewByName?${queryString}`;
   };
 
   const handleDeleteAccount = async () => {
