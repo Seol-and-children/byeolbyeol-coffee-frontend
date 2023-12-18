@@ -1,5 +1,5 @@
-import React from 'react';
-import axios from 'axios';
+import React from "react";
+import axios from "axios";
 
 const IngredientToggle = ({ ingredientId, processing, onUpdate }) => {
   const handleToggle = async () => {
@@ -13,16 +13,11 @@ const IngredientToggle = ({ ingredientId, processing, onUpdate }) => {
       //외부에서 이 컴포넌트의 값을 사용시 onUpdate를 이용해 사용
       onUpdate(ingredientId, !processing);
     } catch (error) {
-      console.error('Error toggling processing:', error);
+      console.error("Error toggling processing:", error);
     }
   };
-  
 
-  return (
-    <button onClick={handleToggle}>
-      {processing ? 'On' : 'Off'}
-    </button>
-  );
+  return <button className="process-Btn" onClick={handleToggle}>{processing ? "사용중" : "미사용"}</button>;
 };
 
 export default IngredientToggle;

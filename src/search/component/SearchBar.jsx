@@ -26,7 +26,6 @@ const SearchBar = () => {
         type="text"
         className="search-input"
         placeholder="  검색"
-        value={null}
         onChange={(e) => setSearchQuery(e.target.value)}
         onKeyDown={handleKeyDown} // Enter 키 이벤트 핸들러 추가
       />
