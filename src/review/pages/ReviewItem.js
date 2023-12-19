@@ -9,8 +9,8 @@ import LikeButton from "../components/ReviewItem/LikeButton";
 import DeleteIcon from "../../assets/DeleteIcon.svg";
 import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
-import CommentForm from "../../components/recipe/CommentForm";
-import CommentsDisplay from "../../components/recipe/CommentsDisplay";
+import ReviewCommentForm from "../../components/recipe/CommentForm";
+import ReviewCommentsDisplay from "../../components/recipe/CommentsDisplay";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";
@@ -109,7 +109,6 @@ function ReviewItem() {
   const isAuthor = review && userId && review?.authorId === userId;
   const isLoggedIn = userId != null;
 
-
   if (!review) {
     return <div>게시글 불러오는 중...</div>;
   }
@@ -169,30 +168,30 @@ function ReviewItem() {
       </div>
 
       <div className="comment-section">
-          <div className="comment-view-section">
-            <div className="comment-title">댓글</div>
-            <div className="comment-display">
-              <ReviewCommentsDisplay
+        <div className="comment-view-section">
+          <div className="comment-title">댓글</div>
+          <div className="comment-display">
+            <ReviewCommentsDisplay
+              reviewId={reviewId}
+              userId={userId}
+              userRole={userRole}
+              key={reloadComments}
+            />
+          </div>
+        </div>
+        {isLoggedIn && (
+          <div className="comment-input-section">
+            <div className="comment-title">댓글 작성</div>
+            <div className="comment-form">
+              <ReviewCommentForm
                 reviewId={reviewId}
                 userId={userId}
-                userRole={userRole}
-                key={reloadComments}
+                onCommentAdded={handleCommentChange}
               />
             </div>
           </div>
-          {isLoggedIn && (
-            <div className="comment-input-section">
-              <div className="comment-title">댓글 작성</div>
-              <div className="comment-form">
-                <ReviewCommentForm
-                  reviewId={reviewId}
-                  userId={userId}
-                  onCommentAdded={handleCommentChange}
-                />
-              </div>
-            </div>
-          )}
-        </div>
+        )}
+      </div>
 
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
