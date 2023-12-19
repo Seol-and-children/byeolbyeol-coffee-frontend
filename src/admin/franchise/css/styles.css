@@ -38,17 +38,17 @@
 }
 
 .franchise-name {
-  width: 467px;
+  width: 327px;
   height: 58px;
 }
 
 .franchise-background-color {
-  width: 220px;
+  width: 290px;
   height: 58px;
 }
 
 .franchise-text-color {
-  width: 220px;
+  width: 290px;
   height: 58px;
 }
 
@@ -68,15 +68,6 @@
   justify-content: center;
   font-size: 12px;
 }
-
-/* exam 내부 div들 */
-.exam-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
 
 .custom-modal {
   width: 500px;

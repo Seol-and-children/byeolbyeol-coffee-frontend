@@ -16,7 +16,7 @@ function ReviewCard({ review, rank }) {
   };
 
   return (
-    <div className="review-card" onClick={handleClick}>
+    <div className="main-review-card" onClick={handleClick}>
       <div className="review-card-container">
         <div className="review-card-image">
           <img src={imageUrl} alt={review.reviewName} />

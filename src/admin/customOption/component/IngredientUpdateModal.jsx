@@ -51,33 +51,37 @@ const IngredientModalComponent = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} className="custom-modal">
-      <form className="modal-form" onSubmit={handleSubmit}>
-        <div className="modal-top">레시피 재료 관리</div>
-        <div className="wrap-modal">
-          <label>
+    <Modal isOpen={isOpen} onRequestClose={onClose} className="report-add-modal">
+      <form className="report-modal-form" onSubmit={handleSubmit}>
+        <div className="report-modal-top">레시피 재료 관리</div>
+        <div className="report-wrap-modal">
+          <div className="franchise-label-modal">
             재료 이름 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={ingredientName}
               onChange={(e) => setIngredientName(e.target.value)}
             />
-          </label>
+          </div>
           <br />
 
-          <label>
+          <div className="franchise-label-modal">
             재료 단위 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={ingredientUnit}
               onChange={(e) => setIngredientUnit(e.target.value)}
             />
-          </label>
+          </div>
           <br />
         </div>
-        <button type="submit">수정하기</button>
+        <div>
+        <button className='report-add-button' type="submit">수정하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button>
+        <button className='report-add-button' onClick={onClose}>취소</button>
+        </div>
       </form>
     </Modal>
   );

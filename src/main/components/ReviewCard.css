@@ -1,4 +1,4 @@
-.review-card {
+.main-review-card {
   display: flex;
   flex-direction: row;
   overflow-x: hidden;
@@ -7,7 +7,7 @@
   scroll-behavior: smooth;
 }
 
-.review-card-image {
+.main-review-card .review-card-image {
   width: 270px;
   height: 270px;
   overflow: hidden;
@@ -19,36 +19,45 @@
   float: left;
 }
 
-.review-card-details {
-  float: left;
-  margin-left: 30px;
-  margin-top: -20px;
-  
-}
-
-.review-card-author {
+.main-review-card .review-card-author {
   margin-bottom: 10px;
 }
 
-.review-card-title {
+.main-review-card .review-card-title {
   font-size: 22px;
   margin-bottom: 10px;
 }
 
-.review-card-content {
-  padding-bottom: 120px;
+.main-review-card .review-card-details {
+  display: flex;
+  flex-direction: column; /* 컨텐츠를 세로로 배치 */
+  float: left;
+  margin-left: 30px;
+  margin-top: -20px;
 }
 
-.review-card-content-box {
+.main-review-card .review-card-content {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  line-height: 2.2; /* 줄 간격 조절 */
+  height: 140px;
+}
+
+.main-review-card .review-card-content-box {
   background-color: #F1F1F1;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-top: 10px;
   width: 452px;
   height: 165px;
   border-radius: 20px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
-.review-card-info {
+.main-review-card .review-card-info {
   display: flex;
   justify-content: space-between;
 }
@@ -56,39 +65,39 @@
   float: left;
 }
 
-.recipe-card-stats {
+.main-review-card .recipe-card-stats {
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: 0.85rem;
 }
 
-.review-card-likes,
-.review-card-views {
+.main-review-card .review-card-likes,
+.main-review-card .review-card-views {
   display: flex;
   align-items: center;
   margin-left: 10px;
 }
 
-.count {
+.main-review-card .count {
   display: flex;
 }
 
-.review-card-likes:before,
-.review-card-views:before {
+.main-review-card .review-card-likes:before,
+.main-review-card .review-card-views:before {
   content: "";
   display: inline-block;
   margin-right: 3px;
 }
 
-.review-card-likes:before {
+.main-review-card .review-card-likes:before {
   background-image: url("/public/images/like-icon.svg");
   width: 1rem;
   height: 1rem;
   background-size: cover;
 }
 
-.review-card-views:before {
+.main-review-card .review-card-views:before {
   background-image: url("/public/images/view-icon.svg");
   width: 1rem;
   height: 1rem;

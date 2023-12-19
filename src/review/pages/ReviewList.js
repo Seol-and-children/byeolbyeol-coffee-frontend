@@ -1,24 +1,16 @@
-// ReviewList.js
-
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
-import PostTitle from "../components/ReviewList/PostTitle";
-import ReviewListTable from "../components/ReviewList/ReviewListTable";
-import Pagination from "../components/ReviewList/Pagination";
-import ReviewWriteButton from "../components/ReviewList/ReviewWriteButton";
-
+import ReviewListCard from "../components/ReviewList/ReviewListCard";
 import "../css/ReviewList.css";
 
-const ReviewList = () => {
+function ReviewList() {
   const [reviews, setReviews] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const containerRef = useRef(null);
 
   const fetchReviews = async () => {
     try {
       const response = await axios.get("http://localhost:8080/reviews");
-      // 받은 데이터를 최신 글이 위로 오도록 정렬
       const sortedReviews = response.data.sort(
         (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
       );
@@ -28,25 +20,25 @@ const ReviewList = () => {
     }
   };
 
-  // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
   useEffect(() => {
+    // 컴포넌트가 마운트될 때 데이터를 가져옵니다.
     fetchReviews();
   }, []);
 
   return (
-    <div className="review-list-container">
-      <div className="post-title">
-        <PostTitle />
+    <div className="review-list">
+      <div className="review-header">
+        <h1>CAFE REVIEW</h1>
       </div>
-      <ReviewListTable reviews={reviews} />
-      <div className="pagination-container">
-        <Pagination currentPage={currentPage} totalPages={totalPages} />
-        <div className="review-write-button">
-          <ReviewWriteButton />
+      <div className="review-flex-container">
+        <div className="review-flex" ref={containerRef}>
+          {reviews.map((review, index) => (
+            <ReviewListCard key={index} review={review} />
+          ))}
         </div>
       </div>
-    </div>
+    </div>  
   );
-};
+}
 
 export default ReviewList;

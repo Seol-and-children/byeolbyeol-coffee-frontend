@@ -48,46 +48,54 @@ const FranchiseModal = ({ isOpen, onClose, franchiseId }) => {
     };
 
     return (
-      <Modal 
-        className='custom-modal'
-        isOpen={isOpen} 
-        onRequestClose={onClose}>
-      <form className='modal-form' onSubmit={handleSubmit}>
-        <div className='modal-top'>프렌차이즈 관리</div>
-        <div className='wrap-modal'>
-        <label>
-        프렌차이즈 이름 <br></br>
-          <input type="text" value={franchiseName} onChange={(e) => setFranchiseName(e.target.value)} />
-        </label>
-        <br/>
+      <Modal isOpen={isOpen} onRequestClose={onClose} className="report-add-modal">
+      <form className="report-modal-form" onSubmit={handleSubmit}>
+        <div className="report-modal-top">프렌차이즈 관리</div>
+        <div className="report-wrap-modal">
+          <div className="franchise-label-modal">
+            프렌차이즈 이름 <br></br>
+            <input
+            className="franchise-input-modal"
+              type="text"
+              value={franchiseName}
+              onChange={(e) => setFranchiseName(e.target.value)}
+            />
+          </div>
+          <br />
 
-        <label>
-        백 컬러 <br></br>
-          <input type="text" value={franchiseBackColor} onChange={(e) => setFranchiseBackColor(e.target.value)} />
-        </label>
-        <br/>
+          <div>
+            백 컬러 <br></br>
+            <input
+            className="franchise-input-modal"
+              type="text"
+              value={franchiseBackColor}
+              placeholder="#"
+              onChange={(e) => setFranchiseBackColor(e.target.value)}
+            />
+          </div>
+          <br />
 
-        <label>
-        폰트 컬러 <br></br>
-          <input type="text" value={franchiseFontColor} onChange={(e) => setFranchiseFontColor(e.target.value)} />
-        </label>
-        <br/>
-
+          <div>
+            폰트 컬러 <br></br>
+            <input
+            className="franchise-input-modal"
+              type="text"
+              value={franchiseFontColor}
+              placeholder="#"
+              onChange={(e) => setFranchiseFontColor(e.target.value)}
+            />
+          </div>
+          <br />
         </div>
-
-        {/* <label>
-        franchiseFontColor:
-          <input type="text" value={franchiseImage} onChange={(e) => setFranchiseImage(e.target.value)} />
-        </label>
-        <br/> */}
-
-        <button type="submit">수정하기</button>
+      <div>
+        <button className='report-add-button' type="submit">수정하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button>
-        
+        <button className='report-add-button' onClick={onClose}>취소</button>
+        </div>
       </form>
     </Modal>
     );
+    
   };
   
   export default FranchiseModal;
