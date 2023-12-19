@@ -127,7 +127,7 @@ function RecipeViewPage() {
       return;
     }
     if (!user) {
-      alert("레시피 등록을 위해서는 로그인이 필요합니다.");
+      alert("로그인 후 이용해주세요.");
       navigate("/users/login");
       return;
     }
