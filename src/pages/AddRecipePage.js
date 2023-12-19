@@ -194,32 +194,44 @@ function AddRecipePage() {
 
   return (
     <div className="add-recipe-page">
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={handleImageChange} accept="image/*" />
-        <input
-          type="text"
-          value={recipeName}
-          onChange={(e) => setRecipeName(e.target.value)}
-          placeholder="레시피 이름"
-        />
-        <Select
-          value={selectedFranchise}
-          onChange={handleFranchiseChange}
-          options={franchiseCafeList.map((franchise) => ({
-            value: franchise.franchiseId,
-            label: franchise.franchiseName,
-          }))}
-          className="react-select-container"
-          classNamePrefix="react-select"
-          placeholder="프랜차이즈 선택..."
-          isClearable
-          isSearchable
-        />
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          placeholder="메뉴 설명"
-        />
+      <div className="recipe-add-header">레시피 등록</div>
+      <div className="recipe-info-section">
+        <form className="recipe-info-contents" onSubmit={handleSubmit}>
+          <input
+            className="img-add-area"
+            type="file"
+            onChange={handleImageChange}
+            accept="image/*"
+          />
+          <div className="contents-add-area">
+            <input
+              type="text"
+              value={recipeName}
+              onChange={(e) => setRecipeName(e.target.value)}
+              placeholder="메뉴 이름"
+            />
+            <Select
+              value={selectedFranchise}
+              onChange={handleFranchiseChange}
+              options={franchiseCafeList.map((franchise) => ({
+                value: franchise.franchiseId,
+                label: franchise.franchiseName,
+              }))}
+              className="react-select-container"
+              classNamePrefix="react-select"
+              placeholder="카페 선택..."
+              isClearable
+              isSearchable
+            />
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="메뉴 설명"
+            />
+          </div>
+        </form>
+      </div>
+      <form>
         <input
           type="text"
           value={baseBeverage}
