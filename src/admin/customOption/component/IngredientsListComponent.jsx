@@ -3,6 +3,7 @@ import axios from "axios";
 import IngredientModalComponent from "./IngredientUpdateModal";
 import IngredientAdd from "./IngredientAdd";
 import IngredientToggle from "./IngredientToggle";
+import Pagination from "../../../components/common/Pagination";
 import "../css/styles.css";
 
 const Ingredient = ({ ingredient, onClick }) => (
@@ -19,6 +20,8 @@ const Ingredient = ({ ingredient, onClick }) => (
 const IngredientListComponent = () => {
   const [ingredients, setIngredients] = useState([]);
   const [selectedIngredient, setSelectedIngredient] = useState(null); // 모달을 표시하는 상태 추가
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(18);
 
   useEffect(() => {
     axios
@@ -58,16 +61,22 @@ const IngredientListComponent = () => {
       });
   };
 
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = ingredients.slice(indexOfFirstRecipe, indexOfLastRecipe);
+
+  const paginaten = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
+    <div>
     <div className="recipe-management">
-      <div id="ingredient-header">레시피 재료 관리</div>
       <div id="main-ingredient-bar">
         <div class="exam-item ingredient-name">재료이름</div>
         <div class="exam-item unit">단위</div>
         <div class="exam-item remove">사용여부</div>
       </div>
-      <div>
-        {ingredients.map((ingredient) => (
+      <div className="inner-ingredient-bar">
+        {currentRecipes.map((ingredient) => (
           <div key={ingredient.ingredientId}>
             <div id="ingredient-bar">
               <Ingredient
@@ -85,6 +94,11 @@ const IngredientListComponent = () => {
           </div>
         ))}
       </div>
+      <Pagination
+        recipesPerPage={recipesPerPage}
+        totalRecipes={ingredients.length}
+        paginate={paginaten}
+      />
       {/* 모달 */}
       {selectedIngredient && (
         <IngredientModalComponent
@@ -93,6 +107,7 @@ const IngredientListComponent = () => {
           onClose={handleCloseModal}
         />
       )}
+      </div>
       <IngredientAdd onDataUpdate={handleCloseModal} />
     </div>
   );

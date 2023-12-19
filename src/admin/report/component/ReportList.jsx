@@ -60,7 +60,7 @@ const ReportList = () => {
 
   return (
     <div className="report-history">
-      <div id="report-header">신고접수내역</div>
+      
       <div id="main-report-bar">
         <div className="exam-item report-category">구분</div>
         <div className="exam-item report-title">제목</div>

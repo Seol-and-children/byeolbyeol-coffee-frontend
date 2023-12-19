@@ -1,15 +1,23 @@
 .user-sample-wrap {
-    width: 1580px;
+    width: 1024px;
     height: 90px;
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    margin-left: 5px;
   }
 
 .user-sample-box{
-    width: 1580px;
+    width: 1010px;
     height: 90px;
     margin-top: 20px;
     border-left: solid 3px #737373;;
+    cursor: pointer;
+  transition: background-color 0.3s; /* 변경 효과 지속 시간 */
+
+  /* 마우스를 요소 위로 올렸을 때의 스타일 */
+  &:hover {
+    background-color: #e4e4e4; /* 변경될 배경색 */
+  }
 }
 
 .user-nickname{

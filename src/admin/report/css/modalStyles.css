@@ -1,0 +1,60 @@
+.report-add-modal {
+    position: relative;
+    margin: auto;
+    width: 500px;
+    height: 400px;
+    margin-top: 100px;
+    overflow: auto;
+    padding: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    border: 1px solid #949494;
+  }
+  
+  .report-modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: ;
+    height: 100%;
+  }
+  
+  .report-modal-top {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .report-wrap-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  .report-btn-wrap{
+    display: flex;
+  }
+  
+  label {
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  #reportContent {
+    width: 80%;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  button {
+        font-size: 17px;
+        font-weight: bold;
+        border: #414141;
+        background-color: #ffffff;
+        border: 2px solid #000;
+        border-radius: 5px;
+        padding: 5px 10px 5px 10px;
+        margin: 5px;
+  }
