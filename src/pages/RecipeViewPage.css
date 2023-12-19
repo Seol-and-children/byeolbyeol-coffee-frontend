@@ -98,3 +98,40 @@ html {
 .add-recipe-button:hover {
   background-color: #e75625;
 }
+
+.temperature-toggle {
+  position: fixed;
+  bottom: calc(50% - 50px);
+  right: calc(50% - 600px);
+  width: 50px;
+  height: 100px;
+  border-radius: 25px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.temperature-button {
+  flex: 1;
+  border: none;
+  color: black;
+  background-color: #efefef;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.active-ice {
+  background-color: #0075ff;
+  color: white;
+}
+
+.active-hot {
+  background-color: #ff6347;
+  color: white;
+}
+
+.temperature-button:first-child {
+  border-bottom: 1px solid #545454;
+}

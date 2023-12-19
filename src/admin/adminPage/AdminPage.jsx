@@ -55,7 +55,7 @@ const AdminPage = () => {
             }`}
             onClick={() => handleDivClick("Franchise")}
           >
-            프렌차이즈 관리
+            프랜차이즈 관리
           </div>
 
           <div

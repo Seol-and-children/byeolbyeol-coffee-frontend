@@ -1,51 +1,62 @@
-// Pagination.js
+import React from "react";
+import "../../css/ReviewList.css";
+import FirstPageIcon from "../../../assets/FirstPage.svg";
+import LastPageIcon from "../../../assets/LastPage.svg";
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+const Pagination = ({
+  reviewsPerPage,
+  totalReviews,
+  paginate,
+  currentPage,
+}) => {
+  const pageNumbers = [];
+  const lastPageNumber = Math.ceil(totalReviews / reviewsPerPage);
 
-const Pagination = ({ currentPage, totalPages }) => {
-  const getPageNumbers = () => {
-    const pageNumbers = [];
-    const totalPageToShow = 5;
-
-    if (totalPages <= totalPageToShow) {
-      // 페이지가 5개 이하인 경우 모두 표시
-      for (let i = 1; i <= totalPages; i++) {
-        pageNumbers.push(i);
-      }
-    } else {
-      // 페이지가 6개 이상인 경우 현재 페이지 중심으로 앞뒤 5개 표시
-      const startPage = Math.max(1, currentPage - 2);
-      const endPage = Math.min(totalPages, currentPage + 2);
-
-      for (let i = startPage; i <= endPage; i++) {
-        pageNumbers.push(i);
-      }
-    }
-
-    return pageNumbers;
-  };
+  for (let i = 1; i <= lastPageNumber; i++) {
+    pageNumbers.push(i);
+  }
 
   return (
-    <div className="pagination">
-      {currentPage > 1 && (
-        <Link to={`/reviews?page=${currentPage - 1}`}>&lt;</Link>
-      )}
-
-      {getPageNumbers().map((pageNumber) => (
-        <Link
-          key={pageNumber}
-          to={`/reviews?page=${pageNumber}`}
-          className={pageNumber === currentPage ? 'active' : ''}
-        >
-          {pageNumber}
-        </Link>
-      ))}
-
-      {currentPage < totalPages && (
-        <Link to={`/reviews?page=${currentPage + 1}`}>&gt;</Link>
-      )}
-    </div>
+    <nav>
+      <ul className="review-pagination">
+        {currentPage > 1 && (
+          <li className="review-page-item">
+            <a
+              href={`#page1`}
+              onClick={() => paginate(1)}
+              className="review-page-link"
+            >
+              <img src={FirstPageIcon} alt="첫 페이지" />
+            </a>
+          </li>
+        )}
+        {pageNumbers.map((number) => (
+          <li
+            key={number}
+            className={`review-page-item ${currentPage === number ? "active" : ""}`}
+          >
+            <a
+              href={`#page${number}`}
+              onClick={() => paginate(number)}
+              className="review-page-link"
+            >
+              {number}
+            </a>
+          </li>
+        ))}
+        {currentPage < lastPageNumber && (
+          <li className="review-page-item">
+            <a
+              href={`#page${lastPageNumber}`}
+              onClick={() => paginate(lastPageNumber)}
+              className="review-page-link"
+            >
+              <img src={LastPageIcon} alt="마지막 페이지" />
+            </a>
+          </li>
+        )}
+      </ul>
+    </nav>
   );
 };
 

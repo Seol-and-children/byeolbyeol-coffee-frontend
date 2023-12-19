@@ -16,6 +16,7 @@ function RecipeViewPage() {
   const [franchises, setFranchises] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [showSortMenu, setShowSortMenu] = useState(false);
+  const [temperatureFilter, setTemperatureFilter] = useState("All");
   const user = useSelector((state) => state.user.userData);
   const userRole = user ? user.userRole : null;
   const navigate = useNavigate();
@@ -51,11 +52,17 @@ function RecipeViewPage() {
         );
       }
 
+      if (temperatureFilter !== "All") {
+        sortedRecipes = sortedRecipes.filter(
+          (recipe) => recipe.baseBeverageVO.temperature === temperatureFilter
+        );
+      }
+
       setRecipes(sortedRecipes);
     } catch (error) {
       console.error("레시피 정보를 가져오는데 실패했습니다 :", error);
     }
-  }, [sortOrder, selectedFranchise]);
+  }, [sortOrder, selectedFranchise, temperatureFilter]);
 
   const fetchFranchises = async () => {
     try {
@@ -70,6 +77,12 @@ function RecipeViewPage() {
 
   const toggleSortMenu = () => {
     setShowSortMenu(!showSortMenu);
+  };
+
+  const toggleTemperatureFilter = (filter) => {
+    setTemperatureFilter((prevFilter) =>
+      prevFilter === filter ? "All" : filter
+    );
   };
 
   // 추천순으로 정렬하는 함수
@@ -146,7 +159,7 @@ function RecipeViewPage() {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [fetchRecipes, selectedFranchise, showSortMenu]);
+  }, [fetchRecipes, selectedFranchise, showSortMenu, temperatureFilter]);
 
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
@@ -208,6 +221,25 @@ function RecipeViewPage() {
             레시피 올리기
           </button>
         </div>
+      </div>
+
+      <div className="temperature-toggle">
+        <button
+          className={`temperature-button ${
+            temperatureFilter === "ICE" ? "active-ice" : ""
+          }`}
+          onClick={() => toggleTemperatureFilter("ICE")}
+        >
+          ICE
+        </button>
+        <button
+          className={`temperature-button ${
+            temperatureFilter === "HOT" ? "active-hot" : ""
+          }`}
+          onClick={() => toggleTemperatureFilter("HOT")}
+        >
+          HOT
+        </button>
       </div>
 
       <Pagination

@@ -41,8 +41,6 @@ function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  console.log("userNickName 컴포넌트에서 로드한 사용자 데이터:", user);
-
   const goToHome = () => {
     navigate("/main");
   };

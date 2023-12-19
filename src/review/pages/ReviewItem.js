@@ -1,5 +1,3 @@
-// ReviewItem.js
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -9,13 +7,13 @@ import LikeButton from "../components/ReviewItem/LikeButton";
 import DeleteIcon from "../../assets/DeleteIcon.svg";
 import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
-import CommentForm from "../../components/recipe/CommentForm";
-import CommentsDisplay from "../../components/recipe/CommentsDisplay";
-import ReportAdd from "../../admin/report/component/ReportAdd";
+import ReviewCommentForm from "../components/Comment/ReviewCommentForm";
+import ReviewCommentsDisplay from "../components/Comment/ReviewCommentsDisplay";
+import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";
 
-function ReviewItem() {
+const ReviewItem = () => {
   const { reviewId } = useParams();
   const [review, setReview] = useState(null);
   const navigate = useNavigate();
@@ -107,6 +105,18 @@ function ReviewItem() {
   };
 
   const isAuthor = review && userId && review?.authorId === userId;
+  const isLoggedIn = userId != null;
+
+  const handleReport = () => {
+    if (!isLoggedIn) {
+      alert("로그인 후 이용해주세요.");
+      navigate("/users/login");
+      return;
+    }
+
+    // 현재 로그인 상태인 경우에만 신고하기 기능 실행
+    // ... (나머지 코드)
+  };
 
   if (!review) {
     return <div>게시글 불러오는 중...</div>;
@@ -116,21 +126,21 @@ function ReviewItem() {
     <div className="review-container">
       <div className="review-header">
         <h1>CAFE REVIEW</h1>
-        <div className="buttons">
+        <div className="review-buttons">
           {userRole === 2 && isAuthor ? (
             <div>
-              <button className="edit-button" onClick={navigateToEdit}>
+              <button className="review-edit-button" onClick={navigateToEdit}>
                 수정
                 <img src={EditIcon} alt="수정"></img>
               </button>
-              <button className="delete-button" onClick={handleDelete}>
+              <button className="review-delete-button" onClick={handleDelete}>
                 삭제
                 <img src={DeleteIcon} alt="삭제"></img>
               </button>
             </div>
           ) : (
-            <div className="report-button">
-              <ReportAdd addReviewId={review.reviewId} />
+            <div className="review-report-button">
+              <ReportReviewAdd addReviewId={review.reviewId} />
             </div>
           )}
         </div>
@@ -146,7 +156,7 @@ function ReviewItem() {
           {review.userNickname}
         </p>
       </div>
-
+      
       <div className="image-container">
         <img
           className="review-image"
@@ -158,19 +168,41 @@ function ReviewItem() {
       <div className="review-content">
         <p>{review.content}</p>
       </div>
-
+      <div className="like-button-box">
       <div className="like-button">
         <div className="like-icon">
           <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
         </div>
         <div className="like-count">{review.likesCount}</div>
       </div>
+      </div>
+      
 
       <div className="comment-section">
-        <CommentForm reviewId={reviewId} onCommentAdded={handleCommentChange} />
-        <CommentsDisplay reviewId={reviewId} key={reloadComments} />
+        <div className="comment-view-section">
+          <div className="comment-title">댓글</div>
+          <div className="comment-display">
+            <ReviewCommentsDisplay
+              reviewId={reviewId}
+              userId={userId}
+              userRole={userRole}
+              key={reloadComments}
+            />
+          </div>
+        </div>
+        {isLoggedIn && (
+          <div className="comment-input-section">
+            <div className="comment-title">댓글 작성</div>
+            <div className="comment-form">
+              <ReviewCommentForm
+                reviewId={reviewId}
+                userId={userId}
+                onCommentAdded={handleCommentChange}
+              />
+            </div>
+          </div>
+        )}
       </div>
-
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
           <img src={ListIcon} alt="목록"></img>
@@ -179,6 +211,6 @@ function ReviewItem() {
       </div>
     </div>
   );
-}
+};
 
 export default ReviewItem;

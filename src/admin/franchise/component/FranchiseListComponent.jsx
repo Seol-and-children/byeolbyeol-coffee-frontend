@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FranchiseModal from "./FranchiseUpdateModal";
+import Pagination from "../../../components/common/Pagination";
 import FranchiseToggle from "./FranchiseToggle";
 import FranchiseAdd from "./FranchiseAdd";
 import FranchiseLogo from "./FranchiseLogo";
@@ -13,8 +14,12 @@ const Franchise = ({ franchise, onClick }) => (
     onClick={() => onClick(franchise)}
   >
     <div class="exam-item franchise-name">{franchise.franchiseName}</div>
-    <div class="exam-item franchise-background-color">{franchise.franchiseBackColor}</div>
-    <div class="exam-item franchise-text-color">{franchise.franchiseFontColor}</div>
+    <div class="exam-item franchise-background-color">
+      {franchise.franchiseBackColor}
+    </div>
+    <div class="exam-item franchise-text-color">
+      {franchise.franchiseFontColor}
+    </div>
     <div class="exam-item franchise-tag-image">
       <FranchiseLogo franchiseInfo={franchise.franchiseId} />
     </div>
@@ -24,6 +29,8 @@ const Franchise = ({ franchise, onClick }) => (
 const FranchiseList = () => {
   const [franchises, setFranchises] = useState([]);
   const [selectedFranchises, setSelectedFranchises] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [recipesPerPage] = useState(18);
 
   useEffect(() => {
     axios
@@ -64,41 +71,58 @@ const FranchiseList = () => {
       });
   };
 
+  const indexOfLastRecipe = currentPage * recipesPerPage;
+  const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
+  const currentRecipes = franchises.slice(
+    indexOfFirstRecipe,
+    indexOfLastRecipe
+  );
+
+  const paginaten = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
-    <div className="franchise-management">
-      <div id="franchise-header">프렌차이즈 관리</div>
-      <div id="main-franchise-bar">
-        <div class="exam-item franchise-name">프렌차이즈 이름</div>
-        <div class="exam-item franchise-background-color">배경색상</div>
-        <div class="exam-item franchise-text-color">글자색상</div>
-        <div class="exam-item franchise-tag-image">이미지</div>
-        <div class="exam-item franchise-process">사용여부</div>
-      </div>
-      <div>
-        {franchises.map((franchise) => (
-          <div key={franchise.franchiseId}>
-            <div id="franchise-bar">
-              <Franchise franchise={franchise} onClick={handleFranchiseClick} />
-              <div class="exam-item franchise-process">
-                <FranchiseToggle
-                  franchiseId={franchise.franchiseId}
-                  processing={franchise.processing}
-                  onUpdate={ToggleUpdate}
+    <div>
+      <div className="franchise-management">
+        <div id="main-franchise-bar">
+          <div class="exam-item franchise-name">프랜차이즈 이름</div>
+          <div class="exam-item franchise-background-color">배경색상</div>
+          <div class="exam-item franchise-text-color">글자색상</div>
+          <div class="exam-item franchise-tag-image">이미지</div>
+          <div class="exam-item franchise-process">사용여부</div>
+        </div>
+        <div className="inner-franchise-bar">
+          {currentRecipes.map((franchise) => (
+            <div key={franchise.franchiseId}>
+              <div id="franchise-bar">
+                <Franchise
+                  franchise={franchise}
+                  onClick={handleFranchiseClick}
                 />
+                <div class="exam-item franchise-process">
+                  <FranchiseToggle
+                    franchiseId={franchise.franchiseId}
+                    processing={franchise.processing}
+                    onUpdate={ToggleUpdate}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
-      {/* 모달 */}
-
-      {selectedFranchises && (
-        <FranchiseModal
-          isOpen={selectedFranchises !== null}
-          franchiseId={selectedFranchises.franchiseId}
-          onClose={handleCloseModal}
+          ))}
+        </div>
+        <Pagination
+          recipesPerPage={recipesPerPage}
+          totalRecipes={franchises.length}
+          paginate={paginaten}
         />
-      )}
+        {/* 모달 */}
+        {selectedFranchises && (
+          <FranchiseModal
+            isOpen={selectedFranchises !== null}
+            franchiseId={selectedFranchises.franchiseId}
+            onClose={handleCloseModal}
+          />
+        )}
+      </div>
       <FranchiseAdd onDataUpdate={handleCloseModal} />
     </div>
   );

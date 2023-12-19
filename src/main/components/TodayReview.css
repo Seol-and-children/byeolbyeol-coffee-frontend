@@ -1,5 +1,6 @@
 .today-review {
   width: 1000px;
+  cursor: pointer;
 }
 .review-flex-container {
   position: relative;
