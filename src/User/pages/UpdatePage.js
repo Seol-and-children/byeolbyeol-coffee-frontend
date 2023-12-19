@@ -113,6 +113,7 @@ function UpdatePage(props) {
       const response = await axios.post('/users/checkUserPassword', { userId, userPassword });
       if (response.data === true) {
         setSuccessMessages(prev => ({ ...prev, currentPasswordSuccess: '현재 비밀번호와 일치합니다.' }));
+        setErrors(prevErrors => ({ ...prevErrors, currentPasswordError: '' }));
       } else {
         setErrors(prevErrors => ({ ...prevErrors, currentPasswordError: '현재 비밀번호와 일치하지 않습니다.' }));
         setSuccessMessages(prev => ({ ...prev, currentPasswordSuccess: '' }));
