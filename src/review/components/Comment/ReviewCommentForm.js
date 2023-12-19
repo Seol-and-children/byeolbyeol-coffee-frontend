@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../../components/recipe/CommentForm.css";
+import "./CommentForm.css";
 
 const ReviewCommentForm = ({
   reviewId,

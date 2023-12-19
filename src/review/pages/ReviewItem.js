@@ -126,20 +126,20 @@ const ReviewItem = () => {
     <div className="review-container">
       <div className="review-header">
         <h1>CAFE REVIEW</h1>
-        <div className="buttons">
+        <div className="review-buttons">
           {userRole === 2 && isAuthor ? (
             <div>
-              <button className="edit-button" onClick={navigateToEdit}>
+              <button className="review-edit-button" onClick={navigateToEdit}>
                 수정
                 <img src={EditIcon} alt="수정"></img>
               </button>
-              <button className="delete-button" onClick={handleDelete}>
+              <button className="review-delete-button" onClick={handleDelete}>
                 삭제
                 <img src={DeleteIcon} alt="삭제"></img>
               </button>
             </div>
           ) : (
-            <div className="report-button">
+            <div className="review-report-button">
               <ReportReviewAdd addReviewId={review.reviewId} />
             </div>
           )}
@@ -160,7 +160,7 @@ const ReviewItem = () => {
       <div className="image-container">
         <img
           className="review-image"
-          src={`http://localhost:8080/reviewimgs/${review.photoUrl}`}
+          src={`http://localhost:8080/recipeimgs/${review.photoUrl}`}
           alt={review.reviewName}
         />
       </div>
@@ -168,12 +168,13 @@ const ReviewItem = () => {
       <div className="review-content">
         <p>{review.content}</p>
       </div>
-      <div className="like-button-box"></div>
+      <div className="like-button-box">
       <div className="like-button">
         <div className="like-icon">
           <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
         </div>
         <div className="like-count">{review.likesCount}</div>
+      </div>
       </div>
       
 
