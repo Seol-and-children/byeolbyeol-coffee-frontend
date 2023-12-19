@@ -40,6 +40,15 @@
   padding-top: 20px;
 }
 
+.like-button-box {
+  padding: 0px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .like-button {
   padding-top: 50px;
 }
@@ -61,6 +70,3 @@
   max-height: 1000px; /* 이미지의 최대 세로 길이 */
 }
 
-.review-container .comment-title {
-  
-}

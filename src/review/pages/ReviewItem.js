@@ -156,7 +156,7 @@ const ReviewItem = () => {
           {review.userNickname}
         </p>
       </div>
-
+      
       <div className="image-container">
         <img
           className="review-image"
@@ -168,13 +168,14 @@ const ReviewItem = () => {
       <div className="review-content">
         <p>{review.content}</p>
       </div>
-
+      <div className="like-button-box"></div>
       <div className="like-button">
         <div className="like-icon">
           <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
         </div>
         <div className="like-count">{review.likesCount}</div>
       </div>
+      
 
       <div className="comment-section">
         <div className="comment-view-section">
@@ -201,26 +202,6 @@ const ReviewItem = () => {
           </div>
         )}
       </div>
-
-      <div className="buttons">
-        {userRole === 2 && isAuthor ? (
-          <div>
-            <button className="edit-button" onClick={navigateToEdit}>
-              수정
-              <img src={EditIcon} alt="수정"></img>
-            </button>
-            <button className="delete-button" onClick={handleDelete}>
-              삭제
-              <img src={DeleteIcon} alt="삭제"></img>
-            </button>
-          </div>
-        ) : (
-          <div className="report-button">
-            <button onClick={handleReport}>신고하기</button>
-          </div>
-        )}
-      </div>
-
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
           <img src={ListIcon} alt="목록"></img>

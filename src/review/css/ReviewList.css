@@ -9,3 +9,63 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.write-button {
+  background-color: #ec7357;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: "NanumGothic", sans-serif;
+  white-space: nowrap; /* 줄 바꿈 방지 */
+  margin-top: 20px;
+}
+
+.recipe-pagination {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* 페이지네이션 CSS */
+
+.review-page-item {
+  margin: 0 5px;
+}
+
+.review-page-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #000000;
+  background-color: #ffffff;
+  border: 1px solid #a0a0a0;
+  cursor: pointer;
+}
+
+.review-page-link img {
+  width: 20px;
+  height: auto;
+}
+
+.review-page-link:hover {
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.review-page-item .active .review-page-link {
+  color: #ffffff;
+  background-color: #ec7357;
+  border-color: #ec7357;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0px;
+}
+

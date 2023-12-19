@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { useSelector } from "react-redux";
-import  modalStyles from "../../../User/component/modal.module.css";
+import  modalStyles from "../../../user/component/modal.module.css";
 
 // 모달 상세 내역
 const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
