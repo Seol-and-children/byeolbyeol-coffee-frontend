@@ -1,25 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import PostTitle from "../components/ReviewWrite/PostTitle";
 import CancelButton from "../components/ReviewWrite/CancelButton";
 import SubmitButton from "../components/ReviewWrite/SubmitButton";
 
 import "../css/ReviewWrite.css";
-import { useNavigate } from "react-router-dom";
 
 function ReviewWrite() {
   const [reviews, setReviews] = useState([]);
   const [reviewName, setReviewName] = useState("");
   const [content, setContent] = useState("");
   const [reviewImage, setReviewImage] = useState(null);
+  const [fileName, setFileName] = useState(""); // 추가: 파일 이름을 state로 관리
   const user = useSelector((state) => state.user.userData);
-
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!user) {
+      // 유저 정보가 없으면 로그인 페이지로 이동
+      alert("로그인 후 이용해주세요.");
+      navigate("/users/login");
+    }
+  }, [user, navigate]);
+
   const handleNewTitleChange = (title) => {
-    setReviewName(title); // 수정된 부분: title을 사용하여 setReviewName 호출
+    setReviewName(title);
   };
 
   const handleNewContentChange = (content) => {
@@ -28,6 +36,15 @@ function ReviewWrite() {
 
   const handleNewImageChange = (e) => {
     setReviewImage(e.target.files[0]);
+
+    // 파일이 선택되었는지 확인
+    if (e.target.files.length > 0) {
+      const fileName = e.target.files[0].name;
+      setFileName(fileName);
+    } else {
+      // 파일이 선택되지 않은 경우 기본 메시지 표시
+      setFileName("");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -106,6 +123,7 @@ function ReviewWrite() {
                 accept="image/*"
                 style={{ display: "none" }}
               />
+              <p id="fileName">{fileName}</p>
             </div>
           </div>
           <div className="new-post-content">
