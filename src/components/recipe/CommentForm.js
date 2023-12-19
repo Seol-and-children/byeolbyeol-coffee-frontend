@@ -10,7 +10,6 @@ const CommentForm = ({
   onCommentAdded,
 }) => {
   const [content, setContent] = useState(existingComment);
-  const isLoggedIn = userId != null;
   const isReply = parentId != null;
   const placeholderText = isReply
     ? "답글을 입력해주세요"
