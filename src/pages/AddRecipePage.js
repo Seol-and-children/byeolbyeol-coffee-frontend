@@ -59,8 +59,6 @@ function AddRecipePage() {
       }
     };
 
-    console.log("Beverage Temperature Changed:", beverageTemperature);
-
     fetchfranchiseCafeList();
     fetchIngredients();
   }, [beverageTemperature]);
