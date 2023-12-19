@@ -7,6 +7,7 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
   // 모달 창 내에서의 상태 관리
   const [ingredientName, setIngredientName] = useState("");
   const [ingredientUnit, setIngredientUnit] = useState("");
+  const [processing, setProcessing] = useState(true);
 
   //제출 버튼 이벤트
   const handleSubmit = async (e) => {
@@ -17,6 +18,7 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
       const response = await axios.post("/option/ingredients", {
         ingredientName,
         ingredientUnit,
+        processing
       });
 
       if (response.status === 200) {
@@ -30,34 +32,37 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} className="custom-modal">
-      <form className="modal-form" onSubmit={handleSubmit}>
-        <div className="modal-top">레시피 재료 관리</div>
-        <div className="wrap-modal">
-          <label>
+    <Modal isOpen={isOpen} onRequestClose={onClose} className="report-add-modal">
+      <form className="report-modal-form" onSubmit={handleSubmit}>
+        <div className="report-modal-top">레시피 재료 관리</div>
+        <div className="report-wrap-modal">
+          <div className="franchise-label-modal">
             재료 이름 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={null}
               onChange={(e) => setIngredientName(e.target.value)}
             />
-          </label>
+          </div>
           <br />
 
-          <label>
+          <div className="franchise-label-modal">
             재료 단위 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={null}
               onChange={(e) => setIngredientUnit(e.target.value)}
             />
-          </label>
+          </div>
           <br />
         </div>
-
-        <button type="submit">프렌차이즈 추가</button>
+        <div>
+        <button className='report-add-button' type="submit">추가하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button>
+        <button className='report-add-button' onClick={onClose}>취소</button>
+        </div>
       </form>
     </Modal>
   );

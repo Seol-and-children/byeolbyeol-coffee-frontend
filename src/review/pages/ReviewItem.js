@@ -9,8 +9,8 @@ import LikeButton from "../components/ReviewItem/LikeButton";
 import DeleteIcon from "../../assets/DeleteIcon.svg";
 import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
-import CommentForm from "../../components/recipe/CommentForm";
-import CommentsDisplay from "../../components/recipe/CommentsDisplay";
+import ReviewCommentForm from "../../components/recipe/CommentForm";
+import ReviewCommentsDisplay from "../../components/recipe/CommentsDisplay";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";

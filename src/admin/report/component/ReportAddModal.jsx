@@ -55,26 +55,20 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
         <div className='report-modal-top'>신고하기</div>
         <div className='report-wrap-modal'>
 
-        신고 카테고리 : 레시피 게시판<br></br>
+        <div className='report-modal-text'><strong>게시판</strong> : 레시피 게시판</div>
+        <div className='report-modal-text'><strong>신고자</strong> : {authorName}</div>
 
-        <br/>
-
-        <div>
-          신고자: {authorName} <br></br>
-          </div>
-        <br/>
-
-        <label>
-          신고내용 <br></br>
+        <label className="report-modal-label">
+          <strong>신고내용</strong> 
           <input type="text" id='reportContent' value={reportReason} onChange={(e) => setReportReason(e.target.value)} />
         </label>
         <br/>
 
         </div>
         <div className='report-btn-wrap'>
-        <button type="submit">신고하기</button>
+        <button className='report-add-button' type="submit">신고하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button></div>
+        <button className='report-add-button' onClick={onClose}>취소</button></div>
       </form>
     </Modal>
     );
