@@ -64,10 +64,8 @@ function ReviewWrite() {
       formData.append("reviewImage", reviewImage);
     }
   
-    formData.append(
-      "reviewDTO",
-      new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })
-    );
+    // JSON 데이터를 직접 FormData에 추가
+    formData.append("reviewDTO", JSON.stringify(reviewDTO));
   
     try {
       const response = await axios.post(
@@ -97,8 +95,13 @@ function ReviewWrite() {
   
       navigate("/reviews");
     } catch (error) {
-      console.error("리뷰 등록 실패", error);
-      alert("리뷰 등록에 실패하였습니다.");
+      // 서버에서 오류 응답을 받았을 때 추가된 부분
+      if (error.response && error.response.status === 400) {
+        alert("리뷰 등록에 실패하였습니다. 모든 필수 항목을 입력해주세요.");
+      } else {
+        console.error("리뷰 등록 실패", error);
+        alert("리뷰 등록에 실패하였습니다.");
+      }
       navigate("/reviews");
     }
   };

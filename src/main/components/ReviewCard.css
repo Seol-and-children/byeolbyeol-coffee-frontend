@@ -36,13 +36,22 @@
   margin-top: -20px;
 }
 
-.main-review-card .review-card-content {
+.main-review-card .review-card-image {
+  width: 270px;
+  height: 270px;
   overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  line-height: 2.2; /* 줄 간격 조절 */
-  height: 140px;
+  border-radius: 21px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  float: left;
+}
+
+.review-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .main-review-card .review-card-content-box {

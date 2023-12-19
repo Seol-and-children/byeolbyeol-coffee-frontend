@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReviewCommentForm from "./ReviewCommentForm";
-import "./CommentsDisplay.css";
+import "./ReviewCommentsDisplay.css";
 import ReportAdd from "../../../admin/report/component/ReportAdd";
 import DeleteIcon from "../../../assets/DeleteIcon.svg";
 import CommentIcon from "../../../assets/CommentIcon.svg";

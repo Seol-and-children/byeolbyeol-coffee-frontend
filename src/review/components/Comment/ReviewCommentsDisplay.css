@@ -5,8 +5,9 @@
 
 .comment-content {
   margin-bottom: 10px;
-  padding-left: 10px;
+  padding-left:  10px;
   padding-right: 10px;
+  text-align: left; /* 텍스트를 왼쪽으로 정렬 */
 }
 
 .comment-author::before {

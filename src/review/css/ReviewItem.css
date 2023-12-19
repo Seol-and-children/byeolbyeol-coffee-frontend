@@ -91,14 +91,18 @@
   align-items: center;
   flex-direction: column;
 }
-
 .review-action-buttons {
   margin-top: 5px;
   display: flex;
   align-self: flex-end;
 }
 
-.review-action-buttons button {
+.review-buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.review-buttons button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,16 +118,9 @@
   margin-left: 6px;
 }
 
-.review-report-button button {
-  width: 92px;
-}
-
-.review-edit-button img,
-.review-delete-button img {
-  height: 22px;
-  width: 22px;
-  margin-right: -5px;
-  margin-left: 5px;
+.review-buttons .review-edit-button,
+.review-buttons .review-delete-button {
+  margin-left: 0; /* Remove margin-left for both buttons */
 }
 
 .review-report-button img,
@@ -131,6 +128,13 @@
   height: 22px;
   width: 22px;
   margin-left: -5px;
+  margin-right: 5px;
+}
+
+.review-buttons .review-edit-button img,
+.review-buttons .review-delete-button img {
+  height: 22px;
+  width: 22px;
   margin-right: 5px;
 }
 
