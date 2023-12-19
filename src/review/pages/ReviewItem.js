@@ -128,7 +128,7 @@ const ReviewItem = () => {
         <h1>CAFE REVIEW</h1>
         <div className="review-buttons">
           {userRole === 2 && isAuthor ? (
-            <div>
+            <div className="rowContainer">
               <button className="review-edit-button" onClick={navigateToEdit}>
                 수정
                 <img src={EditIcon} alt="수정"></img>

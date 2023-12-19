@@ -106,7 +106,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 76px;
+  width: 90px;
   height: 32px;
   border: 1px solid #000000;
   border-radius: 5px;
@@ -145,4 +145,14 @@
 
 .review-report-button {
   align-self: flex-end;
+}
+
+.rowContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;    
+}
+
+.comment-title{
+  text-align: left; 
 }
