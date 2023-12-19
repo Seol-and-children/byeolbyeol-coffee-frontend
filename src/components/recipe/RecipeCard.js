@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./RecipeCard.css";
 import FranchiseLogo from "../../admin/franchise/component/FranchiseLogo";
 
-function RecipeCard({ recipe }) {
+function RecipeCard({ recipe, rank }) {
   const navigate = useNavigate();
   const imageUrl = `http://localhost:8080/recipeimgs/${recipe.photoUrl}`;
 
@@ -16,8 +16,24 @@ function RecipeCard({ recipe }) {
     navigate(`/recipes/${recipe.recipeId}`);
   };
 
+  const renderMedal = () => {
+    if (!rank) return null;
+
+    switch (rank) {
+      case 1:
+        return <div className="medal gold">1위</div>;
+      case 2:
+        return <div className="medal silver">2위</div>;
+      case 3:
+        return <div className="medal bronze">3위</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="recipe-card" onClick={handleClick}>
+      {renderMedal()}
       <div className="recipe-card-image">
         <img src={imageUrl} alt={recipe.recipeName} />
       </div>

@@ -1,0 +1,30 @@
+.today-review {
+  width: 1000px;
+}
+.review-flex-container {
+  position: relative;
+  align-items: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.today-review-scroll-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.today-review-scroll-button {
+  background-color: #ffffff;
+  border: none;
+  padding: 0px 15px;
+  cursor: pointer;
+  color: #a0a0a0;
+  transform: translateY(-450%);
+}
+
+.material-symbols-outlined {
+  font-size: 50px;
+}

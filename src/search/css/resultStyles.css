@@ -1,138 +1,190 @@
-.main{
-    width: auto;
-    height: auto;
-    display: grid;
-    place-items: center;
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+
+.main {
+  width: auto;
+  height: auto;
+  display: grid;
+  place-items: center;
+  font-family: "Nanum Gothic", sans-serif;
 }
 .inner-main {
-    width: 1440px;
-    height: auto;
+  width: 1440px;
+  height: auto;
 }
-.main-text{
-    font-size: 34px;
-    width: 400.55px;
-    height: 39px;
-    top: 144px;
-    margin-left: 150px;
-    margin-top: 45px;
-    margin-bottom: 45px;
-    text-align: center;
+.main-text {
+  font-size: 34px;
+  width: 400.55px;
+  height: 39px;
+  top: 144px;
+  margin-left: 150px;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  text-align: center;
 }
-.search{
-    width: 1023px;
-    height: 146px;
-    background-color:#F1F1F1;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+.search {
+  width: 1023px;
+  height: 146px;
+  background-color: #f1f1f1;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.inner-search{
-    width: 558px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.inner-search {
+  width: 558px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.result-input{
-    width: 472px;
-    height: 48px;
-    border: none;
+.result-input {
+  width: 472px;
+  height: 48px;
+  border: none;
 }
-.search-image{
-    width: 86px;
-    height: 50px;
-    background-color: #EC7357;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.search-image {
+  width: 86px;
+  height: 50px;
+  background-color: #ec7357;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.middle-text{
-    width: 1023px;
-    height: 30px;
-    margin-left: 223px;
-    margin-bottom: 25px;
-    margin-top: 10px;
-    font-size: 24px;
+.middle-text {
+  width: 1023px;
+  height: 30px;
+  margin-left: 223px;
+  margin-bottom: 25px;
+  margin-top: 10px;
+  font-size: 24px;
 }
-.check-result{
-    width: 1024px;
-    height: 50px;
-    background-color: #FFFFFF;
-    display: flex;
-    margin: 0 auto;
+.check-result {
+  width: 1024px;
+  height: 50px;
+  background-color: #ffffff;
+  display: flex;
+  margin: 0 auto;
 }
-.check{
-    width: 255px;
-    height: 48px;
-    text-align: center;
-    line-height : 50px;
-    border: solid 1px #717171;
+.check {
+  width: 255px;
+  height: 48px;
+  text-align: center;
+  line-height: 50px;
+  color: black;
+  font-size: 24px;
+  border: solid 1px #717171;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
 }
-.wrap-checkbox{
-    width: 1440px;
-    height: auto;
-    display : flex;
-    justify-content : center;
+.wrap-checkbox {
+  width: 1440px;
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
-.check-box{
-    width: 1024px;
-    height: auto;
-    margin-top: 30px;
+.check-box {
+  width: 1024px;
+  height: auto;
+  margin-top: 30px;
+  
 }
 .clicked {
-    background-color: #EC7357;
-    color: white;
-    border: solid 1px #EC7357;
-  }
+  background-color: #ec7357;
+  color: white;
+  border: solid 1px #ec7357;
+  font-family: "Nanum Gothic", sans-serif;
+}
 
+.sample-wrap {
+  width: 960px;
+  height: 261px;
+  display: flex;
+  margin-bottom: 15px;
+}
+.sample-image {
+  width: 290px;
+  height: 260px;
+  border-radius: 21px;
+  margin-right: 15px;
+  background-color: #717171;
+}
+.sample-image-2 {
+  width: 289px;
+  height: 260px;
+  border-radius: 21px;
+  object-fit: cover;
+  border: solid 1px #717171;
+}
+.sample-box {
+  width: 643px;
+  height: 253px;
+}
+.sample-title {
+  width: 643px;
+  height: 55px;
+  font-size: 33px;
+  font-weight: bold;
+  padding-left: 5px;
+  display: flex;
+  cursor: pointer;
+  font-family: "Nanum Gothic", sans-serif;
+}
+.search-logo {
+  width: 74px;
+  height: 26px;
+  margin-top: 10px;
+  font-size: 1rem;
+}
+.sample-content-box {
+  width: 643px;
+  height: 200px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+}
+.sample-content {
+  width: 633px;
+  height: 155px;
+  padding-left: 15px;
+  padding-top: 10px;
+}
+.sample-info {
+  width: 630px;
+  height: 37px;
+  border-top: solid 1px rgb(208, 208, 208);
+  position: relative;
+  padding: 6px;
+  display: flex;
+}
+.bar-title {
+  width: 940px;
+}
+.moresee-Btn {
+  width: 938px;
+  height: 40px;
+  color: #f1f1f1;
+  background-color: #ec7357;
+  border: solid 1px #ec7357;
+  border-radius: 15px;
+  cursor: pointer;
+}
 
-
-.sample-wrap{
-    width: 960px;
-    height: 261px;
-    display: flex;
+.RecipeByTitle {
+  margin-left: 12px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  font-size: 33px;
 }
-.sample-image{
-    width: 290px;
-    height: 260px;
-    background-color: #717171;
-    border-radius: 21px;
-    margin-right: 15px;
+.search-left {
+  display: flex;
 }
-.sample-box{
-    width: 643px;
-    height: 253px;
+.search-right {
+  position: absolute;
+  top: 6px; /* 조절이 필요한 경우 조절하세요. */
+  right: 6px;
+  display: flex;
 }
-.sample-title{
-    width: 643px;
-    height: 55px;
-    font-size: 33px;
-    font-weight: bold;
-    padding-left: 5px;
-    display: flex;
-    cursor: pointer;
-}
-.search-logo{
-    width: 74px;
-    height: 26px;
-    margin-top: 10px;
-}
-.sample-content-box{
-    width: 643px;
-    height: 200px;
-    background-color: #F1F1F1;
-    border-radius: 5px;
-}
-.sample-content{
-    width: 633px;
-    height: 155px;
-    padding: 6px;
-}
-.sample-info{
-    width: 643px;
-    height: 37px;
-    border-top: solid 1px grey;
-    display: flex;
+.small-image {
+  width: 13px;
+  height: 13px;
+  margin-right: 2px;
 }

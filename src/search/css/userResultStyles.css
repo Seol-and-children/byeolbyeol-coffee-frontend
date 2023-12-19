@@ -1,0 +1,29 @@
+.user-sample-wrap {
+    width: 1580px;
+    height: 90px;
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+.user-sample-box{
+    width: 1580px;
+    height: 90px;
+    margin-top: 20px;
+    border-left: solid 3px #737373;;
+}
+
+.user-nickname{
+ width: auto;
+ height: auto;
+ margin-top: 10px;
+ margin-left: 10px;
+ margin-bottom: 2px;
+ font-size: 25px;
+ font-weight:900;
+}
+.user-bio{
+    width: auto;
+    height: auto;
+    margin-left: 10px;
+    font-size: 20px;
+}

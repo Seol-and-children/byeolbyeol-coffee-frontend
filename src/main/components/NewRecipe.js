@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
-import RecipeCard from "./RecipeCard";
+import RecipeCard from "../../components/recipe/RecipeCard";
 import "./RecipeFlex.css";
 
-function TodayCoffee({ recipes }) {
+function NewRecipe({ recipes }) {
   const containerRef = useRef(null);
 
   const handleScrollLeft = () => {
@@ -13,28 +13,34 @@ function TodayCoffee({ recipes }) {
 
   const handleScrollRight = () => {
     if (containerRef.current) {
-      containerRef.current.scrollLeft += 324;
+      containerRef.current.scrollLeft += 322;
     }
   };
 
   return (
     <div className="recipe-flex-container">
-      <h2 className="title">새로운 레시피</h2>
+      <div className="main-title">새로운 레시피</div>
       <div className="recipe-flex" ref={containerRef}>
         {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
         ))}
       </div>
       <div className="scroll-buttons">
-        <button className="scroll-button scroll-button-left" onClick={handleScrollLeft}>
-        <span className="material-symbols-outlined">chevron_left</span>
+        <button
+          className="scroll-button scroll-button-left"
+          onClick={handleScrollLeft}
+        >
+          <span className="material-symbols-outlined">chevron_left</span>
         </button>
-        <button className="scroll-button scroll-button-right" onClick={handleScrollRight}>
-        <span className="material-symbols-outlined">chevron_right</span>
+        <button
+          className="scroll-button scroll-button-right"
+          onClick={handleScrollRight}
+        >
+          <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>
     </div>
   );
 }
 
-export default TodayCoffee;
+export default NewRecipe;

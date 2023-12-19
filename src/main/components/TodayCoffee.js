@@ -1,31 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
-import RecipeCard from "./RecipeCard";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import React, { useRef } from "react";
+import RecipeCard from "../../components/recipe/RecipeCard";
 import "./RecipeFlex.css";
 
-function TodayCoffee() {
+function TodayCoffee({ recipes }) {
   const containerRef = useRef(null);
-  const navigate = useNavigate();
-  const [randomRecipes, setRandomRecipes] = useState([]);
-
-  const fetchRandomRecipes = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/recipes");
-      const recipes = response.data;
-
-      // 랜덤하게 섞기
-      const shuffledRecipes = recipes.sort(() => Math.random() - 0.5);
-
-      // 원하는 개수만큼 선택
-      const numberOfRandomRecipes = 10; // 변경 가능
-      const selectedRandomRecipes = shuffledRecipes.slice(0, numberOfRandomRecipes);
-
-      setRandomRecipes(selectedRandomRecipes);
-    } catch (error) {
-      console.error("레시피 목록을 가져오는데 실패했습니다:", error);
-    }
-  };
 
   const handleScrollLeft = () => {
     if (containerRef.current) {
@@ -39,24 +17,25 @@ function TodayCoffee() {
     }
   };
 
-  useEffect(() => {
-    // 컴포넌트가 처음 로드될 때 랜덤 레시피를 가져옴
-    fetchRandomRecipes();
-  }, []);
-
   return (
     <div className="recipe-flex-container">
-      <h2 className="title">오늘의 커피</h2>
+      <div className="main-title">오늘의 커피</div>
       <div className="recipe-flex" ref={containerRef}>
-        {randomRecipes.map((recipe, index) => (
+        {recipes.map((recipe, index) => (
           <RecipeCard key={index} recipe={recipe} />
         ))}
       </div>
       <div className="scroll-buttons">
-        <button className="scroll-button scroll-button-left" onClick={handleScrollLeft}>
+        <button
+          className="scroll-button scroll-button-left"
+          onClick={handleScrollLeft}
+        >
           <span className="material-symbols-outlined">chevron_left</span>
         </button>
-        <button className="scroll-button scroll-button-right" onClick={handleScrollRight}>
+        <button
+          className="scroll-button scroll-button-right"
+          onClick={handleScrollRight}
+        >
           <span className="material-symbols-outlined">chevron_right</span>
         </button>
       </div>

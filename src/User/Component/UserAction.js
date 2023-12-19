@@ -9,7 +9,6 @@ import {
   UPDATE_USER_BIO,
 } from "./Types";
 
-
 export function loginUser(dataToSubmit) {
   return (dispatch) => {
     return axios
@@ -27,7 +26,7 @@ export function loginUser(dataToSubmit) {
         };
 
         if (userData) {
-          sessionStorage.setItem('userData', JSON.stringify(userData));
+          sessionStorage.setItem("userData", JSON.stringify(userData));
           console.log("로그인 후 세션 스토리지에 저장된 데이터:", userData);
           dispatch({
             type: LOGIN_USER,
@@ -50,7 +49,7 @@ export function SignuprUser(dataToSubmit) {
     return axios
       .post("/users/signup", dataToSubmit)
       .then((response) => {
-        console.log("Signup response", response.data); 
+        console.log("Signup response", response.data);
         dispatch({
           type: SIGNUP_USER,
           payload: response.data,
@@ -92,7 +91,7 @@ export function logoutUser() {
     return axios
       .post("/users/logout")
       .then((response) => {
-        sessionStorage.removeItem('userData');
+        sessionStorage.removeItem("userData");
         console.log("로그아웃 액션: 세션 스토리지에서 토큰 제거");
         dispatch({
           type: LOGOUT_USER,
@@ -138,22 +137,26 @@ export function deleteUser(userAccount, token) {
 
 export const updateUserBio = (userAccount, userBio) => {
   return (dispatch) => {
-      return axios.put(`/users/${userAccount}/bio` , userBio, {
+    return axios
+      .put(`/users/${userAccount}/bio`, userBio, {
         headers: {
-          'Content-Type': 'text/plain'
-        }
+          "Content-Type": "text/plain",
+        },
       })
-      .then(response => {
+      .then((response) => {
         console.log("서버로부터의 응답:", response.data);
-        console.log("서버에서 받은 userBio 데이터:", response.data.data.userBio);
+        console.log(
+          "서버에서 받은 userBio 데이터:",
+          response.data.data.userBio
+        );
         dispatch({
-            type: UPDATE_USER_BIO,
-            payload: response.data
+          type: UPDATE_USER_BIO,
+          payload: response.data,
         });
-    })
-          .catch(error => {
-              console.error('자기소개 업데이트 오류', error);
-              throw error;
-          });
+      })
+      .catch((error) => {
+        console.error("자기소개 업데이트 오류", error);
+        throw error;
+      });
   };
 };

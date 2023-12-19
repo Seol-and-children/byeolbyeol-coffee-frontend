@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Pagination.css";
 import FirstPageIcon from "../../assets/FirstPage.svg";
 import LastPageIcon from "../../assets/LastPage.svg";
@@ -18,10 +18,14 @@ const Pagination = ({
 
   return (
     <nav>
-      <ul className="pagination">
+      <ul className="recipe-pagination">
         {currentPage > 1 && (
           <li className="page-item">
-            <a onClick={() => paginate(1)} className="page-link">
+            <a
+              href={`#page1`}
+              onClick={() => paginate(1)}
+              className="page-link"
+            >
               <img src={FirstPageIcon} alt="첫 페이지" />
             </a>
           </li>
@@ -31,14 +35,22 @@ const Pagination = ({
             key={number}
             className={`page-item ${currentPage === number ? "active" : ""}`}
           >
-            <a onClick={() => paginate(number)} className="page-link">
+            <a
+              href={`#page${number}`}
+              onClick={() => paginate(number)}
+              className="page-link"
+            >
               {number}
             </a>
           </li>
         ))}
         {currentPage < lastPageNumber && (
           <li className="page-item">
-            <a onClick={() => paginate(lastPageNumber)} className="page-link">
+            <a
+              href={`#page${lastPageNumber}`}
+              onClick={() => paginate(lastPageNumber)}
+              className="page-link"
+            >
               <img src={LastPageIcon} alt="마지막 페이지" />
             </a>
           </li>

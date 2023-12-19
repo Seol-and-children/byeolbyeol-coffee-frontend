@@ -1,0 +1,100 @@
+.comment {
+  margin: 10px;
+  border-bottom: 1px solid #a0a0a0;
+}
+
+.comment-content {
+  margin-bottom: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.comment-author::before {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background-color: #57371b;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.comment-button-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-button-area .report-button {
+  margin: 0px;
+}
+
+.comment-author span {
+  cursor: pointer;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #c7c7c7;
+}
+
+.comment-align-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
+}
+
+.reply-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92px;
+  height: 32px;
+  border: 1px solid #000000;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  background-color: #ffffff;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
+.reply-button img {
+  height: 22px;
+  width: 22px;
+  margin-left: -5px;
+  margin-right: 5px;
+}
+
+.indent {
+  margin-left: 10px;
+  padding: 10px;
+  margin-right: -10px;
+  background-color: #f1f1f1;
+  border: none;
+}
+
+.comment-align-container .action-buttons {
+  margin-top: 0px;
+}
+
+.comment .comment-delete {
+  display: none;
+}
+
+.indent:hover .comment-delete {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.parent-comment .comment-delete {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}

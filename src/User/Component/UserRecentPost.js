@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import styles from './UserRecentPost.module.css'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import styles from "./UserRecentPost.module.css";
 
 function UserRecentRecipes({ userId }) {
   const [recipes, setRecipes] = useState([]);
@@ -10,26 +10,26 @@ function UserRecentRecipes({ userId }) {
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const userData = JSON.parse(sessionStorage.getItem('userData'));
+        const userData = JSON.parse(sessionStorage.getItem("userData"));
         const userId = userData.userId;
 
-        const response = await axios.get('/recipes');
+        const response = await axios.get("/recipes");
         const userRecipes = response.data
-          .filter(recipe => recipe.authorId === userId) 
-          .sort((a, b) => b.recipeId - a.recipeId) 
+          .filter((recipe) => recipe.authorId === userId)
+          .sort((a, b) => b.recipeId - a.recipeId)
           .slice(0, 3);
 
-          console.log("Sorted and Filtered Recipes:", userRecipes);
+        console.log("Sorted and Filtered Recipes:", userRecipes);
 
         setRecipes(userRecipes);
       } catch (error) {
-        console.error('Error fetching recipes', error);
+        console.error("Error fetching recipes", error);
       }
     };
-  
+
     fetchRecipes();
   }, [userId]);
-  
+
   const handleClick = (recipeId) => {
     navigate(`/recipes/${recipeId}`);
   };
@@ -37,8 +37,12 @@ function UserRecentRecipes({ userId }) {
   return (
     <div>
       <ul>
-        {recipes.map(recipe => (
-          <li key={recipe.recipeId}  onClick={() => handleClick(recipe.recipeId)} className={styles.recipeItem}>
+        {recipes.map((recipe) => (
+          <li
+            key={recipe.recipeId}
+            onClick={() => handleClick(recipe.recipeId)}
+            className={styles.recipeItem}
+          >
             <article>
               <p className={styles.recipeName}> • {recipe.recipeName}</p>
             </article>
@@ -47,7 +51,6 @@ function UserRecentRecipes({ userId }) {
       </ul>
     </div>
   );
-  
 }
 
 export default UserRecentRecipes;

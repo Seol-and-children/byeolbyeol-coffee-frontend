@@ -1,5 +1,12 @@
 import React from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Navigate,
+  NavLink,
+} from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../component/UserAction"; // logoutUser 액션 크리에이터 임포트
 import axios from "axios";
@@ -19,12 +26,15 @@ import RankingPage from "../../pages/RankingPage";
 import EditRecipePage from "../../pages/EditRecipePage";
 import SearchResult from "../../search/component/SearchResult";
 import AdminPage from "../../admin/adminPage/AdminPage";
+import RecipeByName from "../../search/component/check_search_result/nick_name_detail/RecipeByName";
+import ReviewByName from "../../search/component/check_search_result/nick_name_detail/ReviewByName";
 import UserPage from "./UserPage";
 import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
 import ReviewWrite from "../../review/pages/ReviewWrite";
-import Main from "../../main/Main";
+import ReviewEdit from "../../review/pages/ReviewEdit";
 
+import Main from "../../main/Main";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
@@ -68,32 +78,48 @@ function Navbar() {
               onClick={goToHome}
             />
 
-            <Link to="/recipes">
-              <button id="recipe" className={styles.recipePageBtn}>
-                레시피
-              </button>
-            </Link>
+            <NavLink
+              to="/recipes"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.recipePageBtn} ${styles.activeNavLink}`
+                  : styles.recipePageBtn
+              }
+            >
+              레시피
+            </NavLink>
 
-            <Link to="/ranking">
-              <button id="ranking" className={styles.rankinPagegBtn}>
-                랭킹
-              </button>
-            </Link>
-            <Link to="/reviews">
-              <button id="cafereview" className={styles.cafereviewPagewBtn}>
-                카페리뷰
-              </button>
-            </Link>
+            <NavLink
+              to="/ranking"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.rankinPageBtn} ${styles.activeNavLink}`
+                  : styles.rankinPageBtn
+              }
+            >
+              랭킹
+            </NavLink>
+
+            <NavLink
+              to="/reviews"
+              className={({ isActive }) =>
+                isActive
+                  ? `${styles.cafereviewPageBtn} ${styles.activeNavLink}`
+                  : styles.cafereviewPageBtn
+              }
+            >
+              카페리뷰
+            </NavLink>
+
             <button
               id="randomcoffee"
               className={styles.randomPageBtn}
               onClick={handleRandomRecipe}
             >
-              오늘 뭐마셔?
+              지금 뭐마셔?
             </button>
           </div>
           <SearchBar />
-          &nbsp;&nbsp;
           <div className="container">
             {user ? (
               <>
@@ -119,6 +145,7 @@ function Navbar() {
         </div>
       </div>
       <Routes>
+        <Route path="/" element={<Navigate to="/main" replace />} />
         <Route path="/main" element={<Main />} />
         <Route path="/add-recipe" element={<AddRecipePage />} />
         <Route path="/edit-recipe/:recipeId" element={<EditRecipePage />} />
@@ -131,12 +158,14 @@ function Navbar() {
         <Route path="/ranking" element={<RankingPage />} />
         <Route path="/users/mypage" element={<MyPage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/moreSee/recipeByName" element={<RecipeByName />} />
+        <Route path="/moreSee/reviewByName" element={<ReviewByName />} />
         <Route path="/search/:searchWord" element={<SearchResult />} />\
         <Route path="/users/:userId" element={<UserPage />} />
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
-        
+        <Route path="/edit-review/:reviewId" element={<ReviewEdit />} />
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
