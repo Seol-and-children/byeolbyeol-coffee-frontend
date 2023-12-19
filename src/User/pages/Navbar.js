@@ -34,16 +34,12 @@ import ReviewList from "../../review/pages/ReviewList";
 import ReviewWrite from "../../review/pages/ReviewWrite";
 import ReviewEdit from "../../review/pages/ReviewEdit";
 
-
-
 import Main from "../../main/Main";
 
 function Navbar() {
   const user = useSelector((state) => state.user?.userData);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  console.log("userNickName 컴포넌트에서 로드한 사용자 데이터:", user);
 
   const goToHome = () => {
     navigate("/main");
@@ -168,7 +164,6 @@ function Navbar() {
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
         <Route path="/edit-review/:reviewId" element={<ReviewEdit />} />
-
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>
