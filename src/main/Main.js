@@ -51,7 +51,7 @@ function Main() {
     .slice(0, 5);
 
   const now = new Date();
-  const twentyFourHoursAgo = new Date(now - 1 * 60 * 60 * 1000); // 24시간 전
+  const twentyFourHoursAgo = new Date(now - 24 * 60 * 60 * 1000); // 24시간 전
 
   // 오늘의 레시피
   const bestReview = [...reviews]
