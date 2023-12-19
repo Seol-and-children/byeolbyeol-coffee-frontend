@@ -43,6 +43,7 @@ function LoginPage() {
             userId: response.data.userId,
             userNickName: userNickName,
             userAccount: response.data.userAccount,
+            userPassword : response.data.userPassword,
             userRole: response.data.userRole,
             userBio: response.data.userBio,
           };
@@ -104,7 +105,7 @@ function LoginPage() {
             회원가입
           </button>
         </Link>
-        <div className={styles.inlineContainer}>
+        {/* <div className={styles.inlineContainer}>
           <div className={styles.divider}></div>
           <p>또는</p>
           <div className={styles.divider}></div>
@@ -113,7 +114,7 @@ function LoginPage() {
           <KakaoLoginButton href={KAKAO_AUTH_URL}>
             <span>카카오 로그인</span>
           </KakaoLoginButton>
-        </div>
+        </div> */}
       </form>
     </div>
   );
