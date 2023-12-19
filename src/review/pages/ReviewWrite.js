@@ -49,21 +49,26 @@ function ReviewWrite() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const userId = user ? user.userId : null;
     const reviewDTO = {
       reviewName,
       content,
       authorId: userId,
     };
-
+  
     const formData = new FormData();
-    formData.append("reviewImage", reviewImage);
+  
+    // 파일이 선택되었는지 확인 후, 선택되었을 경우에만 form data에 추가
+    if (reviewImage) {
+      formData.append("reviewImage", reviewImage);
+    }
+  
     formData.append(
       "reviewDTO",
       new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })
     );
-
+  
     try {
       const response = await axios.post(
         "http://localhost:8080/reviews",
@@ -74,22 +79,22 @@ function ReviewWrite() {
           },
         }
       );
-
+  
       console.log(response.data);
       alert("리뷰가 등록되었습니다!");
-
-      // Fetch the updated list of reviews and sort them by time
+  
+      // 리뷰 목록을 업데이트하고 시간순으로 정렬
       const updatedReviewsResponse = await axios.get(
         "http://localhost:8080/reviews"
       );
       const updatedReviews = updatedReviewsResponse.data;
-
+  
       const sortedReviews = [...updatedReviews].sort(
         (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
       );
-
+  
       setReviews(sortedReviews);
-
+  
       navigate("/reviews");
     } catch (error) {
       console.error("리뷰 등록 실패", error);
