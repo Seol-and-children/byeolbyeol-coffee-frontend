@@ -54,6 +54,10 @@
   overflow: hidden;
   height: 25px;
   margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  line-height: 25px;
 }
 
 .list-hr {

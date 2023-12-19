@@ -14,7 +14,7 @@ const SubmitButton = ({ onSubmit }) => {
   };
 
   return (
-    <button className="submit-button" onClick={handleSubmit}>제출하기</button>
+    <button className="submit-button" onClick={handleSubmit}>등록하기</button>
   );
 };
 
