@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Pagination from "../../../components/common/Pagination";
 import axios from "axios";
 import "../css/styles.css";
+import ReportToggle from "./ReportToggle";
+import TimeLoadDetail from "./TimeLoad";
 
 const ReportList = () => {
   const [reports, setReports] = useState([]);
@@ -52,6 +54,17 @@ const ReportList = () => {
     }
   };
 
+  const ToggleUpdate = (reportId, updatedProcessing) => {
+    // 처리 완료 후, 해당 프랜차이즈의 'processing' 상태를 업데이트
+    setReports((prevReports) =>
+    prevReports.map((report) =>
+    report.reportId === reportId
+          ? { ...report, processing: updatedProcessing }
+          : report
+      )
+    );
+  };
+
   const indexOfLastRecipe = currentPage * recipesPerPage;
   const indexOfFirstRecipe = indexOfLastRecipe - recipesPerPage;
   const currentRecipes = reports.slice(indexOfFirstRecipe, indexOfLastRecipe);
@@ -67,6 +80,7 @@ const ReportList = () => {
         <div className="exam-item report-author">작성자</div>
         <div className="exam-item reported">신고자</div>
         <div className="exam-item report-content">신고내용</div>
+        <div className="exam-item report-toggle">처리여부</div>
         <div className="exam-item status"></div>
       </div>
       <div id="inner-report-bar">
@@ -100,12 +114,19 @@ const ReportList = () => {
                   </div>
                 </div>
               )}
-              <div className="exam-item report-author">{report.authorName}</div>
-              <div className="exam-item reported">{report.reportedName}</div>
+              <div className="exam-item report-author">{report.reportedName}</div>
+              <div className="exam-item reported">{report.authorName}</div>
+              
               <div className="exam-item report-content">
+                
                 {report.reportReason}
               </div>
-              {/* <div class="exam-item status">{report.processing ? 'Yes' : 'No'}</div> */}
+              <div className="exam-item report-toggle">
+                <ReportToggle
+                franchiseId={report.reportId}
+                processing={report.processing}
+                onUpdate={ToggleUpdate}
+              /></div>
               <div className="exam-item status">
                 <img
                   src="/images/moreSee.png"
@@ -117,7 +138,10 @@ const ReportList = () => {
             </div>
             {/* 더보기 창 */}
             {showMore[index] && (
-              <div className="more-box">{report.reportReason}</div>
+              <div className="more-box">
+                <div className="more-box-content">{report.reportReason}</div>
+                <div className="more-box-time"><TimeLoadDetail date={report.reportTime}/></div>
+                </div>
             )}
           </div>
         ))}
