@@ -16,6 +16,7 @@ function AddRecipePage() {
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [customOptions, setCustomOptions] = useState([]);
+  const [ingredientList, setIngredientList] = useState([]);
   const user = useSelector((state) => state.user.userData);
 
   const navigate = useNavigate();
@@ -35,7 +36,24 @@ function AddRecipePage() {
         console.error("프랜차이즈 정보를 가져오는데 실패했습니다:", error);
       }
     };
+
+    // 기본 제공 재료 정보 가져오는 함수
+    const fetchIngredients = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/option/ingredients"
+        );
+        const activeIngredients = response.data.filter(
+          (ingredient) => ingredient.processing
+        );
+        setIngredientList(activeIngredients);
+      } catch (error) {
+        console.error("기본 제공 재료 정보를 가져오는데 실패했습니다:", error);
+      }
+    };
+
     fetchfranchiseCafeList();
+    fetchIngredients();
   }, []);
 
   // 커스텀 옵션 추가 처리 함수
@@ -57,6 +75,23 @@ function AddRecipePage() {
     const newCustomOptions = customOptions.map((option, i) => {
       if (i === index) {
         return { ...option, [field]: value };
+      }
+      return option;
+    });
+    setCustomOptions(newCustomOptions);
+  };
+
+  const handleIngredientSelect = (index, selectedIngredient) => {
+    const ingredient = ingredientList.find(
+      (ing) => ing.ingredientName === selectedIngredient.value
+    );
+    const newCustomOptions = customOptions.map((option, i) => {
+      if (i === index) {
+        return {
+          ...option,
+          customOptionName: ingredient.ingredientName, // 이름을 기본값으로 설정
+          quantity: ingredient.ingredientUnit, // 단위를 기본값으로 설정
+        };
       }
       return option;
     });
@@ -106,22 +141,35 @@ function AddRecipePage() {
         }
       );
       console.log(response.data);
-      alert("레시피가 등록되었습니다!"); // 성공 알림
-      navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
+      alert("레시피가 등록되었습니다!");
+      navigate("/recipes");
     } catch (error) {
       console.error("레시피 등록 실패", error);
-      alert("레시피 등록에 실패하였습니다."); // 실패 알림
-      navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
+      alert("레시피 등록에 실패하였습니다.");
+      navigate("/recipes");
     }
   };
 
   const handleCancel = () => {
-    navigate("/recipes"); // 레시피 전체 보기 페이지로 리디렉션
+    navigate("/recipes");
   };
 
   // 커스텀 옵션 입력 필드 렌더링
   const customOptionInputs = customOptions.map((option, index) => (
     <div key={index}>
+      <Select
+        value={option.customOptionName}
+        onChange={(selectedOption) =>
+          handleIngredientSelect(index, selectedOption)
+        }
+        options={ingredientList.map((ingredient) => ({
+          value: ingredient.ingredientName,
+          label: ingredient.ingredientName,
+        }))}
+        placeholder="옵션 선택..."
+        isClearable
+        isSearchable
+      />
       <input
         type="text"
         value={option.customOptionName}

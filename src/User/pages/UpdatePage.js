@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { UpdateUser, logoutUser } from "../component/UserAction";
 import styles from "./UpdatePage.module.css";
+import lockPerson from "../../assets/Lockperson.svg"
 
 function UpdatePage(props) {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.userData);
   const currentUser = useSelector((state) => state.user.userData);
   const token = sessionStorage.getItem("token");
   const navigate = useNavigate();
@@ -50,7 +52,7 @@ function UpdatePage(props) {
     if (newPassword !== confirmNewPassword) {
       return alert("새 비밀번호와 비밀번호 확인이 같지 않습니다.");
     }
-
+    
     let body = {
       userAccount: currentUser.userAccount,
       userNickName: userNickName,
@@ -80,11 +82,19 @@ function UpdatePage(props) {
     <div className={styles.body}>
       <form
         style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={onSubmitHandler}
-      >
+        onSubmit={onSubmitHandler}>
         <div className={styles.header}>
           <h1>회원 정보 수정</h1>
         </div>
+        <div className={styles.inputDiv}>
+          <label
+            className={`${styles.labelWithImage} ${styles.account}`}
+          ></label>
+          <div className={styles.displayAccount}>
+             {user.userAccount}  
+             <img src={lockPerson} alt="잠김" />
+          </div>
+          </div>
         <div className={styles.inputDiv}>
           <label
             className={`${styles.labelWithImage} ${styles.nickname}`}

@@ -1,30 +1,40 @@
+// ReviewEdit.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-
-import PostTitle from "../components/ReviewWrite/PostTitle";
+import PostTitleEdit from "../components/ReviewWrite/PostTitleEdit";
 import CancelButton from "../components/ReviewWrite/CancelButton";
 import SubmitButton from "../components/ReviewWrite/SubmitButton";
 
 import "../css/ReviewWrite.css";
 
-function ReviewWrite() {
-  const [reviews, setReviews] = useState([]);
+function ReviewEdit() {
+  const { reviewId } = useParams();
+  const [review, setReview] = useState({});
   const [reviewName, setReviewName] = useState("");
   const [content, setContent] = useState("");
   const [reviewImage, setReviewImage] = useState(null);
-  const [fileName, setFileName] = useState(""); // 추가: 파일 이름을 state로 관리
+  const [fileName, setFileName] = useState("");
   const user = useSelector((state) => state.user.userData);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!user) {
-      // 유저 정보가 없으면 로그인 페이지로 이동
-      alert("로그인 후 이용해주세요.");
-      navigate("/users/login");
-    }
-  }, [user, navigate]);
+    const fetchReviewDetails = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/reviews/${reviewId}`
+        );
+        setReview(response.data);
+        setReviewName(response.data.reviewName);
+        setContent(response.data.content);
+      } catch (error) {
+        console.error("데이터 로딩 중 오류 발생:", error);
+      }
+    };
+
+    fetchReviewDetails();
+  }, [reviewId]);
 
   const handleNewTitleChange = (title) => {
     setReviewName(title);
@@ -37,71 +47,51 @@ function ReviewWrite() {
   const handleNewImageChange = (e) => {
     setReviewImage(e.target.files[0]);
 
-    // 파일이 선택되었는지 확인
     if (e.target.files.length > 0) {
       const fileName = e.target.files[0].name;
       setFileName(fileName);
     } else {
-      // 파일이 선택되지 않은 경우 기본 메시지 표시
       setFileName("");
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const userId = user ? user.userId : null;
     const reviewDTO = {
       reviewName,
       content,
       authorId: userId,
     };
-
+  
     const formData = new FormData();
     formData.append("reviewImage", reviewImage);
     formData.append(
       "reviewDTO",
       new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })
     );
-
+  
     try {
-      const response = await axios.post(
-        "http://localhost:8080/reviews",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-
-      console.log(response.data);
-      alert("리뷰가 등록되었습니다!");
-
-      // Fetch the updated list of reviews and sort them by time
-      const updatedReviewsResponse = await axios.get(
-        "http://localhost:8080/reviews"
-      );
-      const updatedReviews = updatedReviewsResponse.data;
-
-      const sortedReviews = [...updatedReviews].sort(
-        (a, b) => new Date(b.registerTime) - new Date(a.registerTime)
-      );
-
-      setReviews(sortedReviews);
-
-      navigate("/reviews");
+      await axios.put(`http://localhost:8080/reviews/${reviewId}`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+  
+      alert("리뷰가 수정되었습니다!");
+  
+      navigate(`/reviews/${reviewId}`);
     } catch (error) {
-      console.error("리뷰 등록 실패", error);
-      alert("리뷰 등록에 실패하였습니다.");
-      navigate("/reviews");
+      console.error("리뷰 수정 실패", error);
+      alert("리뷰 수정에 실패하였습니다.");
     }
   };
 
   return (
     <div className="all">
       <form onSubmit={handleSubmit}>
-        <PostTitle className="post-title" />
+        <PostTitleEdit className="post-title" />
         <div className="new-post-title">
           <input
             type="text"
@@ -143,4 +133,4 @@ function ReviewWrite() {
   );
 }
 
-export default ReviewWrite;
+export default ReviewEdit;

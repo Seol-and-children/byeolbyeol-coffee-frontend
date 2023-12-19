@@ -32,6 +32,8 @@ import UserPage from "./UserPage";
 import ReviewItem from "../../review/pages/ReviewItem";
 import ReviewList from "../../review/pages/ReviewList";
 import ReviewWrite from "../../review/pages/ReviewWrite";
+import ReviewEdit from "../../review/pages/ReviewEdit";
+
 import Main from "../../main/Main";
 
 function Navbar() {
@@ -163,6 +165,7 @@ function Navbar() {
         <Route path="/reviews" element={<ReviewList />} />
         <Route path="/reviews/:reviewId" element={<ReviewItem />} />
         <Route path="/review-write" element={<ReviewWrite />} />
+        <Route path="/edit-review/:reviewId" element={<ReviewEdit />} />
         {/* 여기에 더 많은 사용자 관련 라우트를 추가할 수 있습니다 */}
       </Routes>
     </div>

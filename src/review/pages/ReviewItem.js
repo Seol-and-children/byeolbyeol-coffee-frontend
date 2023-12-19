@@ -13,8 +13,7 @@ import CommentForm from "../../components/recipe/CommentForm";
 import CommentsDisplay from "../../components/recipe/CommentsDisplay";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
-
-import '../css/ReviewItem.css';
+import "../css/ReviewItem.css";
 
 function ReviewItem() {
   const { reviewId } = useParams();
@@ -108,6 +107,8 @@ function ReviewItem() {
   };
 
   const isAuthor = review && userId && review?.authorId === userId;
+  const isLoggedIn = userId != null;
+
 
   if (!review) {
     return <div>게시글 불러오는 중...</div>;
@@ -136,7 +137,7 @@ function ReviewItem() {
           )}
         </div>
       </div>
-  
+
       <div className="review-title-date">
         <h2>{review.reviewName}</h2>
         <p className="register-time">{formatDate(review.registerTime)}</p>
@@ -147,31 +148,52 @@ function ReviewItem() {
           {review.userNickname}
         </p>
       </div>
-  
+
       <div className="image-container">
         <img
           className="review-image"
-          src={`http://localhost:8080/recipeimgs/${review.photoUrl}`}
+          src={`http://localhost:8080/reviewimgs/${review.photoUrl}`}
           alt={review.reviewName}
         />
       </div>
-  
+
       <div className="review-content">
         <p>{review.content}</p>
       </div>
-  
+
       <div className="like-button">
         <div className="like-icon">
           <LikeButton isLiked={isLiked} toggleLike={toggleLike} />
         </div>
         <div className="like-count">{review.likesCount}</div>
       </div>
-  
+
       <div className="comment-section">
-        <CommentForm reviewId={reviewId} onCommentAdded={handleCommentChange} />
-        <CommentsDisplay reviewId={reviewId} key={reloadComments} />
-      </div>
-  
+          <div className="comment-view-section">
+            <div className="comment-title">댓글</div>
+            <div className="comment-display">
+              <ReviewCommentsDisplay
+                reviewId={reviewId}
+                userId={userId}
+                userRole={userRole}
+                key={reloadComments}
+              />
+            </div>
+          </div>
+          {isLoggedIn && (
+            <div className="comment-input-section">
+              <div className="comment-title">댓글 작성</div>
+              <div className="comment-form">
+                <ReviewCommentForm
+                  reviewId={reviewId}
+                  userId={userId}
+                  onCommentAdded={handleCommentChange}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
           <img src={ListIcon} alt="목록"></img>

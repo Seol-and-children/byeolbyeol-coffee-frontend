@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CommentForm from "./CommentForm";
-import "./CommentsDisplay.css";
-import ReportAdd from "../../admin/report/component/ReportAdd";
-import DeleteIcon from "../../assets/DeleteIcon.svg";
-import CommentIcon from "../../assets/CommentIcon.svg";
+import ReviewCommentForm from "./ReviewCommentForm";
+import "../../../components/recipe/CommentsDisplay.css";
+import ReportAdd from "../../../admin/report/component/ReportAdd";
+import DeleteIcon from "../../../assets/DeleteIcon.svg";
+import CommentIcon from "../../../assets/CommentIcon.svg";
 
-const CommentsDisplay = ({ recipeId, userId, userRole }) => {
+const ReviewCommentsDisplay = ({ reviewId, userId, userRole }) => {
   const [comments, setComments] = useState([]);
   const [showReplyForms, setShowReplyForms] = useState({});
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
 
   const fetchComments = async () => {
     try {
-      const response = await axios.get(`/recipes/${recipeId}/comments`);
+      const response = await axios.get(`/reviews/${reviewId}/comments`);
       setComments(response.data);
     } catch (error) {
       console.error("댓글 로딩 중 오류 발생:", error);
@@ -24,7 +24,7 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
 
   useEffect(() => {
     fetchComments();
-  }, [recipeId, fetchComments]);
+  }, [reviewId, fetchComments]);
 
   const navigateToUserPage = (authorId) => {
     navigate(`/users/${authorId}`);
@@ -41,7 +41,7 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
   const handleDeleteComment = async (commentId) => {
     if (window.confirm("댓글을 삭제하시겠습니까?")) {
       try {
-        await axios.delete(`/recipes/${recipeId}/comments/${commentId}`);
+        await axios.delete(`/reviews/${reviewId}/comments/${commentId}`);
         fetchComments();
       } catch (error) {
         console.error("댓글 삭제 실패:", error);
@@ -88,7 +88,7 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
                 {isLoggedIn && userRole !== 3 && comment.userId !== userId && (
                   <div className="action-buttons">
                     <div className="report-button">
-                      <ReportAdd addRecipeId={comment.recipeId} />
+                      <ReportAdd addReviewId={comment.reviewId} />
                     </div>
                   </div>
                 )}
@@ -99,8 +99,8 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
           </div>
 
           {showReplyForms[comment.commentId] && (
-            <CommentForm
-              recipeId={recipeId}
+            <ReviewCommentForm
+              reviewId={reviewId}
               parentId={comment.commentId}
               userId={userId}
               onCommentAdded={handleCommentAdded}
@@ -114,4 +114,4 @@ const CommentsDisplay = ({ recipeId, userId, userRole }) => {
   return <div className="comments-container">{renderComments()}</div>;
 };
 
-export default CommentsDisplay;
+export default ReviewCommentsDisplay;

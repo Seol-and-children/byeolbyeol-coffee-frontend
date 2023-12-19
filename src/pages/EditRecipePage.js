@@ -13,29 +13,7 @@ function EditRecipePage() {
   const [franchiseCafeList, setfranchiseCafeList] = useState([]);
   const [selectedFranchise, setSelectedFranchise] = useState(null);
   const [recipeImage, setRecipeImage] = useState(null);
-  const customOptionFields = recipe.customOptions.map((option, index) => (
-    <div key={index}>
-      <input
-        type="text"
-        value={option.customOptionName}
-        onChange={(e) =>
-          handleCustomOptionChange(index, "customOptionName", e.target.value)
-        }
-        placeholder="Custom Option Name"
-      />
-      <input
-        type="text"
-        value={option.quantity}
-        onChange={(e) =>
-          handleCustomOptionChange(index, "quantity", e.target.value)
-        }
-        placeholder="Quantity"
-      />
-      <button type="button" onClick={() => removeCustomOption(index)}>
-        Remove Option
-      </button>
-    </div>
-  ));
+  const [ingredientList, setIngredientList] = useState([]);
 
   useEffect(() => {
     const fetchRecipeData = async () => {
@@ -64,8 +42,20 @@ function EditRecipePage() {
       }
     };
 
+    const fetchIngredients = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:8080/option/ingredients"
+        );
+        setIngredientList(response.data);
+      } catch (error) {
+        console.error("Error fetching ingredients data:", error);
+      }
+    };
+
     fetchfranchiseCafeList();
     fetchRecipeData();
+    fetchIngredients();
   }, [recipeId]);
 
   const handleInputChange = (e) => {
@@ -88,6 +78,63 @@ function EditRecipePage() {
   const handleFranchiseChange = (selectedOption) => {
     setSelectedFranchise(selectedOption);
   };
+
+  const handleIngredientSelect = (index, selectedIngredient) => {
+    const ingredient = ingredientList.find(
+      (ing) => ing.ingredientName === selectedIngredient.value
+    );
+    const updatedOptions = recipe.customOptions.map((option, i) => {
+      if (i === index) {
+        return {
+          ...option,
+          customOptionName: ingredient.ingredientName,
+          quantity: ingredient.ingredientUnit, // 단위를 기본값으로 설정
+        };
+      }
+      return option;
+    });
+    setRecipe({ ...recipe, customOptions: updatedOptions });
+  };
+
+  const customOptionFields = recipe.customOptions.map((option, index) => (
+    <div key={index}>
+      <Select
+        value={{
+          label: option.customOptionName,
+          value: option.customOptionName,
+        }}
+        onChange={(selectedOption) =>
+          handleIngredientSelect(index, selectedOption)
+        }
+        options={ingredientList.map((ingredient) => ({
+          value: ingredient.ingredientName,
+          label: ingredient.ingredientName,
+        }))}
+        placeholder="Custom Option Name"
+        isClearable
+        isSearchable
+      />
+      <input
+        type="text"
+        value={option.customOptionName}
+        onChange={(e) =>
+          handleCustomOptionChange(index, "customOptionName", e.target.value)
+        }
+        placeholder="옵션 이름"
+      />
+      <input
+        type="text"
+        value={option.quantity}
+        onChange={(e) =>
+          handleCustomOptionChange(index, "quantity", e.target.value)
+        }
+        placeholder="Quantity"
+      />
+      <button type="button" onClick={() => removeCustomOption(index)}>
+        Remove Option
+      </button>
+    </div>
+  ));
 
   const handleSave = async () => {
     const formData = new FormData();

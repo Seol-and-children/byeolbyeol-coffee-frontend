@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./CommentForm.css";
+import "../../../components/recipe/CommentForm.css";
 
-const CommentForm = ({
-  recipeId,
+const ReviewCommentForm = ({
+  reviewId,
   userId,
   parentId = null,
   existingComment = "",
@@ -18,9 +18,9 @@ const CommentForm = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const data = { content, userId, recipeId, parentId };
+    const data = { content, userId, reviewId, parentId };
     axios
-      .post(`/recipes/${recipeId}/comments`, data)
+      .post(`/reviews/${reviewId}/comments`, data)
       .then(() => {
         setContent("");
         onCommentAdded();
@@ -49,4 +49,4 @@ const CommentForm = ({
   );
 };
 
-export default CommentForm;
+export default ReviewCommentForm;

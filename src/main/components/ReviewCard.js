@@ -22,16 +22,23 @@ function ReviewCard({ review, rank }) {
           <img src={imageUrl} alt={review.reviewName} />
         </div>
         <div className="review-card-details">
-          <h3 className="review-card-title">{review.reviewName}</h3>
-          <div className="review-card-content">{review.content}</div>
-          <div className="review-card-info">
-            <span className="review-card-date">{formatDate(review.registerTime)}</span>
+          <div className="review-card-headline">
+            <h3 className="review-card-title">{review.reviewName}</h3>
+            <div className="review-card-author">| {review.userNickname}</div>
           </div>
-          <div className="review-card-stats">
-            <div className="counts">
-              <span className="review-card-likes">{`추천 ${review.likesCount}`}</span>
-              <span className="review-card-views">{`조회 ${review.viewsCount}`}</span>
+          <div className="review-card-content-box">
+            <div className="review-card-content">{review.content}</div>
+            <hr/ >
+            <div className="review-card-info">
+              <span className="review-card-date">{formatDate(review.registerTime)}</span>
+              <div className="review-card-stats">
+            <div className="count">
+              <span className="review-card-likes">{`${review.likesCount}`}</span>
+              <span className="review-card-views">{`${review.viewsCount}`}</span>
             </div>
+            </div>
+            </div>
+            
           </div>
         </div>
       </div>
