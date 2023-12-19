@@ -1,110 +1,298 @@
 .add-recipe-page {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  padding: 20px;
+  flex-direction: column;
+  width: 1000px;
+  margin: auto;
+  box-sizing: border-box;
+  margin-top: 20px;
 }
 
 .add-recipe-page form {
-  max-width: 600px;
   width: 100%;
-  background: #f9f9f9;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.add-recipe-page form input,
-.add-recipe-page form textarea,
-.add-recipe-page form select {
+.add-recipe-page .recipe-add-header {
+  font-size: 1.6rem;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.add-recipe-page .recipe-info-section {
+  display: flex;
+  margin-top: 20px;
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-sizing: border-box;
 }
 
-.add-recipe-page form textarea {
-  height: 100px;
-  resize: vertical;
+.img-add-area {
+  display: none;
 }
 
-.add-recipe-page form button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+.image-upload-label {
   cursor: pointer;
-  margin-right: 10px;
 }
 
-.add-recipe-page form .submit-button {
-  background-color: #28a745;
-  color: white;
+.image-upload-box {
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #a0a0a0;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  position: relative;
 }
 
-.add-recipe-page form .cancel-button {
-  background-color: #dc3545;
-  color: white;
+.image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
-.add-recipe-page form .submit-button:hover {
-  background-color: #218838;
-}
-
-.add-recipe-page form .cancel-button:hover {
-  background-color: #c82333;
-}
-
-/* react-select 컨테이너 */
-.react-select-container {
+.add-recipe-page .recipe-info-contents {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #d9d9d9;
 }
 
-/* react-select의 컨트롤 부분 (선택 박스) */
-.react-select__control {
+.recipe-info-section .image-upload-box {
+  width: 50%;
+  margin-right: 20px;
+}
+
+.recipe-info-section .contents-add-area {
+  width: 50%;
+  margin-left: 20px;
+}
+
+.recipe-info-section .img-add-area {
+  background-color: #a0a0a0;
+}
+
+.contents-add-area {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contents-add-area input {
+  width: 100%;
+  height: 40px;
+  background-color: #f9f9f9;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0px;
+  padding-left: 8px;
+  padding-right: 8px;
   box-sizing: border-box;
+}
+
+.contents-add-area .contents-add-textarea {
+  resize: none;
+  width: 100%;
+  height: 170px;
+  background-color: #f9f9f9;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 2px;
+  padding: 0px;
+  padding-top: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-sizing: border-box;
+}
+
+.cancel-upload-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.add-recipe-page .base-beverage-section,
+.add-recipe-page .custom-option-section {
+  width: 100%;
+  margin-top: 20px;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 30px;
+}
+
+.base-beverage-section .base-beverage-input {
+  display: flex;
+  margin-top: 20px;
+  height: 40px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.base-beverage-input .base-size {
+  width: 35%;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+  text-align: end;
+}
+
+.base-beverage-input .base-name {
+  width: 63%;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+}
+
+.base-temperature-toggle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+}
+
+.temperature-btn {
+  width: 50%;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  color: #a0a0a0;
+}
+
+.temperature-btn.selected {
+  color: white;
+}
+
+.temperature-btn.hot.selected {
+  background-color: #ff6347;
+}
+
+.temperature-btn.ice.selected {
+  background-color: #0075ff;
+}
+
+.temperature-btn:not(.selected) {
+  background-color: #f9f9f9;
+  border-right: none;
+}
+
+.temperature-btn:last-child {
+  border-right: 1px solid #a0a0a0;
+}
+
+.custom-option-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.custom-option-select-container {
+  width: 100%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+.custom-option-inputs-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.custom-option-name-input,
+.custom-option-quantity-input {
+  background-color: #f9f9f9;
+  border: 1px solid #a0a0a0;
+  font-size: 1rem;
+  padding-left: 8px;
+  padding-right: 8px;
+  box-sizing: border-box;
+  height: 40px;
+}
+.custom-option-name-input {
+  width: 60%;
+}
+
+.custom-option-quantity-input {
+  width: 35%;
+  text-align: end;
+}
+
+.custom-option-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-add-button-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.custom-add-button img {
+  margin-right: 5px;
+}
+
+.add-recipe-buttons {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.add-recipe-buttons .add-recipe-cancel {
+  width: 100px;
+  height: 36px;
+  border: 1px solid #a0a0a0;
   background-color: white;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #6b6b6b;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
-/* react-select의 값이 입력되었을 때의 컨트롤 */
-.react-select__control--is-focused {
-  border-color: #80bdff;
-  box-shadow: 0 0 0 1px #80bdff;
-}
-
-/* react-select의 드롭다운 메뉴 */
-.react-select__menu {
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* react-select의 드롭다운 옵션 */
-.react-select__option {
-  padding: 10px;
-}
-
-/* react-select의 드롭다운 옵션이 호버링 됐을 때 */
-.react-select__option--is-focused {
-  background-color: #f0f0f0;
-}
-
-/* react-select의 드롭다운 옵션이 선택되었을 때 */
-.react-select__option--is-selected {
-  background-color: #dee2e6;
-}
-
-/* react-select의 드롭다운 옵션들이 포함된 리스트 */
-.react-select__menu-list {
-  padding: 0;
-}
-
-/* react-select의 플레이스홀더/입력된 값의 색상 */
-.react-select__placeholder,
-.react-select__single-value {
-  color: #495057;
+.add-recipe-buttons .add-recipe-submit {
+  width: 100px;
+  height: 36px;
+  border: 1px solid #ec7357;
+  background-color: #ec7357;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
 }

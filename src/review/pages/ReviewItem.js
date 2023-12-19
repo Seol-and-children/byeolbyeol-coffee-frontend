@@ -1,5 +1,3 @@
-// ReviewItem.js
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
@@ -9,13 +7,13 @@ import LikeButton from "../components/ReviewItem/LikeButton";
 import DeleteIcon from "../../assets/DeleteIcon.svg";
 import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
-import ReviewCommentForm from "../../components/recipe/CommentForm";
-import ReviewCommentsDisplay from "../../components/recipe/CommentsDisplay";
+import ReviewCommentForm from "../components/Comment/ReviewCommentForm";
+import ReviewCommentsDisplay from "../components/Comment/ReviewCommentsDisplay";
 import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";
 
-function ReviewItem() {
+const ReviewItem = () => {
   const { reviewId } = useParams();
   const [review, setReview] = useState(null);
   const navigate = useNavigate();
@@ -109,6 +107,16 @@ function ReviewItem() {
   const isAuthor = review && userId && review?.authorId === userId;
   const isLoggedIn = userId != null;
 
+  const handleReport = () => {
+    if (!isLoggedIn) {
+      alert("로그인 후 이용해주세요.");
+      navigate("/users/login");
+      return;
+    }
+
+    // 현재 로그인 상태인 경우에만 신고하기 기능 실행
+    // ... (나머지 코드)
+  };
 
   if (!review) {
     return <div>게시글 불러오는 중...</div>;
@@ -169,30 +177,49 @@ function ReviewItem() {
       </div>
 
       <div className="comment-section">
-          <div className="comment-view-section">
-            <div className="comment-title">댓글</div>
-            <div className="comment-display">
-              <ReviewCommentsDisplay
+        <div className="comment-view-section">
+          <div className="comment-title">댓글</div>
+          <div className="comment-display">
+            <ReviewCommentsDisplay
+              reviewId={reviewId}
+              userId={userId}
+              userRole={userRole}
+              key={reloadComments}
+            />
+          </div>
+        </div>
+        {isLoggedIn && (
+          <div className="comment-input-section">
+            <div className="comment-title">댓글 작성</div>
+            <div className="comment-form">
+              <ReviewCommentForm
                 reviewId={reviewId}
                 userId={userId}
-                userRole={userRole}
-                key={reloadComments}
+                onCommentAdded={handleCommentChange}
               />
             </div>
           </div>
-          {isLoggedIn && (
-            <div className="comment-input-section">
-              <div className="comment-title">댓글 작성</div>
-              <div className="comment-form">
-                <ReviewCommentForm
-                  reviewId={reviewId}
-                  userId={userId}
-                  onCommentAdded={handleCommentChange}
-                />
-              </div>
-            </div>
-          )}
-        </div>
+        )}
+      </div>
+
+      <div className="buttons">
+        {userRole === 2 && isAuthor ? (
+          <div>
+            <button className="edit-button" onClick={navigateToEdit}>
+              수정
+              <img src={EditIcon} alt="수정"></img>
+            </button>
+            <button className="delete-button" onClick={handleDelete}>
+              삭제
+              <img src={DeleteIcon} alt="삭제"></img>
+            </button>
+          </div>
+        ) : (
+          <div className="report-button">
+            <button onClick={handleReport}>신고하기</button>
+          </div>
+        )}
+      </div>
 
       <div className="list-button">
         <button onClick={() => navigate("/reviews")}>
@@ -202,6 +229,6 @@ function ReviewItem() {
       </div>
     </div>
   );
-}
+};
 
 export default ReviewItem;
