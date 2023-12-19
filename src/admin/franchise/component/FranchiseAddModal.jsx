@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
+import franchiseStyles from "../css/franchiseStyles.css"
 
 // 모달 상세 내역
 const AddModal = ({ isOpen, onClose, onSubmit }) => {
@@ -9,6 +10,7 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
   const [franchiseBackColor, setFranchiseBackColor] = useState("");
   const [franchiseFontColor, setFranchiseFontColor] = useState("");
   const [franchiseImage, setFranchiseImage] = useState("");
+  const [processing, setProcessing] = useState(true);
 
   //제출 버튼 이벤트
   const handleSubmit = async (e) => {
@@ -21,6 +23,7 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
         franchiseBackColor,
         franchiseFontColor,
         franchiseImage,
+        processing
       });
 
       if (response.status === 200) {
@@ -34,53 +37,55 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose} className="custom-modal">
-      <form className="modal-form" onSubmit={handleSubmit}>
-        <div className="modal-top">프렌차이즈 관리</div>
-        <div className="wrap-modal">
-          <label>
+    <Modal isOpen={isOpen} onRequestClose={onClose} className="report-add-modal">
+      <form className="report-modal-form" onSubmit={handleSubmit}>
+        <div className="report-modal-top">프렌차이즈 관리</div>
+        <div className="report-wrap-modal">
+          <div className="franchise-label-modal">
             프렌차이즈 이름 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={null}
               onChange={(e) => setFranchiseName(e.target.value)}
             />
-          </label>
+          </div>
           <br />
 
-          <label>
+          <div>
             백 컬러 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={null}
+              placeholder="#"
               onChange={(e) => setFranchiseBackColor(e.target.value)}
             />
-          </label>
+          </div>
           <br />
 
-          <label>
+          <div>
             폰트 컬러 <br></br>
             <input
+            className="franchise-input-modal"
               type="text"
               value={null}
+              placeholder="#"
               onChange={(e) => setFranchiseFontColor(e.target.value)}
             />
-          </label>
+          </div>
           <br />
         </div>
-
-        {/* <label>
-        franchiseImage:
-          <input type="text" value={null} onChange={(e) => setFranchiseImage(e.target.value)} />
-        </label>
-        <br/> */}
-
-        <button type="submit">프렌차이즈 추가</button>
+      <div>
+        <button className='report-add-button' type="submit">추가하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button>
+        <button className='report-add-button' onClick={onClose}>취소</button>
+        </div>
       </form>
     </Modal>
+    
   );
+  
 };
 
 export default AddModal;

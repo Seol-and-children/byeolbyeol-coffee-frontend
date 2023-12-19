@@ -19,20 +19,13 @@
   width: 1179px;
 }
 
-.more-box {
-  width: 1160px;
-  height: 90px;
-  padding: 10px;
-  background-color: #efefef;
-}
-
 .report-check {
   width: 91px;
   height: 58px;
 }
 
 .report-category {
-  width: 190px;
+  width: 150px;
   height: 58px;
 }
 
@@ -47,7 +40,7 @@
 }
 
 .report-author {
-  width: 180px;
+  width: 160px;
   height: 58px;
   white-space: nowrap;
   /* 줄 바꿈 금지 */
@@ -56,7 +49,7 @@
 }
 
 .reported {
-  width: 180px;
+  width: 160px;
   height: 58px;
   white-space: nowrap;
   /* 줄 바꿈 금지 */
@@ -65,11 +58,16 @@
 }
 
 .report-content {
-  width: 307px;
+  width: 297px;
   height: 58px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.report-toggle{
+  width: 90px;
+  height: 58px;
 }
 
 .status {
@@ -77,7 +75,22 @@
   height: 58px;
 }
 
+
+.more-box {
+  width: 1160px;
+  height: 90px;
+  padding: 10px;
+  background-color: #efefef;
+}
+
 .moreSee-icon {
   width: 30px;
+  height: 30px;
+}
+
+.more-box-content{
+  height: 70px;
+}
+.more-box-time{
   height: 30px;
 }
