@@ -131,12 +131,21 @@ function RecipeDetailViewPage() {
             <div className="options">
               <div className="base-beverage">
                 <div className="base-beverage-name">
-                  베이스 음료: {recipe.baseBeverageVO.name}
+                  {recipe.baseBeverageVO.name}
                 </div>
-                <div className="base-bevarage-size">
-                  {recipe.baseBeverageVO.size} 사이즈
+                <div className="base-beverage-size">
+                  {recipe.baseBeverageVO.size}{" "}
+                  <span style={{ fontSize: "0.9rem" }}>사이즈</span>
                 </div>
-                <div className="base-bevarage-temperature">
+                <div
+                  className="base-bevarage-temperature"
+                  style={{
+                    color:
+                      recipe.baseBeverageVO.temperature === "ICE"
+                        ? "#0075ff"
+                        : "#ff6347",
+                  }}
+                >
                   {recipe.baseBeverageVO.temperature}
                 </div>
               </div>
