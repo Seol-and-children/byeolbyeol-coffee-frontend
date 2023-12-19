@@ -154,7 +154,7 @@
     
         if (response.data === true) {
           // 닉네임이 중복되지 않은 경우
-          setSuccessMessages(prevMessages => ({ ...prevMessages, userNickNameSuccess: '사용 가능한 아이디입니다.' }));
+          setSuccessMessages(prevMessages => ({ ...prevMessages, userNickNameSuccess: '사용 가능한 닉네임입니다.' }));
           setErrors(prevErrors => ({ ...prevErrors, userNickNameError: '' })); // 에러 메시지 초기화
         } else {
           // 닉네임이 중복된 경우
