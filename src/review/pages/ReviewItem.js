@@ -9,7 +9,7 @@ import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
 import ReviewCommentForm from "../components/Comment/ReviewCommentForm";
 import ReviewCommentsDisplay from "../components/Comment/ReviewCommentsDisplay";
-import ReportAdd from "../../admin/report/component/ReportAdd";
+import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";
 
@@ -140,7 +140,7 @@ const ReviewItem = () => {
             </div>
           ) : (
             <div className="report-button">
-              <ReportAdd addReviewId={review.reviewId} />
+              <ReportReviewAdd addReviewId={review.reviewId} />
             </div>
           )}
         </div>
