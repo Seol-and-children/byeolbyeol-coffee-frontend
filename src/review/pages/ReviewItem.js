@@ -9,9 +9,9 @@ import LikeButton from "../components/ReviewItem/LikeButton";
 import DeleteIcon from "../../assets/DeleteIcon.svg";
 import EditIcon from "../../assets/Edit.svg";
 import ListIcon from "../../assets/ListIcon.svg";
-import ReviewCommentForm from "../components/Comment/ReviewCommentForm";
-import ReviewCommentsDisplay from "../components/Comment/ReviewCommentsDisplay";
-import ReportAdd from "../../admin/report/component/ReportAdd";
+import CommentForm from "../../components/recipe/CommentForm";
+import CommentsDisplay from "../../components/recipe/CommentsDisplay";
+import ReportReviewAdd from "../../admin/report/component/ReortReviewAdd";
 
 import "../css/ReviewItem.css";
 
@@ -132,7 +132,7 @@ function ReviewItem() {
             </div>
           ) : (
             <div className="report-button">
-              <ReportAdd addReviewId={review.reviewId} />
+              <ReportReviewAdd addReviewId={review.reviewId} />
             </div>
           )}
         </div>

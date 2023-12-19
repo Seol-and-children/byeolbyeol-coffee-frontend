@@ -20,7 +20,7 @@ const FranchiseToggle = ({ franchiseId, processing, onUpdate }) => {
 
   return (
     <button className='process-Btn' onClick={handleToggle}>
-      {processing ? '사용중' : '미사용'}
+      {processing ? '미사용' : '사용중'}
     </button>
   );
 };

@@ -5,6 +5,7 @@ import "../css/resultStyles.css";
 const SearchResult = () => {
   const { searchWord } = useParams();
   const [inputValue, setInputValue] = useState(searchWord);
+  const [searchQuery, setSearchQuery] = useState("");
   const [activeContent, setActiveContent] = useState("all"); // 'all'을 기본값으로 설정
 
   // searchWord가 변경될 때마다 inputValue 상태 업데이트
@@ -15,15 +16,20 @@ const SearchResult = () => {
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
+    setSearchQuery(e.target.value);
   };
 
   const handleDivClick = (content) => {
     setActiveContent(content);
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
     // 페이지 이동과 함께 새로고침
-    window.location.href = `/search/${inputValue}`;
+    if (searchQuery.trim() !== "") {
+      window.location.href = `/search/${inputValue}`;
+    } else {
+      alert("검색어를 입력하세요.");
+    }
   };
 
   const getActiveComponent = () => {

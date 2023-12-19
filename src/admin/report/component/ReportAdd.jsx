@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ModalComponent from "./ReportAddModal";
 import ReportIcon from "../../../assets/ReportIcon.svg";
+import modalStyles from "../css/modalStyles.css"
 
 const ReportAdd = ({ addRecipeId }) => {
   const [isModalOpen, setModalOpen] = useState(false);
