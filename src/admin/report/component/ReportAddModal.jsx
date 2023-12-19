@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
 import { useSelector } from "react-redux";
-import  styles from "../../../User/component/modal.module.css";
+import  modalStyles from "../../../User/component/modal.module.css";
 
 // 모달 상세 내역
 const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
@@ -50,10 +50,10 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
 
     return (
       <Modal isOpen={isOpen} onRequestClose={onClose}
-        className={styles.modal}>
-      <form className='modal-form' onSubmit={handleSubmit}>
-        <div className='modal-top'>신고하기</div>
-        <div className='wrap-modal'>
+        className="report-add-modal">
+      <form className='report-modal-form' onSubmit={handleSubmit}>
+        <div className='report-modal-top'>신고하기</div>
+        <div className='report-wrap-modal'>
 
         신고 카테고리 : 레시피 게시판<br></br>
 
@@ -71,10 +71,10 @@ const ModalComponent = ({ isOpen, onClose, getRecipeId }) => {
         <br/>
 
         </div>
-
+        <div className='report-btn-wrap'>
         <button type="submit">신고하기</button>
         {/* 닫기 버튼 추가 */}
-        <button onClick={onClose}>취소</button>
+        <button onClick={onClose}>취소</button></div>
       </form>
     </Modal>
     );
