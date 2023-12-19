@@ -219,3 +219,18 @@
   height: 1rem;
   background-size: cover;
 }
+
+.main-review-card,
+.review-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.main-review-card:hover,
+.review-card:hover {
+  transform: scale(1.02);
+}
+
+.main-review-card .review-card-content-box,
+.review-card:hover .review-card-content-box {
+  transform: scale(1.02);
+}
