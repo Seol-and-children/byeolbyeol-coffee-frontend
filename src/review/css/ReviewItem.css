@@ -60,3 +60,7 @@
   height: auto; /* 세로 길이는 자동으로 조절하여 가로 세로 비율을 유지함 */
   max-height: 1000px; /* 이미지의 최대 세로 길이 */
 }
+
+.review-container .comment-title {
+  
+}
