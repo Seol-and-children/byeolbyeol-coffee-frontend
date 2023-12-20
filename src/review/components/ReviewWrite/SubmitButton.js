@@ -6,8 +6,10 @@ const SubmitButton = ({ onSubmit }) => {
 
   const handleSubmit = async () => {
     try {
-      await onSubmit();
-      navigate('/reviews');
+      if (onSubmit && typeof onSubmit === 'function') {
+        await onSubmit();
+        navigate('/reviews');
+      }
     } catch (error) {
       console.error('제출 실패:', error);
     }

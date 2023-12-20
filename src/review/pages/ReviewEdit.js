@@ -66,7 +66,9 @@ function ReviewEdit() {
     };
   
     const formData = new FormData();
-    formData.append("reviewImage", reviewImage);
+    if (reviewImage) {
+      formData.append("reviewImage", reviewImage);
+    }
     formData.append(
       "reviewDTO",
       new Blob([JSON.stringify(reviewDTO)], { type: "application/json" })

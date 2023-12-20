@@ -25,7 +25,6 @@ function ReviewListCard({ review, rank }) {
           <h3 className="list-review-card-title">{review.reviewName}</h3>
           <div className="list-review-card-content-box">
             <div className="list-review-card-content">{review.content}</div>
-            <hr className="list-hr"/>
             <div className="list-review-card-info">
               <span className="list-review-card-date">{formatDate(review.registerTime)}</span>
               <div className="list-review-card-author">| {review.userNickname}</div>
