@@ -9,7 +9,6 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
   const [franchiseName, setFranchiseName] = useState("");
   const [franchiseBackColor, setFranchiseBackColor] = useState("");
   const [franchiseFontColor, setFranchiseFontColor] = useState("");
-  const [franchiseImage, setFranchiseImage] = useState("");
   const [processing, setProcessing] = useState(true);
 
   //제출 버튼 이벤트
@@ -22,7 +21,6 @@ const AddModal = ({ isOpen, onClose, onSubmit }) => {
         franchiseName,
         franchiseBackColor,
         franchiseFontColor,
-        franchiseImage,
         processing
       });
 
