@@ -1,4 +1,4 @@
-![Untitled](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/127364202/43e3beef-93de-4673-a5d0-9e8a80ff948c)
+![Untitled](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/127364202/effca53a-9157-4dcc-92c1-627fd9e7b361)
 
 
 ☕ 별별커피
@@ -14,7 +14,7 @@
 > 사용자들이 본인만 알고있는 커피 커스터마이징 옵션을 공유하고 추천하는 시스템을 개발하고자 합니다. 해당 사이트를 통해 프랜차이즈 카페의 메뉴 공유 뿐 아니라, 직접 가본 카페 후기, 다양한 커피 관련 정보를 공유하고 소통할 수 있습니다.
 >
 
-<br><br><br><br><br>
+<br><br><br>
 
 🔨 사용된 기술
 ---------
