@@ -1,70 +1,76 @@
-# Getting Started with Create React App
+![Untitled](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/127364202/43e3beef-93de-4673-a5d0-9e8a80ff948c)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+☕ 별별커피
+======
 
-In the project directory, you can run:
+> 본 프로젝트는 프렌차이즈 커피 및 음료의 커스텀 레시피를 공유하는 커뮤니티형 웹사이트 개발을 목표로 합니다.  다음은 프로젝트의 사용 목적을 나타냅니다.
+> 
+> - **프랜차이즈 카페 메뉴 공유 하고 싶을 때**
+> - **커스텀 레시피 공유 및 추천을 원할 때**
+> - **카페 추천과 음료, 디저트 조합을 원할 때**
+> - **레시피 랭킹이 궁금할 때**
+> 
+> 사용자들이 본인만 알고있는 커피 커스터마이징 옵션을 공유하고 추천하는 시스템을 개발하고자 합니다. 해당 사이트를 통해 프랜차이즈 카페의 메뉴 공유 뿐 아니라, 직접 가본 카페 후기, 다양한 커피 관련 정보를 공유하고 소통할 수 있습니다.
+>
 
-### `npm start`
+<br><br><br><br><br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+🔨 사용된 기술
+---------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Java 11](https://img.shields.io/badge/Java-11-007396?logo=java&logoColor=white)
+![MySQL 8.0](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql&logoColor=white)
+![Spring Boot 2.7.17](https://img.shields.io/badge/Spring%20Boot-2.7.17-6DB33F?logo=spring-boot)
+![Spring Security](https://img.shields.io/badge/Spring%20Security-6DB33F?logo=spring-security)
+![JPA](https://img.shields.io/badge/JPA-2C3E50?logo=hibernate&logoColor=white)
+![React 18.2.0](https://img.shields.io/badge/React-18.2.0-61DAFB?logo=react)
+<br><br><br><br><br>
 
-### `npm test`
+🖼 구성도
+------
+![Untitled](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/117703172/f0987286-d6c3-4fcd-88d4-2e4951facef9)
+<br><br><br><br><br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🖼 이벤트스토밍
+---------
+![miro](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/117703172/eaf971c7-9b2a-404a-8726-07b4734cd7cf)
+![Untitled 1](https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/117703172/7e4db44c-b068-485a-9bcc-1408aa7b4590)
+<br><br><br><br><br>
 
-### `npm run build`
+✅ 주요 기능
+-------
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 커스텀 레시피 공유
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  - 프랜차이즈 카페 커피 및 음료에 대하여 나만의 커스텀 레시피를 공유한다.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- 커스텀 레시피 평가
 
-### `npm run eject`
+  - 다른 사용자가 공유한 레시피에 대한 호불호를 평가하거나 댓글로 의견을 첨부한다.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 커스텀 레시피 랭킹
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  - 사용자의 평가를 바탕으로 한 커스텀 레시피 순위 정보를 제공한다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 카페 리뷰 게시판
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  - 사용자들이 방문한 카페 후기를 남길 수 있다.
+<br><br><br><br><br>
 
-## Learn More
+📹 시연 영상
+--------
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<a href="https://www.youtube.com/watch?v=slFESylNn0Q" rel="nofollow"><img src="https://github.com/Seol-and-children/byeolbyeol-coffee-backend/assets/127364202/0ac7d680-ad00-4078-9c00-b2a473fe980d" alt="별별커피 시연영상" style="max-width: 100%;"></a>
+<br><br><br><br><br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+👤 개발자
+------
 
-### Code Splitting
+*   박형준 ([https://github.com/phj9745](https://github.com/phj9745))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+*   설광진 ([https://github.com/SeolGwangzin](https://github.com/SeolGwangzin))
 
-### Analyzing the Bundle Size
+*   정건희 ([https://github.com/gunmi-im](https://github.com/gunmi-im))
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*   한지석 ([https://github.com/busker362](https://github.com/busker362))
